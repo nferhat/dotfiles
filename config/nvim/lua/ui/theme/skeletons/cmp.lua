@@ -1,0 +1,37 @@
+local C = require "ui.theme.colors"
+
+return {
+    CmpCompletionNormal = { bg = C.light_background },
+    CmpCompletionBorder = { bg = C.light_background },
+    CmpDocumentationNormal = { bg = C.selection },
+    CmpDocumentationBorder = { bg = C.selection },
+    CmpItemSelected = { bg = C.selection, bold = true },
+    -- Client item kinds, the following are builtin to cmp.
+    CmpItemAbbrDeprecated = { fg = C.color7, strikethrough = true, bold = true },
+    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch", bold = true },
+    CmpItemAbbrMatch = { fg = C.color4, bold = true, bold = true },
+    CmpItemKindSnippet = { fg = C.color2, bg = C.light_background:mix(C.color2, 4.5), bold = true },
+    CmpItemKindConstant = { fg = C.color3, bold = true, bold = true },
+    CmpItemKindConstructor = { fg = C.color4, bg = C.light_background:mix(C.color4, 4.5), bold = true },
+    CmpitemKindEnum = { fg = C.color3, bg = C.light_background:mix(C.color3, 4.5), bold = true },
+    CmpItemKindEvent = { fg = C.color1, bg = C.light_background:mix(C.color1, 4.5), bold = true },
+    CmpitemKindInterface = { fg = C.color3, bg = C.light_background:mix(C.color3, 4.5), bold = true },
+    CmpItemKindKeyboard = { fg = C.color5, bg = C.light_background:mix(C.color5, 4.5), bold = true },
+    CmpItemKindClass = { fg = C.color3, bg = C.light_background:mix(C.color3, 4.5), bold = true },
+    CmpItemKindModule = { fg = C.color1, bg = C.light_background:mix(C.color1, 4.5), bold = true },
+    CmpItemKindOperator = C.comment,
+    CmpitemKindTypeParameter = { fg = C.color3, bg = C.light_background:mix(C.color3, 4.5), bold = true },
+    CmpItemKindUnit = { fg = C.color2, bg = C.light_background:mix(C.color2, 4.5), bold = true },
+    CmpItemKindVariable = { fg = C.color6, bg = C.light_background:mix(C.color6, 4.5), bold = true },
+    CmpItemKindInterface = { link = "CmpItemKindVariable", bold = true },
+    CmpItemKindText = { link = "CmpItemKindVariable", bold = true },
+    CmpItemKindFunction = { fg = C.color4, bg = C.light_background:mix(C.color4, 4.5), bold = true },
+    CmpItemKindMethod = { link = "CmpItemKindFunction", bold = true },
+    CmpItemKindProperty = { link = "CmpItemKindKeyword", bold = true },
+    CmpItemKindFolder = { fg = "#f1d068", bold = true },
+    CmpItemKindFile = { fg = C.color1, bg = C.light_background:mix(C.color1, 4.5), bold = true },
+    CmpItemKindStruct = { fg = C.color3, bg = C.light_background:mix(C.color3, 4.5), bold = true },
+    -- Cmp doc
+    CmpDocNormalFloat = { bg = C.selection },
+    CmpDocFloatBorder = { bg = C.selection, fg = C.border, blend = 10 },
+}
