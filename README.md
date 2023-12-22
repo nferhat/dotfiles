@@ -21,6 +21,7 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
 - `home`
     * `default.nix` - declare `homeManagerConfigurations` flake output.
     * `nferhat.nix` - home configuration for user `nferhat`
+    * See [`home/README.md`](./home/README.md) for more detailed information
 
 ## Rice screenshots
 
@@ -30,3 +31,4 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
 
 - [`fufexan/dotfiles`](https://github.com/fufexan/dotfiles) copied some nix stuff from here and there
 - [`hlissner/dotfiles`](https://github.com/hlissner/dotfiles) same as fufexan's dotfiles.
+- [`rxyhn/yuki`](https://github.com/rxyhn/yuki) same as fufexan's dotfiles.
