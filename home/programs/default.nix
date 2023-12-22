@@ -29,7 +29,7 @@
 
     shellAliases = {
       l = "eza -ah --group-directories-first";
-      ll = "ls -l";
+      ll = "l -l";
       htop = "btop"; # force of habit
     };
   };
