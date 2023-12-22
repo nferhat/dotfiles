@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: {
-  imports = [./programs ./services.nix];
+  imports = [
+    ./programs
+    ./services.nix
+  ];
 
   home = {
     inherit (osConfig.system) stateVersion;

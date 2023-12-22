@@ -3,7 +3,12 @@
   pkgs,
   ...
 }: {
-  imports = [./git.nix ./neovim.nix ./tmux.nix ./zsh.nix];
+  imports = [
+    ./git.nix
+    ./neovim.nix
+    ./tmux.nix
+    ./zsh.nix
+  ];
 
   home = {
     packages = with pkgs; [
