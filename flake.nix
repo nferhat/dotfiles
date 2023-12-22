@@ -11,6 +11,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:fufexan/Hyprland/wezterm_fix";
   };
 
   outputs = inputs:

@@ -48,6 +48,13 @@
       experimental-features = ["nix-command" "flakes"];
       flake-registry = "/etc/nix/registry.json";
       trusted-users = ["root" "@wheel"];
+
+      substituters = [
+        "https://fufexan.cachix.org"
+      ];
+      trusted-public-keys = [
+        "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
+      ];
     };
   };
 
