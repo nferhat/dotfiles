@@ -3,16 +3,9 @@
   pkgs,
   ...
 }: {
-  home = {
-    packages = with pkgs; [
-      # Wayland utilities for the graphical session.
-      grim
-      slurp
-      wl-clipboard
-      wlr-randr
-      wl-screenrec
-    ];
+  imports = [./programs.nix ./hyprland.nix];
 
+  home = {
     sessionVariables = {
       QT_QPA_PLATFORM = "wayland";
       SDL_VIDEODRIVER = "wayland"; # run Celeste natively.
