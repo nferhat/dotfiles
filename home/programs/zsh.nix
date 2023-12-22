@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -92,7 +93,52 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
-      # TODO: Config
+      settings = {
+        format = lib.concatStringsSep "$" [
+          "$directory" # needs $ otherwise doesn't work
+          "git_branch"
+          "git_metrics"
+          "cmd_duration"
+          "jobs"
+          "nix_shell"
+          "character"
+        ];
+
+        git_metrics.disabled = false;
+        nix_shell.heuristic = true;
+
+        directory = {
+          style = "blue";
+          truncation_length = 5;
+        };
+
+        character = {
+          success_symbol = "[|](237)";
+          error_symbol = "[!](red)";
+          vimcmd_symbol = "[|](cyan)";
+        };
+
+        git_branch = {
+          format = "[$symbol(:$remote_branch)]($style) $branch ";
+          symbol = "";
+        };
+
+        git_status = {
+          format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
+          style = "cyan";
+          stashed = "≡";
+        };
+
+        git_state = {
+          format = "\([$state( $progress_current/$progress_total)]($style)\) ";
+          style = "bright-black";
+        };
+
+        cmd_duration = {
+          format = "[$duration]($style) ";
+          style = "yellow";
+        };
+      };
     };
   };
 
