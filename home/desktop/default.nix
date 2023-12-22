@@ -58,8 +58,8 @@
       size = 12;
     };
 
-    gtk3.extraSettings = gtkPreferDarkMode;
-    gtk4.extraSettings = gtkPreferDarkMode;
+    gtk3.extraConfig = gtkPreferDarkMode;
+    gtk4.extraConfig = gtkPreferDarkMode;
   };
 
   qt = {
