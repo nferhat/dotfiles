@@ -7,11 +7,11 @@
   home.packages = [pkgs.tmux];
   xdg.configFile."tmux/tmux.conf" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/tmux.conf";
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/tmux/tmux.conf";
   };
   # TODO: not rely on this
   xdg.configFile."tmux/colors.conf" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/colors.conf";
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/tmux/colors.conf";
   };
 }
