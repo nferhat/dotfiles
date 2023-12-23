@@ -50,6 +50,10 @@
     wireless.enable = false;
     networkmanager.enable = true;
     firewall.enable = false;
+
+    # For whatever reason, my laptop can't resolve most domains without cloudflare+resolved combo
+    # Go figure out why.
+    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   };
 
   # No thank you, this will just consume time trying to connect any present card instead of actually
@@ -71,6 +75,16 @@
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+    };
+
+    resolved = {
+      enable = true;
+      dnssec = "true";
+      domains = ["~."];
+      fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+      extraConfig = ''
+        DNSOverTLS=yes
+      '';
     };
 
     blueman.enable = true;
