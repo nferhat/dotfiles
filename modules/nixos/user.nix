@@ -1,6 +1,7 @@
 # Setup my user + home-manager for it, on a NixOS config
 {
   pkgs,
+  lib,
   inputs,
   inputs',
   ...
@@ -22,7 +23,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs inputs';};
+    extraSpecialArgs = {inherit lib inputs inputs';};
     users."nferhat" = import ../../home/nferhat.nix;
   };
 }

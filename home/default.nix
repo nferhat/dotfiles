@@ -8,11 +8,16 @@
     inputs',
     ...
   }: let
+    # Get nixpkgs library then add my own functions and stuff
+    lib = inputs.nixpkgs.lib.extend (self: _: {
+      fht = import ../lib/default.nix {lib = self;};
+    });
+
     inherit (inputs.home-manager.lib) homeManagerConfiguration;
   in {
     nferhat = homeManagerConfiguration {
       modules = [./nferhat.nix];
-      extraSpecialArgs = {inherit inputs inputs';};
+      extraSpecialArgs = {inherit lib inputs inputs';};
       inherit pkgs;
     };
   });
