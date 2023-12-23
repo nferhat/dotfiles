@@ -81,6 +81,9 @@
         "ignorealpha, 0.5, wofi"
       ];
 
+# Disable stupid laptop keyboard that is buggy
+      "device:at-translated-set-2-keyboard".enabled = false;
+
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
