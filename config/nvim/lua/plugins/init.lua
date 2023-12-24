@@ -131,16 +131,14 @@ return {
         main = "ibl",
         opts = {
             indent = {
-                -- char = "▎",
-                char = "|",
+                char = "▎",
                 highlight = "IndentGuide",
                 smart_indent_cap = true,
             },
             scope = {
-                enabled = false,
+                enabled = true,
                 highlight = "IndentGuideScope",
-                -- char = "▎",
-                char = "|",
+                char = "▎",
             },
         },
         config = function(_, opts)

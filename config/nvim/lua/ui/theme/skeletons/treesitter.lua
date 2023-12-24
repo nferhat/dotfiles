@@ -26,7 +26,7 @@ return {
     ["@namespace"] = C.color1,
     ["@number"] = C.color3,
     ["@operator"] = C.color7:increase_blue(50),
-    ["@parameter"] = { fg = C.foreground, italic = true },
+    ["@parameter"] = { fg = C.color3, italic = true },
     ["@preproc"] = C.color3,
     ["@property"] = C.foreground,
     ["@punctuation"] = C.color1,
