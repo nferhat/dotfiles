@@ -48,7 +48,7 @@
 
     font = {
       name = "Inter";
-      size = 12;
+      size = 10;
     };
 
     gtk3.extraConfig = gtkPreferDarkMode;
@@ -63,4 +63,6 @@
       name = "adwaita-dark";
     };
   };
+
+  xresources.path = "${config.xdg.configHome}/Xresources";
 }
