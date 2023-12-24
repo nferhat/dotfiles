@@ -23,7 +23,11 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit lib inputs inputs';};
+    extraSpecialArgs = {
+      inherit inputs inputs';
+      # Also include home-manager lib otherwise hyprland flake no build
+      lib = lib.extend (self: _: {inherit (inputs.home-manager.lib) hm;});
+    };
     users."nferhat" = import ../../home/nferhat.nix;
   };
 }
