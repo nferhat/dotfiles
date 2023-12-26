@@ -1,8 +1,4 @@
-{
-  osConfig,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./desktop
     ./programs
@@ -10,7 +6,7 @@
   ];
 
   home = {
-    inherit (osConfig.system) stateVersion;
+    stateVersion = "23.11";
     username = "nferhat";
     homeDirectory = "/home/nferhat";
 
