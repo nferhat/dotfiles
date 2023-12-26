@@ -118,6 +118,17 @@
 
       "$mod" = "SUPER";
       bind = let
+        toBindStr = {
+          modifiers ? [],
+          key,
+          dispatch,
+          args ? "",
+        }: let
+          modifiersStr = lib.concatStringsSep " " modifiers;
+          ret = lib.concatStringsSep "," [modifiersStr key dispatch (builtins.toString args)];
+        in
+          ret;
+
         # Thank you github:fufexan/dotfiles for this.
         # Shorthand for generating workspace bindings.
         workspaceBinds = builtins.concatLists (builtins.genList (
@@ -125,8 +136,18 @@
               c = (x + 1) / 10;
               key = builtins.toString (x + 1 - (c * 10));
             in [
-              "$mod, ${key}, workspace, ${builtins.toString (x + 1)}"
-              "$mod SHIFT, ${key}, movetoworkspacesilent, ${builtins.toString (x + 1)}"
+              {
+                inherit key;
+                modifiers = ["SUPER"];
+                dispatch = "workspace";
+                args = x + 1;
+              }
+              {
+                inherit key;
+                modifiers = ["SUPER" "SHIFT"];
+                dispatch = "movetoworkspacesilent";
+                args = x + 1;
+              }
             ]
           )
           10);
@@ -135,39 +156,123 @@
         screenshot-area = ''
           hyprctl keyword animation 'fadeOut,0,0,default'; grimblast --notify copy area; hyprctl keyword animation 'fadeOut,1,4,default'
         '';
-        screenshot-output = ''
-          hyprctl keyword animation 'fadeOut,0,0,default'; grimblast --notify copy output; hyprctl keyword animation 'fadeOut,1,4,default'
-        '';
       in
-        [
-          "$mod SHIFT, c, killactive"
-          "$mod SHIFT, Q, exit"
-          # General applications/prgorams
-          # HACK: wezterm still doesn't launch under native wayland
-          "$mod, Return, exec, env -u WAYLAND_DISPLAY wezterm"
-          "$mod, P,      exec, wofi -I --show drun"
-          "$mod, L,      exec, gtklock"
-          "$mod, C,      exec, hyprpicker -n -a -f rgb"
+        builtins.map toBindStr (
+          [
+            {
+              modifiers = ["SUPER" "SHIFT"];
+              key = "c";
+              dispatch = "killactive";
+            }
+            {
+              modifiers = ["SUPER" "SHIFT"];
+              key = "q";
+              dispatch = "exit";
+            }
 
-          # Layout gimmicks
-          "$mod CTRL, Space, togglefloating"
-          "$mod, F, fullscreen, 0" # actual fullscreen
-          "$mod, M, fullscreen, 1" # monocle
+            # General applications/prgorams
+            {
+              # HACK: wezterm still doesn't launch under native wayland
+              modifiers = ["SUPER"];
+              key = "Return";
+              dispatch = "exec";
+              args = "env -u WAYLAND_DISPLAY wezterm";
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "p";
+              dispatch = "exec";
+              args = "wofi";
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "l";
+              dispatch = "exec";
+              args = "gtklock";
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "c";
+              dispatch = "exec";
+              args = "hyprpicker -n -a -f rgb";
+            }
 
-          # See comment above for more info
-          "$mod SHIFT, S, exec, ${screenshot-area}"
-          ", Print, exec, ${screenshot-output}"
-          # Apparently using builtins.map doesnt work soo.
-          "$mod, J, cyclenext,"
-          "$mod, K, cyclenext, prev"
-          "$mod SHIFT, J, swapnext,"
-          "$mod SHIFT, K, swapnext,prev"
-          # Volume control
-          ",XF86AudioRaiseVolume,       exec, wpctl set-volume -l \"1.0\" @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume,       exec, wpctl set-volume -l \"1.0\" @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute,              exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ]
-        ++ workspaceBinds;
+            # Layout gimmicks
+            {
+              modifiers = ["SUPER" "CTRL"];
+              key = "Space";
+              dispatch = "togglefloating";
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "f";
+              dispatch = "fullscreen";
+              args = 1;
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "m";
+              dispatch = "fullscreen";
+              args = 0;
+            }
+
+            # See comment above for more info
+            # Screenshotting funsies, similar to windows
+            {
+              modifiers = ["SUPER" "SHIFT"];
+              key = "s";
+              dispatch = "exec";
+              args = screenshot-area;
+            }
+            {
+              key = "Print";
+              dispatch = "exec";
+              args = "grimblast --notify copy output";
+            }
+
+            # Apparently using builtins.map doesnt work soo.
+            {
+              modifiers = ["SUPER"];
+              key = "j";
+              dispatch = "cyclenext";
+            }
+            {
+              modifiers = ["SUPER"];
+              key = "k";
+              dispatch = "cyclenext";
+              args = "prev";
+            }
+            {
+              modifiers = ["SUPER" "SHIFT"];
+              key = "j";
+              dispatch = "swapnext";
+            }
+            {
+              modifiers = ["SUPER" "SHIFT"];
+              key = "j";
+              dispatch = "swapnext";
+              args = "prev";
+            }
+
+            # Volume control
+            {
+              key = "XF86AudioRaiseVolume";
+              dispatch = "exec";
+              args = "wpctl set-volume -l \"1.0\" @DEFAULT_AUDIO_SINK@ 5%+";
+            }
+            {
+              key = "XF86AudioLowerVolume";
+              dispatch = "exec";
+              args = "wpctl set-volume -l \"1.0\" @DEFAULT_AUDIO_SINK@ 5%-";
+            }
+            {
+              key = "XF86AudioMute";
+              dispatch = "exec";
+              args = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+            }
+          ]
+          ++ workspaceBinds
+        );
     };
   };
 }
