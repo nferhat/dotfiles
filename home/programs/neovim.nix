@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-# NOTE: Don't use `programs.neovim` since I manage my configuration myself.
+  # NOTE: Don't use `programs.neovim` since I manage my configuration myself.
 
   home = {
     packages = with pkgs; [

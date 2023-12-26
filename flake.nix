@@ -12,7 +12,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:fufexan/Hyprland/wezterm_fix";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # WARN: DO NOT override nixpkgs for cachix to work
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpicker = {
+      url = "github:hyprwm/hyprpicker";
+      # WARN: DO NOT override nixpkgs for cachix to work
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

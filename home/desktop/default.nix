@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./programs.nix ./hyprland.nix];
+  imports = [./programs ./hyprland.nix];
 
   home = {
     sessionVariables = {
@@ -63,6 +63,9 @@
       name = "adwaita-dark";
     };
   };
+
+  # TODO: Proper config
+  services.mako.enable = true;
 
   xresources.path = "${config.xdg.configHome}/Xresources";
 }
