@@ -25,16 +25,20 @@ M.config = function()
             require("telescope.pickers.layout_strategies").horizontal(picker, max_columns, max_lines, layout_config)
 
         layout.prompt.title = ""
-        layout.prompt.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
+        layout.prompt.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
 
         layout.results.title = ""
-        layout.results.borderchars = { "─", " ", " ", " ", " ", " ", " ", " " }
         layout.results.line = layout.results.line - 1
         layout.results.height = layout.results.height + 1
 
         if layout.preview then
             layout.preview.title = ""
-            layout.preview.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
+            layout.preview.col = layout.preview.col - 1
+            layout.preview.width = layout.preview.width + 1
+            layout.preview.borderchars = { "─", "│", "─", "│", "┬", "┐", "┘", "└" }
+            layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┴", "└" }
+        else
+            layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┘", "└" }
         end
 
         return layout
@@ -63,6 +67,7 @@ M.config = function()
             selection_caret = " > ",
             multi_icon = " * ",
             initial_mode = "insert",
+            winblend = vim.opt.winblend:get(),
             mappings = {
                 i = {
                     -- Cycle history

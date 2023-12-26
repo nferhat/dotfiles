@@ -52,7 +52,7 @@ return {
             local miniclue = require "mini.clue"
             miniclue.setup {
                 window = {
-                    config = { border = borderchars, width = 45 },
+                    config = { border = "single", width = 45 },
                     delay = 0,
                 },
                 triggers = {
@@ -190,6 +190,39 @@ return {
                 next = "<nop>",
             },
         },
+    },
+
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            local notify = require "notify"
+            local stages = require "notify.stages.slide" "top_down"
+            -- Override vim.notify so we can use nvim-notify with it.
+            -- This basically allows all plugins to use nvim-notify to display any message they'd
+            -- like to using notify, as long as they use vim.notify as for message logging.
+            vim.notify = notify
+
+            notify.setup {
+                timeout = 4500, -- in milliseconds.
+                render = "wrapped-compact",
+                border = "single",
+                max_width = 50,
+                fps = 60, -- smoooooth
+                stages = {
+                    function(...)
+                        local opts = stages[1](...)
+                        if opts then
+                            opts.border = "single"
+                        end
+                        return opts
+                    end,
+                    unpack(stages, 2),
+                },
+                fade_in_slide_out = true,
+            }
+
+            require("ui.theme").load_skeleton "notify"
+        end,
     },
 
     {

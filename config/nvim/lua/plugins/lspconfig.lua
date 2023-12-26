@@ -50,9 +50,9 @@ function M.config()
             set_keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Open Signature Help", buffer = buffer })
 
             -- Better inlay hints (nvim >=0.10)
-            if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(buffer, true)
-            end
+            -- if client.server_capabilities.inlayHintProvider then
+            --     vim.lsp.inlay_hint.enable(buffer, true)
+            -- end
         end,
     })
 

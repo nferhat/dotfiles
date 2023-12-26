@@ -26,7 +26,7 @@ end
 vim.opt.runtimepath:prepend(lazy_path)
 require("lazy").setup("plugins", {
     defaults = { lazy = true },
-    ui = { border = borderchars },
+    ui = { border = "single" },
     install = { colorscheme = { "theme" } },
     profiling = { loader = true, require = true },
     performance = {

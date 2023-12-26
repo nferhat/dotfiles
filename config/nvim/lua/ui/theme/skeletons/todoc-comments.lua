@@ -1,34 +1,13 @@
 local C = require "ui.theme.colors"
 
 return {
-    TodoBgFix = {
-        fg = C.color1,
-        bg = C.background:mix(C.color1, 11.5),
-    },
-    TodoBgTodo = {
-        fg = C.color4,
-        bg = C.background:mix(C.color4, 11.5),
-    },
-    TodoBgHack = {
-        fg = C.color3,
-        bg = C.background:mix(C.color3, 11.5),
-    },
-    TodoBgWarn = {
-        fg = C.color11,
-        bg = C.background:mix(C.color11, 11.5),
-    },
-    TodoBgPerf = {
-        fg = C.color9,
-        bg = C.background:mix(C.color9, 11.5),
-    },
-    TodoBgNote = {
-        fg = C.color12,
-        bg = C.background:mix(C.color12, 11.5),
-    },
-    TodoBgTest = {
-        fg = C.color2,
-        bg = C.background:mix(C.color2, 11.5),
-    },
+    TodoBgFix = { fg = C.color1, bg = C.surface_container },
+    TodoBgTodo = { fg = C.color4, bg = C.surface_container },
+    TodoBgHack = { fg = C.color3, bg = C.surface_container },
+    TodoBgWarn = { fg = C.color11, bg = C.surface_container },
+    TodoBgPerf = { fg = C.color9, bg = C.surface_container },
+    TodoBgNote = { fg = C.color12, bg = C.surface_container },
+    TodoBgTest = { fg = C.color2, bg = C.surface_container },
 
     TodoFgFix = { fg = C.color1 },
     TodoFgTodo = { fg = C.color4 },

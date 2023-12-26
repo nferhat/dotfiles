@@ -6,5 +6,5 @@ return {
     GitSignsChangeDelete = C.color1,
     GitSignsDelete = C.color1,
     GitSignsTopDelete = C.color9,
-    GitSignsUntracked = C.comment,
+    GitSignsUntracked = C.on_surface_low,
 }

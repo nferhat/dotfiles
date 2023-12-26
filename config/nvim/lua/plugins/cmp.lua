@@ -14,60 +14,32 @@ M.config = function()
     local luasnip = require "luasnip"
 
     local cmp_kinds = {
-        Text = " t ",
-        Method = " F ",
-        Function = " F ",
-        Constructor = " F ",
-        Field = " f ",
-        Variable = " v ",
-        Class = " C ",
-        Interface = " I ",
-        Module = " m ",
-        Property = " p ",
-        Unit = " U ",
-        Value = " v ",
-        Enum = " E ",
-        Keyword = "   ",
-        Snippet = " s ",
-        Color = " c ",
-        File = " f ",
-        Reference = " R ",
-        Folder = " F ",
-        EnumMember = " e ",
-        Constant = " C ",
-        Struct = " S ",
-        Event = " e ",
-        Operator = " o ",
-        TypeParameter = " t ",
+        Text = "",
+        Method = "",
+        Function = "",
+        Constructor = "",
+        Field = "",
+        Variable = "",
+        Class = "",
+        Interface = "",
+        Module = "",
+        Property = "",
+        Unit = "",
+        Value = "",
+        Enum = "",
+        Keyword = " ",
+        Snippet = "",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "",
+        Event = "",
+        Operator = "",
+        TypeParameter = "",
     }
-
-    -- local cmp_kinds = {
-    --     Text = "  ",
-    --     Method = "  ",
-    --     Function = "  ",
-    --     Constructor = "  ",
-    --     Field = "  ",
-    --     Variable = "  ",
-    --     Class = "  ",
-    --     Interface = "  ",
-    --     Module = "  ",
-    --     Property = "  ",
-    --     Unit = "  ",
-    --     Value = "  ",
-    --     Enum = "  ",
-    --     Keyword = "   ",
-    --     Snippet = "  ",
-    --     Color = "  ",
-    --     File = "  ",
-    --     Reference = "  ",
-    --     Folder = "  ",
-    --     EnumMember = "  ",
-    --     Constant = "  ",
-    --     Struct = "  ",
-    --     Event = "  ",
-    --     Operator = "  ",
-    --     TypeParameter = "  ",
-    -- }
 
     cmp.setup {
         snippet = {
@@ -81,13 +53,15 @@ M.config = function()
             completion = cmp.config.window.bordered {
                 -- winhighlight = "Normal:CmpCompletionNormal,FloatBorder:CmpCompletionBorder,CursorLine:CmpCompletionSelected",
                 winhighlight = "Normal:CmpCompletionNormal,FloatBorder:CmpCompletionBorder,CursorLine:CmpItemSelected",
-                border = "none",
+                border = "single",
                 col_offset = -2,
-                side_padding = 0,
+                side_padding = 1,
+                scrollbar = false,
             },
             documentation = cmp.config.window.bordered {
                 winhighlight = "Normal:CmpDocumentationNormal,FloatBorder:CmpDocumentationBorder,CursorLine:CmpItemSelected",
-                border = borderchars,
+
+                border = "single",
                 scrollbar = true,
             },
         },
@@ -136,7 +110,6 @@ M.config = function()
             format = function(entry, item)
                 if vim.tbl_contains({ "path" }, entry.source.name) then
                     if item.kind == "Folder" then
-                        -- Use a pretty folder icon if the given path is a folder (woah)
                         item.abbr = item.abbr:gsub("/", "")
                         item.kind = ""
                         item.kind_hl_group = "Directory"
