@@ -1,8 +1,7 @@
 {pkgs, ...}: {
-  imports = [./wofi.nix];
+  imports = [./wofi.nix ./wezterm.nix];
   home.packages = with pkgs; [
     # GUI applications
-    wezterm
     wofi
     mpv
     pcmanfm

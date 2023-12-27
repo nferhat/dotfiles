@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   inputs',
   lib,
@@ -18,7 +19,19 @@
     gtklock # lock screen, very useful
   ];
 
-  # TODO: Add wallpaper systemd service when I do theme module.
+  # Wallpaper daemon using wbg
+  # Restarts whenever wbg gets killed
+  systemd.user.services."wbg" = {
+    Unit = {
+      Description = "Wallpaper daemon";
+      PartOf = ["graphical-session.target"];
+    };
+    Service = {
+      ExecStart = "${pkgs.wbg}/bin/wbg ${config.theme.wallpaper}";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = ["graphical-session.target"];
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -30,6 +43,8 @@
         gaps_out = 12;
         border_size = 2;
         layout = "master";
+        "col.active_border" = "rgb(${config.theme.material.colors.primary})";
+        "col.inactive_border" = "rgb(${config.theme.material.colors.outline_variant})";
       };
 
       decoration = {
@@ -42,8 +57,7 @@
         drop_shadow = true;
         shadow_range = 20;
         shadow_render_power = 3;
-        "col.shadow" = "rgba(00000065)";
-        # TODO: Add border color
+        "col.shadow" = "rgba(0000007f)";
       };
 
       animations = {

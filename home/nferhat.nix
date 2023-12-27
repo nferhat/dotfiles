@@ -1,9 +1,16 @@
-{pkgs, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   imports = [
     ./desktop
     ./programs
     ./services.nix
+    self.homeManagerModules.default
   ];
+
+  theme.name = "yoru-edit";
 
   home = {
     stateVersion = "23.11";

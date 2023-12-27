@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -21,8 +22,25 @@
     };
   };
 
-  xdg.configFile."nvim" = {
-    enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/nvim";
+  xdg.configFile = {
+    "nvim" = {
+      enable = true;
+      source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/config/nvim";
+    };
+
+    "theme/colors.lua" = {
+      enable = true;
+      text = let
+        toLuaColorStr = attrs:
+          lib.concatStringsSep "\n" (
+            lib.mapAttrsToList (n: v: "  ${n}='#${v}',") attrs
+          );
+      in ''
+        return {
+        ${toLuaColorStr config.theme.colors}
+        ${toLuaColorStr config.theme.material.colors}
+        }
+      '';
+    };
   };
 }
