@@ -8,7 +8,7 @@ with lib; let
   cfg = config.theme;
   osCfg = args.osConfig.theme or {};
 
-  themeVariables = import (./. + "/themes/${cfg.name}.nix");
+  themeVariables = import (./. + "/themes/${cfg.name}");
 
   pkg = material-colors-generator.packages."${pkgs.system}".default;
   materialColorsPkg = pkgs.runCommandLocal "material-colors-generator" {} ''
