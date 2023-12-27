@@ -26,6 +26,12 @@
       # WARN: DO NOT override nixpkgs for cachix to work
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    material-colors-generator = {
+      url = "/home/nferhat/Documents/repos/personal/material-colors-generator";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

@@ -24,7 +24,7 @@
     # Example: "Helwett-Packard da0018-nk" -> "hp-da0018nk"
 
     hp-da0018nk = lib.nixosSystem {
-      specialArgs = {inherit lib inputs inputs';};
+      specialArgs = {inherit self lib inputs inputs';};
       modules = [./hp-da0018nk self.nixosModules.desktop] ++ sharedModules;
     };
   });

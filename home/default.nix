@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   withSystem,
   ...
@@ -19,7 +20,7 @@
   in {
     nferhat = homeManagerConfiguration {
       modules = [./nferhat.nix];
-      extraSpecialArgs = {inherit lib inputs inputs';};
+      extraSpecialArgs = {inherit self lib inputs inputs';};
       inherit pkgs;
     };
   });

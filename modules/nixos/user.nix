@@ -1,5 +1,6 @@
 # Setup my user + home-manager for it, on a NixOS config
 {
+  self,
   pkgs,
   lib,
   inputs,
@@ -24,7 +25,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit inputs inputs';
+      inherit self inputs inputs';
       # Also include home-manager lib otherwise hyprland flake no build
       lib = lib.extend (self: _: {inherit (inputs.home-manager.lib) hm;});
     };
