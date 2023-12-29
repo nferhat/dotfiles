@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   imports = [./wofi.nix ./wezterm.nix];
   home.packages = with pkgs; [
     # GUI applications
@@ -16,6 +20,8 @@
     wl-clipboard
     wlr-randr
     wl-screenrec
+    # Not gui but for GUI apps
+    self.packages."${pkgs.system}".mons
   ];
 
   programs = {
