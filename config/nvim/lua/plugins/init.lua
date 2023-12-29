@@ -8,6 +8,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         init = require("utils").lazy_load "nvim-treesitter",
+        dependencies = { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
         opts = {
             ensure_installed = { "markdown", "markdown_inline", "regex", "lua", "vim" },
             sync_install = true,
