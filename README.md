@@ -22,6 +22,9 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
     * `default.nix` - declare `homeManagerConfigurations` flake output.
     * `nferhat.nix` - home configuration for user `nferhat`
     * See [`home/README.md`](./home/README.md) for more detailed information
+- `packages`
+    * `default.nix` - declare `packages` flake output.
+    * `mons.nix` - Command-Line Installer and Manager for Celeste Modding.
 
 ## Rice screenshots
 
