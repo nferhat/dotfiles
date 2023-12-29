@@ -5,6 +5,11 @@
     wofi
     mpv
     pcmanfm
+    keepassxc
+    (pkgs.discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
     # Wayland utilities for the graphical session.
     grim
     slurp

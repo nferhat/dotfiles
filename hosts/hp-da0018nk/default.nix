@@ -94,6 +94,31 @@
 
   programs = {
     light.enable = true; # can't control directly using kernel+hotkeys.
+    steam.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    steam-run
+    gamescope
+    steamcmd
+  ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs:
+        with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+    };
   };
 
   system = {
