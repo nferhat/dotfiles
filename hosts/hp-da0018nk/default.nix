@@ -7,6 +7,9 @@
   imports = [./hardware-configuration.nix];
 
   boot = {
+    # Shared partition with windows.
+    supportedFilesystems = ["ntfs"];
+
     # encrypted root setup.
     initrd.luks.devices."nixos-crypt" = {
       device = "/dev/disk/by-uuid/03d2aedd-f80b-4d19-877e-a6f37a67b941";
@@ -24,6 +27,12 @@
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
     };
+  };
+
+  fileSystems."/mnt/data" = {
+    device = "/dev/disk/by-label/data";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000"];
   };
 
   hardware = {
