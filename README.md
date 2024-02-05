@@ -1,3 +1,8 @@
+| ❗ UNMAINTAINED |
+| --------------- |
+| These dotfiles are not maintained anymore, they are basically my attempt (of 3 months) at trying NixOS. While it was really fun to learn Nix and its intricacies I couldn't get over how some stuff worked (like the absence of FHS), so in the end I reverted back to Gentoo |
+| These are not updated, but you can still grab some ideas from here like the directory structure |
+
 # nferhat's system configuration
 
 My systems configuration deployed using NixOS + user `$HOME` directory configuration deployed using home-manager, current composed of:
