@@ -11,27 +11,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # WARN: DO NOT override nixpkgs for cachix to work
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      # WARN: DO NOT override nixpkgs for cachix to work
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    material-colors-generator = {
-      url = "/home/nferhat/Documents/repos/personal/material-colors-generator";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs:

@@ -39,7 +39,8 @@
       core = {
         ignoreCase = true;
         symlinks = true;
-        editor = config.home.sessionVariables.EDITOR;
+	# TODO: Set this back when adding helix config
+        # editor = config.home.sessionVariables.EDITOR;
       };
     };
 

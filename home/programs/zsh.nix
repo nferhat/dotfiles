@@ -154,6 +154,6 @@
     diff = "diff -t --color=always";
     nmt = "nmtui-connect";
     pm = "pulsemixer";
-    vim = config.home.sessionVariables.EDITOR;
+    # vim = config.home.sessionVariables.EDITOR;
   };
 }
