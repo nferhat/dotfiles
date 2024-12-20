@@ -10,9 +10,9 @@
       twemoji-color-font
       google-fonts
 
-      # monospace
+      # monospace. TODO: Custom iosevka
       iosevka
-      (nerdfonts.override {fonts = ["Iosevka"];})
+      nerd-fonts.iosevka
     ];
 
     # NOTE: I do not want serif fonts, deal with it.

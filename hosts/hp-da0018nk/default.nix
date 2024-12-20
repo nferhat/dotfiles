@@ -45,10 +45,9 @@
 
     cpu.intel.updateMicrocode = true;
 
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [intel-compute-runtime intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl];
       extraPackages32 = with pkgs.pkgsi686Linux; [intel-media-driver vaapiIntel vaapiVdpau libvdpau-va-gl];
     };
