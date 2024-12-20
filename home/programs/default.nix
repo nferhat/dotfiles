@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./helix.nix
     ./git.nix
     ./tmux.nix
     ./zsh.nix

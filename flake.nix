@@ -11,6 +11,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Custom helix fork with PR awaiting to merge (helix-editor/helix#12151)
+    # Otherwise this won't load the configuration properly.
+    helix-fork = {
+      url = "github:nferhat/helix/feat/completion-item-kinds";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
