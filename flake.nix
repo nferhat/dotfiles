@@ -29,8 +29,8 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [git alejandra];
           name = "system-config";
-          formatter = pkgs.alejandra;
         };
+        formatter = pkgs.alejandra;
       };
     };
 }
