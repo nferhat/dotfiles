@@ -1,5 +1,6 @@
 {
   config,
+  inputs',
   inputs,
   lib,
   pkgs,
@@ -10,9 +11,7 @@
     pathsToLink = ["/share/zsh"]; # for zsh completion provided by packages.
     systemPackages = with pkgs; [
       # The base of the base, required for everyway work in the terminal
-      # NOTE: gcc may see weird but it's required for neovim.
-      gcc
-      neovim-unwrapped
+      inputs'.helix-fork.packages.default
       ripgrep
       fd
       coreutils

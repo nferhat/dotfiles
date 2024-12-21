@@ -1,14 +1,13 @@
 {
   lib,
-  inputs,
+  inputs',
   config,
-  pkgs,
   ...
 }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = inputs.helix-fork.packages."${pkgs.system}".default;
+    package = inputs'.helix-fork.packages.default;
     settings = {
       # TODO: Move theme to be automatically changed with nix config.
       theme = "fht";
