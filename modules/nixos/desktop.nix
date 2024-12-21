@@ -10,16 +10,18 @@
       twemoji-color-font
       google-fonts
 
-      # monospace. TODO: Custom iosevka
-      iosevka
+      (iosevka.override {
+        privateBuildPlan = builtins.readFile ./fht-mono.toml;
+        set = "FhtMono";
+      })
       nerd-fonts.iosevka
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Inter" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      sansSerif = ["Inter" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      monospace = ["Iosevka" "Iosevka Nerd Font"];
+      serif = ["Inter" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Inter" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      monospace = ["Fht Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
 
