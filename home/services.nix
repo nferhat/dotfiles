@@ -8,5 +8,7 @@
       defaultCacheTtl = 600; # validate for 10 minutes.
       # pinentryFlavor = "gtk2";
     };
+
+    gnome-keyring.enable = true;
   };
 }

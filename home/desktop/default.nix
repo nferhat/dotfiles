@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./programs ./hyprland.nix];
+  imports = [./programs];
 
   home = {
     sessionVariables = {
@@ -64,7 +64,8 @@
     };
   };
 
-  # TODO: Proper config
+  # TODO: Swap it out with fht-notify when I come around and actually write it
+  # This is going to be very annoying...
   services.mako.enable = true;
 
   xresources.path = "${config.xdg.configHome}/Xresources";
