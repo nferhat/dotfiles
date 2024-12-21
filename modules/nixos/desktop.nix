@@ -54,7 +54,12 @@
   };
 
   services = {
-    dbus.packages = [pkgs.dconf];
+    dbus.packages = [
+      pkgs.dconf
+      # This is required for pinentry-gnome3 to work since I am not
+      # on a GNOME desktop environment.
+      pkgs.gcr
+    ];
 
     pipewire = {
       enable = true;

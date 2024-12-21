@@ -9,6 +9,8 @@
     mpv
     pcmanfm
     keepassxc
+    gnome-secrets
+    fractal
     # gnome.secrets
     # gnome.fractal
     (pkgs.discord.override {
@@ -22,7 +24,7 @@
     wl-clipboard
 
     # Not a GUI but it's a CLI for celeste mod management.
-    # 
+    #
     # I cannot get olympus to work properly, unless I use a hacky flake that
     # I lost a long time ago.
     self.packages."${pkgs.system}".mons

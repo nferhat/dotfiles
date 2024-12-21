@@ -1,4 +1,5 @@
-{...}: {
+{pkgs, ...}: {
+
   services = {
     ssh-agent.enable = true;
 
@@ -6,7 +7,7 @@
       enable = true;
       enableZshIntegration = true;
       defaultCacheTtl = 600; # validate for 10 minutes.
-      # pinentryFlavor = "gtk2";
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
 
     gnome-keyring.enable = true;

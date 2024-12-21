@@ -2,7 +2,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      ipc_socket = false;
+      general = {
+        ipc_socket = false; # I don't make use of it.
+        live_config_reload = true;
+      };
+
       window = {
         decorations = "None";
         dynamic_title = true;
@@ -26,7 +30,7 @@
       };
 
       colors = {
-        transparent_backgrounds_colors = true;
+        transparent_background_colors = true;
         draw_bold_text_with_bright_colors = false;
 
         # TODO: Use theme values instead of setting per program.
