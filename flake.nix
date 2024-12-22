@@ -18,6 +18,18 @@
       url = "github:nferhat/helix/feat/completion-item-kinds";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # My own compositor, distributed as a flake!
+    fht-compositor = {
+      url = "github:nferhat/fht-compositor";
+      # url = "/home/nferhat/Documents/repos/personal/fht-compositor";
+
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # Disable rust-overlay since it's only meant to be here for the devShell provided
+      # (IE. only for developement purposes, end users don't care)
+      inputs.rust-overlay.follows = "";
+    };
   };
 
   outputs = inputs:

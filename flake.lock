@@ -15,6 +15,30 @@
         "type": "github"
       }
     },
+    "fht-compositor": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": []
+      },
+      "locked": {
+        "lastModified": 1734844509,
+        "narHash": "sha256-Sy1p4MQzCshrUZCd33qyHZc3j3k9XG+KWMXeAbbnojA=",
+        "owner": "nferhat",
+        "repo": "fht-compositor",
+        "rev": "97c00106fe933c826e526ff4a3eaddebff0fd8a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nferhat",
+        "repo": "fht-compositor",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -115,6 +139,7 @@
     },
     "root": {
       "inputs": {
+        "fht-compositor": "fht-compositor",
         "flake-parts": "flake-parts",
         "helix-fork": "helix-fork",
         "home-manager": "home-manager",

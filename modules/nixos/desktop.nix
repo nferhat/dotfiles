@@ -1,8 +1,11 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
 }: {
+  imports = [inputs.fht-compositor.nixosModules.default];
+
   fonts = {
     packages = with pkgs; [
       # regular UI fonts
@@ -45,6 +48,7 @@
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;
+    fht-compositor.enable = true;
   };
 
   qt = {
@@ -70,6 +74,8 @@
       jack.enable = true;
       pulse.enable = true;
     };
+
+    xserver.displayManager.gdm.enable = true;
   };
 
   # Depedency of pipewire.
