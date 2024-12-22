@@ -59,6 +59,17 @@
       enableZshIntegration = true;
     };
 
+    nh = {
+      enable = true;
+      # TODO: Maybe automate getting this value? Though I don't move the dotfiles
+      flake = "/home/nferhat/Documents/repos/personal/dotfiles";
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 1w";
+      };
+    };
+
+
     yt-dlp = {
       enable = true;
       settings = {
