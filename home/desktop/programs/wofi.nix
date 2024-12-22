@@ -22,7 +22,5 @@
       # "Web browser" or "Photo Viewer"
       drun-display_generic = true;
     };
-
-    # TODO: Add style config when I add theme module
   };
 }

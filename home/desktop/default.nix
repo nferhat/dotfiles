@@ -38,9 +38,6 @@
     enable = true; # duh.
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
-    # TODO: Figure out a theme when I write theme module
-    # theme = {};
-
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus";

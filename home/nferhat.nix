@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    # TODO: Get desktop to build properly
     ./desktop
     ./programs
     ./services.nix

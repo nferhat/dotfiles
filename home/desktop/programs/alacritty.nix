@@ -29,48 +29,49 @@
         thickness = 1;
       };
 
-      colors = {
+      colors = let
+        theme = import ../../../theme;
+      in {
         transparent_background_colors = true;
         draw_bold_text_with_bright_colors = false;
 
-        # TODO: Use theme values instead of setting per program.
         primary = {
-          foreground = "#e3e2e8";
-          background = "#101115";
-          dim_foreground = "#53536a";
-          bright_foreground = "#131419";
+          foreground = "#${theme.text.primary}";
+          background = "#${theme.background.primary}";
+          dim_foreground = "#${theme.text.tertiary}";
+          bright_foreground = "#${theme.ansi.color7}";
         };
 
         cursor = {
-          cursor = "#abc4fd";
-          text = "#101115";
+          cursor = "#${theme.accent}";
+          text = "#${theme.ansi.color0}";
         };
 
         selection = {
           text = "CellForeground";
-          background = "#1c1d22";
+          background = "#${theme.ansi-bright.color8}";
         };
 
         normal = {
-          black = "#14161f";
-          red = "#df5b61";
-          green = "#87c7a1";
-          yellow = "#de8f78";
-          blue = "#6791c9";
-          magenta = "#bc83e3";
-          cyan = "#70b9cc";
-          white = "#c4c4c4";
+          black = "#${theme.ansi.color0}";
+          red = "#${theme.ansi.color1}";
+          green = "#${theme.ansi.color2}";
+          yellow = "#${theme.ansi.color3}";
+          blue = "#${theme.ansi.color4}";
+          magenta = "#${theme.ansi.color5}";
+          cyan = "#${theme.ansi.color6}";
+          white = "#${theme.ansi.color7}";
         };
 
         bright = {
-          black = "#222230";
-          red = "#ee6a70";
-          green = "#96d6b0";
-          yellow = "#ffb29b";
-          blue = "#7ba5dd";
-          magenta = "#cb92f2";
-          cyan = "#7fc8db";
-          white = "#cccccc";
+          black = "#${theme.ansi-bright.color8}";
+          red = "#${theme.ansi-bright.color9}";
+          green = "#${theme.ansi-bright.color10}";
+          yellow = "#${theme.ansi-bright.color11}";
+          blue = "#${theme.ansi-bright.color12}";
+          magenta = "#${theme.ansi-bright.color13}";
+          cyan = "#${theme.ansi-bright.color14}";
+          white = "#${theme.ansi-bright.color15}";
         };
       };
 
