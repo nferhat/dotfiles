@@ -11,12 +11,14 @@
       Install.WantedBy = ["fht-compositor.service"];
     };
   in {
-    wallpaper = start-with-graphical-session "Wallpaper service" // {
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png}";
-        Restart = "on-failure";
+    wallpaper =
+      start-with-graphical-session "Wallpaper service"
+      // {
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png}";
+          Restart = "on-failure";
+        };
       };
-    };
   };
 }
