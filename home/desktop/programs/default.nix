@@ -11,8 +11,7 @@
     keepassxc
     gnome-secrets
     fractal
-    # gnome.secrets
-    # gnome.fractal
+    swayimg
     (pkgs.discord.override {
       withOpenASAR = true;
       withVencord = true;

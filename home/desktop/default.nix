@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./programs];
+  imports = [./programs ./fht-compositor.nix ./services.nix];
 
   home = {
     sessionVariables = {
