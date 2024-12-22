@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   imports = [inputs.fht-compositor.homeModules.default];
 
   # Main compositor configuration is done through the home-manager module.
@@ -16,11 +20,7 @@
         outer-gaps = 20;
       };
 
-      # Cursor should be matching whatever is in home/desktop/fht-compositor.nix
-      cursor = {
-        name = "Vimix";
-        size = 24;
-      };
+      cursor = {inherit (config.home.pointerCursor) name size;};
 
       decorations = {
         decoration-mode = "force-server-side";
@@ -281,6 +281,7 @@
             ".*KeePassXC.*"
             ".*QEMU.*"
             "Virtual Machine Manager"
+            "Bluetooth Devicecs" # bluez device manager
           ];
           match-app-id = [
             "org.gnome.World.Secrets"
