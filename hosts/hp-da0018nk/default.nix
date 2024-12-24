@@ -10,6 +10,10 @@
     # Shared partition with windows.
     supportedFilesystems = ["ntfs"];
 
+    # Disable this laptop's builtin keyboard
+    # I spilled water on it, and now the arrow keys are just tweaking
+    kernelParams = ["i8042.nokbd"];
+
     # encrypted root setup.
     initrd.luks.devices."nixos-crypt" = {
       device = "/dev/disk/by-uuid/03d2aedd-f80b-4d19-877e-a6f37a67b941";
@@ -22,7 +26,6 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        gfxmodeEfi = "1024x768"; # grub is slow so lower the resolution of the menu.
       };
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
