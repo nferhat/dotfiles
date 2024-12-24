@@ -7,15 +7,14 @@
   home.packages = with pkgs; [
     # GUI applications
     mpv
-    pcmanfm
-    keepassxc
+    nautilus
     gnome-secrets
+    telegram-desktop
+    prismlauncher
     fractal
+    pavucontrol
     swayimg
-    (pkgs.discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    webcord-vencord
 
     # Wayland utilities for the graphical session.
     grim
@@ -31,5 +30,10 @@
 
   programs = {
     librewolf.enable = true;
+
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [obs-vaapi obs-vkcapture];
+    };
   };
 }
