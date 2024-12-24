@@ -57,7 +57,7 @@ rec {
   background = {
     primary = "101012";
     secondary = "141416";
-    tertiary = "0b0c0f";
+    tertiary = "0c0d10";
   };
   text = {
     primary = "efefef";

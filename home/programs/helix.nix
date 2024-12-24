@@ -182,7 +182,7 @@
       "ui.virtual.indent-guide" = "separator"
       "ui.virtual.inlay-hint" = "text_tertiary"
       "ui.selection".bg = "color8"
-      "ui.highlight".bg = "black"
+      "ui.highlight".bg = "color0"
 
       # statusline
       "ui.statusline".bg = "background_tertiary"
