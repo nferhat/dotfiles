@@ -7,7 +7,9 @@
 
   # Main compositor configuration is done through the home-manager module.
   # NOTE: Instead of autostart, we setup services in home/desktop/services.nix
-  programs.fht-compositor = {
+  programs.fht-compositor = let
+    theme = import ../../theme;
+  in {
     enable = true;
     settings = {
       general = {
@@ -29,11 +31,11 @@
           thickness = 3;
           radius = 0;
           focused-color = {
-            start = "#5781b9";
-            end = "#7fc8db";
+            start = theme.ansi.color4;
+            end = theme.ansi.color6;
             angle = 0;
           };
-          normal-color = "#222230";
+          normal-color = theme.ansi-bright.color8;
         };
 
         shadow = {
