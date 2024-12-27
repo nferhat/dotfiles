@@ -9,7 +9,7 @@
       prompt = "What do you wanna launch?";
       allow_images = true;
       allow_markup = true;
-      term = "alacritty";
+      term = "ghostty";
       hide_scroll = true;
       matching = "fuzzy";
       insensitive = true;

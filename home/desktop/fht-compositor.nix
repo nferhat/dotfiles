@@ -81,7 +81,7 @@
         # Example key actions that need an argument passed in
         Super-Return = {
           action = "run-command";
-          arg = "alacritty";
+          arg = "ghostty";
         };
         Super-p = {
           action = "run-command";

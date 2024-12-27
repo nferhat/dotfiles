@@ -1,13 +1,14 @@
 {
   self,
   pkgs,
+  inputs',
   ...
 }: {
-  imports = [./wofi.nix ./alacritty.nix];
+  imports = [./wofi.nix ./ghostty.nix];
   home.packages = with pkgs; [
     # GUI applications
-    mpv
     nautilus
+    inputs'.ghostty.packages.ghostty
     gnome-secrets
     telegram-desktop
     prismlauncher
@@ -34,6 +35,12 @@
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [obs-vaapi obs-vkcapture];
+    };
+
+    mpv = {
+      enable = true;
+      # TODO: Theme ModernZ
+      scripts = with pkgs.mpvScripts; [thumbfast modernz];
     };
   };
 }
