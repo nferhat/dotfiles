@@ -11,6 +11,9 @@
       QT_QPA_PLATFORM = "wayland";
       SDL_VIDEODRIVER = "wayland"; # run Celeste natively.
       XDG_SESSION_TYPE = "wayland";
+      # NixOS wrappers use this variable to automatically set required flags for electron applications
+      # to run with ozone support (and thus running natively)
+      NIXOS_OZONE_WL = "1";
     };
 
     pointerCursor = {
