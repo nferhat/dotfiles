@@ -31,7 +31,7 @@ rec {
 
   # Bright terminal colors, usually used for bold, or some variation in a TUI.
   ansi-bright = {
-    color8 = "222224";
+    color8 = "181819";
     color9 = "ee6a70";
     color10 = "96d6b0";
     color11 = "ffb29b";

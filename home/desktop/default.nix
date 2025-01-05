@@ -50,7 +50,7 @@
         headerbar_bg_color = background.tertiary;
         headerbar_fg_color = text.secondary;
 
-        popover_bg_color = ansi-bright.color8;
+        popover_bg_color = background.tertiary;
         popover_fg_color = ansi-bright.color15;
         dialog_bg_color = popover_bg_color;
         dialog_fg_color = popover_fg_color;
@@ -67,10 +67,10 @@
         secondary_sidebar_shade_color = sidebar_shade_color;
         secondary_sidebar_border_color = sidebar_border_color;
 
-        view_bg_color = window_bg_color;
+        view_bg_color = ansi-bright.color8;
         view_fg_color = window_fg_color;
 
-        card_bg_color = background.secondary;
+        card_bg_color = ansi-bright.color8;
         card_fg_color = text.primary;
 
         thumbnail_bg_color = background.secondary;
@@ -92,7 +92,7 @@
         destructive_fg_color = ansi-bright.color8;
         destructive_color = ansi-bright.color9;
       })
-      + ''
+      + "\n" + ''
         :root {
           --accent-bg-color: @accent_bg_color;
           --accent-fg-color: @accent_fg_color;
@@ -153,6 +153,7 @@
 
           --thumbnail-bg-color: @thumbnail_bg_color;
           --thumbnail-fg-color: @thumbnail_fg_color;
+        }
       '';
   in {
     enable = true; # duh.
