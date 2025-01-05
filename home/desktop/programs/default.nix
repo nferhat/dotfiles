@@ -16,6 +16,8 @@
     pavucontrol
     swayimg
     webcord-vencord
+    icon-library
+    mission-center
 
     # Wayland utilities for the graphical session.
     grim
