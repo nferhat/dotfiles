@@ -4,7 +4,7 @@
   inputs',
   ...
 }: {
-  imports = [./wofi.nix ./ghostty.nix];
+  imports = [./wofi.nix ./ghostty.nix ./games.nix];
   home.packages = with pkgs; [
     # GUI applications
     nautilus
@@ -33,6 +33,7 @@
 
   programs = {
     librewolf.enable = true;
+    zathura.enable = true;
 
     obs-studio = {
       enable = true;
