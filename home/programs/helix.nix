@@ -7,7 +7,8 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = inputs'.helix-fork.packages.default;
+    package = inputs'.helix.packages.default;
+
     settings = {
       theme = "fht";
       editor = {
@@ -155,7 +156,7 @@
       "markup.raw" = "text_primary"
 
       # UI
-      "ui.background".bg = "background_primary"
+      "ui.background" = { fg = "text" }
       "ui.background.separator" = "separator"
       "ui.window" = "separator"
       "ui.cursor" = { bg = "color4", fg = "color0" }

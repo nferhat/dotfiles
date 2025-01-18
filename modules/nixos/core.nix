@@ -11,7 +11,7 @@
     pathsToLink = ["/share/zsh"]; # for zsh completion provided by packages.
     systemPackages = with pkgs; [
       # The base of the base, required for everyway work in the terminal
-      inputs'.helix-fork.packages.default
+      inputs'.helix.packages.default
       ripgrep
       fd
       coreutils
@@ -50,9 +50,11 @@
 
       substituters = [
         "https://ghostty.cachix.org"
+        "https://helix.cachix.org"
       ];
       trusted-public-keys = [
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+        "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       ];
     };
   };

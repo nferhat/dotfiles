@@ -11,15 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # NOTE: Not overriding nix input since I want to use the cachix they provide.
     ghostty.url = "github:ghostty-org/ghostty";
-
-    # Custom helix fork with PR awaiting to merge (helix-editor/helix#12151)
-    # Otherwise this won't load the configuration properly.
-    helix-fork = {
-      url = "github:nferhat/helix/feat/completion-item-kinds";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    helix.url = "github:helix-editor/helix";
 
     # My own compositor, distributed as a flake!
     fht-compositor = {
