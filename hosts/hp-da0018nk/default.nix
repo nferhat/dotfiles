@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [./hardware-configuration.nix ./nvidia.nix];
 
   boot = {
     # Shared partition with windows.
@@ -119,6 +119,7 @@
       extraPkgs = pkgs:
         with pkgs; [
           xorg.libXcursor
+          xorg.libXrandr
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
