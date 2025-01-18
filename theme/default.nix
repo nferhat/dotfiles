@@ -84,5 +84,5 @@ rec {
   separator = "222224";
 
   # The wallpaper included with this theme.
-  wallpaper = ./wallpaper.png;
+  wallpaper = ./wallpaper.jpg;
 }
