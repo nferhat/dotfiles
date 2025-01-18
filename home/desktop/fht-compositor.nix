@@ -28,8 +28,8 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 3;
-          radius = 0;
+          thickness = 2;
+          radius = 12;
           focused-color = {
             start = theme.ansi.color4;
             end = theme.ansi.color6;
@@ -260,6 +260,16 @@
         # All windows on workspace 6 (reserved for games) must be floating
         {
           on-workspace = 5;
+          match-app-id = [
+            "Celeste.bin.x86_64"
+            "steam_app_*"
+            "osu!.exe"
+            "Etterna"
+            "Quaver"
+            "Steam"
+            "love" # love2d based games/apps, notably Olympus for celeste
+            "org.prismlauncher.PrismLauncher"
+          ];
           floating = true;
           centered = true;
         }
@@ -272,7 +282,7 @@
 
         # Chat clients on workspace 3
         {
-          match-app-id = ["Discord" "Telegram" "org.gnome.Fractal"];
+          match-app-id = ["WebCord" "Telegram" "org.gnome.Fractal"];
           match-title = [".*Telegram.*"];
           open-on-workspace = 2;
         }
@@ -288,6 +298,12 @@
           match-app-id = [
             "org.gnome.World.Secrets"
             "org.gnome.Fractal"
+            "file_progress"
+            "confirm"
+            "dialog"
+            "download"
+            "pinentry"
+            "splash"
           ];
           floating = true;
           centered = true;
