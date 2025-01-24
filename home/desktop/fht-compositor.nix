@@ -254,6 +254,7 @@
 
       mousebinds = {
         Super-Left = "swap-tile";
+        Super-Right = "resize-tile";
       };
 
       rules = [
