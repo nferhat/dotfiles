@@ -4,7 +4,8 @@ My systems configuration deployed using NixOS + user `$HOME` directory configura
 
 | System (Hostname) | Description                                                                     |
 |------------------ | ------------------------------------------------------------------------------- |
-| `hp-da0018nk`     | Personal and only machine as of writing this, with user configuration `nferhat` |
+| `thinkpad-t14s`   | Primary laptop, acquired 23/01/2025                                             |
+| `hp-da0018nk`     | HP laptop, used as a secondary machine for tests                                |
 
 ## Directory structure
 

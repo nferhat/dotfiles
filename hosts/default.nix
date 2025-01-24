@@ -27,5 +27,10 @@
       specialArgs = {inherit self lib inputs inputs';};
       modules = [./hp-da0018nk self.nixosModules.desktop] ++ sharedModules;
     };
+
+    thinkpad-t14s = lib.nixosSystem {
+      specialArgs = {inherit self lib inputs inputs';};
+      modules = [./thinkpad-t14s self.nixosModules.desktop] ++ sharedModules;
+    };
   });
 }
