@@ -87,7 +87,6 @@
     blueman.enable = true;
     printing.enable = true;
     upower.enable = true;
-    fprintd.enable = true;
   };
 
   programs = {
