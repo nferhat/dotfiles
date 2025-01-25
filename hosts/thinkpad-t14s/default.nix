@@ -84,10 +84,30 @@
       '';
     };
 
+    # Battery management
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "performance";
+        # Limit cpu on battery to 20% of its maximum power
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+
+        # And try to keep the battery percentage between 40-80 when I am at home
+        # Since I am always plugged to wall it can cause damage when keeping it at 100%
+        START_CHARGE_THRESH_BAT0 = 40;
+        STOP_CHARGE_THRESH_BAT0 = 80;
+      };
+    };
+
     blueman.enable = true;
     printing.enable = true;
     upower.enable = true;
   };
+
+  # Works with tlp to provide power profiles
+  powerManagement.enable = true;
 
   programs = {
     light.enable = true; # can't control directly using kernel+hotkeys.
