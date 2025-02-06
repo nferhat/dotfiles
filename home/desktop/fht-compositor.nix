@@ -28,14 +28,15 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 2;
-          radius = 12;
+          thickness = 4;
+          radius = 25;
           focused-color = {
             start = theme.ansi.color4;
             end = theme.ansi.color6;
             angle = 0;
           };
-          normal-color = theme.ansi-bright.color8;
+          normal-color = "transparent";
+          # normal-color = theme.ansi-bright.color8;
         };
 
         shadow = {

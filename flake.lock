@@ -27,11 +27,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1737815294,
-        "narHash": "sha256-qu6aYqdhgTVZgTOGYlOGcUboMjCVrYeU2Mro5YQrJ7Y=",
+        "lastModified": 1738008470,
+        "narHash": "sha256-z0uSxWdTfQY8POiRHyJAzYN/bhncFKVojxVq6ztlb40=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "684ccbdcac21ce02d6b5ce0ed0e75affb51de803",
+        "rev": "9bd0597ac86a083241abd52b4af2d0484f32dd42",
         "type": "github"
       },
       "original": {
@@ -203,6 +203,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1738816619,
+        "narHash": "sha256-5yRlg48XmpcX5b5HesdGMOte+YuCy9rzQkJz+imcu6I=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "2eccff41bab80839b1d25b303b53d339fbb07087",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1737469691,
@@ -274,6 +289,7 @@
         "ghostty": "ghostty",
         "helix": "helix",
         "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2"
       }
     },

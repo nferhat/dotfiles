@@ -2,9 +2,14 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
-  imports = [./hardware-configuration.nix];
+  imports = [
+    ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
+  ];
 
   boot = {
     # encrypted root setup.
@@ -111,7 +116,34 @@
 
   programs = {
     light.enable = true; # can't control directly using kernel+hotkeys.
+    adb.enable = true;
+    localsend.enable = true;
+    steam.enable = true;
   };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs:
+        with pkgs; [
+          xorg.libXcursor
+          xorg.libXrandr
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+    };
+  };
+
+  users.users."nferhat".extraGroups = ["adbusers"];
+  environment.systemPackages = with pkgs; [
+    scrcpy
+  ];
 
   system = {
     autoUpgrade.enable = false;

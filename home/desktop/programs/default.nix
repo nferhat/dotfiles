@@ -15,7 +15,7 @@
     fractal
     pavucontrol
     swayimg
-    webcord-vencord
+    vesktop
     icon-library
     mission-center
 
