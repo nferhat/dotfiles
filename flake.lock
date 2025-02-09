@@ -27,11 +27,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1738008470,
-        "narHash": "sha256-z0uSxWdTfQY8POiRHyJAzYN/bhncFKVojxVq6ztlb40=",
+        "lastModified": 1739112284,
+        "narHash": "sha256-7gPWs12wLD9KE6Nzm/Eer+urW5+keFIUYjlmhsvoODs=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "9bd0597ac86a083241abd52b4af2d0484f32dd42",
+        "rev": "cdb3d45dda566077b15598ac0935ac956bc0263e",
         "type": "github"
       },
       "original": {
