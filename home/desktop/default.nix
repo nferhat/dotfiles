@@ -95,7 +95,8 @@
         destructive_fg_color = ansi-bright.color8;
         destructive_color = ansi-bright.color9;
       })
-      + "\n" + ''
+      + "\n"
+      + ''
         :root {
           --accent-bg-color: @accent_bg_color;
           --accent-fg-color: @accent_fg_color;

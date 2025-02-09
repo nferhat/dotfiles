@@ -48,7 +48,11 @@
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;
-    fht-compositor.enable = true;
+
+    fht-compositor = {
+      enable = true;
+      withUWSM = true; # recommended
+    };
   };
 
   qt = {

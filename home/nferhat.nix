@@ -8,11 +8,13 @@
   imports = let
     hasHostConfig = builtins.pathExists ./${osConfig.networking.hostName};
     hostConfig = lib.optional hasHostConfig ./${osConfig.networking.hostName};
-  in [
-    ./desktop
-    ./programs
-    ./services.nix
-  ] ++ hostConfig;
+  in
+    [
+      ./desktop
+      ./programs
+      ./services.nix
+    ]
+    ++ hostConfig;
 
   home = {
     stateVersion = "23.11";

@@ -3,7 +3,7 @@
     general = {
       # Allow for more gaps since we have more screen real estate
       outer-gaps = lib.mkForce 30;
-      inner-gaps = lib.mkForce 15;      
+      inner-gaps = lib.mkForce 15;
     };
   };
 
