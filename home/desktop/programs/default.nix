@@ -14,7 +14,7 @@
     prismlauncher
     fractal
     pavucontrol
-    swayimg
+    loupe
     vesktop
     icon-library
     mission-center

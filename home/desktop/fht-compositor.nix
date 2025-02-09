@@ -28,7 +28,7 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 4;
+          thickness = 3;
           radius = 25;
           focused-color = {
             start = theme.ansi.color4;
@@ -44,6 +44,12 @@
           color = "#000";
           floating-only = false;
         };
+
+        blur = {
+          radius = 1;
+          passes = 4;
+          noise = 0.1;
+        };
       };
 
       input = {
@@ -58,16 +64,19 @@
         };
       };
 
+      # I like the defaults that are on Niri, so I use that :p
+      # Its probably also copied from GTK4/Libadwaita
       animations = let
         smooth-spring = stiffness: {
           inherit stiffness;
           initial-velocity = 1;
-          damping-ratio = 1.05;
-          mass = 1.0;
+          damping-ratio = 1;
+          mass = 1;
           clamp = true;
         };
       in {
-        window-geometry.curve = smooth-spring 750;
+        window-geometry.curve = smooth-spring 800;
+        window-open-close.curve = smooth-spring 700 // {damping-ratio = 1.1;};
         workspace-switch = {
           direction = "vertical";
           curve = smooth-spring 1000;
@@ -298,8 +307,8 @@
             "Bluetooth Devicecs" # bluez device manager
           ];
           match-app-id = [
-            "org.gnome.World.Secrets"
-            "org.gnome.Fractal"
+            # Most gnome apps behave better when floating.
+            "^(org.gnome.*)$"
             "file_progress"
             "confirm"
             "dialog"
