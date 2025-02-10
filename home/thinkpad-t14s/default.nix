@@ -46,7 +46,7 @@
 
         # Theme, directly ported from alacritty.
         background = theme.background.primary;
-        background-opacity = 0.95;
+        background-opacity = 0.93;
         foreground = theme.text.primary;
       };
 

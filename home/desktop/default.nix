@@ -40,61 +40,20 @@
     };
     theme = import ../../theme;
 
-    colorsToGtkCss = colors: lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "@define-color ${k} #${v};") colors);
+    colorsToGtkCss = colors:
+      lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v:
+        with lib.fht.color.hexToRGBA v;
+        # NOTE: Alpha value must be between [0-1], since hexToRGBA gives values between [0-255] we divide
+          "@define-color ${k} rgba(${toString r}, ${toString g}, ${toString b}, ${toString (a / 255.0)});")
+      colors);
+
+    themeColors = import ./gtk-colors.nix {
+      inherit theme;
+      opacity = "f0"; # about ~93% opacity
+    };
+
     gtkThemeCss =
-      colorsToGtkCss (with theme; rec {
-        accent_color = accent;
-        accent_bg_color = accent;
-        accent_fg_color = background.secondary;
-
-        window_bg_color = background.primary;
-        window_fg_color = text.primary;
-
-        headerbar_bg_color = background.tertiary;
-        headerbar_fg_color = text.secondary;
-
-        popover_bg_color = background.tertiary;
-        popover_fg_color = ansi-bright.color15;
-        dialog_bg_color = popover_bg_color;
-        dialog_fg_color = popover_fg_color;
-
-        sidebar_bg_color = background.primary;
-        sidebar_fg_color = text.primary;
-        sidebar_backdrop_color = background.primary;
-        sidebar_shade_color = "0000007f";
-        sidebar_border_color = separator;
-
-        secondary_sidebar_bg_color = sidebar_bg_color;
-        secondary_sidebar_fg_color = sidebar_fg_color;
-        secondary_sidebar_backdrop_color = sidebar_backdrop_color;
-        secondary_sidebar_shade_color = sidebar_shade_color;
-        secondary_sidebar_border_color = sidebar_border_color;
-
-        view_bg_color = ansi-bright.color8;
-        view_fg_color = window_fg_color;
-
-        card_bg_color = ansi-bright.color8;
-        card_fg_color = text.primary;
-
-        thumbnail_bg_color = background.secondary;
-        thumbnail_fg_color = text.primary;
-
-        warning_bg_color = warning;
-        warning_fg_color = text.secondary;
-        warning_color = warning;
-
-        error_bg_color = error;
-        error_color = error;
-        error_fg_color = text.secondary;
-
-        success_bg_color = ansi.color2;
-        success_color = ansi.color2;
-        success_fg_color = text.secondary;
-
-        destructive_bg_color = ansi-bright.color9;
-        destructive_fg_color = ansi-bright.color8;
-        destructive_color = ansi-bright.color9;
-      })
+      colorsToGtkCss themeColors
       + "\n"
       + ''
         :root {

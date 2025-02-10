@@ -93,5 +93,20 @@ in rec {
       g = elemAt ret 1;
       b = elemAt ret 2;
     };
+
+    hexToRGBA = hex: let
+      rgbStartIndex = [0 2 4 6];
+      hexList = map (idx: builtins.substring idx 2 hex) rgbStartIndex;
+      hexLength = stringLength hex;
+      ret = map hexToDec hexList;
+    in
+      if stringLength hex == 6
+      then (hexToRGB hex // {a = 255;})
+      else {
+        r = elemAt ret 0;
+        g = elemAt ret 1;
+        b = elemAt ret 2;
+        a = elemAt ret 3;
+      };
   };
 }
