@@ -13,7 +13,7 @@
     description = "Nadjib Ferhat";
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "input"];
     initialPassword = "nixos"; # don't forget to change it!
   };
 
