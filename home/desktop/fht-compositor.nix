@@ -46,9 +46,9 @@
         };
 
         blur = {
-          radius = 1;
+          radius = 2;
           passes = 4;
-          noise = 0.1;
+          noise = 0.12;
         };
       };
 
@@ -176,11 +176,11 @@
         };
         Super-i = {
           action = "change-window-proportion";
-          arg = 0.1;
+          arg = 0.5;
         };
         Super-o = {
           action = "change-window-proportion";
-          arg = -0.1;
+          arg = -0.5;
         };
 
         # Workspaces
