@@ -16,7 +16,6 @@
         popup-border = "none";
         line-number = "relative";
         auto-completion = false; # I prefer manual completion.
-        smart-tab.enable = false;
         inline-diagnostics.cursor-line = "warning";
         rulers = [80 100];
 
@@ -24,6 +23,12 @@
           render = true;
           character = "▎";
         };
+
+        smart-tab = {
+          enable = true;
+          supersede-menu = false;
+        };
+
         lsp = {
           display-messages = true;
           display-inlay-hints = true;
