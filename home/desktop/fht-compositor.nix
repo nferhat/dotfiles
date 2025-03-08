@@ -40,7 +40,7 @@
         };
 
         shadow = {
-          sigma = 10;
+          sigma = 30;
           color = "#000";
           floating-only = false;
         };
@@ -52,34 +52,44 @@
         };
       };
 
-      input = {
-        keyboard = {
-          layout = "us";
-          repeat-rate = 50;
-          repeat-delay = 250;
-        };
-
-        per-device = {
-          "SynPS/2 Synaptics TouchPad".mouse.tap-to-click = true;
-        };
+      input.keyboard = {
+        layout = "us";
+        repeat-rate = 50;
+        repeat-delay = 250;
       };
 
-      # I like the defaults that are on Niri, so I use that :p
-      # Its probably also copied from GTK4/Libadwaita
-      animations = let
-        smooth-spring = stiffness: {
-          inherit stiffness;
-          initial-velocity = 1;
-          damping-ratio = 1;
-          mass = 1;
+      animations = {
+        window-geometry.curve = {
           clamp = true;
+          damping-ratio = 1.2;
+          mass = 2;
+          initial-velocity = 1;
+          stiffness = 1200;
+          # NOTE: For window geometry its fine having epsilon this low since
+          # they are interpolated in/out the start/end smoothly without blocking anything
+          epsilon = 0.00000001;
         };
-      in {
-        window-geometry.curve = smooth-spring 800;
-        window-open-close.curve = smooth-spring 700 // {damping-ratio = 1.1;};
+
+        window-open-close.curve = {
+          clamp = true;
+          damping-ratio = 1.2;
+          initial-velocity = 1;
+          mass = 1.5;
+          stiffness = 900;
+          # NOTE: For window open-close its fine having epsilon this low since
+          # It doesnt block/affect anything else except the animation itself.
+          epsilon = 0.000000001;
+        };
+
         workspace-switch = {
           direction = "vertical";
-          curve = smooth-spring 1000;
+          curve = {
+            clamp = true;
+            damping-ratio = 1;
+            initial-velocity = 5;
+            mass = 1;
+            stiffness = 700;
+          };
         };
       };
 
@@ -104,13 +114,20 @@
 
         # Focus management
         Super-j = "focus-next-window";
-        Alt-tab = "focus-next-window";
         Super-k = "focus-previous-window";
-        Alt-Shift-tab = "focus-previous-window";
         Super-Shift-j = "swap-with-next-window";
         Super-Shift-k = "swap-with-previous-window";
         Super-Ctrl-j = "focus-next-output";
         Super-Ctrl-k = "focus-previous-output";
+        # windows-style since sometimes muscle memory gets to me
+        Alt-tab = {
+          action = "focus-next-window";
+          repeat = true;
+        };
+        Alt-Shift-tab = {
+          action = "focus-previous-window";
+          repeat = true;
+        };
 
         # Window management
         Super-m = "maximize-focused-window";
@@ -118,40 +135,63 @@
         Super-Shift-c = "close-focused-window";
         Super-Ctrl-Space = "float-focused-window";
 
+        # Volume control
+        XF86AudioRaiseVolume = {
+          action = "run-command";
+          arg = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+";
+          allow-while-locked = true;
+          repeat = true;
+        };
+        # ----
+        XF86AudioLowerVolume = {
+          action = "run-command";
+          arg = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%-";
+          allow-while-locked = true;
+          repeat = true;
+        };
+
         # Floating window management
         Super-Left = {
           action = "move-floating-window";
           arg = [(-50) 0];
+          repeat = true;
         };
         Super-Right = {
           action = "move-floating-window";
           arg = [50 0];
+          repeat = true;
         };
         Super-Up = {
           action = "move-floating-window";
           arg = [0 (-50)];
+          repeat = true;
         };
         Super-Down = {
           action = "move-floating-window";
           arg = [0 50];
+          repeat = true;
         };
         Super-Ctrl-c = "center-floating-window";
 
         Super-Shift-Left = {
           action = "resize-floating-window";
           arg = [(-50) 0];
+          repeat = true;
         };
         Super-Shift-Right = {
           action = "resize-floating-window";
           arg = [50 0];
+          repeat = true;
         };
         Super-Shift-Up = {
           action = "resize-floating-window";
           arg = [0 (-50)];
+          repeat = true;
         };
         Super-Shift-Down = {
           action = "resize-floating-window";
           arg = [0 50];
+          repeat = true;
         };
 
         # Transient layout changes.
@@ -281,6 +321,7 @@
             "love" # love2d based games/apps, notably Olympus for celeste
             "org.prismlauncher.PrismLauncher"
           ];
+          blur.disable = true; # to get slightly more performance
           floating = true;
           centered = true;
         }
@@ -318,6 +359,24 @@
           ];
           floating = true;
           centered = true;
+        }
+      ];
+
+      layer-rules = [
+        {
+          # Blur wofi (app launcher) and make it slightly transparent
+          match-namespace = ["wofi"];
+          shadow = {
+            disable = false;
+            color = "black";
+          };
+          blur = {
+            disable = false;
+            noise = 0;
+            passes = 4;
+            radius = 1;
+          };
+          corner-radius = 25;
         }
       ];
     };
