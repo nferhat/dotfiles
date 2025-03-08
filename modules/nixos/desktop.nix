@@ -45,6 +45,14 @@
     XDG_STATE_HOME = "$HOME/.local/state";
   };
 
+  environment.systemPackages = [pkgs.gtklock];
+
+  # For gtklock to work properly, pam needs to know about it.
+  # This is why we must it up ourselves
+  #
+  # SEE: #383430 on nixpkgs for the module to come out
+  security.pam.services.gtklock.text = lib.readFile "${pkgs.gtklock}/etc/pam.d/gtklock";
+
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;

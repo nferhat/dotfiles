@@ -13,11 +13,13 @@
     telegram-desktop
     prismlauncher
     fractal
-    pavucontrol
+    pwvucontrol
     loupe
     vesktop
     icon-library
     mission-center
+    gtklock
+    bustle
 
     # Wayland utilities for the graphical session.
     grim
