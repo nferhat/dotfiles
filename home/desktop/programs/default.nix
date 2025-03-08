@@ -4,7 +4,7 @@
   inputs',
   ...
 }: {
-  imports = [./wofi.nix ./ghostty.nix ./games.nix];
+  imports = [./wofi.nix ./ghostty.nix ./games.nix ./adw-steam.nix];
   home.packages = with pkgs; [
     # GUI applications
     nautilus

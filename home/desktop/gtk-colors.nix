@@ -4,7 +4,8 @@
   theme,
   opacity,
   ...
-}: with theme; rec {
+}:
+with theme; rec {
   accent_color = accent;
   accent_bg_color = accent + opacity;
   accent_fg_color = background.secondary;
