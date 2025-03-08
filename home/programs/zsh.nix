@@ -25,7 +25,7 @@
       envExtra = ''
         # Add recursively $XDG_BIN_HOME to path.
         # That means that if you have $XDG_BIN_HOME/dir, that dir will also get added
-        export PATH="''${$(find "$HOME/.local/bin" -type d -printf %p:)%%:}:''${CARGO_HOME}/bin:''${GOPATH}/bin:$PATH"
+        export PATH="''${CARGO_HOME}/bin:''${GOPATH}/bin:$PATH"
       '';
 
       completionInit = ''
