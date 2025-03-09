@@ -9,17 +9,14 @@
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
 
+  # Keep bash as the login shell.
+  # For my terminal emulator it starts up fish, same with tmux.
   users.users."nferhat" = {
     description = "Nadjib Ferhat";
     isNormalUser = true;
-    shell = pkgs.zsh;
     extraGroups = ["wheel" "networkmanager" "input"];
     initialPassword = "nixos"; # don't forget to change it!
   };
-
-  # tldr: without this zsh will not work and I won't be able to login to my user
-  programs.zsh.enable = true;
-  environment.variables.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
 
   home-manager = {
     useGlobalPkgs = true;

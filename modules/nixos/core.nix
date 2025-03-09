@@ -8,7 +8,7 @@
 }: {
   environment = {
     defaultPackages = []; # can be removed safely based on the manual.
-    pathsToLink = ["/share/zsh"]; # for zsh completion provided by packages.
+    pathsToLink = ["/share/fish"]; # for zsh completion provided by packages.
     systemPackages = with pkgs; [
       # The base of the base, required for everyway work in the terminal
       inputs'.helix.packages.default
