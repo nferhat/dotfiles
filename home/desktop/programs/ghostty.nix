@@ -13,7 +13,8 @@
       ansiColors = theme.ansi // theme.ansi-bright;
       palette = lib.genList (i: let
         colorValue = ansiColors."color${toString i}";
-      in "${toString i}=${colorValue}") 15;
+      in "${toString i}=${colorValue}")
+      15;
     in {
       command = "fish";
       font-family = "Fht Mono";

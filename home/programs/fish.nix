@@ -61,9 +61,7 @@
     };
   };
 
-  xdg.configFile."fish/themes/fht.theme".text =
-    with import ../../theme;
-  ''
+  xdg.configFile."fish/themes/fht.theme".text = with import ../../theme; ''
     fish_color_normal ${text.primary}
     fish_color_command ${ansi.color4}
     fish_color_param ${ansi.color3}
