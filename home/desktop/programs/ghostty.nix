@@ -21,6 +21,7 @@
       theme = import ../../../theme;
 
       values = {
+        command = "fish";
         font-family = "Fht Mono";
         font-size = 10;
         cursor-style = "block";
@@ -31,6 +32,8 @@
         auto-update = "off";
         window-padding-balance = true;
         adjust-box-thickness = 1;
+        adjust-underline-thickness = 1;
+        # adjust-underline-position = "100%";
         # The heuristics to detected if ghostty should enable/disable this are not supported in
         # fht-compositor, so we force this on instead.
         gtk-single-instance = true;

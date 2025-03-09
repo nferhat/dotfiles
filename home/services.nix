@@ -4,7 +4,7 @@
 
     gpg-agent = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
       defaultCacheTtl = 600; # validate for 10 minutes.
       pinentryPackage = pkgs.pinentry-gnome3;
     };

@@ -7,7 +7,7 @@
     ./helix.nix
     ./git.nix
     ./tmux.nix
-    ./zsh.nix
+    ./fish.nix
   ];
 
   home = {
@@ -44,7 +44,7 @@
 
     fzf = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
       defaultCommand = "fd --type f"; # BLAZINGLY FAST!!!
     };
 
@@ -56,7 +56,7 @@
 
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     nh = {
@@ -79,7 +79,6 @@
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
   };
