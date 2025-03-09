@@ -13,22 +13,29 @@
     enable = true;
     settings = {
       format = lib.concatStringsSep "$" [
-        " $directory" # needs $ otherwise doesn't work
+        "$directory" # needs $ otherwise doesn't work
         "git_branch"
         "git_metrics"
         "jobs"
         "nix_shell"
-        "cmd_duration"
+        "rust"
+        "cmd_duration\n"
         "character"
       ];
 
       git_metrics.disabled = false;
 
       nix_shell = {
-        symbol = "";
+        symbol = "󱄅";
         impure_msg = "!";
         pure_msg = "";
-        format = "[|](237) [$symbol $state$name]($style) ";
+        format = "[|](237) [$symbol](blue) $state$name ";
+      };
+
+      rust = {
+        symbol = "󱘗";
+        format = "[|](237) [$symbol](red) $version ";
+        version_format = "$raw";
       };
 
       directory = {
