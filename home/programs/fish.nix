@@ -29,7 +29,7 @@
         symbol = "󱄅";
         impure_msg = "!";
         pure_msg = "";
-        format = "[|](237) [$symbol](blue) $state$name ";
+        format = "[|](237) [$symbol](blue)[$state](cyan) $name ";
       };
 
       rust = {
