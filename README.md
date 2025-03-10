@@ -29,7 +29,11 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
 
 ## Rice screenshots
 
-> TODO
+Nothing much really, since I didn't write a shell yet...
+
+![image](https://github.com/user-attachments/assets/1ea34d7e-05ca-41b3-bec1-a13195689124)
+![image](https://github.com/user-attachments/assets/b370014a-f7f2-42a8-8325-b639e7a130b2)
+
 
 ## Acknowledgments
 
