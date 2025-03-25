@@ -113,6 +113,10 @@
       };
     };
 
+    udev.packages = [
+      pkgs.via # include udev rules for keyboard config
+    ];
+
     blueman.enable = true;
     printing.enable = true;
     upower.enable = true;
@@ -150,6 +154,7 @@
   users.users."nferhat".extraGroups = ["adbusers"];
   environment.systemPackages = with pkgs; [
     scrcpy
+    via
   ];
 
   system = {
