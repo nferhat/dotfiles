@@ -9,7 +9,7 @@
   fonts = {
     packages = with pkgs; [
       # regular UI fonts
-      noto-fonts
+      adwaita-fonts
       twemoji-color-font
       google-fonts
 
@@ -22,8 +22,8 @@
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Inter" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      sansSerif = ["Inter" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
       monospace = ["Fht Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
