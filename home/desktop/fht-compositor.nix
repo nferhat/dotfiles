@@ -12,6 +12,9 @@
   in {
     enable = true;
     settings = {
+      # Keep a temporary config file that I use sometimes to make on-the-fly changes
+      imports = ["~/.config/fht/compositor-temp.toml"];
+
       general = {
         cursor-warps = true;
         focus-new-windows = true;
