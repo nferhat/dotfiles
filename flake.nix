@@ -40,7 +40,7 @@
       systems = ["x86_64-linux"];
       perSystem = {pkgs, ...}: {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [git alejandra];
+          packages = with pkgs; [git alejandra nixd];
           name = "system-config";
         };
         formatter = pkgs.alejandra;
