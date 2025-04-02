@@ -21,7 +21,7 @@
           ExecStart = let
             theme = import ../../theme;
             inherit (theme) wallpaper;
-          in "${pkgs.swaybg}/bin/swaybg -i ${wallpaper}";
+          in "${pkgs.swaybg}/bin/swaybg --mode fill -i ${wallpaper}";
           Restart = "on-failure";
         };
       };
