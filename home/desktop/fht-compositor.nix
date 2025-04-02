@@ -34,8 +34,8 @@
           thickness = 3;
           radius = 25;
           focused-color = {
-            start = theme.ansi.color4;
-            end = theme.ansi.color6;
+            start = theme.ansi.color2;
+            end = theme.ansi-bright.color10;
             angle = 0;
           };
           normal-color = "transparent";
@@ -49,8 +49,8 @@
         };
 
         blur = {
-          radius = 2;
-          passes = 4;
+          radius = 10;
+          passes = 2;
           noise = 0.12;
         };
       };
@@ -376,8 +376,6 @@
           blur = {
             disable = false;
             noise = 0;
-            passes = 4;
-            radius = 1;
           };
           corner-radius = 25;
         }
