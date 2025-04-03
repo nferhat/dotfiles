@@ -4,11 +4,18 @@
   inputs',
   ...
 }: {
-  imports = [./wofi.nix ./ghostty.nix ./games.nix ./adw-steam.nix];
+  imports = [
+    # I keep around two editors at once.
+    # Zed for most of my tasks, and Helix in case I am in a TTY.
+    ./zed.nix
+    ./wofi.nix
+    ./ghostty.nix
+    ./games.nix
+    ./adw-steam.nix
+  ];
   home.packages = with pkgs; [
     # GUI applications
     nautilus
-    inputs'.ghostty.packages.ghostty
     gnome-secrets
     telegram-desktop
     prismlauncher

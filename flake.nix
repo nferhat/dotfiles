@@ -16,10 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # NOTE: Not overriding nix input since I want to use the cachix they provide.
-    ghostty.url = "github:ghostty-org/ghostty";
-    helix.url = "github:helix-editor/helix";
-
     # My own compositor, distributed as a flake!
     fht-compositor = {
       url = "github:nferhat/fht-compositor";

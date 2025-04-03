@@ -1,13 +1,7 @@
-{
-  lib,
-  inputs',
-  config,
-  ...
-}: {
+{...}: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = inputs'.helix.packages.default;
 
     settings = {
       theme = "fht";

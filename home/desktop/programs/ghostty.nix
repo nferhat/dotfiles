@@ -1,13 +1,6 @@
-{
-  inputs',
-  lib,
-  ...
-}: {
-  home.packages = [inputs'.ghostty.packages.default];
-
+{lib, ...}: {
   programs.ghostty = {
     enable = true;
-    package = inputs'.ghostty.packages.default;
     settings = let
       theme = import ../../../theme;
       ansiColors = theme.ansi // theme.ansi-bright;
