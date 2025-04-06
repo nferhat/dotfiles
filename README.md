@@ -4,10 +4,10 @@ My systems configuration deployed using NixOS + user `$HOME` directory configura
 
 | System (Hostname) | Description                                                                     |
 |------------------ | ------------------------------------------------------------------------------- |
-| `basement`        | Desktop, Ryzen 7 9700X, Radeon 7900XT, main machine, used at home               |
+| `basement`        | [`hosts/basement/README.md`](./hosts/basement/README.md)                        |
 | `thinkpad-t14s`   | Primary laptop, acquired 23/01/2025                                             |
 | `hp-da0018nk`     | HP laptop, used as a secondary machine for tests                                |
-
+                    
 ## Directory structure
 
 This flake is organized using [`hercules-ci/flake-parts`](https://github.com/hercules-ci/flake-parts), using the following directory structure:
