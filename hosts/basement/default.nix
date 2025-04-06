@@ -3,15 +3,23 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
+      systemd-boot.enable = false;
+      efi.canTouchEfiVariables = true;
     };
-    systemd-boot.enable = false;
-    efi.canTouchEfiVariables = true;
+    initrd.kernelModules = [
+      "amdgpu" # load GPU driver asap
+    ];
+    kernelParams = [
+      "video=DP-1:2560x1440@180" # use highest mode available on boot
+    ];
   };
 
   # Windows partition
@@ -34,6 +42,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = [pkgs.rocmPackages.clr.icd];
       # Thank you amd for being this nice
     };
 
