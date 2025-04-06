@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   ...
@@ -34,7 +35,7 @@
 
     extraConfig = {
       init.defaultBranch = "main"; # force of habit, I guess (and github forcing it)
-      user.signingkey = "79E6CEB6B608B845";
+      user.signingkey = lib.mkDefault "79E6CEB6B608B845";
       commit.gpgsign = true;
       core = {
         ignoreCase = true;

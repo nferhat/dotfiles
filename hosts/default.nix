@@ -32,5 +32,10 @@
       specialArgs = {inherit self lib inputs inputs';};
       modules = [./thinkpad-t14s self.nixosModules.desktop] ++ sharedModules;
     };
+
+    basement = lib.nixosSystem {
+      specialArgs = {inherit self lib inputs inputs';};
+      modules = [./basement self.nixosModules.desktop] ++ sharedModules;
+    };
   });
 }

@@ -4,6 +4,7 @@ My systems configuration deployed using NixOS + user `$HOME` directory configura
 
 | System (Hostname) | Description                                                                     |
 |------------------ | ------------------------------------------------------------------------------- |
+| `basement`        | Desktop, Ryzen 7 9700X, Radeon 7900XT, main machine, used at home               |
 | `thinkpad-t14s`   | Primary laptop, acquired 23/01/2025                                             |
 | `hp-da0018nk`     | HP laptop, used as a secondary machine for tests                                |
 
