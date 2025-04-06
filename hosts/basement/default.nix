@@ -97,6 +97,11 @@
       '';
     };
 
+    hardware.openrgb = {
+      enable = true;
+      motherboard = "amd";
+    };
+
     printing.enable = true;
   };
 
