@@ -14,7 +14,7 @@
 
   # I was too bothered to move over the key.
   # Plus, the old one didn't have my student e-mail, which I would prefer.
-  programs.git.extraConfig.user.signingkey = "F8AC8C6E4C9D6A0C";
+  # programs.git.extraConfig.user.signingkey = "F8AC8C6E4C9D6A0C";
 
   # Yeah, 24 is way too small
   home.pointerCursor.size = lib.mkForce 32;
