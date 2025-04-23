@@ -13,10 +13,11 @@
       twemoji-color-font
       google-fonts
 
-      (iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-mono.toml;
-        set = "FhtMono";
-      })
+      # Currently trying out Adwaita Sans as my primary font.
+      # (iosevka.override {
+      #   privateBuildPlan = builtins.readFile ./fht-mono.toml;
+      #   set = "FhtMono";
+      # })
       nerd-fonts.iosevka
     ];
 
