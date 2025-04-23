@@ -109,6 +109,7 @@
     adb.enable = true;
     localsend.enable = true;
     steam.enable = true;
+    nix-ld.enable = true;
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
