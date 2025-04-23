@@ -22,9 +22,9 @@
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      monospace = ["Fht Mono" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "Adwaita Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "Adwaita Mono" "Iosevka Nerd Font"];
+      monospace = ["Adwaita Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
 
