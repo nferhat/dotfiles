@@ -1,0 +1,113 @@
+[buildPlans.IosevkaAdwaitaFhtMono]
+family = "Adwaita Fht Mono"
+spacing = "normal"          # Changed from fixed to enable ligatures support
+serifs = "sans"
+noCvSs = false
+exportGlyphNames = true
+
+[buildPlans.IosevkaAdwaitaFhtMono.variants.design]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+j = "flat-hook-serifed"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+w = "straight-flat-top-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+[buildPlans.IosevkaAdwaitaFhtMono.variants.italic]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+a = "single-storey-serifless"
+d = "toothed-serifless"
+j = "flat-hook-serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+w = "straight-flat-top-serifless"
+u = "toothed-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-tailed"
+eszet = "sulzbacher-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-ve = "standard-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+cyrl-ef = "serifless"
+cyrl-yeri = "corner"
+cyrl-yery = "corner"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+[buildPlans.IosevkaAdwaitaFhtMono.ligations]
+inherits = "dlig"
+
+[buildPlans.IosevkaAdwaitaFhtMono.weights.Regular]
+shape = 350
+menu = 350
+css = 350
+
+[buildPlans.IosevkaAdwaitaFhtMono.weights.Bold]
+shape = 700
+menu = 700
+css = 700
+
+[buildPlans.IosevkaAdwaitaFhtMono.widths.Normal]
+shape = 600
+menu = 5
+css = "normal"
+
+[buildPlans.IosevkaAdwaitaFhtMono.slopes.Upright]
+angle = 0
+shape = "upright"
+menu = "upright"
+css = "normal"
+
+[buildPlans.IosevkaAdwaitaFhtMono.slopes.Italic]
+angle = 9.4
+shape = "italic"
+menu = "italic"
+css = "italic"

@@ -10,7 +10,7 @@
       15;
     in {
       command = "fish";
-      font-family = "Adwaita Mono";
+      font-family = "Adwaita Fht Mono";
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;
