@@ -134,6 +134,27 @@
       }
 
       {
+        # When inside the tab switcher, make it behave like tmux.
+        #
+        # In tmux, after hitting the initial Ctrl-A {N/P}, you can hit N/P multiple
+        # times to re-do the same action. Very useful
+        context = "TabSwitcher";
+        bindings = {
+          "p" = "menu::SelectPrevious";
+          "n" = "menu::SelectNext";
+        };
+      }
+      {
+        # Idem when inside a menu
+        context = "Picker || menu";
+        bindings = {
+          "p" = "menu::SelectPrevious";
+          "n" = "menu::SelectNext";
+        };
+      }
+
+
+      {
         context = "Editor && vim_mode == insert";
         bindings = {
           # Better signature help, from my neovim configs.
