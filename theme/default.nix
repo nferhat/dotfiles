@@ -66,7 +66,7 @@ rec {
   };
 
   # The accent color for important text.
-  accent = ansi.color2;
+  accent = ansi-bright.color12;
 
   # The text color4 for error messages.
   # You'd generally pair this with background.secondary to make the error pop out.

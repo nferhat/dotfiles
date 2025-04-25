@@ -237,8 +237,8 @@
               created = "#${ansi.color2}";
               added = "#${ansi.color2}";
               "version_control.added" = "#${ansi.color2}1f";
-              modified = "#${ansi.color4}";
-              "version_control.modified" = "#${ansi.color4}1f";
+              modified = "#${ansi.color3}";
+              "version_control.modified" = "#${ansi.color3}1f";
               deleted = "#${ansi.color1}";
               "version_control.deleted" = "#${ansi.color1}1f";
               "conflict.background" = "#${ansi.color1}7f";
