@@ -46,8 +46,8 @@
 
       # UI changes to my liking.
       file_finder.modal_max_width = "medium";
-      ui_font_size = 16;
-      buffer_font_size = 16;
+      ui_font_size = 17;
+      buffer_font_size = 17;
       ui_font_family = "Fht Mono";
       buffer_font_family = "Fht Term";
       theme = {
