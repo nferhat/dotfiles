@@ -1,0 +1,200 @@
+[buildPlans.IosevkaFhtMono]
+family = "Fht Mono"
+spacing = "normal"
+serifs = "sans"
+noCvSs = false
+exportGlyphNames = true
+# Keep bold the same as Iosevka's default
+weights.Bold = { shape = 700, menu = 700, css = 700 }
+# But make the Regular variant a bit thinner (it becomes like the Light one)
+weights.Regular = { shape = 350, menu = 400, css = 400 }
+# And make the font slightly wider by default
+widths.Normal = { shape = 600, menu = 5, css = "normal" }
+# And make only upright/regular slopes
+slopes.Upright = { angle = 0, shape = "upright", menu = "upright", css = "normal" }
+slopes.Italic = { angle = 9.4, shape = "italic", menu = "italic", css = "italic" }
+
+# Term variant for terminal emulators.
+[buildPlans.IosevkaFhtTerm]
+family = "Fht Term"
+spacing = "term"
+snapshotFamily = "Fht Mono"
+snapshotFeature = {"NWID" = 1}
+exportGlyphNames = true
+# Keep bold the same as Iosevka's default
+weights.Bold = { shape = 700, menu = 700, css = 700 }
+# But make the Regular variant much thinner (it becomes like the Light one)
+weights.Regular = { shape = 350, menu = 400, css = 400 }
+# And make the font slightly wider by default
+widths.Normal = { shape = 600, menu = 5, css = "normal" }
+# And make only upright/regular slopes
+slopes.Upright = { angle = 0, shape = "upright", menu = "upright", css = "normal" }
+slopes.Italic = { angle = 9.4, shape = "italic", menu = "italic", css = "italic" }
+[buildPlans.IosevkaFhtTerm.variants]
+# Inherit all changes from the main font, the only change is character width
+inherit = "buildPlans.IosevkaFhtMono"
+
+[buildPlans.IosevkaFhtMono.variants.design]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+f = "flat-hook-serifless"
+j = "flat-hook-serifed"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+w = "straight-flat-top-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+[buildPlans.IosevkaFhtMono.variants.italic]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+a = "single-storey-serifless"
+d = "toothed-serifless"
+j = "flat-hook-serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-flat-top-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-tailed"
+eszet = "sulzbacher-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-ve = "standard-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+cyrl-ef = "serifless"
+cyrl-yeri = "corner"
+cyrl-yery = "corner"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+  [buildPlans.IosevkaFhtMono.ligations]
+  inherits = "default-calt"
+
+# ---
+# Copy all changes from Mono font to Term variant
+
+[buildPlans.IosevkaFhtTerm.variants.design]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+f = "flat-hook-serifless"
+j = "flat-hook-serifed"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+w = "straight-flat-top-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+[buildPlans.IosevkaFhtTerm.variants.italic]
+two = "straight-neck-serifless"
+four = "closed-serifless"
+six = "closed-contour"
+eight = "two-circles"
+nine = "closed-contour"
+capital-d = "more-rounded-serifless"
+capital-g = "toothless-rounded-serifless-hooked"
+capital-i = "short-serifed"
+capital-m = "flat-bottom-serifless"
+capital-q = "crossing"
+capital-w = "straight-flat-top-serifless"
+a = "single-storey-serifless"
+d = "toothed-serifless"
+j = "flat-hook-serifed"
+k = "straight-serifless"
+l = "serifed-flat-tailed"
+t = "flat-hook"
+u = "toothed-serifless"
+w = "straight-flat-top-serifless"
+y = "straight-turn-serifless"
+long-s = "flat-hook-tailed"
+eszet = "sulzbacher-serifless"
+lower-gamma = "straight"
+lower-lambda = "tailed-turn"
+lower-upsilon = "straight-serifless"
+lower-chi = "semi-chancery-straight-serifless"
+cyrl-ve = "standard-serifless"
+cyrl-capital-u = "straight-turn-serifless"
+cyrl-u = "straight-turn-serifless"
+cyrl-ef = "serifless"
+cyrl-yeri = "corner"
+cyrl-yery = "corner"
+asterisk = "hex-high"
+brace = "straight"
+guillemet = "straight"
+number-sign = "slanted"
+at = "fourfold-solid-inner"
+percent = "rings-continuous-slash"
+micro-sign = "tailed-serifless"
+lig-equal-chain = "without-notch"
+lig-hyphen-chain = "without-notch"
+
+  [buildPlans.IosevkaFhtTerm.ligations]
+  inherits = "default-calt"

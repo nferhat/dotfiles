@@ -10,7 +10,7 @@
       15;
     in {
       command = "fish";
-      font-family = "Adwaita Fht Mono";
+      font-family = "Fht Term"; # term has fixed-length characters
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;
