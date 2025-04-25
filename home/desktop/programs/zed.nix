@@ -144,14 +144,6 @@
           "n" = "menu::SelectNext";
         };
       }
-      {
-        # Idem when inside a menu
-        context = "Picker || menu";
-        bindings = {
-          "p" = "menu::SelectPrevious";
-          "n" = "menu::SelectNext";
-        };
-      }
 
 
       {
