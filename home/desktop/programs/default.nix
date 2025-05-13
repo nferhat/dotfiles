@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     # GUI applications
     nautilus
+    overskride
     gnome-secrets
     telegram-desktop
     prismlauncher

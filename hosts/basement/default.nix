@@ -108,8 +108,13 @@
   programs = {
     adb.enable = true;
     localsend.enable = true;
-    steam.enable = true;
     nix-ld.enable = true;
+    # How steam is managed on this device:
+    #
+    # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
+    # install. compatdata still lives on Linux though (since proton makes use of linux fs properties
+    # to make its magic work)
+    steam.enable = true;
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
