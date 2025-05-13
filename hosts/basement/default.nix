@@ -105,6 +105,13 @@
     printing.enable = true;
   };
 
+  systemd = {
+    # Add LACT for tweaking GPU configuration. We must enable ourselves since
+    # there's no NixOS module yet
+    packages = [pkgs.lact];
+    services.lactd.wantedBy = ["multi-user.target"];
+  };
+
   programs = {
     adb.enable = true;
     localsend.enable = true;
@@ -139,6 +146,7 @@
   users.users."nferhat".extraGroups = ["adbusers"];
   environment.systemPackages = with pkgs; [
     scrcpy
+    lact
   ];
 
   system = {
