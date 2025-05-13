@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{self, pkgs, ...}: {
   home.packages = with pkgs; [
     # Good tools used to get better performance when playing.
     gamemode
@@ -20,13 +20,8 @@
       gpu_fan = true;
       gpu_name = true;
       proc_vram = true;
-      # FIXME: Separate font packages from system config into flake package.
       font_file = let
-        fht-term = pkgs.iosevka.override {
-          privateBuildPlan = builtins.readFile ../../../modules/nixos/fht-mono.toml;
-          set = "FhtTerm";
-        };
-      in "${fht-term}/share/fonts/truetype/IosevkaFhtTerm-Regular.ttf";
+      in "${self.packages."${pkgs.system}".fht-term}/share/fonts/truetype/IosevkaFhtTerm-Regular.ttf";
       gamemode = true;
       wine = true;
       vulkan_driver = true;

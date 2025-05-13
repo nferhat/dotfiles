@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   pkgs,
   lib,
@@ -12,17 +13,9 @@
       adwaita-fonts
       twemoji-color-font
       google-fonts
-
-      # Currently trying out Adwaita Sans as my primary font.
-      (iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-mono.toml;
-        set = "FhtMono";
-      })
-      (iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-mono.toml;
-        set = "FhtTerm";
-      })
-      nerd-fonts.iosevka
+      # Monospace. Fht Mono/Term are based on Iosevka
+      self.packages."${pkgs.system}".fht-mono
+      self.packages."${pkgs.system}".fht-term
       nerd-fonts.iosevka
     ];
 
