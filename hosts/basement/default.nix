@@ -121,7 +121,9 @@
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
     # install. compatdata still lives on Linux though (since proton makes use of linux fs properties
     # to make its magic work)
-    steam.enable = true;
+    steam = { enable = true; gamescopeSession = { enable = true; steamArgs = ["-system-composer"]; }; };
+    gamemode.enable = true;
+    gamescope.enable = true;
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
@@ -141,6 +143,19 @@
           keyutils
         ];
     };
+
+    # Use a custom gamescope package locked to 3.14.24
+    # SEE: https://github.com/ValveSoftware/gamescope/issues/1467
+    gamescope = pkgs.gamescope.overrideAttrs (old: {
+      version = "3.14.24";
+      src = pkgs.fetchFromGitHub {
+        owner = "ValveSoftware";
+        repo = "gamescope";
+        tag = "3.14.24";
+        fetchSubmodules = true;
+        hash = "sha256-+8uojnfx8V8BiYAeUsOaXTXrlcST83z6Eld7qv1oboE=";
+      };
+    });
   };
 
   users.users."nferhat".extraGroups = ["adbusers"];

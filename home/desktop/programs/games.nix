@@ -1,8 +1,5 @@
 {self, pkgs, ...}: {
   home.packages = with pkgs; [
-    # Good tools used to get better performance when playing.
-    gamemode
-
     # Addicted till the end of my life
     # You never quit osu, they say.
     osu-lazer-bin
