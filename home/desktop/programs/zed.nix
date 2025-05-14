@@ -145,7 +145,6 @@
         };
       }
 
-
       {
         context = "Editor && vim_mode == insert";
         bindings = {

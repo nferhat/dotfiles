@@ -28,6 +28,7 @@
     mission-center
     gtklock
     bustle
+    inputs'.watershot.packages.default
 
     # Wayland utilities for the graphical session.
     grim

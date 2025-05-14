@@ -112,7 +112,8 @@
         };
         Super-Shift-s = {
           action = "run-command";
-          arg = ''grim -g "`slurp -o`" - | wl-copy --type image/png'';
+          # FIXME: Why using --copy does not work? Resorting to using stdout + wl-copy instead
+          arg = "watershot --stdout | wl-copy";
         };
 
         # Focus management

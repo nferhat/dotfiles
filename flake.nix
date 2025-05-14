@@ -24,6 +24,12 @@
       # (IE. only for developement purposes, end users don't care)
       inputs.rust-overlay.follows = "";
     };
+
+    # Using git since stable packaged in Nixpkgs is broken
+    watershot = {
+      url = "github:Kirottu/watershot/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
