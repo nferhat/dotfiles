@@ -4,14 +4,15 @@
     userSettings = {
       # Disable most of the AI junk that I don't need nor rely on.
       features = {
-        copilot = true;
+        copilot = false;
       };
       assistant = {
-        enabled = true;
-        button = true;
+        enabled = false;
+        button = false;
         version = 1;
       };
       notification_panel.button = false;
+      show_edit_predictions = false;
 
       # Clean up the UI, since by default its very much influenced by VSCode and is
       # very, very, crammed.
