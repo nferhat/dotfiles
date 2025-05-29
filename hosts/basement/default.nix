@@ -116,6 +116,7 @@
     adb.enable = true;
     localsend.enable = true;
     nix-ld.enable = true;
+    appimage.enable = true;
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
