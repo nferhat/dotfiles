@@ -1,16 +1,17 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
+    ./secure-boot.nix
   ];
 
   boot = {
     loader = {
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-      };
+      # grub = {
+      #   enable = true;
+      #   device = "nodev";
+      #   efiSupport = true;
+      #   useOSProber = true;
+      # };
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
     };
