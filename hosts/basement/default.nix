@@ -32,6 +32,7 @@
 
   hardware = {
     enableRedistributableFirmware = true;
+    xone.enable = true; # Xbox360 with USB dongle
 
     bluetooth = {
       enable = true;
