@@ -2,7 +2,9 @@
   description = "nferhat's system configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # NOTE: Using a specific revision of the nixpkgs flake since there's some wonky stuff
+    # hapenning with the latest version of amdgpu drivers
+    nixpkgs.url = "github:NixOS/nixpkgs/d89fc19e405cb2d55ce7cc114356846a0ee5e956";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
