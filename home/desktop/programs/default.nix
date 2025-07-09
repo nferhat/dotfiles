@@ -2,6 +2,7 @@
   self,
   pkgs,
   inputs',
+  inputs,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
     ./ghostty.nix
     ./games.nix
     ./adw-steam.nix
+    inputs.zen-browser.homeModules.twilight
   ];
   home.packages = with pkgs; [
     # GUI applications
@@ -43,7 +45,7 @@
   ];
 
   programs = {
-    librewolf.enable = true;
+    zen-browser.enable = true;
     zathura.enable = true;
 
     obs-studio = {

@@ -32,6 +32,12 @@
       url = "github:Kirottu/watershot/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Not available in nixpkgs
+    zen-browser = {
+      url = "github:hengvvang/zen-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     # Stupid games that require secureboot to work. Still good to have though.
     # TODO: Enable this for thinkpad-t14s, currently only setup for basement
     lanzaboote = {

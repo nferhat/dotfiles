@@ -636,7 +636,8 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "watershot": "watershot"
+        "watershot": "watershot",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-analyzer-src": {
@@ -795,6 +796,29 @@
       "original": {
         "owner": "divnix",
         "repo": "yants",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751779188,
+        "narHash": "sha256-o1PidAPLtSSqI6isos6v/e6s7t3zQ56NBYhXVaUesXc=",
+        "owner": "hengvvang",
+        "repo": "zen-browser",
+        "rev": "b3200f40877a3e0a679070d96f8793a06105c06e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hengvvang",
+        "repo": "zen-browser",
         "type": "github"
       }
     }
