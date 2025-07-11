@@ -6,9 +6,7 @@
   ...
 }: {
   imports = [
-    # I keep around two editors at once.
-    # Zed for most of my tasks, and Helix in case I am in a TTY.
-    ./zed.nix
+    # ./zed.nix
     ./wofi.nix
     ./ghostty.nix
     ./games.nix
