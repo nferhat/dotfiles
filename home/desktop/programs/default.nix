@@ -13,7 +13,7 @@
     ./ghostty.nix
     ./games.nix
     ./adw-steam.nix
-    inputs.zen-browser.homeModules.twilight
+    ./browser
   ];
   home.packages = with pkgs; [
     # GUI applications
