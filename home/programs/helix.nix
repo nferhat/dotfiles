@@ -1,6 +1,7 @@
-{...}: {
+{inputs', ...}: {
   programs.helix = {
     enable = true;
+    package = inputs'.helix-editor.packages.default;
     defaultEditor = true;
 
     settings = {

@@ -37,6 +37,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    # Using latest versions
+    helix-editor = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Stupid games that require secureboot to work. Still good to have though.
     # TODO: Enable this for thinkpad-t14s, currently only setup for basement
     lanzaboote = {

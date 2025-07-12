@@ -15,7 +15,6 @@
       cursor-style = "block";
       cursor-style-blink = false;
       window-decoration = false;
-      bold-is-bright = false;
       desktop-notifications = false; # annoying
       auto-update = "off";
       window-padding-balance = true;
