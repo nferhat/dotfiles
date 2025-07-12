@@ -70,7 +70,7 @@
             keyword = "yts";
             url = "https://studio.youtube.com";
           }
-          "separator"
+          # "separator"
           {
             name = "GitHub";
             tags = ["github" "code"];
