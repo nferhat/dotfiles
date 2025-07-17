@@ -74,12 +74,12 @@
             name = "GitHub";
             tags = ["github" "code"];
             keyword = "gh";
-            url = "https://github.com";  
+            url = "https://github.com";
           }
           {
             name = "My GitHub";
             tags = ["github" "code" "personal"];
-            url = "https://github.com/nferhat";  
+            url = "https://github.com/nferhat";
           }
         ];
       };

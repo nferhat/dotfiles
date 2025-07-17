@@ -58,7 +58,6 @@
 
     fht-compositor = {
       enable = true;
-      withUWSM = true; # recommended
     };
   };
 
