@@ -1,15 +1,10 @@
 {
   self,
-  config,
   inputs,
   withSystem,
   ...
 }: {
-  flake.nixosConfigurations = withSystem "x86_64-linux" (ctx @ {
-    config,
-    inputs',
-    ...
-  }: let
+  flake.nixosConfigurations = withSystem "x86_64-linux" ( { inputs', self', ... }: let
     # Get nixpkgs library then add my own functions and stuff
     lib = inputs.nixpkgs.lib.extend (self: _: {
       fht = import ../lib/default.nix {lib = self;};

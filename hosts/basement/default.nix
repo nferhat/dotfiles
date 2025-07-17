@@ -115,6 +115,7 @@
   };
 
   programs = {
+    virt-manager.enable = true;
     adb.enable = true;
     localsend.enable = true;
     nix-ld.enable = true;
@@ -154,7 +155,9 @@
     };
   };
 
-  users.users."nferhat".extraGroups = ["adbusers"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  users.users."nferhat".extraGroups = ["adbusers" "libvirtd"];
   environment.systemPackages = with pkgs; [
     scrcpy
     lact
