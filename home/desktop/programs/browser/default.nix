@@ -31,7 +31,6 @@
       userChrome = ''
         main-window, :root {
           --zen-main-browser-background: #${theme.background.primary}e7 !important;
-          --zen-navigator-toolbox-background: #${theme.background.tertiary} !important;
         }
         /* Disable shadow */
         hbox.browserSidebarContainer,
