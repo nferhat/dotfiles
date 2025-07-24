@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  imports = [./programs ./fht-compositor.nix ./services.nix];
+  imports = [./programs ./fht-compositor.nix ./services.nix ./quickshell.nix];
 
   home = {
     sessionVariables = {

@@ -26,6 +26,12 @@
       inputs.rust-overlay.follows = "";
     };
 
+    # Shell, for the desktop.
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Using git since stable packaged in Nixpkgs is broken
     watershot = {
       url = "github:Kirottu/watershot/";
