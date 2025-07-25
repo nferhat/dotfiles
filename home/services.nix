@@ -6,7 +6,7 @@
       enable = true;
       enableFishIntegration = true;
       defaultCacheTtl = 600; # validate for 10 minutes.
-      pinentryPackage = pkgs.pinentry-gnome3;
+      pinentry.package = pkgs.pinentry-qt;
     };
 
     gnome-keyring.enable = true;
