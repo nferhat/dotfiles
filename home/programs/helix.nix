@@ -41,6 +41,7 @@
         space.minus = "hsplit";
         space.F = "file_picker_in_current_buffer_directory";
         space.R = "goto_reference";
+        "'" = "@ G"; # easier access to debug mode
         # Easier window switching
         C-h = "jump_view_left";
         C-j = "jump_view_down";
@@ -120,7 +121,7 @@
     in {
       "attribute" = ansi.color3;
       "constructor" = ansi.color3;
-      "type" = "color11";
+      "type" = ansi-bright.color11;
       "type.builtin" = ansi.color3;
       "type.parameter" = ansi.color3;
       "constant" = ansi.color3;
@@ -129,7 +130,10 @@
       "string" = ansi.color2;
       "string.regexp" = ansi.color1;
       "string.special.url" = ansi.color4;
-      "comment" = { fg = text.tertiary; modifiers = ["italic"]; };
+      "comment" = {
+        fg = text.tertiary;
+        modifiers = ["italic"];
+      };
       "variable" = text.primary;
       "variable.builtin" = ansi.color6;
       "label" = ansi.color3; # rust lifetimes
@@ -146,9 +150,15 @@
       "special" = ansi.color1;
       "markup.heading.marker" = ansi.color1;
       "markup.list" = ansi.color1;
-      "markup.bold" = { fg = ansi.color1; modifiers = ["bold"]; };
-      "markup.italic" = { modifiers = ["italic"]; };
-      "markup.strikethrough" = { fg = text.primary; modifiers = ["crossed_out"]; };
+      "markup.bold" = {
+        fg = ansi.color1;
+        modifiers = ["bold"];
+      };
+      "markup.italic" = {modifiers = ["italic"];};
+      "markup.strikethrough" = {
+        fg = text.primary;
+        modifiers = ["crossed_out"];
+      };
       "markup.link.url" = ansi.color4;
       "markup.link.label" = ansi.color1;
       "markup.link.text" = ansi.color1;
@@ -163,27 +173,45 @@
       "markup.raw" = text.primary;
 
       # UI
-      "ui.background" = { fg = "text"; };
+      "ui.background" = {fg = "text";};
       "ui.background.separator" = separator;
-      "ui.window" = "separator";
-      "ui.cursor" = { bg = ansi.color4; fg = ansi.color0; };
-      "ui.cursor.normal" = { fg = ansi.color1; bg = ansi.color0; };
-      "ui.cursor.insert" = { fg = ansi.color4; bg = ansi.color0; };
-      "ui.cursor.select" = { fg = ansi.color3; bg = ansi.color0; };
+      "ui.window" = separator;
+      "ui.cursor" = {
+        bg = ansi.color4;
+        fg = ansi.color0;
+      };
+      "ui.cursor.normal" = {
+        fg = ansi.color1;
+        bg = ansi.color0;
+      };
+      "ui.cursor.insert" = {
+        fg = ansi.color4;
+        bg = ansi.color0;
+      };
+      "ui.cursor.select" = {
+        fg = ansi.color3;
+        bg = ansi.color0;
+      };
       "ui.debug.breakpoint" = ansi.color1;
       "ui.debug.active" = ansi.color1;
       "ui.linenr" = text.tertiary;
-      "ui.linenr.selected" = { fg = ansi.color4; modifiers = ["bold"]; };
+      "ui.linenr.selected" = {
+        fg = ansi.color4;
+        modifiers = ["bold"];
+      };
       "ui.statusline.normal" = ansi.color1;
       "ui.statusline.insert" = ansi.color4;
       "ui.statusline.select" = ansi.color3;
-      "ui.statusline.separator" = "separator";
-      "ui.popup" = { bg = background.tertiary; };
-      "ui.popup.info" = { bg = background.tertiary; };
+      "ui.statusline.separator" = separator;
+      "ui.popup" = {bg = background.tertiary;};
+      "ui.popup.info" = {bg = background.tertiary;};
       "ui.help".bg = background.secondary;
       "ui.text" = text.primary;
       "ui.text.directory" = ansi.color4;
-      "ui.text.focus" = { fg = ansi.color4; modifiers = ["bold"]; };
+      "ui.text.focus" = {
+        fg = ansi.color4;
+        modifiers = ["bold"];
+      };
       "ui.text.inactive" = text.tertiary;
       "ui.text.info" = ansi.color4;
       "ui.virtual.ruler".bg = background.secondary;
@@ -204,18 +232,37 @@
 
       # Completion menu
       "ui.menu".bg = background.tertiary;
-      "ui.menu.selected" = { bg = ansi.color0; fg = ansi.color4; modifiers = ["bold"]; };
-      "ui.menu.scroll" = { fg = separator; bg = ansi.color0; };
+      "ui.menu.selected" = {
+        bg = ansi.color0;
+        fg = ansi.color4;
+        modifiers = ["bold"];
+      };
+      "ui.menu.scroll" = {
+        fg = separator;
+        bg = ansi.color0;
+      };
 
       # Diagnostics
       "hint" = text.tertiary;
       "info" = ansi.color6;
       "warning" = ansi.color3;
       "error" = ansi.color1;
-      "diagnostic.hint".underline = { color = text.tertiary; style = "line"; };
-      "diagnostic.info".underline = { color  = text.tertiary; style = "line"; };
-      "diagnostic.warning".underline = { color = ansi.color3; style = "line"; };
-      "diagnostic.error".underline = { color = ansi.color1; style = "line"; };
+      "diagnostic.hint".underline = {
+        color = text.tertiary;
+        style = "line";
+      };
+      "diagnostic.info".underline = {
+        color = text.tertiary;
+        style = "line";
+      };
+      "diagnostic.warning".underline = {
+        color = ansi.color3;
+        style = "line";
+      };
+      "diagnostic.error".underline = {
+        color = ansi.color1;
+        style = "line";
+      };
       "diagnostic.unnecessary" = text.tertiary;
       "diagnostic.depretaced".modifiers = ["crossed_out"];
     };
