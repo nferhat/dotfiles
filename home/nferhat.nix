@@ -1,6 +1,4 @@
 {
-  self,
-  pkgs,
   lib,
   osConfig,
   ...
