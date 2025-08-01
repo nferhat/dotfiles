@@ -7,9 +7,7 @@
     };
 
     # Max out resolution and framerate on main display
-    # FIXME: Currently fht-compositor errors out with out-of-memory if you try
-    # to start the compositor with a high refresh rate. I modeset to 180hz when the session starts.
-    outputs.DP-1.mode = "2560x1440@60";
+    outputs.DP-3.mode = "2560x1440@180";
   };
 
   # I was too bothered to move over the key.

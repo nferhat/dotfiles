@@ -34,8 +34,8 @@
           thickness = 3;
           radius = 25;
           focused-color = {
-            start = theme.ansi.color4;
-            end = theme.ansi-bright.color12;
+            start = theme.ansi.color2;
+            end = theme.ansi.color4;
             angle = 0;
           };
           normal-color = "transparent";
