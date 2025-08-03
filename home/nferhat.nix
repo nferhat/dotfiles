@@ -30,7 +30,7 @@
       GOPATH = "$XDG_DATA_HOME/go";
       RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
       STARSHIP_CACHE = "$XDG_CACHE_HOME/starship";
-      STARSHIP_CONFIG = "$XDG_CONFIG_HOME/starship.toml";
+      # STARSHIP_CONFIG = "$XDG_CONFIG_HOME/starship.toml";
       WGETRC = "$XDG_CONFIG_HOME/wgetrc";
       NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/npmrc";
       NODE_REPL_HISTORY = "$XDG_DATA_HOME/node_repl_history";
