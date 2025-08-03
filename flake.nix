@@ -45,7 +45,9 @@
     };
     # Using latest versions
     helix-editor = {
-      url = "github:helix-editor/helix";
+      # url = "github:helix-editor/helix";
+      # Custom branch with icons
+      url = "github:RoloEdits/helix/icons-v2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Stupid games that require secureboot to work. Still good to have though.

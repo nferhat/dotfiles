@@ -1,5 +1,14 @@
 {inputs', ...}: {
-  programs.helix = {
+  programs.helix = let
+    theme = import ../../theme;
+    # inherit (theme) ansi ansi-bright background text;
+    addColorHashtag = builtins.mapAttrs (_: value: "#" + value);
+    ansi = addColorHashtag theme.ansi;
+    ansi-bright = addColorHashtag theme.ansi-bright;
+    background = addColorHashtag theme.background;
+    text = addColorHashtag theme.text;
+    separator = "#" + theme.separator;
+  in {
     enable = true;
     package = inputs'.helix-editor.packages.default;
     defaultEditor = true;
@@ -27,6 +36,97 @@
         lsp = {
           display-messages = true;
           display-inlay-hints = true;
+        };
+      };
+
+      icons = let
+        theme-text = text;
+      in {
+        fs.enabled = true;
+        diagnostic.enabled = true;
+        vcs.enabled = true;
+        # Custom icons for completion kinds
+        kind = rec {
+          enabled = true;
+          text = {
+            glyph = "";
+            color = ansi.color6;
+          };
+          method = {
+            glyph = "";
+            color = ansi.color4;
+          };
+          function = method;
+          constructor = method;
+          field = text // {glyph = "";};
+          variable = text // {glyph = "";};
+          class = {
+            glyph = "";
+            color = ansi.color3;
+          };
+          interface = text // {glyph = "";};
+          module = {
+            glyph = "";
+            color = ansi.color1;
+          };
+          property = {
+            glyph = "";
+            color = ansi.color5;
+          };
+          unit = {
+            glyph = "";
+            color = ansi.color2;
+          };
+          value = {
+            glyph = "";
+            color = ansi.color4;
+          };
+          enum = {
+            glyph = "";
+            color = ansi.color3;
+          };
+          keyword = {
+            glyph = "";
+            color = ansi.color5;
+          };
+          snippet = {
+            glyph = "";
+            color = ansi.color2;
+          };
+          color = unit // {glyph = "";};
+          file = {
+            glyph = "";
+            color = ansi.color1;
+          };
+          reference = {
+            glyph = "";
+            color = ansi-bright.color11;
+          };
+          folder = {
+            glyph = "";
+            color = ansi.color4;
+          };
+          enum_member = enum // {glyph = "";};
+          constant = {
+            glyph = "";
+            color = ansi.color3;
+          };
+          struct = {
+            glyph = "";
+            color = ansi.color3;
+          };
+          event = {
+            glyph = "";
+            color = ansi.color1;
+          };
+          operator = {
+            glyph = "";
+            color = theme-text.tertiary;
+          };
+          type_parameter = {
+            glyph = "";
+            color = ansi.color3;
+          };
         };
       };
 
@@ -109,16 +209,7 @@
       };
     };
 
-    themes."fht" = let
-      theme = import ../../theme;
-      # inherit (theme) ansi ansi-bright background text;
-      addColorHashtag = builtins.mapAttrs (_: value: "#" + value);
-      ansi = addColorHashtag theme.ansi;
-      ansi-bright = addColorHashtag theme.ansi-bright;
-      background = addColorHashtag theme.background;
-      text = addColorHashtag theme.text;
-      separator = "#" + theme.separator;
-    in {
+    themes."fht" = {
       "attribute" = ansi.color3;
       "constructor" = ansi.color3;
       "type" = ansi-bright.color11;
