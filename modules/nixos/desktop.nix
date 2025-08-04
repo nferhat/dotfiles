@@ -85,7 +85,7 @@
       pulse.enable = true;
     };
 
-    xserver.displayManager.gdm.enable = true;
+    # xserver.displayManager.lightdm.enable = true;
   };
 
   # Depedency of pipewire.
