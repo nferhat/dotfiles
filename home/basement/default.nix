@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.fht-compositor.settings = {
     general = {
       # Allow for more gaps since we have more screen real estate
@@ -18,4 +22,9 @@
   home.pointerCursor.size = lib.mkForce 32;
   # 10 is adequate for the tiny 1366x768 screen I had on hp-da0018nk
   programs.ghostty.settings.font-size = 13;
+
+  home.packages = with pkgs; [
+    # I do some gaming on this very capable machine
+    ryubing
+  ];
 }
