@@ -34,12 +34,6 @@
     grim
     slurp
     wl-clipboard
-
-    # Not a GUI but it's a CLI for celeste mod management.
-    #
-    # I cannot get olympus to work properly, unless I use a hacky flake that
-    # I lost a long time ago.
-    self.packages."${pkgs.system}".mons
   ];
 
   programs = {

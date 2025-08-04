@@ -14,6 +14,8 @@
       fht = import ../lib/default.nix {lib = self;};
     });
 
+    specialArgs = {inherit self' self lib inputs inputs';};
+
     sharedModules = [
       self.nixosModules.core
       self.nixosModules.user
@@ -23,17 +25,17 @@
     # Example: "Helwett-Packard da0018-nk" -> "hp-da0018nk"
 
     hp-da0018nk = lib.nixosSystem {
-      specialArgs = {inherit self lib inputs inputs';};
+      inherit specialArgs;
       modules = [./hp-da0018nk self.nixosModules.desktop] ++ sharedModules;
     };
 
     thinkpad-t14s = lib.nixosSystem {
-      specialArgs = {inherit self lib inputs inputs';};
+      inherit specialArgs;
       modules = [./thinkpad-t14s self.nixosModules.desktop] ++ sharedModules;
     };
 
     basement = lib.nixosSystem {
-      specialArgs = {inherit self lib inputs inputs';};
+      inherit specialArgs;
       modules = [./basement self.nixosModules.desktop] ++ sharedModules;
     };
   });

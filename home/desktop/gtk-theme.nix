@@ -1,4 +1,5 @@
 {
+  self',
   lib,
   pkgs,
   config,
@@ -102,8 +103,8 @@
     };
 
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
+      package = self'.packages.kaze-icon-theme;
+      name = "Kaze";
     };
 
     font = {

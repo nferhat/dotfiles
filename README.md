@@ -26,7 +26,7 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
     * See [`home/README.md`](./home/README.md) for more detailed information
 - `packages`
     * `default.nix` - declare `packages` flake output.
-    * `mons.nix` - Command-Line Installer and Manager for Celeste Modding.
+    * Use `nix flake show` for all provided packages!
 
 ## Rice screenshots
 
