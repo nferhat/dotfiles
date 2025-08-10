@@ -141,11 +141,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1754173714,
-        "narHash": "sha256-TcuV/9xnigp7J4SUg7do9vkJoGlcZppFNxXSg81wtUE=",
+        "lastModified": 1754413018,
+        "narHash": "sha256-63HLRguukB1Ja1ScQBriodSncVMlITsLLhN3qpZW/jI=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "d41bab8bd677f89f216d809cf2265e4ea4b8850a",
+        "rev": "e4f0a5e413606a1e049abd232563b827e0bb3f7f",
         "type": "github"
       },
       "original": {
@@ -169,11 +169,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753530766,
-        "narHash": "sha256-XSFm1LPA3DK16XGVeC2bnguOjquI4OYjU9vsOma4G/M=",
+        "lastModified": 1754412932,
+        "narHash": "sha256-h+9iRGxsO30qt6XmdB7si9FtPSKJ4PmJXcIyXLWm1QU=",
         "owner": "nferhat",
         "repo": "fht-share-picker",
-        "rev": "2435a817ab6aa78a64c9e85db7f52b3e7d99a366",
+        "rev": "584625e7eaf319e43d9d3a50e84c40980d54546d",
         "type": "github"
       },
       "original": {
@@ -676,11 +676,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752736978,
-        "narHash": "sha256-ZGqfDXAq526yVoJY41QqgrvtfnZFYk/NjZX8yEcA0hM=",
+        "lastModified": 1753595452,
+        "narHash": "sha256-vqkSDvh7hWhPvNjMjEDV4KbSCv2jyl2Arh73ZXe274k=",
         "ref": "refs/heads/master",
-        "rev": "91dcb41d2216be6b11955c59b54637bff6c2f296",
-        "revCount": 642,
+        "rev": "a5431dd02dc23d9ef1680e67777fed00fe5f7cda",
+        "revCount": 665,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
