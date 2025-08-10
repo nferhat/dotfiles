@@ -360,6 +360,7 @@
             "download"
             "pinentry"
             "splash"
+            "gay.pancake.lsfg-vk-ui"
           ];
           floating = true;
           centered = true;

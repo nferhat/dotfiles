@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./secure-boot.nix
+    inputs.lsfg-vk.nixosModules.default
   ];
 
   boot = {
@@ -102,6 +103,11 @@
     hardware.openrgb = {
       enable = true;
       motherboard = "amd";
+    };
+
+    lsfg-vk = {
+      enable = true;
+      ui.enable = true;
     };
 
     printing.enable = true;

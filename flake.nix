@@ -31,6 +31,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Lossless frame generation
+    lsfg-vk = {
+      url = "github:pabloaul/lsfg-vk-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Using git since stable packaged in Nixpkgs is broken
     watershot = {
       url = "github:Kirottu/watershot/";
