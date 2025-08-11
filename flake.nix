@@ -49,11 +49,16 @@
       inputs.home-manager.follows = "home-manager";
     };
     # Using latest versions
-    helix-editor = {
-      # url = "github:helix-editor/helix";
-      # Custom branch with icons
-      url = "github:RoloEdits/helix/icons-v2";
+    # helix-editor = {
+    #   # url = "github:helix-editor/helix";
+    #   # Custom branch with icons
+    #   url = "github:RoloEdits/helix/icons-v2";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     # Stupid games that require secureboot to work. Still good to have though.
     # TODO: Enable this for thinkpad-t14s, currently only setup for basement

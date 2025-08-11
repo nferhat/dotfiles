@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    ./helix.nix
+    # ./helix.nix
+    ./neovim.nix
     ./git.nix
     ./tmux.nix
     ./fish.nix
