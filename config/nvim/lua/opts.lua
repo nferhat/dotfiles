@@ -115,10 +115,8 @@ set_keymap("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search
 set_keymap("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 set_keymap("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 -- Keep vim clipboard separate from actual system clipboard
-set_keymap("x", "<leader>p", [["_dp]], { desc = "Paste from system clipboard" })
-set_keymap("x", "<leader>P", [["_dP]], { desc = "Paste from system clipboard" })
-set_keymap("x", "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
-set_keymap("x", "<leader>Y", [["+Y]], { desc = "Yank to system clipboard" })
+set_keymap({ "n", "x" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
+set_keymap({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- Stop the cursor from going back when exiting insert mode
 set_keymap("i", "<Esc>", "<Esc>`^", { noremap = true })
