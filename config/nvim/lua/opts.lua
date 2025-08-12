@@ -31,9 +31,9 @@ O.softtabstop = 4
 O.expandtab = true
 O.shiftwidth = 4
 O.autoindent = true
-O.smartindent = false -- buggy
+O.smartindent = false       -- buggy
 O.hidden = true
-O.fdls = 9999 -- don't fold when opening buffers
+O.fdls = 9999               -- don't fold when opening buffers
 O.timeoutlen = 200
 O.colorcolumn = { 80, 100 } -- 80 for code, 100 for comments
 -- O.shell = "/bin/zsh"
@@ -41,13 +41,13 @@ O.splitbelow = true
 O.splitright = true
 O.pumwidth = 20
 O.guifont = "monospace:h10"
-O.guicursor = "" -- keep blocky cursor
+O.guicursor = ""      -- keep blocky cursor
 O.winborder = "solid" -- border for most popups, then filled in with theme
 O.winblend = 7
 O.pumblend = 7
-O.shortmess:append "sIc" -- disable nvim intro + completion messages
-O.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
-O.list = true -- shows hidden stuff like tabs
+O.shortmess:append "sIc"    -- disable nvim intro + completion messages
+O.virtualedit = "block"     -- Allow cursor to move where there is no text in visual block mode
+O.list = true               -- shows hidden stuff like tabs
 O.whichwrap:append "<>[]hl" -- move to next/prev lines with hl
 -- Custom in-house statusline
 O.statusline = "%!v:lua.require('statusline').draw()"
@@ -138,34 +138,6 @@ api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
-api.nvim_create_autocmd({ "FileType" }, {
-    desc = "Enable wrapping and spellchecking for filetypes",
-    group = fht,
-    pattern = { "gitcommit" },
-    callback = function()
-        if vim.bo.buftype == "nofile" then
-            return
-        end -- LSP popups
-        vim.opt_local.spell = true ---@diagnostic disable-line
-        vim.opt_local.wrap = true ---@diagnostic disable-line
-	vim.opt_local.colorcolumn = { 50, 72 } -- 50 for the title, 72 for the body/description
-    end,
-})
-
-api.nvim_create_autocmd({ "FileType" }, {
-    desc = "Settings for markdown buffers ",
-    pattern = { "markdown", "md", "lsp_markdown" },
-    group = fht,
-    callback = function()
-        if vim.bo.buftype == "nofile" then
-            return
-        end -- LSP popups
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
-        vim.opt_local.wrap = true
-    end,
-})
-
 api.nvim_create_autocmd({ "VimResized" }, {
     desc = "Fixes Window sizes when Neovim terminal gets resized",
     group = fht,
@@ -179,7 +151,7 @@ api.nvim_create_autocmd({ "TextYankPost" }, {
     desc = "Highlight on yank",
     group = fht,
     callback = function()
-        vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
+        vim.highlight.on_yank { higroup = "Visual", timeout = 300 }
     end,
 })
 
