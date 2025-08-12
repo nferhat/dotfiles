@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  services.mpris-proxy.enable = true;
+
   # Services that we setup as part of the desktop/graphical session.
   # They get all triggered when fht-compositor reaches the graphical.target
   systemd.user.services = let
