@@ -29,3 +29,23 @@ require("nvim-treesitter.configs").setup({
 	auto_install = true,
 	highlight = { enable = true },
 })
+
+-- Aligning keybinds
+local align = require "align"
+vim.keymap.set("x", "aa", function()
+    align.align_to_char({ length = 1 })
+end, { desc = "Align selection to character" })
+vim.keymap.set("x", "aw", function()
+    align.align_to_string({ preview = true, regex = true })
+end, { desc = "Align selection" })
+vim.keymap.set('n', 'gaw', function()
+    align.operator(align.align_to_string, {
+        regex = false,
+        preview = true,
+    })
+end, { desc = "Align selection to string" })
+-- Example gaaip to align a paragraph to 1 character
+vim.keymap.set('n', 'gaa', function()
+    align.operator(align.align_to_char)
+end, { desc = "Align to char" })
+
