@@ -25,14 +25,14 @@ local M = {
     {
         "echasnovski/mini.comment",
         keys = {
-            { "gcc", mode = "n",          desc = "Comment toggle current line" },
-            { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-            { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-            { "gbc", mode = "n",          desc = "Comment toggle current block" },
-            { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-            { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
+            { "gcc", mode = "n", desc = "Comment toggle current line" },
+            { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
+            { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
+            { "gbc", mode = "n", desc = "Comment toggle current block" },
+            { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+            { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
         },
-        config = true
+        config = true,
     },
 
     {
@@ -106,7 +106,7 @@ local M = {
                 untracked = { text = "┃" },
             },
             signs_staged_enable = true,
-            signcolumn = true,         -- Toggle with `:Gitsigns toggle_signs`
+            signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
             current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
             current_line_blame_opts = { virt_text = true, virt_text_pos = "right_align" },
             current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",

@@ -123,7 +123,7 @@ M.config = function()
                     padding = { 0, 1 }, -- padding only on right side
                     columns = {
                         { "kind_icon" },
-                        { "label",    width = { fill = true } },
+                        { "label", width = { fill = true } },
                         -- { "label_description" },
                     },
                     components = {

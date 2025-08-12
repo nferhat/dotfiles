@@ -45,7 +45,7 @@ end
 
 M.diagnostics = function()
     ---@diagnostic disable-next-line: deprecated
-    if not rawget(vim, "lsp") or #vim.lsp.get_clients({ bufnr = 0 }) == 0 then
+    if not rawget(vim, "lsp") or #vim.lsp.get_clients { bufnr = 0 } == 0 then
         return ""
     end
 
@@ -75,7 +75,7 @@ M.lspclients = function()
     end
 
     ---@diagnostic disable-next-line: deprecated
-    local attached_clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
+    local attached_clients = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
     if #attached_clients == 0 then
         return ""
     end
@@ -112,7 +112,7 @@ M.git_branch = function()
 end
 
 M.git_diff = function()
-    if not vim.b.gitsigns_status_dict or vim.fn.expand("%") == "%" then
+    if not vim.b.gitsigns_status_dict or vim.fn.expand "%" == "%" then
         return ""
     end
 
@@ -129,9 +129,9 @@ M.git_diff = function()
 end
 
 M.filename = function()
-    local fname = vim.fn.expand("%:t")
+    local fname = vim.fn.expand "%:t"
     fname = fname == "" and "[scratch]" or fname
-    local filepath = vim.fn.expand("%:~:.:h")
+    local filepath = vim.fn.expand "%:~:.:h"
     filepath = filepath == "" and "" or filepath .. "/"
     local highlight = (vim.bo.modified and "Statusline_filename_modified")
         or (vim.bo.readonly and "Statusline_filename_readonly")

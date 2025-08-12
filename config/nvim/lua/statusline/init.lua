@@ -9,25 +9,26 @@
 local M = {}
 
 function M.draw()
-	local comps = require("statusline.components")
-	local highlight_text = comps.highlight_text
-	-- To avoid components highlights bleeding into one another
-	local stopper = highlight_text("Statusline", "")
+    local comps = require "statusline.components"
+    local highlight_text = comps.highlight_text
+    -- To avoid components highlights bleeding into one another
+    local stopper = highlight_text("Statusline", "")
 
-	local statusline = table.concat({
-		comps.mode(),
-		comps.lspclients(),
-		comps.diagnostics(),
-		comps.filename(),
-		highlight_text("Statusline", "%="),
-		comps.macro(),
-		comps.git_branch(),
-		comps.git_diff(),
-		comps.filetype(),
-		highlight_text("Statusline_linecol", " %03.3l:%03.3c "),
-	}, stopper)
+    local statusline = table.concat({
+        comps.mode(),
+        comps.lspclients(),
+        comps.diagnostics(),
+        highlight_text("Statusline", "%="),
+        comps.filename(),
+        highlight_text("Statusline", "%="),
+        comps.macro(),
+        comps.git_branch(),
+        comps.git_diff(),
+        comps.filetype(),
+        highlight_text("Statusline_linecol", " %03.3l:%03.3c "),
+    }, stopper)
 
-	return statusline
+    return statusline
 end
 
 return M

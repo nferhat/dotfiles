@@ -1,10 +1,10 @@
-local C = require("theme.colors")
+local C = require "theme.colors"
 
 return {
     -- base neovim tui highlights
     normal = { fg = C.foreground, bg = "none" },
     normalfloat = { fg = C.foreground, bg = C.dark_background },
-    floatborder = { bg = C.dark_background, fg = C.border, blend = vim.opt.winblend:get() },
+    floatborder = { bg = C.dark_background, fg = C.border },
     cold = { bold = true },
     debug = { fg = C.color1, bold = true },
     directory = C.color4,

@@ -1,7 +1,7 @@
 local api, O = vim.api, vim.opt
 
 -- Colorscheme, see theme/
-vim.cmd.colorscheme("theme")
+vim.cmd.colorscheme "theme"
 
 -- General options, up to preference, and strongly influenced by other
 -- editors I used (Helix, Zed, ...)
@@ -45,10 +45,10 @@ O.guicursor = "" -- keep blocky cursor
 O.winborder = "solid" -- border for most popups, then filled in with theme
 O.winblend = 7
 O.pumblend = 7
-O.shortmess:append("sIc") -- disable nvim intro + completion messages
+O.shortmess:append "sIc" -- disable nvim intro + completion messages
 O.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 O.list = true -- shows hidden stuff like tabs
-O.whichwrap:append("<>[]hl") -- move to next/prev lines with hl
+O.whichwrap:append "<>[]hl" -- move to next/prev lines with hl
 -- Custom in-house statusline
 O.statusline = "%!v:lua.require('statusline').draw()"
 O.cmdheight = 0
@@ -65,9 +65,9 @@ vim.keymap.set_backup = vim.keymap.set
 ---@param rhs string|function
 ---@param opts table|nil
 function vim.keymap.set(mode, lhs, rhs, opts) ---@diagnostic disable-line
-	opts = opts or {}
-	opts.silent = opts.silent ~= nil and opts.silent or true -- Why isn't this a default?
-	vim.keymap.set_backup(mode, lhs, rhs, opts)
+    opts = opts or {}
+    opts.silent = opts.silent ~= nil and opts.silent or true -- Why isn't this a default?
+    vim.keymap.set_backup(mode, lhs, rhs, opts)
 end
 
 local set_keymap = vim.keymap.set
@@ -128,96 +128,96 @@ O.virtualedit = "onemore"
 local fht = api.nvim_create_augroup("fht", { clear = true })
 
 api.nvim_create_autocmd({ "BufWritePre" }, {
-	desc = "Trim Trailing whitespace from buffers",
-	group = fht,
-	pattern = "*",
-	callback = function()
-		local view = vim.fn.winsaveview()
-		vim.cmd([[keeppatterns %s/\s\+$//e]])
-		vim.fn.winrestview(view)
-	end,
+    desc = "Trim Trailing whitespace from buffers",
+    group = fht,
+    pattern = "*",
+    callback = function()
+        local view = vim.fn.winsaveview()
+        vim.cmd [[keeppatterns %s/\s\+$//e]]
+        vim.fn.winrestview(view)
+    end,
 })
 
 api.nvim_create_autocmd({ "FileType" }, {
-	desc = "Enable wrapping and spellchecking for filetypes",
-	group = fht,
-	pattern = { "gitcommit", "markdown" },
-	callback = function()
-		if vim.bo.buftype == "nofile" then
-			return
-		end -- LSP popups
-		vim.opt_local.spell = true ---@diagnostic disable-line
-		vim.opt_local.wrap = true ---@diagnostic disable-line
-	end,
+    desc = "Enable wrapping and spellchecking for filetypes",
+    group = fht,
+    pattern = { "gitcommit", "markdown" },
+    callback = function()
+        if vim.bo.buftype == "nofile" then
+            return
+        end -- LSP popups
+        vim.opt_local.spell = true ---@diagnostic disable-line
+        vim.opt_local.wrap = true ---@diagnostic disable-line
+    end,
 })
 
 api.nvim_create_autocmd({ "FileType" }, {
-	desc = "Settings for markdown buffers ",
-	pattern = { "markdown", "md", "lsp_markdown" },
-	group = fht,
-	callback = function()
-		if vim.bo.buftype == "nofile" then
-			return
-		end -- LSP popups
-		vim.opt_local.number = false
-		vim.opt_local.relativenumber = false
-		vim.opt_local.wrap = true
-	end,
+    desc = "Settings for markdown buffers ",
+    pattern = { "markdown", "md", "lsp_markdown" },
+    group = fht,
+    callback = function()
+        if vim.bo.buftype == "nofile" then
+            return
+        end -- LSP popups
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.opt_local.wrap = true
+    end,
 })
 
 api.nvim_create_autocmd({ "VimResized" }, {
-	desc = "Fixes Window sizes when Neovim terminal gets resized",
-	group = fht,
-	callback = function()
-		vim.cmd.tabdo("wincmd =")
-		vim.cmd.redraw()
-	end,
+    desc = "Fixes Window sizes when Neovim terminal gets resized",
+    group = fht,
+    callback = function()
+        vim.cmd.tabdo "wincmd ="
+        vim.cmd.redraw()
+    end,
 })
 
 api.nvim_create_autocmd({ "TextYankPost" }, {
-	desc = "Highlight on yank",
-	group = fht,
-	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
-	end,
+    desc = "Highlight on yank",
+    group = fht,
+    callback = function()
+        vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
+    end,
 })
 
 api.nvim_create_autocmd({ "FocusGained" }, {
-	desc = "More eager checking for files changes outside Neovim",
-	group = fht,
-	command = "checktime",
+    desc = "More eager checking for files changes outside Neovim",
+    group = fht,
+    command = "checktime",
 })
 
 api.nvim_create_autocmd({ "BufEnter" }, {
-	desc = "Settings for terminal buffers ",
-	pattern = { "terminal", "term://*" },
-	group = fht,
-	command = "set nonumber norelativenumber signcolumn=yes",
+    desc = "Settings for terminal buffers ",
+    pattern = { "terminal", "term://*" },
+    group = fht,
+    command = "set nonumber norelativenumber signcolumn=yes",
 })
 
 -- User event that loads after UIEnter + only if file buf is there
 -- Borrowed from NvChad
 api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-  group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
-  callback = function(args)
-    local file = vim.api.nvim_buf_get_name(args.buf)
-    local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+    group = vim.api.nvim_create_augroup("NvFilePost", { clear = true }),
+    callback = function(args)
+        local file = vim.api.nvim_buf_get_name(args.buf)
+        local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
 
-    if not vim.g.ui_entered and args.event == "UIEnter" then
-      vim.g.ui_entered = true
-    end
-
-    if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
-      vim.api.nvim_exec_autocmds("User", { pattern = "FilePost", modeline = false })
-      vim.api.nvim_del_augroup_by_name "NvFilePost"
-
-      vim.schedule(function()
-        vim.api.nvim_exec_autocmds("FileType", {})
-
-        if vim.g.editorconfig then
-          require("editorconfig").config(args.buf)
+        if not vim.g.ui_entered and args.event == "UIEnter" then
+            vim.g.ui_entered = true
         end
-      end)
-    end
-  end,
+
+        if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
+            vim.api.nvim_exec_autocmds("User", { pattern = "FilePost", modeline = false })
+            vim.api.nvim_del_augroup_by_name "NvFilePost"
+
+            vim.schedule(function()
+                vim.api.nvim_exec_autocmds("FileType", {})
+
+                if vim.g.editorconfig then
+                    require("editorconfig").config(args.buf)
+                end
+            end)
+        end
+    end,
 })

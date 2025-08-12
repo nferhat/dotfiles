@@ -1,6 +1,6 @@
-local C = require("theme.colors")
+local C = require "theme.colors"
 
 return {
-	IndentGuide = C.border:brighten(1.5),
-	IndentGuideScope = C.border:brighten(3.5),
+    IndentGuide = C.border:brighten(1.5),
+    IndentGuideScope = C.border:brighten(3.5),
 }
