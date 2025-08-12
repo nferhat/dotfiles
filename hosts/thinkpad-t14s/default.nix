@@ -119,8 +119,13 @@
       pkgs.via # include udev rules for keyboard config
     ];
 
+    printing = {
+        enable = true;
+        drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
+    };
+
+
     blueman.enable = true;
-    printing.enable = true;
     upower.enable = true;
   };
 
