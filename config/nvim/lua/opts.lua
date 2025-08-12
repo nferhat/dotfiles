@@ -141,13 +141,14 @@ api.nvim_create_autocmd({ "BufWritePre" }, {
 api.nvim_create_autocmd({ "FileType" }, {
     desc = "Enable wrapping and spellchecking for filetypes",
     group = fht,
-    pattern = { "gitcommit", "markdown" },
+    pattern = { "gitcommit" },
     callback = function()
         if vim.bo.buftype == "nofile" then
             return
         end -- LSP popups
         vim.opt_local.spell = true ---@diagnostic disable-line
         vim.opt_local.wrap = true ---@diagnostic disable-line
+	vim.opt_local.colorcolumn = { 50, 72 } -- 50 for the title, 72 for the body/description
     end,
 })
 
