@@ -43,8 +43,8 @@ O.pumwidth = 20
 O.guifont = "monospace:h10"
 O.guicursor = ""      -- keep blocky cursor
 O.winborder = "solid" -- border for most popups, then filled in with theme
-O.winblend = 7
-O.pumblend = 7
+-- O.winblend = 7
+-- O.pumblend = 7
 O.shortmess:append "sIc"    -- disable nvim intro + completion messages
 O.virtualedit = "block"     -- Allow cursor to move where there is no text in visual block mode
 O.list = true               -- shows hidden stuff like tabs
