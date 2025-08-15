@@ -88,7 +88,7 @@ set_keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", { desc = "Window Down" })
 set_keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", { desc = "Window Up" })
 set_keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", { desc = "Window Right" })
 -- Buffer actions
-set_keymap("n", "<leader>x", ":Bdelete!<CR>", { desc = "Close Buffer" })
+set_keymap("n", "<leader>x", ":bdelete!<CR>", { desc = "Close Buffer" })
 set_keymap("n", "<leader>s", ":write!<CR>", { desc = "Save Buffer" })
 -- Easier splits
 set_keymap("n", "<leader>|", ":vsplit<CR>", { desc = "Vertical Split" })

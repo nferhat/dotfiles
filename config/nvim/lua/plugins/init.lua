@@ -5,15 +5,15 @@
 -- have (hopefully) what I need.
 
 local M = {
-    {
-        "famiu/bufdelete.nvim",
-        keys = { { "<leader>x", ":Bdelete!<CR>", desc = "Close buffer" } },
-    },
+    -- Integration with direnv, which I use to provide LSPs and tools for developing
+    -- through nix devShells
+    { "direnv/direnv.vim", event = "VeryLazy" },
 
+    -- Provide parsers, automatically install them
+    -- FIXME: Use nix instead?
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPost", "BufNewFile", "User FilePost" },
-        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+        lazy = false,
         opts = {
             highlight = { enable = true, use_languagetree = true },
             indent = { enable = true },
@@ -43,34 +43,8 @@ local M = {
         end,
     },
 
-    {
-        "Vonr/align.nvim",
-        branch = "v2",
-        lazy = true,
-        init = function()
-            -- Create your mappings here
-            vim.keymap.set("x", "aa", function()
-                local align = require "align"
-                align.align_to_char { length = 1 }
-            end, { desc = "Align selection to character" })
-            vim.keymap.set("x", "aw", function()
-                local align = require "align"
-                align.align_to_string { preview = true, regex = true }
-            end, { desc = "Align selection" })
-            vim.keymap.set("n", "gaw", function()
-                local align = require "align"
-                align.operator(align.align_to_string, {
-                    regex = false,
-                    preview = true,
-                })
-            end, { desc = "Align selection to string" })
-            vim.keymap.set("n", "gaa", function()
-                local align = require "align"
-                align.operator(align.align_to_char)
-            end, { desc = "Align to char" })
-        end,
-    },
-
+    -- Gitsigns, nothing fancy
+    -- TODO: Maybe write a copy myself? I don't make use of all the features this plugin has.
     {
         "lewis6991/gitsigns.nvim",
         event = "User FilePost",
