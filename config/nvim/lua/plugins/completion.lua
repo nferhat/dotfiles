@@ -116,6 +116,7 @@ M.config = function()
         },
         completion = {
             menu = {
+                scrollbar = false,
                 border = "none",
                 draw = {
                     padding = { 0, 1 }, -- padding only on right side
