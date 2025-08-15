@@ -28,33 +28,67 @@ M.config = function()
     local actions = require "telescope.actions"
     local fb_actions = telescope.extensions.file_browser.actions
 
-    require("telescope.pickers.layout_strategies").horizontal_edit = function(
-        picker,
-        max_columns,
-        max_lines,
-        layout_config
-    )
-        local layout =
-            require("telescope.pickers.layout_strategies").horizontal(picker, max_columns, max_lines, layout_config)
 
-        layout.prompt.title = ""
-        layout.prompt.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+    if not vim.g.neovide then
+        require("telescope.pickers.layout_strategies").horizontal_edit = function(
+            picker,
+            max_columns,
+            max_lines,
+            layout_config
+        )
+            local layout =
+                require("telescope.pickers.layout_strategies").horizontal(picker, max_columns, max_lines, layout_config)
 
-        layout.results.title = ""
-        layout.results.line = layout.results.line - 1
-        layout.results.height = layout.results.height + 1
+            layout.prompt.title = ""
+            layout.prompt.borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
 
-        if layout.preview then
-            layout.preview.title = ""
-            layout.preview.col = layout.preview.col - 1
-            layout.preview.width = layout.preview.width + 1
-            layout.preview.borderchars = { "─", "│", "─", "│", "┬", "┐", "┘", "└" }
-            layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┴", "└" }
-        else
-            layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┘", "└" }
+            layout.results.title = ""
+            layout.results.line = layout.results.line - 1
+            layout.results.height = layout.results.height + 1
+
+            if layout.preview then
+                layout.preview.title = ""
+                layout.preview.col = layout.preview.col - 1
+                layout.preview.width = layout.preview.width + 1
+                layout.preview.borderchars = { "─", "│", "─", "│", "┬", "┐", "┘", "└" }
+                layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┴", "└" }
+            else
+                layout.results.borderchars = { "─", "│", "─", "│", "│", "│", "┘", "└" }
+            end
+
+            return layout
         end
+    else
+        -- Custom one when I am inside neovide to disable the border, it works much better with the blur
+        -- and shadow features.
+        require("telescope.pickers.layout_strategies").horizontal_edit = function(
+            picker,
+            max_columns,
+            max_lines,
+            layout_config
+        )
+            local layout =
+                require("telescope.pickers.layout_strategies").horizontal(picker, max_columns, max_lines, layout_config)
 
-        return layout
+            layout.prompt.title = ""
+            layout.prompt.borderchars = { " ", "a", " ", " ", " ", " ", " ", " " }
+
+            layout.results.title = ""
+            layout.results.line = layout.results.line - 1
+            layout.results.height = layout.results.height + 1
+
+            if layout.preview then
+                layout.preview.title = ""
+                layout.preview.col = layout.preview.col - 1
+                layout.preview.width = layout.preview.width + 1
+                layout.preview.borderchars = { " ", " ", " ", "│", "│", " ", " ", " " }
+                layout.results.borderchars = { "─", "│", " ", " ", "─", "│", "│", " " }
+            else
+                layout.results.borderchars = { "─", "│", " ", "│", "│", "│", "┘", "└" }
+            end
+
+            return layout
+        end
     end
 
     telescope.setup {

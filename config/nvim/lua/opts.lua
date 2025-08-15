@@ -194,3 +194,9 @@ api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
         end
     end,
 })
+
+-- Additional config for Neovide
+-- As per docs, g:neovide must be set to run these
+if vim.g.neovide then
+    require "neovide"
+end
