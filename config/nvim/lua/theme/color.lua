@@ -1,4 +1,5 @@
 -- Copied from https://github.com/dharmx/nvim-colo
+-- A color class that has builtin functions for color manipulation.
 local Color = {}
 
 local function limit(c, a, op)

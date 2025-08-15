@@ -71,8 +71,6 @@ M.config = function()
         },
     }
 
-    require("theme").load_skeleton "cmp"
-
     local luasnip = require "luasnip"
     require("luasnip.loaders.from_vscode").lazy_load()
 

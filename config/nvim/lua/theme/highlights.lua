@@ -1,5 +1,10 @@
 local C = require "theme.colors"
 
+local ENABLE_BG = vim.g.cmp_with_bg
+local function cmp_bg(col)
+    return ENABLE_BG and col or nil
+end
+
 return {
     -- base neovim tui highlights
     normal = { fg = C.foreground, bg = "none" },
@@ -156,7 +161,7 @@ return {
     -- Line and column
     Statusline_linecol = { bg = C.dark_background:brighten(1.2), fg = C.foreground },
 
-    -- renamer
+    -- renamer, see lua/renamer
     RenamerTitle = { bg = C.color2, fg = C.color0 },
 
     -- tree-sitter is now included with neovim, aswell as some parsers
@@ -212,5 +217,68 @@ return {
     ["@markup.raw"] = C.color7,
     ["@markup.link.label"] = C.color4,
     ["@markup.link.url"] = C.color9,
-    -- ["@markup.quote"] = C.color1,
+
+    -- indent-blankline.nvim
+    IndentGuide = C.border:brighten(1.5),
+    IndentGuideScope = C.border:brighten(3.5),
+
+    -- gitsigns.nvim
+    GitSignsAdd = C.color2,
+    GitSignsChange = C.color4,
+    GitSignsChangeDelete = C.color1,
+    GitSignsDelete = C.color1,
+    GitSignsTopDelete = C.color9,
+    GitSignsUntracked = C.comment,
+
+    -- telescope.nvim
+    TelescopeNormal = { fg = C.foreground, bg = "none" },
+    TelescopeBorder = { fg = C.border, bg = "none" },
+    TelescopeSelection = { bg = C.color8:decrease_green(0.5), fg = C.color4, bold = true },
+    TelescopeSelectionCaret = { bg = C.selection, fg = C.color4 },
+    TelescopeMatching = { fg = C.color9, bold = true, italic = false },
+    TelescopeMultiIcon = { fg = C.color1, bold = true },
+    TelescopeMultiSelection = { fg = C.color3, bold = true },
+    TelescopePromptCounter = C.comment,
+    TelescopePreviewMessageFillchar = C.comment,
+    TelescopePreviewMessage = { fg = C.color7, bold = true },
+
+    -- blink.cmp
+    BlinkCmpMenu = { bg = C.light_background },
+    BlinkCmpMenuBorder = { link = "BlinkCmpMenu" },
+    BlinkCmpLabelDetail = { bg = C.light_background, fg = C.comment:darken(5) },
+    BlinkCmpLabel = C.foreground,
+    BlinkCmpScrollBarThumb = { bg = C.border },
+    BlinkCmpScrollBarGutter = { link = "BlinkCmpMenu" },
+    BlinkCmpMenuSelection = { bold = true, bg = C.light_background:darken(2) },
+    BlinkCmpLabelDeprecated = { strikethrough = true },
+    BlinkCmpLabelMatch = C.color4,
+    -- Client item kinds, the following are builtin to cmp.
+    CmpItemAbbrDeprecated = { fg = C.color7, strikethrough = true },
+    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+    CmpItemAbbrMatch = { fg = C.color4, bold = true },
+    BlinkCmpKindSnippet = { fg = C.color2, bg = cmp_bg(C.dark_background:increase_green(4)) },
+    BlinkCmpKindConstant = {
+        fg = C.color3,
+        bg = cmp_bg(C.dark_background:increase_red(6):increase_green(4):brighten(4)),
+    },
+    BlinkCmpKindConstructor = C.color4,
+    BlinkCmpKindEnum = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindEnumMember = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindEvent = { fg = C.color1, bg = cmp_bg(C.dark_background:increase_red(4)) },
+    BlinkCmpKindInterface = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindKeyword = { fg = C.color5, bg = cmp_bg(C.dark_background:increase_red(6):increase_blue(6)) },
+    BlinkCmpKindClass = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindModule = { link = "BlinkCmpKindEvent" },
+    BlinkCmpKindOperator = C.comment,
+    BlinkCmpKindTypeParameter = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindUnit = { link = "BlinkCmpKindSnippet" },
+    BlinkCmpKindField = { fg = C.color6, bg = cmp_bg(C.dark_background:increase_green(4):increase_blue(4):brighten(4)) },
+    BlinkCmpKindVariable = { link = "BlinkCmpKindField" },
+    BlinkCmpKindText = { fg = C.comment, bg = cmp_bg(C.light_background:darken(1)) },
+    BlinkCmpKindFunction = { fg = C.color4, bg = cmp_bg(C.dark_background:increase_blue(2):brighten(4)) },
+    BlinkCmpKindMethod = { link = "BlinkCmpKindFunction" },
+    BlinkCmpKindProperty = { link = "BlinkCmpKindKeyword" },
+    BlinkCmpKindFolder = { fg = "#f1d068" },
+    BlinkCmpKindFile = { link = "BlinkCmpKindEvent" },
+    BlinkCmpKindStruct = { link = "BlinkCmpKindConstant" },
 }

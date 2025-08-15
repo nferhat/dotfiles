@@ -134,7 +134,6 @@ M.config = function()
         },
     }
 
-    require("theme").load_skeleton "telescope"
     pcall(telescope.load_extension, "fzf")
     pcall(telescope.load_extension, "file_browser")
 end

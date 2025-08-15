@@ -52,7 +52,6 @@ local M = {
             },
         },
         config = function(_, opts)
-            require("theme").load_skeleton "indent-blankline"
             require("ibl").setup(opts)
         end,
     },
@@ -106,16 +105,12 @@ local M = {
                 untracked = { text = "┃" },
             },
             signs_staged_enable = true,
-            signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+            signcolumn = true,         -- Toggle with `:Gitsigns toggle_signs`
             current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
             current_line_blame_opts = { virt_text = true, virt_text_pos = "right_align" },
             current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
             update_debounce = 100,
         },
-        config = function(_, opts)
-            require("theme").load_skeleton "gitsigns"
-            require("gitsigns").setup(opts)
-        end,
     },
 }
 
