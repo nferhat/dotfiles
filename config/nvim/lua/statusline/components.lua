@@ -37,9 +37,9 @@ M.mode_colors = {
 
 ---Returns the current mode that Neovim is on.
 ---@return string
-M.mode = function()
+M.mode = function(ch)
     local mode = M.mode_colors[vim.api.nvim_get_mode().mode]
-    local ret = highlight_text(mode[2], " " .. mode[1]:lower() .. " ")
+    local ret = highlight_text(mode[2], ch)
     return ret
 end
 
@@ -57,16 +57,11 @@ M.diagnostics = function()
     local errors, warnings, hint, info = "0", "0", "0", "0"
 
     errors = highlight_text("Statusline_diagnostic_error", "!" .. tostring(error_count))
-    warnings = highlight_text("Statusline_diagnostic_warn", "*" .. tostring(warning_count))
-    info = highlight_text("Statusline_diagnostic_info", "+" .. tostring(info_count))
-    hint = highlight_text("Statusline_diagnostic_hint", "-" .. tostring(hint_count))
+    warnings = highlight_text("Statusline_diagnostic_warn", "~" .. tostring(warning_count))
 
     return highlight_text("Statusline_misc_text", "(")
-        .. table.concat({ errors, warnings, info, hint }, " ")
+        .. table.concat({ errors, warnings }, " ")
         .. highlight_text("Statusline_misc_text", ")")
-        .. " "
-        .. M.vertical_separator()
-        .. " "
 end
 
 M.lspclients = function()
@@ -87,7 +82,11 @@ M.lspclients = function()
 
     local ret = table.concat(attached_clients_name, ", ")
 
-    return " " .. highlight_text("Statusline_lspclients", " ") .. highlight_text("Statusline_text", ret)
+    return highlight_text("Statusline_lspclients", " ") .. highlight_text("Statusline_text", ret)
+
+        .. " "
+        .. M.vertical_separator()
+        .. " "
 end
 
 M.macro = function()
@@ -102,30 +101,22 @@ M.macro = function()
         .. " "
 end
 
-M.git_branch = function()
+M.git = function()
     if vim.o.columns < 100 or not vim.b.gitsigns_status_dict then
         return ""
     end
     local branch = vim.b.gitsigns_status_dict.head
     branch = branch == "" and "no branch?" or branch
-    return highlight_text("Statusline_git_branch_icon", " ") .. highlight_text("Statusline_text", branch)
-end
-
-M.git_diff = function()
-    if not vim.b.gitsigns_status_dict or vim.fn.expand "%" == "%" then
-        return ""
-    end
+    local branch_text = highlight_text("Statusline_git_branch_icon", " ") .. highlight_text("Statusline_text", branch)
 
     local added = highlight_text("Statusline_git_diff_added", "+" .. tostring(vim.b.gitsigns_status_dict.added))
     local changed = highlight_text("Statusline_git_diff_changed", "~" .. tostring(vim.b.gitsigns_status_dict.changed))
     local removed = highlight_text("Statusline_git_diff_removed", "-" .. tostring(vim.b.gitsigns_status_dict.removed))
-
-    return highlight_text("Statusline_misc_text", "(")
+    local diff_text = highlight_text("Statusline_misc_text", "(")
         .. table.concat({ added, changed, removed }, " ")
         .. highlight_text("Statusline_misc_text", ")")
-        .. " "
-        .. M.vertical_separator()
-        .. " "
+
+    return string.format("%s%s %s ", branch_text, diff_text, M.vertical_separator())
 end
 
 M.filename = function()
