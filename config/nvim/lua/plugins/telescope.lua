@@ -28,7 +28,6 @@ M.config = function()
     local actions = require "telescope.actions"
     local fb_actions = telescope.extensions.file_browser.actions
 
-
     if not vim.g.neovide then
         require("telescope.pickers.layout_strategies").horizontal_edit = function(
             picker,

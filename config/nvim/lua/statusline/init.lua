@@ -18,7 +18,6 @@ function M.draw()
         comps.mode(),
         comps.lspclients(),
         comps.diagnostics(),
-        highlight_text("Statusline", "%="),
         comps.filename(),
         highlight_text("Statusline", "%="),
         comps.macro(),

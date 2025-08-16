@@ -5,7 +5,7 @@ local M = {
     ft = "norg",
     version = "*", -- Pin Neorg to the latest stable release
     cmd = "Neorg",
-    dependencies = { "benlubas/neorg-interim-ls" }
+    dependencies = { "benlubas/neorg-interim-ls" },
 }
 
 M.config = function()
@@ -21,7 +21,7 @@ M.config = function()
                     icon_preset = "diamond",
                     icons = {
                         code_block = {
-                            spell_check = false,  -- this should be by default
+                            spell_check = false, -- this should be by default
                             content_only = false, -- also dim @code and @end
                         },
                         markup = {
@@ -67,18 +67,18 @@ M.config = function()
                                 code_block = {
                                     affect = "background",
                                     percentage = 20,
-                                    reference = "Normal"
+                                    reference = "Normal",
                                 },
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 },
             },
             -- Make this actually dimmed
             ["core.todo-introspector"] = {
                 config = { highlight_group = "LspInlayHint" },
-            }
-        }
+            },
+        },
     }
 end
 
