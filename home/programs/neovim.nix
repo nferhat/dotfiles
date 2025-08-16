@@ -1,5 +1,6 @@
 {
   inputs',
+  config,
   pkgs,
   ...
 }: {
@@ -23,13 +24,7 @@
   };
 
   xdg.configFile = {
-    "nvim" = {
-      enable = true;
-      source = ../../config/nvim;
-      # We have to make it recursive to be able to install parsers in nvim/parsers,
-      # if this option is set to false, we will try to symlink into the nix store.
-      recursive = true;
-    };
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/nferhat/Documents/repos/personal/dotfiles/config/nvim/";
 
     # FIXME: Actually use the correct names, I didn't change it from my ooold neovim config
     "theme/colors.lua".text = let
