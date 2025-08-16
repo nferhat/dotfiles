@@ -119,6 +119,13 @@
       pkgs.via # include udev rules for keyboard config
     ];
 
+    # The laptop is already guarded by secure boot + full-disk encryption
+    # So when we enter, might aswell autologin
+    getty = {
+        autologinOnce = true;
+        autologinUser = "nferhat";
+    };
+
     printing = {
         enable = true;
         drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
