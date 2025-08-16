@@ -281,4 +281,16 @@ return {
     BlinkCmpKindFolder = { fg = "#f1d068" },
     BlinkCmpKindFile = { link = "BlinkCmpKindEvent" },
     BlinkCmpKindStruct = { link = "BlinkCmpKindConstant" },
+
+    -- mini.clue
+    MiniClueDescSingle = { bg = C.dark_background, fg = C.color4 },
+    MiniClueDescGroup = { bg = C.dark_background, fg = C.color12, bold = true },
+    MiniClueNextKey = { bg = C.dark_background, fg = C.color5 },
+    MiniClueNextKeyWithPostkeys = { link = "MiniClueNextKey" },
+    MiniClueSeparator = { bg = C.dark_background, fg = C.border },
+    MiniClueTitle = { bg = C.dark_background, fg = C.color4, bold = true },
+    MiniClueBorder = { link = "FloatBorder" },
+
+    -- Neorg
+    -- ["@neorg.tags.ranged_verbatim.code_block"] = { bg = C.dark_background },
 }
