@@ -290,7 +290,4 @@ return {
     MiniClueSeparator = { bg = C.dark_background, fg = C.border },
     MiniClueTitle = { bg = C.dark_background, fg = C.color4, bold = true },
     MiniClueBorder = { link = "FloatBorder" },
-
-    -- Neorg
-    -- ["@neorg.tags.ranged_verbatim.code_block"] = { bg = C.dark_background },
 }
