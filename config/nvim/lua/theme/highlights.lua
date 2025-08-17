@@ -124,13 +124,13 @@ return {
     -- Statusline, since its included with the config (not a plugin)
     StatusLine = { bg = C.dark_background, fg = C.foreground },
     StatusLineNC = { bg = C.dark_background, fg = C.foreground },
-    StatusLine_mode_Normal = { fg = C.color1, bg = C.dark_background:brighten(0.5) },
-    StatusLine_mode_Insert = { fg = C.color2, bg = C.dark_background:brighten(0.5) },
-    Statusline_mode_Terminal = { fg = C.color1, bg = C.dark_background:brighten(0.5) },
-    Statusline_mode_Visual = { fg = C.color4, bg = C.dark_background:brighten(0.5) },
-    Statusline_mode_Select = { fg = C.color3, bg = C.dark_background:brighten(0.5) },
-    Statusline_mode_Command = { fg = C.color5, bg = C.dark_background:brighten(0.5) },
-    Statusline_mode_Confirm = { fg = C.color6, bg = C.dark_background:brighten(0.5) },
+    StatusLine_mode_Normal = { fg = C.color1, bg = C.dark_background },
+    StatusLine_mode_Insert = { fg = C.color2, bg = C.dark_background },
+    Statusline_mode_Terminal = { fg = C.color1, bg = C.dark_background },
+    Statusline_mode_Visual = { fg = C.color4, bg = C.dark_background },
+    Statusline_mode_Select = { fg = C.color3, bg = C.dark_background },
+    Statusline_mode_Command = { fg = C.color5, bg = C.dark_background },
+    Statusline_mode_Confirm = { fg = C.color6, bg = C.dark_background },
     Statusline_mode_NTerminal = { link = "Statusline_mode_term", bold = true },
     -- Filetype section
     Statusline_filetype_default = { bg = C.dark_background, fg = C.color1 },
@@ -159,7 +159,7 @@ return {
     Statusline_misc_text = { bg = C.dark_background, fg = C.comment, italic = false },
     Statusline_text = { bg = C.dark_background, fg = C.foreground },
     -- Line and column
-    Statusline_linecol = { bg = C.dark_background:brighten(1.2), fg = C.foreground },
+    Statusline_linecol = { bg = C.dark_background, fg = C.foreground },
 
     -- renamer, see lua/renamer
     RenamerTitle = { bg = C.color2, fg = C.color0 },
