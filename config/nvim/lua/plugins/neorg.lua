@@ -5,7 +5,10 @@ local M = {
     ft = "norg",
     version = "*", -- Pin Neorg to the latest stable release
     cmd = "Neorg",
-    dependencies = { "benlubas/neorg-interim-ls" },
+    dependencies = {
+        "benlubas/neorg-interim-ls",
+        "benlubas/neorg-conceal-wrap"
+    },
 }
 
 M.config = function()
@@ -41,6 +44,8 @@ M.config = function()
                     },
                 },
             },
+            -- Proper wrapping when concealer is on
+            ["external.conceal-wrap"] = {},
 
             -- Completion to make my life easier
             -- No blink.cmp support yet, use external shim LSP

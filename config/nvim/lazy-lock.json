@@ -9,6 +9,7 @@
   "lua-utils.nvim": { "branch": "main", "commit": "e565749421f4bbb5d2e85e37c3cef9d56553d8bd" },
   "mini.clue": { "branch": "main", "commit": "0b5e4b138b62ffda7d95904aa2f208d4cfb008c1" },
   "neorg": { "branch": "main", "commit": "e206c9642f4a115cd836e76c98ef785623d335bc" },
+  "neorg-conceal-wrap": { "branch": "main", "commit": "e08b06042b175355496d3b5b033658021b90cd82" },
   "neorg-interim-ls": { "branch": "main", "commit": "348cd121d8b872248e9b0e48e3611c54dfad83f0" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
