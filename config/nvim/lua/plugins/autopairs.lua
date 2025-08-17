@@ -25,7 +25,7 @@ M.config = function()
 
     local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
     autopairs.add_rules {
-        Rule(" ", " ")
+        Rule(" ", " ", "-norg")
             :with_pair(function(opts)
                 local pair = opts.line:sub(opts.col - 1, opts.col)
                 return vim.tbl_contains({
@@ -47,7 +47,7 @@ M.config = function()
             end),
     }
     for _, bracket in pairs(brackets) do
-        Rule("", " " .. bracket[2])
+        Rule("", " " .. bracket[2], "-norg")
             :with_pair(cond.none())
             :with_move(function(opts)
                 return opts.char == bracket[2]
