@@ -18,9 +18,6 @@ M.config = function()
             -- Leader triggers
             { mode = "n", keys = "<Leader>" },
             { mode = "x", keys = "<Leader>" },
-            -- Local-leader (mostly required for neorg)
-            { mode = "n", keys = "<LocalLeader>" },
-            { mode = "x", keys = "<LocalLeader>" },
 
             -- Built-in completion
             { mode = "i", keys = "<C-x>" },
@@ -56,6 +53,12 @@ M.config = function()
             miniclue.gen_clues.registers(),
             miniclue.gen_clues.windows(),
             miniclue.gen_clues.z(),
+
+            -- <leader>n always maps to neorg
+            { mode = "n", keys = "<Leader>n", desc = "+Neorg" },
+            { mode = "n", keys = "<Leader>ni", desc = "+Insert" },
+            { mode = "n", keys = "<Leader>nt", desc = "+Task" },
+            { mode = "n", keys = "<Leader>nl", desc = "+List" },
         },
     }
 end
