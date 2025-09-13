@@ -11,6 +11,7 @@
     ./ghostty.nix
     ./games.nix
     ./adw-steam.nix
+    ./halloy.nix
     ./browser
   ];
   home.packages = with pkgs; [

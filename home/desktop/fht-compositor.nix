@@ -354,6 +354,7 @@
           match-app-id = [
             # Most gnome apps behave better when floating.
             "^(org.gnome.*)$"
+            "org.squidowl.halloy"
             "file_progress"
             "confirm"
             "dialog"
