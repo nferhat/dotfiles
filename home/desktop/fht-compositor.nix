@@ -372,6 +372,27 @@
           floating = true;
           centered = true;
         }
+
+        # gpu-screen-recorder hacking to get it to "work"
+        # Eh, its not the best, I have it installed through flatpak, but it works I guess?
+        {
+          match-title = ["^(gsr ui)$"  "^(gsr notify)$"];
+          floating = true;
+          fullscreen = false;
+          blur.disable = true;
+          border = { thickness = 0; radius = 0; };
+          ontop = true;
+        }
+        # Place the notification at the edge of the screen, where its supposed to be.
+        # ---
+        # With skip-focus we won't be able to focus it. The real solution would have been to
+        # actually use layer-shells for this, but I am too lazy to separate gsr-notify codebase
+        # into two for that. (at least as of right now)
+        {
+          match-title = ["^(gsr notify)$"];
+          skip-focus = true;
+          location = { x = 2080; y = 150; };
+        }
       ];
 
       layer-rules = [

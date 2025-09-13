@@ -111,6 +111,7 @@
     };
 
     printing.enable = true;
+    flatpak.enable = true;
   };
 
   systemd = {
@@ -126,6 +127,7 @@
     localsend.enable = true;
     nix-ld.enable = true;
     appimage.enable = true;
+    gpu-screen-recorder.enable = true;
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
@@ -165,6 +167,7 @@
   virtualisation.spiceUSBRedirection.enable = true;
   users.users."nferhat".extraGroups = ["adbusers" "libvirtd"];
   environment.systemPackages = with pkgs; [
+    gpu-screen-recorder-gtk
     scrcpy
     lact
   ];
