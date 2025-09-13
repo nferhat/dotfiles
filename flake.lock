@@ -141,11 +141,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1754413018,
-        "narHash": "sha256-63HLRguukB1Ja1ScQBriodSncVMlITsLLhN3qpZW/jI=",
+        "lastModified": 1757667716,
+        "narHash": "sha256-Er1+p7set6/0Jz6zAqw6SChParbuJQY5oIsXwDxvEBM=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "e4f0a5e413606a1e049abd232563b827e0bb3f7f",
+        "rev": "ad6094c61f43d33ca62bb8c485bfb8adf4528dc6",
         "type": "github"
       },
       "original": {
@@ -169,11 +169,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754412932,
-        "narHash": "sha256-h+9iRGxsO30qt6XmdB7si9FtPSKJ4PmJXcIyXLWm1QU=",
+        "lastModified": 1757515251,
+        "narHash": "sha256-msst/d5JaJwssgXv1bqxg9L1pxpCQ0s2P6SFem+mOwE=",
         "owner": "nferhat",
         "repo": "fht-share-picker",
-        "rev": "584625e7eaf319e43d9d3a50e84c40980d54546d",
+        "rev": "896322e1e9c76e1e974ae9ce8c107f9a358fe19d",
         "type": "github"
       },
       "original": {

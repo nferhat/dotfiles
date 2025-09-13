@@ -12,6 +12,8 @@
 
     # Max out resolution and framerate on main display
     outputs.DP-3.mode = "2560x1440@180";
+    # See window rules in fht-compositor.nix
+    outputs.DP-3.vrr = "on-demand";
   };
 
   # I was too bothered to move over the key.

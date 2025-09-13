@@ -315,6 +315,10 @@
         # All windows on workspace 6 (reserved for games) must be floating
         {
           on-workspace = 5;
+          match-title = [
+            "^Minecraft.*" # minecraft sets blank app-id
+            "GT: New Horizons.*"  # modpack for minecraft
+          ];
           match-app-id = [
             "Celeste.bin.x86_64"
             "steam_app_*"
@@ -328,17 +332,19 @@
           blur.disable = true; # to get slightly more performance
           floating = true;
           centered = true;
+          open-on-workspace = 5;
+          vrr = true;
         }
 
         # Web browsers open on workspace 2
         {
-          match-app-id = ["LibreWolf"];
+          match-app-id = ["LibreWolf" "zen-twilight"];
           open-on-workspace = 1;
         }
 
         # Chat clients on workspace 3
         {
-          match-app-id = ["WebCord" "Telegram" "org.gnome.Fractal"];
+          match-app-id = ["vesktop" "Telegram" "org.gnome.Fractal"];
           match-title = [".*Telegram.*"];
           open-on-workspace = 2;
         }
