@@ -1,7 +1,10 @@
+return {}
+--[[
 -- The life-changer, note-taker, organizer, everything
 -- Trying to get rid of obsidian for my stuff
 local M = {
     "nvim-neorg/neorg",
+    disable = true,
     ft = "norg",
     version = "*", -- Pin Neorg to the latest stable release
     cmd = "Neorg",
@@ -117,3 +120,4 @@ M.config = function()
 end
 
 return M
+    --]]

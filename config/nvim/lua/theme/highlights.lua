@@ -259,7 +259,7 @@ return {
     BlinkCmpKindSnippet = { fg = C.color2, bg = cmp_bg(C.dark_background:increase_green(4)) },
     BlinkCmpKindConstant = {
         fg = C.color3,
-        bg = cmp_bg(C.dark_background:increase_red(6):increase_green(4):brighten(4)),
+        bg = cmp_bg(C.dark_background:increase_red(4):increase_green(2):brighten(1)),
     },
     BlinkCmpKindConstructor = C.color4,
     BlinkCmpKindEnum = { link = "BlinkCmpKindConstant" },
