@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./secure-boot.nix
@@ -21,6 +25,7 @@
     ];
     kernelParams = [
       "video=DP-1:2560x1440@180" # use highest mode available on boot
+      "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
     ];
   };
 
