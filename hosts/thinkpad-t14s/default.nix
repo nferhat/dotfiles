@@ -122,15 +122,14 @@
     # The laptop is already guarded by secure boot + full-disk encryption
     # So when we enter, might aswell autologin
     getty = {
-        autologinOnce = true;
-        autologinUser = "nferhat";
+      autologinOnce = true;
+      autologinUser = "nferhat";
     };
 
     printing = {
-        enable = true;
-        drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
+      enable = true;
+      drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
     };
-
 
     blueman.enable = true;
     upower.enable = true;

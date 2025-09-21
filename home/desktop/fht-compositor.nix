@@ -345,12 +345,12 @@
 
         # picture-in-picture mode
         {
-            match-all = true;
-            match-title = ["Picture-in-Picture"];
-            match-app-id = ["zen-twilight"];
-            floating = true;
-            ontop = true;
-            border.thickness = 0;
+          match-all = true;
+          match-title = ["Picture-in-Picture"];
+          match-app-id = ["zen-twilight"];
+          floating = true;
+          ontop = true;
+          border.thickness = 0;
         }
 
         # Chat clients on workspace 3
