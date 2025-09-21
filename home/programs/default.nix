@@ -31,6 +31,7 @@
       pciutils
       usbutils
       findutils
+      ffmpeg
     ];
 
     shellAliases = {

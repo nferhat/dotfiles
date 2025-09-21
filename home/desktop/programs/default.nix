@@ -30,6 +30,7 @@
     gtklock
     bustle
     inputs'.watershot.packages.default
+    qbittorrent
 
     # Wayland utilities for the graphical session.
     grim
