@@ -60,6 +60,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Stupid games that require secureboot to work. Still good to have though.
     # TODO: Enable this for thinkpad-t14s, currently only setup for basement
     lanzaboote = {
