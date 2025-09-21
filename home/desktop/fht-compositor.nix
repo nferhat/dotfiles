@@ -18,6 +18,7 @@
       general = {
         cursor-warps = true;
         focus-new-windows = true;
+        focus-follows-mouse = false;
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
@@ -49,8 +50,8 @@
         };
 
         blur = {
-          radius = 10;
-          passes = 2;
+          radius = 3;
+          passes = 4;
           noise = 0.12;
         };
       };
@@ -317,7 +318,7 @@
           on-workspace = 5;
           match-title = [
             "^Minecraft.*" # minecraft sets blank app-id
-            "GT: New Horizons.*"  # modpack for minecraft
+            "GT: New Horizons.*" # modpack for minecraft
           ];
           match-app-id = [
             "Celeste.bin.x86_64"
@@ -340,6 +341,16 @@
         {
           match-app-id = ["LibreWolf" "zen-twilight"];
           open-on-workspace = 1;
+        }
+
+        # picture-in-picture mode
+        {
+            match-all = true;
+            match-title = ["Picture-in-Picture"];
+            match-app-id = ["zen-twilight"];
+            floating = true;
+            ontop = true;
+            border.thickness = 0;
         }
 
         # Chat clients on workspace 3
@@ -376,11 +387,14 @@
         # gpu-screen-recorder hacking to get it to "work"
         # Eh, its not the best, I have it installed through flatpak, but it works I guess?
         {
-          match-title = ["^(gsr ui)$"  "^(gsr notify)$"];
+          match-title = ["^(gsr ui)$" "^(gsr notify)$"];
           floating = true;
           fullscreen = false;
           blur.disable = true;
-          border = { thickness = 0; radius = 0; };
+          border = {
+            thickness = 0;
+            radius = 0;
+          };
           ontop = true;
         }
         # Place the notification at the edge of the screen, where its supposed to be.
@@ -391,7 +405,10 @@
         {
           match-title = ["^(gsr notify)$"];
           skip-focus = true;
-          location = { x = 2080; y = 150; };
+          location = {
+            x = 2080;
+            y = 150;
+          };
         }
       ];
 
