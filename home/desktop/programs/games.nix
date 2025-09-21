@@ -9,9 +9,9 @@
     osu-lazer-bin
     # Not a GUI but it's a CLI for celeste mod management.
     #
-    # I cannot get olympus to work properly, unless I use a hacky flake that
-    # I lost a long time ago.
-    self'.packages.mons
+    # FIXME: Currently broken, complains about tkinter not building, tommath?
+    # Idk, too bothered to fix it + I play celeste on windows and manage mods from there for now
+    # self'.packages.mons
   ];
 
   # Good HUD for stats and stuff. Replaces what I don't have with AMD Adrenalin
