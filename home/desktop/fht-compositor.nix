@@ -379,6 +379,7 @@
             "pinentry"
             "splash"
             "gay.pancake.lsfg-vk-ui"
+            "openrgb"
           ];
           floating = true;
           centered = true;
