@@ -54,6 +54,8 @@ O.statusline = "%!v:lua.require('statusline').draw()"
 O.cmdheight = 0
 O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
+-- Advanced extui builtin, trying it out cause its kinda cool
+require("vim._extui").enable {}
 
 -- Keymaps, also strongly influenced by my preferences.
 
