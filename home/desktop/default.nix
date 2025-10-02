@@ -41,7 +41,6 @@
   qt = {
     enable = true;
     platformTheme.name = "qtct";
-    style.name = "kvantum";
   };
 
   # TODO: Swap it out with fht-notify when I come around and actually write it
