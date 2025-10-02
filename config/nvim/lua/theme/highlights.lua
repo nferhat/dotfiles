@@ -290,4 +290,7 @@ return {
     MiniClueSeparator = { bg = C.dark_background, fg = C.border },
     MiniClueTitle = { bg = C.dark_background, fg = C.color4, bold = true },
     MiniClueBorder = { link = "FloatBorder" },
+
+    -- flutter-tools
+    FlutterWidgetGuides = { fg = C.comment:darken(7) },
 }
