@@ -26,6 +26,17 @@ local M = {
     },
 
     {
+        "saghen/blink.pairs",
+        build = "nix run .#build-plugin",
+        event = "InsertEnter",
+        opts = {
+            mappings = { cmdline = false },
+            highlights = { enabled = false },
+        },
+        config = true,
+    },
+
+    {
         "lukas-reineke/indent-blankline.nvim",
         event = "User FilePost",
         main = "ibl",
