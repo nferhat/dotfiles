@@ -51,7 +51,7 @@ O.list = true -- shows hidden stuff like tabs
 O.whichwrap:append "<>[]hl" -- move to next/prev lines with hl
 -- Custom in-house statusline
 O.statusline = "%!v:lua.require('statusline').draw()"
-O.cmdheight = 0
+-- O.cmdheight = 0
 O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
 -- Advanced extui builtin, trying it out cause its kinda cool
