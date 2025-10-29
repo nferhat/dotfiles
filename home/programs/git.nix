@@ -47,6 +47,11 @@
     delta.enable = true; # very useful
   };
 
+  programs.gh = {
+    enable = true;
+    extensions = [pkgs.gh-notify];
+  };
+
   home.shellAliases = {
     gc = "git commit";
     gco = "git checkout";
