@@ -2,10 +2,7 @@
 local M = {
     'nvim-flutter/flutter-tools.nvim',
     ft = "dart",
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
+    dependencies = { 'nvim-lua/plenary.nvim' },
 }
 
 M.config = function()

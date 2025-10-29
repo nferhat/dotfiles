@@ -98,21 +98,12 @@ M.config = function()
             local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 
             local set_keymap = vim.keymap.set
-            set_keymap(
-                "n",
-                "<leader>D",
-                "<cmd>Telescope diagnostics<CR>",
-                { desc = "Workspace diagnostics", buffer = buffer }
-            )
-
             set_keymap("n", "[d", function()
                 vim.diagnostic.jump { count = -1, float = true }
             end, { buffer = buffer })
             set_keymap("n", "]d", function()
                 vim.diagnostic.jump { count = 1, float = true }
             end, { buffer = buffer })
-            set_keymap("n", "gd", vim.lsp.buf.definition, { desc = "Symbol Definition", buffer = buffer })
-            set_keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Symbol Declaration", buffer = buffer })
             set_keymap("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover Symbol", buffer = buffer })
             set_keymap("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Buffer Code Action(s)", buffer = buffer })
             set_keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Cursor diagnostics", buffer = buffer })

@@ -54,11 +54,11 @@ M.config = function()
             miniclue.gen_clues.windows(),
             miniclue.gen_clues.z(),
 
-            -- <leader>n always maps to neorg
-            { mode = "n", keys = "<Leader>n", desc = "+Neorg" },
-            { mode = "n", keys = "<Leader>ni", desc = "+Insert" },
-            { mode = "n", keys = "<Leader>nt", desc = "+Task" },
-            { mode = "n", keys = "<Leader>nl", desc = "+List" },
+            -- -- <leader>n always maps to neorg
+            -- { mode = "n", keys = "<Leader>n", desc = "+Neorg" },
+            -- { mode = "n", keys = "<Leader>ni", desc = "+Insert" },
+            -- { mode = "n", keys = "<Leader>nt", desc = "+Task" },
+            -- { mode = "n", keys = "<Leader>nl", desc = "+List" },
         },
     }
 end

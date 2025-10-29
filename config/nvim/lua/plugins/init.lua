@@ -36,27 +36,6 @@ local M = {
         config = true,
     },
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "User FilePost",
-        main = "ibl",
-        opts = {
-            indent = {
-                char = "│",
-                highlight = "IndentGuide",
-                smart_indent_cap = true,
-            },
-            scope = {
-                enabled = true,
-                highlight = "IndentGuideScope",
-                char = "│",
-            },
-        },
-        config = function(_, opts)
-            require("ibl").setup(opts)
-        end,
-    },
-
     -- Gitsigns, nothing fancy
     -- TODO: Maybe write a copy myself? I don't make use of all the features this plugin has.
     {

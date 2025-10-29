@@ -8,8 +8,8 @@ end
 return {
     -- base neovim tui highlights
     normal = { fg = C.foreground, bg = "none" },
-    normalfloat = { fg = C.foreground, bg = C.dark_background },
-    floatborder = { bg = C.dark_background, fg = C.border },
+    normalfloat = { fg = C.foreground, bg = "none" },
+    floatborder = { bg = "none", fg = C.border },
     cold = { bold = true },
     debug = { fg = C.color1, bold = true },
     directory = C.color4,
@@ -218,10 +218,6 @@ return {
     ["@markup.link.label"] = C.color4,
     ["@markup.link.url"] = C.color9,
 
-    -- indent-blankline.nvim
-    IndentGuide = C.border:brighten(1.5),
-    IndentGuideScope = C.border:brighten(3.5),
-
     -- gitsigns.nvim
     GitSignsAdd = C.color2,
     GitSignsChange = C.color4,
@@ -230,17 +226,11 @@ return {
     GitSignsTopDelete = C.color9,
     GitSignsUntracked = C.comment,
 
-    -- telescope.nvim
-    TelescopeNormal = { fg = C.foreground, bg = "none" },
-    TelescopeBorder = { fg = C.border, bg = "none" },
-    TelescopeSelection = { bg = C.color8:decrease_green(0.5), fg = C.color4, bold = true },
-    TelescopeSelectionCaret = { bg = C.selection, fg = C.color4 },
-    TelescopeMatching = { fg = C.color9, bold = true, italic = false },
-    TelescopeMultiIcon = { fg = C.color1, bold = true },
-    TelescopeMultiSelection = { fg = C.color3, bold = true },
-    TelescopePromptCounter = C.comment,
-    TelescopePreviewMessageFillchar = C.comment,
-    TelescopePreviewMessage = { fg = C.color7, bold = true },
+    -- snacks.nvim
+    SnacksPicker = { bg = "none" },
+    SnacksBorder = { fg = C.border, bg = "none" },
+    SnacksIndent = C.border:brighten(1.5),
+    SnacksIndentScope = C.border:brighten(10.0),
 
     -- blink.cmp
     BlinkCmpMenu = { bg = C.light_background },
