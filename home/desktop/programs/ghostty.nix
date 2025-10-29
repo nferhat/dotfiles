@@ -28,7 +28,7 @@
       window-padding-x = 5;
       window-padding-y = 5;
       window-padding-color = "extend";
-      # adjust-underline-position = "100%";
+      window-inherit-working-directory = false;
       # The heuristics to detected if ghostty should enable/disable this are not supported in
       # fht-compositor, so we force this on instead.
       gtk-single-instance = true;
@@ -37,6 +37,7 @@
       confirm-close-surface = false;
 
       # Theme, directly ported from alacritty.
+      background-opacity-cells = true;
       background = theme.background.primary;
       background-opacity = 0.9;
       foreground = theme.text.primary;
