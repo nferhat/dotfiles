@@ -32,6 +32,7 @@
       usbutils
       findutils
       ffmpeg
+      libqalculate
     ];
 
     shellAliases = {
