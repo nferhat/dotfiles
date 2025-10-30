@@ -32,6 +32,7 @@ M.config = function()
         float = {
             header = "",
             prefix = "",
+            border = "single",
             style = "minimal",
         },
     }
@@ -104,7 +105,13 @@ M.config = function()
             set_keymap("n", "]d", function()
                 vim.diagnostic.jump { count = 1, float = true }
             end, { buffer = buffer })
-            set_keymap("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover Symbol", buffer = buffer })
+            set_keymap("n", "<leader>k", function()
+                vim.lsp.buf.hover {
+                    border = "single",
+                    max_width = math.floor(vim.o.columns * 0.6),
+                    max_height = math.floor(vim.o.lines * 0.5),
+                }
+            end, { desc = "Hover Symbol", buffer = buffer })
             set_keymap("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Buffer Code Action(s)", buffer = buffer })
             set_keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Cursor diagnostics", buffer = buffer })
             set_keymap("n", "<leader>r", require "renamer", { desc = "Rename Symbol", buffer = buffer })
