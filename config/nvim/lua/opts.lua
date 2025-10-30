@@ -122,6 +122,24 @@ set_keymap({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboar
 set_keymap("i", "<Esc>", "<Esc>`^", { noremap = true })
 O.virtualedit = "onemore"
 
+-- A keybind to automatically parse ansi escape codes into whatever you want
+set_keymap("n", "<leader>A", function()
+    vim.opt.listchars = { space = " " }
+
+    local buf = vim.api.nvim_get_current_buf()
+
+    local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+    while #lines > 0 and vim.trim(lines[#lines]) == "" do
+        lines[#lines] = nil
+    end
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, {})
+
+    vim.api.nvim_chan_send(vim.api.nvim_open_term(buf, {}), table.concat(lines, "\r\n"))
+    vim.keymap.set("n", "q", "<cmd>qa!<cr>", { silent = true, buffer = buf })
+    vim.api.nvim_create_autocmd("TextChanged", { buffer = buf, command = "normal! G$" })
+    vim.api.nvim_create_autocmd("TermEnter", { buffer = buf, command = "stopinsert" })
+end, { noremap = true, desc = "Colorize ansi sequences in file" })
+
 -- Autocommands
 -- Some stuff that editors do automatically but not present in neovim
 -- Don't pollute the global autogroup namespace
