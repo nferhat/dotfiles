@@ -15,7 +15,7 @@ function M.draw()
     local stopper = highlight_text("Statusline", "")
 
     local statusline = table.concat({
-        comps.mode("▌ "), -- similar to doom emacs
+        comps.mode "▌ ", -- similar to doom emacs
         comps.filename(), -- relative/path/to/file.lua (relative to CWD)
         comps.diagnostics(), -- shown next to the file to instantly know
         highlight_text("Statusline", "%="),
@@ -23,7 +23,7 @@ function M.draw()
         comps.lspclients(), -- attached lsp clients
         comps.git(), -- git branch + git diff
         highlight_text("Statusline_linecol", "%03.3l:%03.3c "),
-        comps.mode("▐"), -- similar to doom emacs
+        comps.mode "▐", -- similar to doom emacs
     }, stopper)
 
     return statusline

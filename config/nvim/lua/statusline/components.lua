@@ -82,8 +82,8 @@ M.lspclients = function()
 
     local ret = table.concat(attached_clients_name, ", ")
 
-    return highlight_text("Statusline_lspclients", " ") .. highlight_text("Statusline_text", ret)
-
+    return highlight_text("Statusline_lspclients", " ")
+        .. highlight_text("Statusline_text", ret)
         .. " "
         .. M.vertical_separator()
         .. " "
@@ -107,7 +107,8 @@ M.git = function()
     end
     local branch = vim.b.gitsigns_status_dict.head
     branch = branch == "" and "no branch?" or branch
-    local branch_text = highlight_text("Statusline_git_branch_icon", " ") .. highlight_text("Statusline_text", branch)
+    local branch_text = highlight_text("Statusline_git_branch_icon", " ")
+        .. highlight_text("Statusline_text", branch)
 
     local added = highlight_text("Statusline_git_diff_added", "+" .. tostring(vim.b.gitsigns_status_dict.added))
     local changed = highlight_text("Statusline_git_diff_changed", "~" .. tostring(vim.b.gitsigns_status_dict.changed))

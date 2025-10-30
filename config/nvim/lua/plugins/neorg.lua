@@ -8,7 +8,7 @@ local M = {
     cmd = "Neorg",
     dependencies = {
         "benlubas/neorg-interim-ls",
-        "benlubas/neorg-conceal-wrap"
+        "benlubas/neorg-conceal-wrap",
     },
 }
 
@@ -101,12 +101,32 @@ M.config = function()
     set_keymap("n", "<leader>nli", "<Plug>(neorg.pivot.list.insert)", { desc = "Invert all list elements" })
     set_keymap("n", "<leader>nlt", "<Plug>(neorg.pivot.list.toggle)", { desc = "Toggle all list elements" })
     -- <leader>nt - **T**ask/todo
-    set_keymap("n", "<leader>nta", "<Plug>(neorg.qol.todo-items.todo.task-ambiguous)", { desc = "Mark task as ambiguous" })
-    set_keymap("n", "<leader>ntc", "<Plug>(neorg.qol.todo-items.todo.task-cancelled)", { desc = "Mark task as cancelled" })
+    set_keymap(
+        "n",
+        "<leader>nta",
+        "<Plug>(neorg.qol.todo-items.todo.task-ambiguous)",
+        { desc = "Mark task as ambiguous" }
+    )
+    set_keymap(
+        "n",
+        "<leader>ntc",
+        "<Plug>(neorg.qol.todo-items.todo.task-cancelled)",
+        { desc = "Mark task as cancelled" }
+    )
     set_keymap("n", "<leader>ntd", "<Plug>(neorg.qol.todo-items.todo.task-done)", { desc = "Mark task as done" })
     set_keymap("n", "<leader>nth", "<Plug>(neorg.qol.todo-items.todo.task-on-hold)", { desc = "Mark task as on-hold" })
-    set_keymap("n", "<leader>nti", "<Plug>(neorg.qol.todo-items.todo.task-important)", { desc = "Mark task as important" })
-    set_keymap("n", "<leader>ntr", "<Plug>(neorg.qol.todo-items.todo.task-recurring)", { desc = "Mark task as recurring" })
+    set_keymap(
+        "n",
+        "<leader>nti",
+        "<Plug>(neorg.qol.todo-items.todo.task-important)",
+        { desc = "Mark task as important" }
+    )
+    set_keymap(
+        "n",
+        "<leader>ntr",
+        "<Plug>(neorg.qol.todo-items.todo.task-recurring)",
+        { desc = "Mark task as recurring" }
+    )
     set_keymap("n", "<leader>ntu", "<Plug>(neorg.qol.todo-items.todo.task-undone)", { desc = "Mark task as undone" })
 
     -- Jumping between headers

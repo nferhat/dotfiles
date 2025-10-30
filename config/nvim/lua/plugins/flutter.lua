@@ -1,9 +1,9 @@
 -- Starting out in flutter dev.
 local M = {
-    'nvim-flutter/flutter-tools.nvim',
+    "nvim-flutter/flutter-tools.nvim",
     enabled = false,
     ft = "dart",
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { "nvim-lua/plenary.nvim" },
 }
 
 M.config = function()
