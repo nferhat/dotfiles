@@ -65,6 +65,7 @@ return {
                 },
                 -- A variation of the ivy picker without prompt. I don't need it for a file explorer
                 explorer_no_prompt = {
+                    hidden = { "input" },
                     layout = {
                         box = "horizontal",
                         height = 0.55,
@@ -98,11 +99,15 @@ return {
         {
             "<leader><space>",
             function()
-                -- I really hate tree-like explorers, they make it really confusing to reason about
-                -- specially when there's a lot of nesting happening.
-                Snacks.picker.explorer({ tree = false, layout = "explorer_no_prompt", follow_file = true })
+                Snacks.picker.explorer {
+                    tree = true,
+                    layout = "explorer_no_prompt",
+                    follow_file = true,
+                    auto_close = true,
+                    win = { icons = { dir = "", dir_open = "" } },
+                }
             end,
-            desc = "File Explorer"
+            desc = "File Explorer",
         },
 
         -- Quick scratch buffer useful to write down stuff I think about
