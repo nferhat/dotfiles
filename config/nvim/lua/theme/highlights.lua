@@ -273,12 +273,12 @@ return {
     BlinkCmpKindStruct = { link = "BlinkCmpKindConstant" },
 
     -- mini.clue
-    MiniClueDescSingle = { bg = C.dark_background, fg = C.color4 },
-    MiniClueDescGroup = { bg = C.dark_background, fg = C.color12, bold = true },
-    MiniClueNextKey = { bg = C.dark_background, fg = C.color5 },
+    MiniClueDescSingle = { bg = "none", fg = C.color4 },
+    MiniClueDescGroup = { bg = "none", fg = C.color12, bold = true },
+    MiniClueNextKey = { bg = "none", fg = C.color5 },
     MiniClueNextKeyWithPostkeys = { link = "MiniClueNextKey" },
-    MiniClueSeparator = { bg = C.dark_background, fg = C.border },
-    MiniClueTitle = { bg = C.dark_background, fg = C.color4, bold = true },
+    MiniClueSeparator = { bg = "none", fg = C.border },
+    MiniClueTitle = { bg = "none", fg = C.color4, bold = true },
     MiniClueBorder = { link = "FloatBorder" },
 
     -- flutter-tools

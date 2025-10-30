@@ -8,6 +8,7 @@ return {
     opts = {
         quickfile = {}, -- Simple yet really useful
         scratch = { win = { border = "single" } },
+        input = { win = { border = "single" } },
         -- No need for these.
         dashboard = { enabled = false },
         statuscolumn = { enabled = false },

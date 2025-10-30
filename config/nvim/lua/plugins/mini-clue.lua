@@ -8,7 +8,7 @@ M.config = function()
     miniclue.setup {
         window = {
             config = {
-                border = "solid",
+                border = "single",
                 style = "minimal",
                 width = "auto",
             },
