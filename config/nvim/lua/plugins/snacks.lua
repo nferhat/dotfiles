@@ -1,17 +1,23 @@
----@type Snacks
 Snacks = Snacks
 
 return {
     "folke/snacks.nvim",
     lazy = false,
-    ---@type snacks.Config
     opts = {
         quickfile = {}, -- Simple yet really useful
         scratch = { win = { border = "single" } },
         input = { win = { border = "single" } },
         -- No need for these.
         dashboard = { enabled = false },
-        statuscolumn = { enabled = false },
+
+        -- Better ordering, nothing special though.
+        statuscolumn = {
+            left = { "mark", "sign" },
+            right = { "fold", "git" },
+            folds = { open = false, git_hl = true },
+            git = { patterns = { "GitSign" } },
+            refresh = 50, -- refresh at most every 100ms
+        },
 
         -- Replaces indent-blankline.nvim
         indent = { char = "│", scope = { underline = true } },
@@ -34,14 +40,15 @@ return {
                         width = 0.8,
                         min_width = 120,
                         height = 0.8,
-                        border = "single",
+                        border = "none",
                         {
                             box = "vertical",
                             title = "{title} {live} {flags}",
-                            { win = "input", height = 1,     border = "bottom" },
-                            { win = "list",  border = "none" },
+                            border = "solid",
+                            { win = "input", height = 1, border = "bottom" },
+                            { win = "list", border = "none" },
                         },
-                        { win = "preview", title = "{preview}", border = "left", width = 0.6 },
+                        { win = "preview", border = "solid", width = 0.6, minimal = true },
                     },
                 },
                 -- Variation of default picker with a smaller window size and larger preview window
@@ -52,38 +59,36 @@ return {
                         width = 0.3,
                         min_width = 120,
                         height = 0.4,
-                        border = "single",
-                        {
-                            box = "vertical",
-                            title = "{title} {live} {flags}",
-                            { win = "list",  border = "none" },
-                        },
-                        { win = "preview", title = "{preview}", border = "left", width = 0.65 },
+                        { win = "list", border = "solid" },
+                        { win = "preview", border = "solid", width = 0.65, minimal = true },
                     },
-
                 },
-                -- A variation of the ivy picker where the prompt only spans above the list. Gains
-                -- two lines for preview
-                ivy_small_prompt = {
+                -- A variation of the ivy picker without prompt. I don't need it for a file explorer
+                explorer_no_prompt = {
                     layout = {
                         box = "horizontal",
                         height = 0.55,
-                        row = -2,
-                        {
-                            box = "vertical",
-                            backdrop = false,
-                            title_pos = "center",
-                            border = "top",
-                            {
-                                box = "vertical",
-                                backdrop = false,
-                                title_pos = "center",
-                                border = "right",
-                                { win = "input", border = "bottom", height = 1 },
-                                { win = "list",  border = "none" },
-                            },
-                        },
-                        { win = "preview", width = 0.7, border = "top" },
+                        row = -1,
+                        { win = "list", title_pos = "center", border = "solid" },
+                        { win = "preview", width = 0.7, border = "solid", minimal = true },
+                    },
+                },
+                -- Make select smaller
+                select = {
+                    hidden = { "preview" },
+                    layout = {
+                        backdrop = false,
+                        width = 0.3,
+                        min_width = 35,
+                        height = 0.4,
+                        min_height = 3,
+                        box = "vertical",
+                        border = true,
+                        title = "{title}",
+                        title_pos = "center",
+                        { win = "input", height = 1, border = "bottom" },
+                        { win = "list", border = "none" },
+                        { win = "preview", title = "{preview}", height = 0.4, border = "top" },
                     },
                 },
             },
@@ -95,7 +100,7 @@ return {
             function()
                 -- I really hate tree-like explorers, they make it really confusing to reason about
                 -- specially when there's a lot of nesting happening.
-                Snacks.picker.explorer({ tree = false, layout = "ivy_small_prompt", follow_file = true })
+                Snacks.picker.explorer({ tree = false, layout = "explorer_no_prompt", follow_file = true })
             end,
             desc = "File Explorer"
         },

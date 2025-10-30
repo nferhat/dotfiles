@@ -36,6 +36,37 @@ local M = {
         config = true,
     },
 
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            local notify = require "notify"
+            local stages = require "notify.stages.slide" "top_down"
+            -- Override vim.notify so we can use nvim-notify with it.
+            -- This basically allows all plugins to use nvim-notify to display any message they'd
+            -- like to using notify, as long as they use vim.notify as for message logging.
+            vim.notify = notify
+
+            notify.setup {
+                timeout = 4500, -- in milliseconds.
+                render = "wrapped-compact",
+                border = "solid",
+                max_width = 50,
+                fps = 180, -- smoooooth
+                stages = {
+                    function(...)
+                        local opts = stages[1](...)
+                        if opts then
+                            opts.border = "solid"
+                        end
+                        return opts
+                    end,
+                    unpack(stages, 2),
+                },
+                fade_in_slide_out = true,
+            }
+        end,
+    },
+
     -- Gitsigns, nothing fancy
     -- TODO: Maybe write a copy myself? I don't make use of all the features this plugin has.
     {

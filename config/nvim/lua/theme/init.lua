@@ -43,6 +43,40 @@ local function save_to_bytecode(highlights)
     end
 end
 
+-- SEE: https://github.com/nvim-lua/plenary.nvim/blob/master/lua/plenary/reload.lua
+local reload_module = function(module_name, starts_with_only)
+    -- Default to starts with only
+    if starts_with_only == nil then
+        starts_with_only = true
+    end
+
+    -- TODO: Might need to handle cpath / compiled lua packages? Not sure.
+    local matcher
+    if not starts_with_only then
+        matcher = function(pack)
+            return string.find(pack, module_name, 1, true)
+        end
+    else
+        local module_name_pattern = vim.pesc(module_name)
+        matcher = function(pack)
+            return string.find(pack, "^" .. module_name_pattern)
+        end
+    end
+
+    -- Handle impatient.nvim automatically.
+    local luacache = (_G.__luacache or {}).cache
+
+    for pack, _ in pairs(package.loaded) do
+        if matcher(pack) then
+            package.loaded[pack] = nil
+
+            if luacache then
+                luacache[pack] = nil
+            end
+        end
+    end
+end
+
 function M.init()
     if not vim.loop.fs_stat(M.bytecode_path) then
         -- Do an initial save
@@ -62,7 +96,7 @@ function M.init()
         end
 
         -- FIXME: Get rid of plenary for this
-        require("plenary.reload").reload_module "theme.highlights"
+        reload_module "theme.highlights"
         local data = require "theme.highlights"
         save_to_bytecode(data)
     end, {
@@ -76,6 +110,11 @@ function M.init()
     local colors = require "theme.colors"
     for i = 0, 15, 1 do
         vim.g[string.format("terminal_color_%d", i)] = "#" .. colors[string.format("color%d", i)]:HEX()
+        vim.api.nvim_set_hl(
+            0,
+            string.format("Terminal%d", i),
+            { fg = "#" .. colors[string.format("color%d", i)]:HEX() }
+        )
     end
 
     dofile(M.bytecode_path)

@@ -8,8 +8,9 @@ end
 return {
     -- base neovim tui highlights
     normal = { fg = C.foreground, bg = "none" },
-    normalfloat = { fg = C.foreground, bg = "none" },
-    floatborder = { bg = "none", fg = C.border },
+    normalfloat = { fg = C.foreground, bg = C.light_background },
+    floatborder = { bg = C.light_background },
+    floattitle = { bg = C.color2, fg = C.background },
     cold = { bold = true },
     debug = { fg = C.color1, bold = true },
     directory = C.color4,
@@ -218,6 +219,9 @@ return {
     ["@markup.link.label"] = C.color4,
     ["@markup.link.url"] = C.color9,
 
+    -- lazy.nvim
+    LazyButton = { bg = C.light_background },
+
     -- gitsigns.nvim
     GitSignsAdd = C.color2,
     GitSignsChange = C.color4,
@@ -227,10 +231,74 @@ return {
     GitSignsUntracked = C.comment,
 
     -- snacks.nvim
-    SnacksPicker = { bg = "none" },
-    SnacksBorder = { fg = C.border, bg = "none" },
+    SnacksPickerBoxTitle = { bg = C.color2, fg = C.background },
+    SnacksPickerInput = { bg = C.light_background },
+    SnacksPickerInputBorder = { bg = C.light_background, fg = C.border },
+    SnacksPickerList = { bg = C.light_background },
+    SnacksPickerListBorder = { bg = C.light_background, fg = C.border },
+    SnacksPickerListCursorLine = { bg = C.light_background, bold = true },
+    SnacksPickerPreview = { bg = C.light_background:darken(2.0) },
+    SnacksPickerPreviewBorder = { bg = C.light_background:darken(2.0) },
     SnacksIndent = C.border:brighten(1.5),
     SnacksIndentScope = C.border:brighten(10.0),
+
+    -- noice.nvim
+    -- Base highlights that we are linking against, I don't like the colors
+    -- to change based on *what* I am going todo in the command line
+    NoiceCmdlinePopup = { link = "NormalFloat" },
+    NoiceCmdlinePopupBorder = { link = "FloatBorder" },
+    NoiceCmdlinePopupTitle = { bg = C.color2, fg = C.background },
+    -- Now link these to match with the base highlight
+    NoiceCmdlinePopupBorderCalculator = { link = "FloatBorder" },
+    NoiceCmdlinePopupBorderCmdline = { link = "FloatBorder" },
+    NoiceCmdlinePopupBorderFilter = { link = "FloatBorder" },
+    NoiceCmdlinePopupBorderSearch = { link = "FloatBorder" },
+    NoiceCmdlinePopupBorderInput = { link = "FloatBorder" },
+    NoiceCmdlinePopupBorderLua = { link = "FloatBorder" },
+    -- And since noice links these to the border color, which is not what I want
+    NoiceCmdlinePopupTitleCmdline = { bg = C.color2, fg = C.background, bold = true },
+    NoiceCmdlinePopupTitleFilter = { bg = C.color3, fg = C.background, bold = true },
+    NoiceCmdlinePopupTitleSearch = { bg = C.color3, fg = C.background, bold = true },
+    NoiceCmdlinePopupTitleInput = { bg = C.color5, fg = C.background, bold = true },
+    NoiceCmdlinePopupTitleLua = { bg = C.color6, fg = C.background, bold = true },
+    -- The popup menu that does completions to the cmdline
+    NoicePopupmenu = { bg = C.light_background:darken(2.0) },
+    NoicePopupmenuBorder = { bg = C.light_background:darken(2.0) },
+    NoicePopupmenuSelected = { bg = C.light_background },
+    NoicePopupmenuMatch = { fg = C.color4, bold = true },
+    NoiceScrollbar = { bg = "none", fg = C.color5 },
+    NoiceScrollbarThumb = { bg = C.light_background:darken(2.0), fg = C.color5 },
+    -- Split view
+    NoiceSplit = { bg = C.light_background:darken(2.0) },
+    NoiceSplitBorder = { bg = C.light_background:darken(2.0) },
+
+    -- notify.nvim
+    NotifyDebugBorder = { link = "FloatBorder" },
+    NotifyErrorBorder = { link = "FloatBorder" },
+    NotifyInfoBorder = { link = "FloatBorder" },
+    NotifyTraceBorder = { link = "FloatBorder" },
+    NotifyWarnBorder = { link = "FloatBorder" },
+    NotifyDebugBody = { link = "NormalFloat" },
+    NotifyErrorBody = { link = "NormalFloat" },
+    NotifyInfoBody = { link = "NormalFloat" },
+    NotifyTraceBody = { link = "NormalFloat" },
+    NotifyWarnBody = { link = "NormalFloat" },
+    NotifyDebugBody2 = { link = "NormalFloat" },
+    NotifyErrorBody2 = { link = "NormalFloat" },
+    NotifyInfoBody2 = { link = "NormalFloat" },
+    NotifyTraceBody2 = { link = "NormalFloat" },
+    NotifyWarnBody2 = { link = "NormalFloat" },
+    NotifySeparator = C.border,
+    NotifyDebugIcon = { fg = C.color9, bg = C.light_background },
+    NotifyErrorIcon = { fg = C.color1, bg = C.light_background },
+    NotifyInfoIcon = { fg = C.color4, bg = C.light_background },
+    NotifyTraceIcon = { fg = C.color5, bg = C.light_background },
+    NotifyWarnIcon = { fg = C.color3, bg = C.light_background },
+    NotifyDebugTitle = { fg = C.color9, bg = C.light_background },
+    NotifyErrorTitle = { fg = C.color1, bg = C.light_background },
+    NotifyInfoTitle = { fg = C.color4, bg = C.light_background },
+    NotifyTraceTitle = { fg = C.color5, bg = C.light_background },
+    NotifyWarnTitle = { fg = C.color3, bg = C.light_background },
 
     -- blink.cmp
     BlinkCmpMenu = { bg = C.light_background },
@@ -273,13 +341,13 @@ return {
     BlinkCmpKindStruct = { link = "BlinkCmpKindConstant" },
 
     -- mini.clue
-    MiniClueDescSingle = { bg = "none", fg = C.color4 },
-    MiniClueDescGroup = { bg = "none", fg = C.color12, bold = true },
-    MiniClueNextKey = { bg = "none", fg = C.color5 },
+    MiniClueDescSingle = { bg = C.light_background:darken(2.0), fg = C.color4 },
+    MiniClueDescGroup = { bg = C.light_background:darken(2.0), fg = C.color12, bold = true },
+    MiniClueNextKey = { bg = C.light_background:darken(2.0), fg = C.color5 },
     MiniClueNextKeyWithPostkeys = { link = "MiniClueNextKey" },
-    MiniClueSeparator = { bg = "none", fg = C.border },
-    MiniClueTitle = { bg = "none", fg = C.color4, bold = true },
-    MiniClueBorder = { link = "FloatBorder" },
+    MiniClueSeparator = { bg = C.light_background:darken(2.0), fg = C.border },
+    MiniClueTitle = { bg = C.light_background:darken(2.0), fg = C.color4, bold = true },
+    MiniClueBorder = { bg = C.light_background:darken(2.0) },
 
     -- flutter-tools
     FlutterWidgetGuides = { fg = C.comment:darken(7) },

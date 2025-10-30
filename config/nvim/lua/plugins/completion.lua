@@ -92,6 +92,7 @@ M.config = function()
                 show_on_accept_on_trigger_character = false,
             },
         },
+        cmdline = { enabled = false, completion = { ghost_text = { enabled = true } } },
         fuzzy = { implementation = "prefer_rust_with_warning", prebuilt_binaries = { force_version = "v1.6.0" } },
     }
 end
