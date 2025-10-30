@@ -6,94 +6,44 @@ local M = {
     dependencies = {
         -- Battery of pre-made snippets
         "rafamadriz/friendly-snippets",
-        -- LuaSnip can detect if an expression can be expandable, and since I don't have
-        -- proper "auto-completion" (I open the menu manually) I want to be able to expand snippets
-        -- even when the menu isn't opened
-        { "L3MON4D3/LuaSnip", version = "2.*" },
     },
 }
 
 M.config = function()
     local kind_icons = {
-        codicons = {
-            Text = "",
-            Method = "",
-            Function = "",
-            Constructor = "",
-            Field = "",
-            Variable = "",
-            Class = "",
-            Interface = "",
-            Module = "",
-            Property = "",
-            Unit = "",
-            Value = "",
-            Enum = "",
-            Keyword = "",
-            Snippet = "",
-            Color = "",
-            File = "",
-            Reference = "",
-            Folder = "",
-            EnumMember = "",
-            Constant = "",
-            Struct = "",
-            Event = "",
-            Operator = "",
-            TypeParameter = "",
-        },
-        text = {
-            Text = "t",
-            Method = "M",
-            Function = "F",
-            Constructor = "C",
-            Field = "f",
-            Variable = "v",
-            Class = "C",
-            Interface = "I",
-            Module = "m",
-            Property = "p",
-            Unit = "u",
-            Value = "v",
-            Enum = "E",
-            Keyword = "k",
-            Snippet = "S",
-            Color = "c",
-            File = "f",
-            Reference = "r",
-            Folder = "F",
-            EnumMember = "e",
-            Constant = "C",
-            Struct = "S",
-            Event = "e",
-            Operator = "O",
-            TypeParameter = "t",
-        },
+        Text = "t",
+        Method = "M",
+        Function = "F",
+        Constructor = "C",
+        Field = "f",
+        Variable = "v",
+        Class = "C",
+        Interface = "I",
+        Module = "m",
+        Property = "p",
+        Unit = "u",
+        Value = "v",
+        Enum = "E",
+        Keyword = "k",
+        Snippet = "S",
+        Color = "c",
+        File = "f",
+        Reference = "r",
+        Folder = "F",
+        EnumMember = "e",
+        Constant = "C",
+        Struct = "S",
+        Event = "e",
+        Operator = "O",
+        TypeParameter = "t",
     }
 
-    local luasnip = require "luasnip"
-    require("luasnip.loaders.from_vscode").lazy_load()
-
     require("blink.cmp").setup {
-        snippets = { preset = "luasnip" },
         keymap = {
             preset = "enter",
             ["<Tab>"] = {
                 -- By default, we select next
                 "select_next",
-                -- If we can expand a snippet, try todo that, otherwise, try to jump
-                -- to the next marker
-                --
-                -- We are also assured that we can't select anything, no need to
-                -- check if the menu is visible
-                function(_)
-                    local can = luasnip.expand_or_jumpable()
-                    if can then
-                        vim.schedule(luasnip.expand_or_jump)
-                    end
-
-                    return can
-                end,
                 "snippet_forward",
                 "select_next",
                 "fallback",
@@ -107,7 +57,7 @@ M.config = function()
         },
         appearance = {
             nerd_font_variant = "mono",
-            kind_icons = kind_icons.text,
+            kind_icons = kind_icons,
         },
         signature = {
             enabled = true,
