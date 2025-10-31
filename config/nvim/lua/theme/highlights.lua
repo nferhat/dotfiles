@@ -241,6 +241,10 @@ return {
     SnacksPickerPreviewBorder = { bg = C.light_background:darken(2.0) },
     SnacksIndent = C.border:brighten(1.5),
     SnacksIndentScope = C.border:brighten(10.0),
+    -- Input, for prompts generally
+    SnacksInputNormal = { bg = C.light_background },
+    SnacksInputBorder = { bg = C.light_background, fg = C.light_background },
+    SnacksInputTitle = { bg = C.color5, fg = C.light_background, bold = true },
 
     -- noice.nvim
     -- Base highlights that we are linking against, I don't like the colors

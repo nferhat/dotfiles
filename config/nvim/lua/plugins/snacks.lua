@@ -5,10 +5,21 @@ return {
     lazy = false,
     opts = {
         quickfile = {}, -- Simple yet really useful
-        scratch = { win = { border = "single" } },
         input = { win = { border = "single" } },
         -- No need for these.
         dashboard = { enabled = false },
+
+        -- Quick styling since this configuration has a "blocky" look/feel, with border=solid
+        styles = {
+            -- Why is it mapped to normal by default!?
+            scratch = { wo = { winhighlight = "NormalFloat:NormalFloat" }, border = "solid" },
+            -- Make the input slightly smaller, and slightly lower on the screen
+            input = { border = "solid", row = 0.35, width = 40 },
+        },
+
+        -- Quick scratch buffer, useful todo quick reasoning/thinking
+        -- I mostly need it to write stuff with bullet points/whatnot
+        scratch = { ft = "markdown" },
 
         -- Better ordering, nothing special though.
         statuscolumn = {
@@ -93,19 +104,30 @@ return {
                     },
                 },
             },
+
+            sources = {
+                explorer = {
+                    tree = true,
+                    layout = "explorer_no_prompt",
+                    follow_file = true,
+                    auto_close = true,
+                    win = { icons = { dir = "", dir_open = "" } },
+                },
+                buffers = { layout = "buffers" },
+                recent = {
+                    layout = {
+                        preset = "default",
+                        layout = { width = 0.5, height = 0.6 },
+                    },
+                },
+            },
         },
     },
     keys = {
         {
             "<leader><space>",
             function()
-                Snacks.picker.explorer {
-                    tree = true,
-                    layout = "explorer_no_prompt",
-                    follow_file = true,
-                    auto_close = true,
-                    win = { icons = { dir = "", dir_open = "" } },
-                }
+                Snacks.picker.explorer()
             end,
             desc = "File Explorer",
         },
@@ -130,7 +152,7 @@ return {
         {
             "<leader>b",
             function()
-                Snacks.picker.buffers { layout = "buffers" }
+                Snacks.picker.buffers()
             end,
             desc = "Buffers",
         },
@@ -350,6 +372,21 @@ return {
                 Snacks.picker.lsp_outgoing_calls()
             end,
             desc = "C[a]lls Outgoing",
+        },
+
+        {
+            "<leader>z",
+            function()
+                Snacks.zen()
+            end,
+            desc = "Toggle Zen Mode",
+        },
+        {
+            "<leader>Z",
+            function()
+                Snacks.zen.zoom()
+            end,
+            desc = "Toggle Zoom",
         },
     },
 }
