@@ -24,7 +24,7 @@
   # Yeah, 24 is way too small
   home.pointerCursor.size = lib.mkForce 32;
   # 10 is adequate for the tiny 1366x768 screen I had on hp-da0018nk
-  programs.ghostty.settings.font-size = 13;
+  programs.ghostty.settings.font-size = 15;
 
   home.packages = with pkgs; [
     # I do some gaming on this very capable machine
