@@ -32,7 +32,7 @@ M.config = function()
         float = {
             header = "",
             prefix = "",
-            border = "single",
+            border = "solid",
             style = "minimal",
         },
     }
