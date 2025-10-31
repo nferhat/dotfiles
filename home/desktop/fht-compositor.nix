@@ -321,6 +321,7 @@
             "GT: New Horizons.*" # modpack for minecraft
           ];
           match-app-id = [
+            "Steam"
             "Celeste.bin.x86_64"
             "steam_app_*"
             "osu!.exe"
@@ -426,6 +427,24 @@
             noise = 0;
           };
           corner-radius = 25;
+        }
+
+        # Working on a quickshell-based shell, apply some blurring and stuff here and there...
+        {
+          match-namespace = ["fht.desktop.Shell.Bar"];
+          blur = {
+            disable = false;
+            optimized = true;
+          };
+          shadow.disable = false;
+        }
+        {
+          match-namespace = ["fht.desktop.Shell.ReloadPopup"];
+          blur = {
+            disable = false;
+            optimized = true;
+          };
+          shadow.disable = false;
         }
       ];
     };
