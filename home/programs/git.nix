@@ -12,7 +12,7 @@
   programs.git = {
     enable = true;
     userName = "nferhat";
-    userEmail = "nferhat20@gmail.com";
+    userEmail = "nadjib.ferhat@etu.usthb.dz";
 
     aliases = {
       # Blantantly copied from my old config, it just works!
