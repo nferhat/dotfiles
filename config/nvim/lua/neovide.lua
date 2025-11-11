@@ -34,17 +34,3 @@ end)
 vim.keymap.set("n", "<C-->", function()
     change_scale_factor(-0.1)
 end)
-
--- Toggle zoom mode
-vim.g.neovide_zoom_mode = false
-vim.keymap.set("n", "<leader>Z", function()
-    if not vim.g.neovide_zoom_mode then
-        vim.g.neovide_scale_factor = 1.3
-        vim.opt.linespace = 11
-    else
-        vim.g.neovide_scale_factor = 1
-        vim.opt.linespace = 0
-    end
-
-    vim.g.neovide_zoom_mode = not vim.g.neovide_zoom_mode
-end, { desc = "Toggle zoom mode" })

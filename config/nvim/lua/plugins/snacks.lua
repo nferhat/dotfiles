@@ -15,6 +15,19 @@ return {
             scratch = { wo = { winhighlight = "NormalFloat:NormalFloat" }, border = "solid" },
             -- Make the input slightly smaller, and slightly lower on the screen
             input = { border = "solid", row = 0.35, width = 40 },
+            -- Make the zen window slightly larger
+            zen = {
+                enter = true,
+                fixbuf = false,
+                minimal = false,
+                width = 160,
+                height = 0,
+                backdrop = { transparent = true, blend = 40 },
+                keys = { q = false },
+                zindex = 40,
+                wo = { winhighlight = "NormalFloat:Normal" },
+                w = { snacks_main = true },
+            }
         },
 
         -- Quick scratch buffer, useful todo quick reasoning/thinking
@@ -31,7 +44,7 @@ return {
         },
 
         -- Replaces indent-blankline.nvim
-        indent = { char = "│", scope = { underline = true } },
+        indent = { char = "▎", scope = { underline = true } },
 
         -- Explorer that mimics really well dired/ivy.
         -- Cool stuff, can't complain!

@@ -306,6 +306,8 @@ return {
 
     -- blink.cmp
     BlinkCmpMenu = { bg = C.light_background },
+    BlinkCmpDoc = { bg = C.light_background:darken(2.0) },
+    BlinkCmpDocBorder = { bg = C.light_background:darken(2.0) },
     BlinkCmpMenuBorder = { link = "BlinkCmpMenu" },
     BlinkCmpLabelDetail = { bg = C.light_background, fg = C.comment:darken(5) },
     BlinkCmpLabel = C.foreground,
@@ -355,4 +357,27 @@ return {
 
     -- flutter-tools
     FlutterWidgetGuides = { fg = C.comment:darken(7) },
+
+    -- render-markdown.nvim
+    RenderMarkdownCode = { bg = C.dark_background },
+    RenderMarkdownTableHead = { fg = C.border:lighten(2.0) },
+    RenderMarkdownTableRow = { fg = C.border:lighten(2.0) },
+    RenderMarkdownWarn = { fg = C.color3 },
+    RenderMarkdownInfo = { fg = C.color4 },
+    RenderMarkdownSuccess = { fg = C.color2 },
+    RenderMarkdownCodeInline = { fg = C.color7, bg = C.color8 },
+    -- These are part of treesitter highlights but are also picked up by the plugin
+    ["@markup.quote.markdown"] = { fg = C.color16 },
+    ["@markup.heading.1.markdown"] = { fg = C.color4 },
+    ["@markup.heading.2.markdown"] = { fg = C.color2 },
+    ["@markup.heading.3.markdown"] = { fg = C.color6 },
+    ["@markup.heading.4.markdown"] = { fg = C.color1 },
+    ["@markup.heading.5.markdown"] = { fg = C.color5 },
+    ["@markup.heading.6.markdown"] = { fg = C.color5 },
+    RenderMarkdownH1Bg = { bg = C.light_background:increase_blue(2.0) },
+    RenderMarkdownH2Bg = { bg = C.light_background:increase_green(2.0) },
+    RenderMarkdownH3Bg = { bg = C.light_background:increase_blue(2.0):increase_green(2.0) },
+    RenderMarkdownH4Bg = { bg = C.light_background:increase_red(2.0), },
+    RenderMarkdownH5Bg = { bg = C.light_background:increase_red(6.0):increase_blue(6.0) },
+    RenderMarkdownH6Bg = { bg = C.light_background:increase_red(3.0):increase_blue(3.0) },
 }

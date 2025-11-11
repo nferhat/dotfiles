@@ -4,3 +4,4 @@ vim.opt_local.spell = true
 vim.opt_local.number = false
 vim.opt_local.relativenumber = false
 vim.opt_local.wrap = true -- the only time I can support wrapping in my editor
+vim.opt_local.colorcolumn = {}
