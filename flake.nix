@@ -15,7 +15,7 @@
 
     # My own compositor, distributed as a flake!
     fht-compositor = {
-      url = "github:nferhat/fht-compositor";
+      url = "github:nferhat/fht-compositor/wip-screencast-persist";
       # url = "/home/nferhat/Documents/repos/personal/fht-compositor";
 
       inputs.flake-parts.follows = "flake-parts";

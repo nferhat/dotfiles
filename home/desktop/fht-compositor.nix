@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.fht-compositor.homeModules.default];
@@ -52,7 +53,7 @@
         blur = {
           radius = 3;
           passes = 4;
-          noise = 0.12;
+          noise = 0.05;
         };
       };
 
@@ -97,25 +98,52 @@
         };
       };
 
-      keybinds = {
+      keybinds = let
+        # Some stuff to generalize writing actions.
+        run = args-list: {
+          action = "run";
+          arg = args-list;
+        };
+        run-cmdline = cmdline: {
+          action = "run-command-line";
+          arg = cmdline;
+        };
+
+        # Make an action repeating by passing it into this function.
+        repeat = action:
+          if builtins.typeOf action == "string"
+          then {
+            inherit action;
+            repeat = true;
+          }
+          else action // {repeat = true;};
+
+        # Make an action run even if the screen's locked by passing it into this function.
+        allow-while-locked = action:
+          if builtins.typeOf action == "string"
+          then {
+            inherit action;
+            allow-while-locked = true;
+          }
+          else action // {allow-while-locked = true;};
+
+        # Generate the workspace commands since they are always bound 1-9.
+        workspaceKeybinds = let
+          idxs = builtins.genList (i: i) 9;
+          bindsList = builtins.map (i: {
+            "Super-${toString (i+1)}" = {action="focus-workspace"; arg=i;};
+            "Super-Shift-${toString (i+1)}" = {action="send-to-workspace"; arg=i;};
+          }) idxs;
+        in builtins.foldl' (a: b: a // b) {} bindsList;
+      in workspaceKeybinds // {
         # Example key actions that do not need any argument
         Super-q = "quit";
         Super-Ctrl-r = "reload-config";
 
         # Example key actions that need an argument passed in
-        Super-Return = {
-          action = "run-command";
-          arg = "ghostty";
-        };
-        Super-p = {
-          action = "run-command";
-          arg = "wofi --show drun";
-        };
-        Super-Shift-s = {
-          action = "run-command";
-          # FIXME: Why using --copy does not work? Resorting to using stdout + wl-copy instead
-          arg = "watershot --stdout | wl-copy";
-        };
+        Super-Return = run ["ghostty"];
+        Super-p = run ["wofi" "--show" "drun"];
+        Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
 
         # Focus management
         Super-j = "focus-next-window";
@@ -125,14 +153,8 @@
         Super-Ctrl-j = "focus-next-output";
         Super-Ctrl-k = "focus-previous-output";
         # windows-style since sometimes muscle memory gets to me
-        Alt-tab = {
-          action = "focus-next-window";
-          repeat = true;
-        };
-        Alt-Shift-tab = {
-          action = "focus-previous-window";
-          repeat = true;
-        };
+        Alt-tab = repeat "focus-next-window";
+        Alt-Shift-tab = repeat "focus-previous-window";
 
         # Window management
         Super-m = "maximize-focused-window";
@@ -141,62 +163,43 @@
         Super-Ctrl-Space = "float-focused-window";
 
         # Volume control
-        XF86AudioRaiseVolume = {
-          action = "run-command";
-          arg = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+";
-          allow-while-locked = true;
-          repeat = true;
-        };
-        # ----
-        XF86AudioLowerVolume = {
-          action = "run-command";
-          arg = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%-";
-          allow-while-locked = true;
-          repeat = true;
-        };
+        XF86AudioRaiseVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%+"]));
+        XF86AudioLowerVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%-"]));
 
         # Floating window management
-        Super-Left = {
+        Super-Left = repeat {
           action = "move-floating-window";
           arg = [(-50) 0];
-          repeat = true;
         };
-        Super-Right = {
+        Super-Right = repeat {
           action = "move-floating-window";
           arg = [50 0];
-          repeat = true;
         };
-        Super-Up = {
+        Super-Up = repeat {
           action = "move-floating-window";
           arg = [0 (-50)];
-          repeat = true;
         };
-        Super-Down = {
+        Super-Down = repeat {
           action = "move-floating-window";
           arg = [0 50];
-          repeat = true;
         };
         Super-Ctrl-c = "center-floating-window";
 
-        Super-Shift-Left = {
+        Super-Shift-Left = repeat {
           action = "resize-floating-window";
           arg = [(-50) 0];
-          repeat = true;
         };
-        Super-Shift-Right = {
+        Super-Shift-Right = repeat {
           action = "resize-floating-window";
           arg = [50 0];
-          repeat = true;
         };
-        Super-Shift-Up = {
+        Super-Shift-Up = repeat {
           action = "resize-floating-window";
           arg = [0 (-50)];
-          repeat = true;
         };
-        Super-Shift-Down = {
+        Super-Shift-Down = repeat {
           action = "resize-floating-window";
           arg = [0 50];
-          repeat = true;
         };
 
         # Transient layout changes.
@@ -226,84 +229,6 @@
         Super-o = {
           action = "change-window-proportion";
           arg = -0.5;
-        };
-
-        # Workspaces
-        # Super-Left = "focus-previous-workspace";
-        # Super-Right = "focus-next-workspace";
-        Super-1 = {
-          action = "focus-workspace";
-          arg = 0;
-        };
-        Super-2 = {
-          action = "focus-workspace";
-          arg = 1;
-        };
-        Super-3 = {
-          action = "focus-workspace";
-          arg = 2;
-        };
-        Super-4 = {
-          action = "focus-workspace";
-          arg = 3;
-        };
-        Super-5 = {
-          action = "focus-workspace";
-          arg = 4;
-        };
-        Super-6 = {
-          action = "focus-workspace";
-          arg = 5;
-        };
-        Super-7 = {
-          action = "focus-workspace";
-          arg = 6;
-        };
-        Super-8 = {
-          action = "focus-workspace";
-          arg = 7;
-        };
-        Super-9 = {
-          action = "focus-workspace";
-          arg = 8;
-        };
-
-        # Sending windows to workspaces
-        Super-Shift-1 = {
-          action = "send-to-workspace";
-          arg = 0;
-        };
-        Super-Shift-2 = {
-          action = "send-to-workspace";
-          arg = 1;
-        };
-        Super-Shift-3 = {
-          action = "send-to-workspace";
-          arg = 2;
-        };
-        Super-Shift-4 = {
-          action = "send-to-workspace";
-          arg = 3;
-        };
-        Super-Shift-5 = {
-          action = "send-to-workspace";
-          arg = 4;
-        };
-        Super-Shift-6 = {
-          action = "send-to-workspace";
-          arg = 5;
-        };
-        Super-Shift-7 = {
-          action = "send-to-workspace";
-          arg = 6;
-        };
-        Super-Shift-8 = {
-          action = "send-to-workspace";
-          arg = 7;
-        };
-        Super-Shift-9 = {
-          action = "send-to-workspace";
-          arg = 8;
         };
       };
 
