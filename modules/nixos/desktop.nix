@@ -14,16 +14,16 @@
       twemoji-color-font
       google-fonts
       # Monospace. Fht Mono/Term are based on Iosevka
-      self.packages."${pkgs.system}".fht-mono
-      self.packages."${pkgs.system}".fht-term
+      self.packages."${pkgs.system}".fht-zed-mono
+      self.packages."${pkgs.system}".fht-zed-term
       nerd-fonts.iosevka
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      monospace = ["Fht Mono" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "FhtZed Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "FhtZed Mono" "Iosevka Nerd Font"];
+      monospace = ["FhtZed Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
 

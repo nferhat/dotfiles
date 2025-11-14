@@ -23,6 +23,16 @@
         privateBuildPlan = builtins.readFile ./fht-mono.toml;
         set = "FhtTerm";
       };
+
+      # Custom font variations. Based on Adwaita Sans and Zed Mono
+      fht-zed-mono = pkgs.iosevka.override {
+        privateBuildPlan = builtins.readFile ./fht-zed-mono.toml;
+        set = "FhtZedMono";
+      };
+      fht-zed-term = pkgs.iosevka.override {
+        privateBuildPlan = builtins.readFile ./fht-zed-mono.toml;
+        set = "FhtZedTerm";
+      };
     };
   };
 }

@@ -49,8 +49,8 @@
       file_finder.modal_max_width = "medium";
       ui_font_size = 17;
       buffer_font_size = 17;
-      ui_font_family = "Fht Mono";
-      buffer_font_family = "Fht Term";
+      ui_font_family = "FhtZed Mono";
+      buffer_font_family = "FhtZed Term";
       theme = {
         mode = "system";
         light = "fht";

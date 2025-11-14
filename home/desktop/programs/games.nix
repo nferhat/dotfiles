@@ -26,7 +26,7 @@
       gpu_fan = true;
       gpu_name = true;
       proc_vram = true;
-      font_file = "${self'.packages.fht-term}/share/fonts/truetype/IosevkaFhtTerm-Regular.ttf";
+      font_file = "${self'.packages.fht-zed-term}/share/fonts/truetype/IosevkaFhtZedTerm-Regular.ttf";
       gamemode = true;
       wine = true;
       vulkan_driver = true;

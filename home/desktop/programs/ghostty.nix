@@ -15,7 +15,7 @@
       15;
     in {
       command = "fish";
-      font-family = "Fht Term"; # term has fixed-length characters
+      font-family = "FhtZed Term"; # term has fixed-length characters
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;
