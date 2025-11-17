@@ -7,7 +7,7 @@ return {
     comment = Color:new { hex = "{{ colors.outline_variant.default.hex }}" },
     border = (Color:new { hex = "{{ colors.outline_variant.default.hex }}" }):darken(5.0),
     hint = (Color:new { hex = "{{ colors.outline_variant.default.hex }}" }):brighten(3.5),
-    foreground = Color:new { hex = "{{ colors.on_surface.default.hex }}" }
-    color7 = Color:new { hex = "{{ colors.on_surface.default.hex }}" }
-    color15 = Color:new { hex = "{{ colors.on_surface.default.hex }}" }
+    foreground = Color:new { hex = "{{ colors.on_surface.default.hex }}" },
+    color7 = Color:new { hex = "{{ colors.on_surface.default.hex }}" },
+    color15 = Color:new { hex = "{{ colors.on_surface.default.hex }}" },
 }

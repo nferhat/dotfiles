@@ -13,6 +13,8 @@
   in {
     enable = true;
     settings = {
+        autostart = ["wl-paste --watch cliphist store &"];
+
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
       imports = [
         "~/.config/fht/compositor-temp.toml"
@@ -137,112 +139,123 @@
         # Generate the workspace commands since they are always bound 1-9.
         workspaceKeybinds = let
           idxs = builtins.genList (i: i) 9;
-          bindsList = builtins.map (i: {
-            "Super-${toString (i+1)}" = {action="focus-workspace"; arg=i;};
-            "Super-Shift-${toString (i+1)}" = {action="send-to-workspace"; arg=i;};
-          }) idxs;
-        in builtins.foldl' (a: b: a // b) {} bindsList;
-      in workspaceKeybinds // {
-        # Example key actions that do not need any argument
-        Super-q = "quit";
-        Super-Ctrl-r = "reload-config";
+          bindsList =
+            builtins.map (i: {
+              "Super-${toString (i + 1)}" = {
+                action = "focus-workspace";
+                arg = i;
+              };
+              "Super-Shift-${toString (i + 1)}" = {
+                action = "send-to-workspace";
+                arg = i;
+              };
+            })
+            idxs;
+        in
+          builtins.foldl' (a: b: a // b) {} bindsList;
+      in
+        workspaceKeybinds
+        // {
+          # Example key actions that do not need any argument
+          Super-q = "quit";
+          Super-Ctrl-r = "reload-config";
 
-        # Example key actions that need an argument passed in
-        Super-Return = run ["ghostty"];
-        Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
-        # DankMaterialShell keybinds
-        Super-p = dms-ipc ["spotlight" "toggle"];
-        Super-v = dms-ipc ["clipboard" "toggle"];
-        Super-comma = dms-ipc ["notifications" "toggle"];
-        Super-Alt-l = dms-ipc ["lock" "lock"];
-        Super-Y = dms-ipc ["dankdash" "wallpaper"];
+          # Example key actions that need an argument passed in
+          Super-Return = run ["ghostty"];
+          Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
+          # DankMaterialShell keybinds
+          Super-p = dms-ipc ["spotlight" "toggle"];
+          Super-v = dms-ipc ["clipboard" "toggle"];
+          Super-comma = dms-ipc ["notifications" "toggle"];
+          Super-Alt-l = dms-ipc ["lock" "lock"];
+          Super-Y = dms-ipc ["dankdash" "wallpaper"];
 
-        # Focus management
-        Super-j = "focus-next-window";
-        Super-k = "focus-previous-window";
-        Super-Shift-j = "swap-with-next-window";
-        Super-Shift-k = "swap-with-previous-window";
-        Super-Ctrl-j = "focus-next-output";
-        Super-Ctrl-k = "focus-previous-output";
-        # windows-style since sometimes muscle memory gets to me
-        Alt-tab = repeat "focus-next-window";
-        Alt-Shift-tab = repeat "focus-previous-window";
+          # Focus management
+          Super-j = "focus-next-window";
+          Super-k = "focus-previous-window";
+          Super-Shift-j = "swap-with-next-window";
+          Super-Shift-k = "swap-with-previous-window";
+          Super-Ctrl-j = "focus-next-output";
+          Super-Ctrl-k = "focus-previous-output";
+          # windows-style since sometimes muscle memory gets to me
+          Alt-tab = repeat "focus-next-window";
+          Alt-Shift-tab = repeat "focus-previous-window";
 
-        # Window management
-        Super-m = "maximize-focused-window";
-        Super-f = "fullscreen-focused-window";
-        Super-Shift-c = "close-focused-window";
-        Super-Ctrl-Space = "float-focused-window";
+          # Window management
+          Super-m = "maximize-focused-window";
+          Super-f = "fullscreen-focused-window";
+          Super-Shift-c = "close-focused-window";
+          Super-Ctrl-Space = "float-focused-window";
 
-        # Volume control
-        XF86AudioRaiseVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%+"]));
-        XF86AudioLowerVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%-"]));
+          # Volume control
+          XF86AudioRaiseVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%+"]));
+          XF86AudioLowerVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%-"]));
 
-        # Floating window management
-        Super-Left = repeat {
-          action = "move-floating-window";
-          arg = [(-50) 0];
-        };
-        Super-Right = repeat {
-          action = "move-floating-window";
-          arg = [50 0];
-        };
-        Super-Up = repeat {
-          action = "move-floating-window";
-          arg = [0 (-50)];
-        };
-        Super-Down = repeat {
-          action = "move-floating-window";
-          arg = [0 50];
-        };
-        Super-Ctrl-c = "center-floating-window";
+          # Floating window management
+          Super-Left = repeat {
+            action = "move-floating-window";
+            arg = [(-50) 0];
+          };
+          Super-Right = repeat {
+            action = "move-floating-window";
+            arg = [50 0];
+          };
+          Super-Up = repeat {
+            action = "move-floating-window";
+            arg = [0 (-50)];
+          };
+          Super-Down = repeat {
+            action = "move-floating-window";
+            arg = [0 50];
+          };
+          Super-Ctrl-c = "center-floating-window";
 
-        Super-Shift-Left = repeat {
-          action = "resize-floating-window";
-          arg = [(-50) 0];
-        };
-        Super-Shift-Right = repeat {
-          action = "resize-floating-window";
-          arg = [50 0];
-        };
-        Super-Shift-Up = repeat {
-          action = "resize-floating-window";
-          arg = [0 (-50)];
-        };
-        Super-Shift-Down = repeat {
-          action = "resize-floating-window";
-          arg = [0 50];
-        };
+          Super-Shift-Left = repeat {
+            action = "resize-floating-window";
+            arg = [(-50) 0];
+          };
+          Super-Shift-Right = repeat {
+            action = "resize-floating-window";
+            arg = [50 0];
+          };
+          Super-Shift-Up = repeat {
+            action = "resize-floating-window";
+            arg = [0 (-50)];
+          };
+          Super-Shift-Down = repeat {
+            action = "resize-floating-window";
+            arg = [0 50];
+          };
 
-        # Transient layout changes.
-        # Any changes set using these keybinds will be reset on configuration reload
-        Super-Space = "select-next-layout";
-        Super-Shift-Space = "select-previous-layout";
-        Super-h = {
-          action = "change-mwfact";
-          arg = -0.05;
+          # Transient layout changes.
+          # Any changes set using these keybinds will be reset on configuration reload
+          Super-Space = "select-next-layout";
+          Super-Shift-Space = "select-previous-layout";
+          Super-h = {
+            action = "change-mwfact";
+            arg = -0.05;
+          };
+          Super-l = {
+            action = "change-mwfact";
+            arg = 0.05;
+          };
+          Super-Shift-h = {
+            action = "change-nmaster";
+            arg = 1;
+          };
+          Super-Shift-l = {
+            action = "change-nmaster";
+            arg = -1;
+          };
+          Super-i = {
+            action = "change-window-proportion";
+            arg = 0.5;
+          };
+          Super-o = {
+            action = "change-window-proportion";
+            arg = -0.5;
+          };
         };
-        Super-l = {
-          action = "change-mwfact";
-          arg = 0.05;
-        };
-        Super-Shift-h = {
-          action = "change-nmaster";
-          arg = 1;
-        };
-        Super-Shift-l = {
-          action = "change-nmaster";
-          arg = -1;
-        };
-        Super-i = {
-          action = "change-window-proportion";
-          arg = 0.5;
-        };
-        Super-o = {
-          action = "change-window-proportion";
-          arg = -0.5;
-        };
-      };
 
       mousebinds = {
         Super-Left = "swap-tile";

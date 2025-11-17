@@ -1,11 +1,5 @@
 {lib, ...}: {
   programs.fht-compositor.settings = {
-    general = {
-      # Allow for more gaps since we have more screen real estate
-      outer-gaps = lib.mkForce 30;
-      inner-gaps = lib.mkForce 15;
-    };
-
     # This laptops gets wired up to a 2k MSI screen.
     # On the thinkpad station with the DPI port I am using it registers as DP-4 and sometimes DP-5
     # Annoying.

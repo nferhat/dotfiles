@@ -8,8 +8,11 @@
     ./programs
     ./fht-compositor.nix
     ./services.nix
-    ./quickshell.nix
     ./gtk-theme.nix
+    # Custom shell setup based on DMS while I'm testing/integrating it with
+    # fht-compositor.
+    ./dank-shell.nix
+    ./matugen
   ];
 
   home = {
