@@ -31,6 +31,7 @@
     bustle
     inputs'.watershot.packages.default
     qbittorrent
+    imagemagick
 
     # Wayland utilities for the graphical session.
     grim

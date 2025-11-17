@@ -14,7 +14,10 @@
     enable = true;
     settings = {
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
-      imports = ["~/.config/fht/compositor-temp.toml"];
+      imports = [
+        "~/.config/fht/compositor-temp.toml"
+        "~/.config/fht/dank-colors.toml"
+      ];
 
       general = {
         cursor-warps = true;
@@ -24,7 +27,7 @@
         nmaster = 1;
         mwfact = 0.5;
         inner-gaps = 8;
-        outer-gaps = 20;
+        outer-gaps = 8;
       };
 
       cursor = {inherit (config.home.pointerCursor) name size;};
@@ -34,7 +37,7 @@
 
         border = {
           thickness = 3;
-          radius = 25;
+          radius = 32;
           focused-color = {
             start = theme.ansi.color2;
             end = theme.ansi.color4;
@@ -45,8 +48,8 @@
         };
 
         shadow = {
-          sigma = 30;
-          color = "#000";
+          sigma = 20;
+          color = "rgba(0, 0, 0, 33%)";
           floating-only = false;
         };
 
@@ -87,7 +90,7 @@
         };
 
         workspace-switch = {
-          direction = "vertical";
+          direction = "horizontal";
           curve = {
             clamp = true;
             damping-ratio = 1;
@@ -108,6 +111,10 @@
           action = "run-command-line";
           arg = cmdline;
         };
+
+        # Execute an DankMaterialShell IPC action.
+        # It's just a run command wrapped with `dms ipc`
+        dms-ipc = args: run (["dms" "ipc" "call"] ++ args);
 
         # Make an action repeating by passing it into this function.
         repeat = action:
@@ -142,8 +149,13 @@
 
         # Example key actions that need an argument passed in
         Super-Return = run ["ghostty"];
-        Super-p = run ["wofi" "--show" "drun"];
         Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
+        # DankMaterialShell keybinds
+        Super-p = dms-ipc ["spotlight" "toggle"];
+        Super-v = dms-ipc ["clipboard" "toggle"];
+        Super-comma = dms-ipc ["notifications" "toggle"];
+        Super-Alt-l = dms-ipc ["lock" "lock"];
+        Super-Y = dms-ipc ["dankdash" "wallpaper"];
 
         # Focus management
         Super-j = "focus-next-window";

@@ -4,12 +4,6 @@
   ...
 }: {
   programs.fht-compositor.settings = {
-    general = {
-      # Allow for more gaps since we have more screen real estate
-      outer-gaps = lib.mkForce 30;
-      inner-gaps = lib.mkForce 15;
-    };
-
     # Max out resolution and framerate on main display
     outputs.DP-3.mode = "2560x1440@180";
     # See window rules in fht-compositor.nix

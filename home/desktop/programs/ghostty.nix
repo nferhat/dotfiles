@@ -35,10 +35,13 @@
       # Closing a terminal does not close the server.
       confirm-close-surface = false;
 
+      # Optionally load dank-material-shell colors
+      config-file = "?./config-colors";
+
       # Theme, directly ported from alacritty.
       background-opacity-cells = true;
       background = theme.background.primary;
-      background-opacity = 0.9;
+      background-opacity = 0.95;
       foreground = theme.text.primary;
       inherit palette;
     };

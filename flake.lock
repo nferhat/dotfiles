@@ -184,16 +184,15 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1763160251,
-        "narHash": "sha256-dUHatEtSP0xkdcXQf0f3OXvQc1+Y6Q6ai0ym+BKT8Io=",
+        "lastModified": 1763319303,
+        "narHash": "sha256-6nKUfHesS8drmXSvxkyw+UPHrCsjiCSqXZYEMbKCGbs=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "1f2d19106ad63dbbcba8c50ed22a7e8df7b735d7",
+        "rev": "e095c4a82964b5587b714c99d14073466b660112",
         "type": "github"
       },
       "original": {
         "owner": "nferhat",
-        "ref": "wip-screencast-persist",
         "repo": "fht-compositor",
         "type": "github"
       }
@@ -581,6 +580,27 @@
         "type": "github"
       }
     },
+    "matugen": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1763355108,
+        "narHash": "sha256-u5gCg+oA1car16NA7UL2dVjZGdD/RXJCt0srVFwCnmA=",
+        "owner": "InioX",
+        "repo": "matugen",
+        "rev": "e216c4bf66899694b19b10369f9fa0275d739cff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "InioX",
+        "repo": "matugen",
+        "type": "github"
+      }
+    },
     "n2c": {
       "inputs": {
         "flake-utils": [
@@ -940,6 +960,7 @@
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "lsfg-vk": "lsfg-vk",
+        "matugen": "matugen",
         "neovim-nightly": "neovim-nightly",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
@@ -1076,6 +1097,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
         "type": "github"
       }
     },

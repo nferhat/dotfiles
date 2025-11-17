@@ -15,7 +15,7 @@
 
     # My own compositor, distributed as a flake!
     fht-compositor = {
-      url = "github:nferhat/fht-compositor/wip-screencast-persist";
+      url = "github:nferhat/fht-compositor";
       # url = "/home/nferhat/Documents/repos/personal/fht-compositor";
 
       inputs.flake-parts.follows = "flake-parts";
@@ -71,16 +71,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-
+    # The shell setup
     dgop = {
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.dgop.follows = "dgop";
+    };
+    # For color generation, though dms uses it.,
+    matugen = {
+      url = "github:InioX/matugen";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
