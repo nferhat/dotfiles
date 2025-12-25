@@ -1,1 +1,0 @@
-decorations.border.focused-color = "{{ colors.primary.default.hex }}"

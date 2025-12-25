@@ -163,12 +163,7 @@
           # Example key actions that need an argument passed in
           Super-Return = run ["ghostty"];
           Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
-          # DankMaterialShell keybinds
-          Super-p = dms-ipc ["spotlight" "toggle"];
-          Super-v = dms-ipc ["clipboard" "toggle"];
-          Super-comma = dms-ipc ["notifications" "toggle"];
-          Super-Alt-l = dms-ipc ["lock" "lock"];
-          Super-Y = dms-ipc ["dankdash" "wallpaper"];
+          Super-p = run ["wofi"];
 
           # Focus management
           Super-j = "focus-next-window";

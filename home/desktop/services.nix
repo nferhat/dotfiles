@@ -15,18 +15,18 @@
       Install.WantedBy = ["graphical-session.target" "fht-compositor.service"];
     };
   in {
-    # wallpaper =
-    #   start-with-graphical-session "Wallpaper service"
-    #   // {
-    #     Service = {
-    #       Type = "simple";
-    #       ExecStart = let
-    #         theme = import ../../theme;
-    #         inherit (theme) wallpaper;
-    #       in "${pkgs.swaybg}/bin/swaybg --mode fill -i ${wallpaper}";
-    #       Restart = "on-failure";
-    #     };
-    #   };
+    wallpaper =
+      start-with-graphical-session "Wallpaper service"
+      // {
+        Service = {
+          Type = "simple";
+          ExecStart = let
+            theme = import ../../theme;
+            inherit (theme) wallpaper;
+          in "${pkgs.swaybg}/bin/swaybg --mode fill -i ${wallpaper}";
+          Restart = "on-failure";
+        };
+      };
 
     # NOTE: While yes, xwayland-satellite provides its own .servicce file, I cannot seem to make
     # it detected/started by home-manager. The configuration here just replicates it.
