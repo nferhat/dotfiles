@@ -83,6 +83,7 @@ M.config = function()
         "qmlls",
         "tinymist",
         "nixd",
+        "jdtls",
     }
     function vim.lsp.restart(name)
         vim.lsp.enable(name, false)
