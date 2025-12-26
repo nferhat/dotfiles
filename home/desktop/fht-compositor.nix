@@ -75,9 +75,7 @@
           mass = 2;
           initial-velocity = 1;
           stiffness = 1200;
-          # NOTE: For window geometry its fine having epsilon this low since
-          # they are interpolated in/out the start/end smoothly without blocking anything
-          epsilon = 0.00000001;
+          epsilon = 0.001;
         };
 
         window-open-close.curve = {
@@ -86,9 +84,7 @@
           initial-velocity = 1;
           mass = 1.5;
           stiffness = 900;
-          # NOTE: For window open-close its fine having epsilon this low since
-          # It doesnt block/affect anything else except the animation itself.
-          epsilon = 0.000000001;
+          epsilon = 0.001;
         };
 
         workspace-switch = {
