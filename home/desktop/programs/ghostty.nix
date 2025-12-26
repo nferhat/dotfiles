@@ -27,6 +27,7 @@
       adjust-underline-thickness = 1;
       window-padding-x = 5;
       window-padding-y = 5;
+      font-feature = "-calt, -liga, -dlig";
       window-inherit-working-directory = false;
       # The heuristics to detected if ghostty should enable/disable this are not supported in
       # fht-compositor, so we force this on instead.
