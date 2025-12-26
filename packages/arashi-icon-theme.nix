@@ -8,14 +8,14 @@
   gitUpdater,
 }:
 stdenvNoCC.mkDerivation rec {
-  pname = "Kaze";
-  version = "25.08";
+  pname = "Arashi";
+  version = "09a553b911599fe906fe949aa290d8fd68533a89";
 
   src = fetchFromGitHub {
     owner = "0hStormy";
     repo = pname;
     rev = version;
-    hash = "sha256-c6VbhH27Px2yKCN1xdChzoM5c4YNOXH2np5tarKuTYM=";
+    hash = "sha256-9Dh+cvneeSQtiDi7fnDCSqlaTS4I9pmAooUsbb+D5X8=";
   };
 
   nativeBuildInputs = [gtk3];
@@ -25,8 +25,9 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    theme_dir=$out/share/icons/Kaze
+    theme_dir=$out/share/icons/${pname}
     mkdir -p $theme_dir
+    mv scalable $theme_dir
     mv index.theme 16x16 22x22 32x32 48x48 64x64 96x96 128x128 $theme_dir
     gtk-update-icon-cache --force $theme_dir
 

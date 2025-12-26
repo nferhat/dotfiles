@@ -27,9 +27,9 @@
         enable = true;
         defaultCursor = "left_ptr";
       };
-      package = pkgs.vimix-cursors;
-      name = "Vimix-cursors";
-      size = 24;
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors";
+      size = 32;
     };
   };
 

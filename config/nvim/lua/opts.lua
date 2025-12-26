@@ -54,6 +54,9 @@ O.statusline = "%!v:lua.require('statusline').draw()"
 O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
 
+-- Better default extui, looks cool!
+require("vim._extui").enable{}
+
 -- Keymaps, also strongly influenced by my preferences.
 
 -- Overriding the vim.keymap.set function to enforce default settings.

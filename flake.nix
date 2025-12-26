@@ -67,9 +67,8 @@
     # Stupid games that require secureboot to work. Still good to have though.
     # TODO: Enable this for thinkpad-t14s, currently only setup for basement
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
   };
 

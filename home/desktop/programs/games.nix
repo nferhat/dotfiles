@@ -1,8 +1,4 @@
-{
-  self',
-  pkgs,
-  ...
-}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     # Addicted till the end of my life
     # You never quit osu, they say.
@@ -26,7 +22,7 @@
       gpu_fan = true;
       gpu_name = true;
       proc_vram = true;
-      font_file = "${self'.packages.fht-zed-term}/share/fonts/truetype/IosevkaFhtZedTerm-Regular.ttf";
+      font_file = "${pkgs.iosevka}/share/fonts/truetype/Iosevka-Regular.ttf";
       gamemode = true;
       wine = true;
       vulkan_driver = true;

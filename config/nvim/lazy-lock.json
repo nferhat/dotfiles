@@ -1,18 +1,15 @@
 {
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
-  "blink.pairs": { "branch": "main", "commit": "10ef0211d0aab65f6fc345db7da7574def53b763" },
+  "blink.pairs": { "branch": "main", "commit": "65978aadaf9b7d6cae59c1c51cf2b366b370546e" },
   "direnv.vim": { "branch": "master", "commit": "ab2a7e08dd630060cd81d7946739ac7442a4f269" },
   "flutter-tools.nvim": { "branch": "main", "commit": "69db9cdac65ce536e20a8fc9a83002f007cc049c" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
-  "gitsigns.nvim": { "branch": "main", "commit": "20ad4419564d6e22b189f6738116b38871082332" },
-  "lazy.nvim": { "branch": "main", "commit": "f0f5bbb9e5bfae5e6468f9359ffea3d151418176" },
-  "mini.clue": { "branch": "main", "commit": "6a42206a734befeb697da27afdf05f55ac2303fc" },
-  "noice.nvim": { "branch": "main", "commit": "5099348591f7d3ba9e547b1e631c694c65bbe0b9" },
-  "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
-  "nvim-lspconfig": { "branch": "master", "commit": "87d30189b24caa496b54affd65594a309ac6d929" },
-  "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
+  "gitsigns.nvim": { "branch": "main", "commit": "5813e4878748805f1518cee7abb50fd7205a3a48" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "mini.clue": { "branch": "main", "commit": "5f0f5ca2ab967755ccde80795d7f0f33fe0015b7" },
+  "nvim-lspconfig": { "branch": "master", "commit": "d20d83b3f24f5884da73a9fc92fdc47e778b8d0d" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
-  "nvim-web-devicons": { "branch": "master", "commit": "8dcb311b0c92d460fac00eac706abd43d94d68af" },
-  "render-markdown.nvim": { "branch": "main", "commit": "6a744f0d14fd1d0fa8e3f446ac7825ec1e351d55" },
-  "snacks.nvim": { "branch": "main", "commit": "0bc7c2631a3bb35a20e0e5938401765bb9516496" }
+  "nvim-web-devicons": { "branch": "master", "commit": "6788013bb9cb784e606ada44206b0e755e4323d7" },
+  "render-markdown.nvim": { "branch": "main", "commit": "07d088bf8bdadd159eb807b90eaee86a4778383f" },
+  "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" }
 }

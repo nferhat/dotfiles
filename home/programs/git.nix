@@ -11,8 +11,7 @@
 
   programs.git = {
     enable = true;
-    userName = "nferhat";
-    userEmail = "nadjib.ferhat@etu.usthb.dz";
+
 
     aliases = {
       # Blantantly copied from my old config, it just works!
@@ -33,7 +32,13 @@
       af = "!git add $(git ls-files -m -o --exclude-standard | fzf -m)";
     };
 
-    extraConfig = {
+    settings = {
+      # Information about me.
+      user = {
+        name = "nferhat";
+        email = "nadjib.ferhat@etu.usthb.dz";
+      };
+
       init.defaultBranch = "main"; # force of habit, I guess (and github forcing it)
       user.signingkey = lib.mkDefault "79E6CEB6B608B845";
       commit.gpgsign = true;
@@ -44,8 +49,10 @@
       };
     };
 
-    delta.enable = true; # very useful
   };
+
+  # Better diff tool, very useful and somewhat underrated.
+  programs.delta.enable = true;
 
   programs.gh = {
     enable = true;

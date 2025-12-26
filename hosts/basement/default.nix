@@ -53,13 +53,6 @@
       extraPackages = [pkgs.rocmPackages.clr.icd];
       # Thank you amd for being this nice
     };
-
-    # Enable amvlk sine it makes some games actually run.
-    # Can always reset to radv if needed.
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
   };
 
   networking = {

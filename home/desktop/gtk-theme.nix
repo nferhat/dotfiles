@@ -103,8 +103,8 @@
     };
 
     iconTheme = {
-      package = self'.packages.kaze-icon-theme;
-      name = "Kaze";
+      package = self'.packages.arashi-icon-theme;
+      name = "Arashi";
     };
 
     font = {

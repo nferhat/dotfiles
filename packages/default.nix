@@ -10,7 +10,7 @@
           targetPkgs = pkgs: [pkgs.curl pkgs.glib pkgs.icu pkgs.openssl];
         };
 
-      kaze-icon-theme = pkgs.callPackage ./kaze-icon-theme.nix {
+      arashi-icon-theme = pkgs.callPackage ./arashi-icon-theme.nix {
         inherit (pkgs.plasma5Packages) breeze-icons;
       };
 
