@@ -33,6 +33,10 @@
         privateBuildPlan = builtins.readFile ./fht-zed-mono.toml;
         set = "FhtZedTerm";
       };
+
+      # Up-to-date versions of both.
+      lsfg-vk = pkgs.callPackage ./lsfg-vk.nix {};
+      # lsfg-vk-ui = pkgs.callPackage ./lsfg-vk-ui.nix {};
     };
   };
 }

@@ -1,12 +1,12 @@
 {
   inputs,
   pkgs,
+  self',
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
     ./secure-boot.nix
-    inputs.lsfg-vk.nixosModules.default
   ];
 
   boot = {
@@ -116,11 +116,6 @@
       motherboard = "amd";
     };
 
-    lsfg-vk = {
-      enable = true;
-      ui.enable = true;
-    };
-
     printing.enable = true;
     flatpak.enable = true;
   };
@@ -180,8 +175,13 @@
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
     scrcpy
+    # For tuning the 7900XT properly.
     lact
+    # Framegeneration since it looks good with Ryujinx.
+    self'.packages.lsfg-vk
   ];
+  environment.etc."vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json".source =
+    "${self'.packages.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json";
 
   system = {
     autoUpgrade.enable = false;
