@@ -8,6 +8,16 @@
     # FIXME: Currently broken, complains about tkinter not building, tommath?
     # Idk, too bothered to fix it + I play celeste on windows and manage mods from there for now
     # self'.packages.mons
+
+    # Use termurin JDKs since openjdk seems to be leaking memory.
+    # Why? I don't know, I was too lazy to investigate, however a fix was found on the GT:NH server.
+    # Thanks lucanto.
+    (prismlauncher.override {
+      jdks = with javaPackages.compiler.temurin-bin; [
+        jre-25 jre-21 jre-8
+      ];
+    })
+
   ];
 
   # Good HUD for stats and stuff. Replaces what I don't have with AMD Adrenalin

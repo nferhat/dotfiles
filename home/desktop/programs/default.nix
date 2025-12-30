@@ -20,7 +20,6 @@
     overskride
     gnome-secrets
     telegram-desktop
-    prismlauncher
     fractal
     pwvucontrol
     loupe
