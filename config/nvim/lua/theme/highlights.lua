@@ -314,9 +314,9 @@ return {
     BlinkCmpLabel = C.foreground,
     BlinkCmpScrollBarThumb = { bg = C.border },
     BlinkCmpScrollBarGutter = { link = "BlinkCmpMenu" },
-    BlinkCmpMenuSelection = { bold = true, bg = C.light_background:darken(2) },
+    BlinkCmpMenuSelection = { bg = C.light_background:darken(2) },
     BlinkCmpLabelDeprecated = { strikethrough = true },
-    BlinkCmpLabelMatch = C.color4,
+    BlinkCmpLabelMatch = { bold = true },
     -- Client item kinds, the following are builtin to cmp.
     CmpItemAbbrDeprecated = { fg = C.color7, strikethrough = true },
     CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },

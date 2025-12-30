@@ -10,34 +10,6 @@ local M = {
 }
 
 M.config = function()
-    local kind_icons = {
-        Text = "t",
-        Method = "M",
-        Function = "F",
-        Constructor = "C",
-        Field = "f",
-        Variable = "v",
-        Class = "C",
-        Interface = "I",
-        Module = "m",
-        Property = "p",
-        Unit = "u",
-        Value = "v",
-        Enum = "E",
-        Keyword = "k",
-        Snippet = "S",
-        Color = "c",
-        File = "f",
-        Reference = "r",
-        Folder = "F",
-        EnumMember = "e",
-        Constant = "C",
-        Struct = "S",
-        Event = "e",
-        Operator = "O",
-        TypeParameter = "t",
-    }
-
     require("blink.cmp").setup {
         keymap = {
             preset = "enter",
@@ -55,10 +27,7 @@ M.config = function()
                 end,
             },
         },
-        appearance = {
-            nerd_font_variant = "mono",
-            kind_icons = kind_icons,
-        },
+        appearance = { nerd_font_variant = "mono" },
         signature = {
             enabled = true,
             trigger = { show_on_keyword = true, show_on_insert = true },
@@ -66,19 +35,38 @@ M.config = function()
         },
         completion = {
             menu = {
-                scrollbar = false,
-                border = "none",
+                scrollbar = true,
+                border = "solid",
                 draw = {
-                    padding = { 0, 1 }, -- padding only on right side
+                    padding = { 1, 1 }, -- padding only on right side
                     columns = {
-                        { "kind_icon" },
+                        -- { "kind_icon" },
                         { "label", width = { fill = true } },
                         -- { "label_description" },
                     },
                     components = {
-                        kind_icon = {
-                            text = function(ctx)
-                                return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+                        label = {
+                            highlight = function(ctx)
+                                -- label and label details
+                                local label = ctx.label
+                                local highlights = {
+                                    { 0, #label, group = ctx.deprecated and 'BlinkCmpLabelDeprecated' or ctx.kind_hl },
+                                }
+                                if ctx.label_detail then
+                                    table.insert(highlights, { #label, #label + #ctx.label_detail, group = 'BlinkCmpLabelDetail' })
+                                end
+
+                                if vim.list_contains(ctx.self.treesitter, ctx.source_id) and not ctx.deprecated then
+                                    -- add treesitter highlights
+                                    vim.list_extend(highlights, require('blink.cmp.completion.windows.render.treesitter').highlight(ctx))
+                                end
+
+                                -- characters matched on the label by the fuzzy matcher
+                                for _, idx in ipairs(ctx.label_matched_indices) do
+                                    table.insert(highlights, { idx, idx + 1, group = 'BlinkCmpLabelMatch' })
+                                end
+
+                                return highlights
                             end,
                         },
                     },
