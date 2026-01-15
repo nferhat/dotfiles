@@ -64,7 +64,7 @@ in {
   "dom.battery.enabled" = false;
   "dom.event.clipboardevents.enabled" = false;
   "dom.private-attribution.submission.enabled" = false;
-  "dom.webaudio.enabled" = false;
+  "dom.webaudio.enabled" = true;
   "experiments.activeExperiment" = false;
   "experiments.enabled" = false;
   "experiments.manifest.uri" = "";
