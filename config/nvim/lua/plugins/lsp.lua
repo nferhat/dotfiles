@@ -33,7 +33,7 @@ M.config = function()
             header = "",
             prefix = "",
             border = "solid",
-            style = "minimal",
+            -- style = "minimal",
         },
     }
 
@@ -77,6 +77,8 @@ M.config = function()
     })
     vim.lsp.enable {
         "lua_ls",
+        "ts_ls",
+        "tailwindcss",
         "rust_analyzer",
         "clangd",
         "wgsl_analyzer",
@@ -84,6 +86,8 @@ M.config = function()
         "tinymist",
         "nixd",
         "jdtls",
+        "zls",
+        "tinymist",
     }
     function vim.lsp.restart(name)
         vim.lsp.enable(name, false)
@@ -108,7 +112,6 @@ M.config = function()
             end, { buffer = buffer })
             set_keymap("n", "<leader>k", function()
                 vim.lsp.buf.hover {
-                    border = "single",
                     max_width = math.floor(vim.o.columns * 0.6),
                     max_height = math.floor(vim.o.lines * 0.5),
                 }

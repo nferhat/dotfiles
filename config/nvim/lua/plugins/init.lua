@@ -67,23 +67,30 @@ local M = {
         },
     },
 
+    -- {
+    --     'MeanderingProgrammer/render-markdown.nvim',
+    --     ft = "markdown",
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    --     ---@module 'render-markdown'
+    --     ---@type render.md.UserConfig
+    --     opts = {
+    --         render_modes = true, -- even in insert!
+    --         anti_conceal = { enabled = false }, -- annoying
+    --         preset = 'obsidian',
+    --         sign = { enabled = false }, -- I really dont need it
+    --         latex = { enabled = true },
+    --         code = { border = "thick", inline_pad = 1, left_pad = 1 },
+    --         heading = { border = true, border_virtual = true, icons = " " },
+    --         completions = { lsp = { enabled = true } },
+    --     },
+    -- },
+
     {
-        'MeanderingProgrammer/render-markdown.nvim',
-        ft = "markdown",
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {
-            render_modes = true, -- even in insert!
-            anti_conceal = { enabled = false }, -- annoying
-            preset = 'obsidian',
-            sign = { enabled = false }, -- I really dont need it
-            latex = { enabled = true },
-            code = { border = "thick", inline_pad = 1, left_pad = 1 },
-            heading = { border = true, border_virtual = true, icons = " " },
-            completions = { lsp = { enabled = true } },
-        },
-    },
+      'chomosuke/typst-preview.nvim',
+      ft = 'typst',
+      version = '1.*',
+      opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+    }
 }
 
 return M

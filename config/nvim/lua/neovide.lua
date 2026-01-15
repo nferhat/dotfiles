@@ -5,7 +5,7 @@ O.guifont = "monospace:h13"
 -- Fancy effects for floating windows!
 vim.g.neovide_floating_blur_amount_x = 5.0
 vim.g.neovide_floating_blur_amount_y = 5.0
-vim.g.neovide_flaoting_corner_radius = 0.5
+-- vim.g.neovide_floating_corner_radius = 0.5
 -- Blur oooo!!
 vim.g.neovide_floating_blur = true
 O.winblend = 10
