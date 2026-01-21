@@ -262,7 +262,7 @@
             "GT: New Horizons.*" # modpack for minecraft
           ];
           match-app-id = [
-            "Steam"
+            "steam"
             "Celeste.bin.x86_64"
             "steam_app_*"
             "osu!.exe"
