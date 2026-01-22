@@ -131,7 +131,6 @@
     },
     "fht-compositor": {
       "inputs": {
-        "fht-share-picker": "fht-share-picker",
         "flake-parts": [
           "flake-parts"
         ],
@@ -141,46 +140,17 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1766614522,
-        "narHash": "sha256-vXOSeyhMjK3f7Fmkkjv1SWrJti5kE5AvFiXsrLEiuRk=",
+        "lastModified": 1768592889,
+        "narHash": "sha256-wHGzSGG/RlST3T4R0CZGyH8y4h9hdsM2bLpca3jdHco=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "2868bd856e8d60f58fec6243e3fb3fe081ea22ac",
+        "rev": "070b4841ceeeb1841552b6eb29d17447aed638d8",
         "type": "github"
       },
       "original": {
         "owner": "nferhat",
-        "ref": "xdg-gs",
+        "ref": "wip-screencast-persist",
         "repo": "fht-compositor",
-        "type": "github"
-      }
-    },
-    "fht-share-picker": {
-      "inputs": {
-        "flake-parts": [
-          "fht-compositor",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "fht-compositor",
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "fht-compositor"
-        ]
-      },
-      "locked": {
-        "lastModified": 1760900224,
-        "narHash": "sha256-YEGJe7yBNT20MSJn79s9WAjugRjv254PLVrph/Ja0dg=",
-        "owner": "nferhat",
-        "repo": "fht-share-picker",
-        "rev": "a6ed304a9f40f9a088cec5479765616dd68dca73",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nferhat",
-        "ref": "gtk-rewrite",
-        "repo": "fht-share-picker",
         "type": "github"
       }
     },
@@ -731,11 +701,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766386896,
-        "narHash": "sha256-1uql4y229Rh+/2da99OVNe6DfsjObukXkf60TYRCvhI=",
+        "lastModified": 1767693058,
+        "narHash": "sha256-rnLX8IA4yMbKHjYmJPcYCcWrqJ50B8WApQW62l+V9LE=",
         "ref": "refs/heads/master",
-        "rev": "3918290c1bcd93ed81291844d9f1ed146672dbfc",
-        "revCount": 714,
+        "rev": "6742148cf4a8415a9c51fdeb11d8c3ea716c2e14",
+        "revCount": 717,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },

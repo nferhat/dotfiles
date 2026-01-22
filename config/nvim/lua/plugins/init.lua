@@ -90,6 +90,11 @@ local M = {
       ft = 'typst',
       version = '1.*',
       opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+    },
+
+    {
+        'tpope/vim-sleuth',
+        lazy = false, -- it's a small plugin
     }
 }
 
