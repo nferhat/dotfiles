@@ -1,5 +1,5 @@
 {
-  self,
+  self',
   inputs,
   pkgs,
   lib,
@@ -14,15 +14,17 @@
       twemoji-color-font
       google-fonts
       # Monospace.
+      self'.packages.fht-zed-mono
+      self'.packages.fht-zed-term
       iosevka
       nerd-fonts.iosevka
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      monospace = ["Iosevka" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "FhtZed Mono" "Iosevka" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "FhtZed Mono" "Iosevka" "Iosevka Nerd Font"];
+      monospace = ["FhtZed Term" "FhtZed Mono" "Iosevka" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
 

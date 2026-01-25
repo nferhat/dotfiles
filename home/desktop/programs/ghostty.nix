@@ -15,7 +15,7 @@
       15;
     in {
       command = "fish";
-      font-family = "Iosevka"; # term has fixed-length characters
+      font-family = "FhtZed Term"; # term has fixed-length characters
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;
@@ -27,7 +27,8 @@
       adjust-underline-thickness = 1;
       window-padding-x = 5;
       window-padding-y = 5;
-      font-feature = "-calt, -liga, -dlig";
+      adjust-cell-height = "-10%";
+      # font-feature = "-calt, -liga, -dlig";
       window-inherit-working-directory = false;
       # The heuristics to detected if ghostty should enable/disable this are not supported in
       # fht-compositor, so we force this on instead.
