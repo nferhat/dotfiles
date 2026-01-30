@@ -2,19 +2,8 @@
 #
 # Most of the stuff here is pre-configured using https://ffprofile.com, you should check it out
 # to make your own profile. It mostly copies the behaviour from LibreWolf
-{cornerRadius}: let
-  theme = import ../../../../theme;
-  inherit (theme) accent;
-in {
-  # Make tweak zen's appearance
-  "zen.widget.linux.transparency" = true;
-  "browser.tabs.allow_transparent_browser" = true;
-  "zen.view.grey-out-inactive-windows" = false;
-  "zen.watermark.enabled" = false;
-  "zen.view.experimental-rounded-view" = true;
+{
   # Match with fht-compositor border radius for a very nice appearance
-  "zen.theme.border-radius" = cornerRadius;
-  "zen.theme.accent-color" = "#${accent}";
   # These are imported from ffprofile.
   "app.normandy.api_url" = "";
   "app.normandy.enabled" = false;

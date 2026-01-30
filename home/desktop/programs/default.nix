@@ -39,7 +39,6 @@
   ];
 
   programs = {
-    zen-browser.enable = true;
     zathura.enable = true;
 
     obs-studio = {

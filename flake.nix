@@ -35,19 +35,6 @@
       url = "github:Kirottu/watershot/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Not available in nixpkgs
-    zen-browser = {
-      url = "github:hengvvang/zen-browser";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-    # Using latest versions
-    # helix-editor = {
-    #   # url = "github:helix-editor/helix";
-    #   # Custom branch with icons
-    #   url = "github:RoloEdits/helix/icons-v2";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
