@@ -35,7 +35,12 @@
 
   # Required so that other programs can find out about fonts installed by the NixOS system
   # configuration and the ones installed with `home.packages`
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    # Additional tweaking to make font rendering look nice.
+    subpixelRendering = "rgb";
+    antialiasing = true;
+  };
 
   qt = {
     enable = true;

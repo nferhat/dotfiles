@@ -27,6 +27,7 @@
       monospace = ["FhtZed Term" "FhtZed Mono" "Iosevka" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
+    fontconfig.subpixel.rgba = "rgb";
 
     # Apparently this causes more issues with font dependencies.
     # TODO: Investigate
@@ -34,8 +35,8 @@
   };
 
   environment.sessionVariables = {
-    EDITOR = "hx";
-    VISUAL = "zeditor";
+    EDITOR = "nvim";
+    VISUAL = "neovide";
     # XDG variables setup
     # safe defaults, in case the xdg nixos module, setting them here to avoid race conditions
     # as the xdg module sets them after `environment.variables` are set.
@@ -43,6 +44,27 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
+    # Cripster font rendering.
+    FREETYPE_PROPERTIES = lib.concatStringsSep " " (let
+      darkeningParams = [
+        # Pairs of (<=stem-width in micropx, darkening-amount)
+        500 0 # <=0.5px -> 0px darkening...
+        1000 300
+        2500 500
+        4000 0
+      ];
+      darkeningParamsStr = lib.concatStringsSep "," (map toString darkeningParams);
+    in [
+      # Enable darkening for CFF engine
+      "cff:no-stem-darkening=0"
+      "cff:darkening-parameters=${darkeningParamsStr}"
+      # Enable darkening for Autohinting engine engine
+      "autofitter:no-stem-darkening=0"
+      "autofitter:darkening-parameters=${darkeningParamsStr}"
+      # For type1 font rendering, even though it's not really used but still.
+      "type1:no-stem-darkening=0"
+      "t1cid:no-stem-darkening=0"
+    ]);
   };
 
   environment.systemPackages = [pkgs.gtklock];
