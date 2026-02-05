@@ -28,8 +28,8 @@
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
-        inner-gaps = 8;
-        outer-gaps = 8;
+        inner-gaps = 4;
+        outer-gaps = 4;
       };
 
       cursor = {inherit (config.home.pointerCursor) name size;};
@@ -40,25 +40,20 @@
         border = {
           thickness = 3;
           radius = 32;
-          focused-color = {
-            start = theme.ansi.color2;
-            end = theme.ansi.color4;
-            angle = 0;
-          };
+          focused-color = theme.separator;
           normal-color = "transparent";
-          # normal-color = theme.ansi-bright.color8;
         };
 
         shadow = {
-          sigma = 20;
-          color = "rgba(0, 0, 0, 33%)";
+          sigma = 12.5;
+          color = "#000";
           floating-only = false;
         };
 
         blur = {
-          radius = 3;
+          radius = 2;
           passes = 4;
-          noise = 0.05;
+          noise = 0.045;
         };
       };
 
@@ -91,10 +86,10 @@
           direction = "horizontal";
           curve = {
             clamp = true;
-            damping-ratio = 1;
+            damping-ratio = 1.1;
             initial-velocity = 5;
-            mass = 1;
-            stiffness = 700;
+            mass = 1.5;
+            stiffness = 900;
           };
         };
       };
@@ -153,7 +148,7 @@
         workspaceKeybinds
         // {
           # Example key actions that do not need any argument
-          Super-q = "quit";
+          Super-q = "none";
           Super-Ctrl-r = "reload-config";
 
           # Example key actions that need an argument passed in
@@ -353,6 +348,12 @@
             y = 150;
           };
         }
+
+        # Enable un-optimized blur, for now.
+        {
+          match-title = [".*"];
+          blur.optimized = false;
+        }
       ];
 
       layer-rules = [
@@ -370,23 +371,23 @@
           corner-radius = 25;
         }
 
-        # Working on a quickshell-based shell, apply some blurring and stuff here and there...
-        {
-          match-namespace = ["fht.desktop.Shell.Bar"];
-          blur = {
-            disable = false;
-            optimized = true;
-          };
-          shadow.disable = false;
-        }
-        {
-          match-namespace = ["fht.desktop.Shell.ReloadPopup"];
-          blur = {
-            disable = false;
-            optimized = true;
-          };
-          shadow.disable = false;
-        }
+        # # Working on a quickshell-based shell, apply some blurring and stuff here and there...
+        # {
+        #   match-namespace = ["fht.desktop.Shell.Bar"];
+        #   blur = {
+        #     disable = false;
+        #     optimized = true;
+        #   };
+        #   shadow.disable = false;
+        # }
+        # {
+        #   match-namespace = ["fht.desktop.Shell.ReloadPopup"];
+        #   blur = {
+        #     disable = false;
+        #     optimized = true;
+        #   };
+        #   shadow.disable = false;
+        # }
       ];
     };
   };
