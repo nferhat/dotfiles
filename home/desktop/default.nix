@@ -7,6 +7,7 @@
   imports = [
     ./programs
     ./fht-compositor.nix
+    ./quickshell.nix
     ./services.nix
     ./gtk-theme.nix
   ];
