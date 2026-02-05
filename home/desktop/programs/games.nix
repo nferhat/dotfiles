@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Addicted till the end of my life
     # You never quit osu, they say.
@@ -14,10 +14,11 @@
     # Thanks lucanto.
     (prismlauncher.override {
       jdks = with javaPackages.compiler.temurin-bin; [
-        jre-25 jre-21 jre-8
+        jre-25
+        jre-21
+        jre-8
       ];
     })
-
   ];
 
   # Good HUD for stats and stuff. Replaces what I don't have with AMD Adrenalin

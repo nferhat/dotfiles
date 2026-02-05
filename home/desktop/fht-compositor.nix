@@ -13,7 +13,7 @@
   in {
     enable = true;
     settings = {
-        autostart = ["wl-paste --watch cliphist store &"];
+      autostart = ["wl-paste --watch cliphist store &"];
 
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
       imports = [

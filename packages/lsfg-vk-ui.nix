@@ -9,7 +9,6 @@
   gtk4,
   libadwaita,
 }:
-
 rustPlatform.buildRustPackage rec {
   pname = "lsfg-vk-ui";
   version = "9943153918b50804338adfbc719793be3546f954";
@@ -48,7 +47,7 @@ rustPlatform.buildRustPackage rec {
     changelog = "https://github.com/PancakeTAS/lsfg-vk/releases/tag/${src.tag}";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ pabloaul ];
+    maintainers = with lib.maintainers; [pabloaul];
     mainProgram = "lsfg-vk-ui";
   };
 }

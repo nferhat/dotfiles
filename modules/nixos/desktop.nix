@@ -48,10 +48,14 @@
     FREETYPE_PROPERTIES = lib.concatStringsSep " " (let
       darkeningParams = [
         # Pairs of (<=stem-width in micropx, darkening-amount)
-        500 0 # <=0.5px -> 0px darkening...
-        1000 300
-        2500 500
-        4000 0
+        500
+        0 # <=0.5px -> 0px darkening...
+        1000
+        300
+        2500
+        500
+        4000
+        0
       ];
       darkeningParamsStr = lib.concatStringsSep "," (map toString darkeningParams);
     in [

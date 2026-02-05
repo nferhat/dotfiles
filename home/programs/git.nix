@@ -12,7 +12,6 @@
   programs.git = {
     enable = true;
 
-
     aliases = {
       # Blantantly copied from my old config, it just works!
       add-select = "!git status --short | fzf | awk '{print $2}' | xargs -r git add";
@@ -48,7 +47,6 @@
         editor = config.home.sessionVariables.EDITOR;
       };
     };
-
   };
 
   # Better diff tool, very useful and somewhat underrated.

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   services.mpris-proxy.enable = true;
 
   # Services that we setup as part of the desktop/graphical session.
@@ -15,19 +19,16 @@
       Install.WantedBy = ["graphical-session.target" "fht-compositor.service"];
     };
   in {
-    # Integrated now with quickshell
-    # wallpaper =
-    #   start-with-graphical-session "Wallpaper service"
-    #   // {
-    #     Service = {
-    #       Type = "simple";
-    #       ExecStart = let
-    #         theme = import ../../theme;
-    #         inherit (theme) wallpaper;
-    #       in "${pkgs.swaybg}/bin/swaybg --mode fill -i ${wallpaper}";
-    #       Restart = "on-failure";
-    #     };
-    #   };
+    # Quickshell, the all-in-one solution for wallpaper,  bars, and everything you can think of!
+    quickshell =
+      start-with-graphical-session "Quickshell service"
+      // {
+        Service = {
+          Type = "simple";
+          ExecStart = "${inputs'.quickshell.packages.default}/bin/qs";
+          Restart = "on-failure";
+        };
+      };
 
     # NOTE: While yes, xwayland-satellite provides its own .servicce file, I cannot seem to make
     # it detected/started by home-manager. The configuration here just replicates it.
