@@ -75,6 +75,9 @@ M.config = function()
             Lua = {},
         },
     })
+    vim.lsp.config("qmlls", {
+        cmd = { "qmlls", "-E" }
+    })
     vim.lsp.enable {
         "lua_ls",
         "ts_ls",

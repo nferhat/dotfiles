@@ -63,4 +63,4 @@ M.config = function()
     }
 end
 
-return M
+return {}
