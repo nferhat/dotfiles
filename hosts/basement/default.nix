@@ -182,6 +182,11 @@
   ];
   environment.etc."vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json".source = "${self'.packages.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json";
 
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   system = {
     autoUpgrade.enable = false;
     # WARN: Do not touch, it's essential to avoid breaking when upgrading.
