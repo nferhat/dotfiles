@@ -12,26 +12,27 @@
   programs.git = {
     enable = true;
 
-    aliases = {
-      # Blantantly copied from my old config, it just works!
-      add-select = "!git status --short | fzf | awk '{print $2}' | xargs -r git add";
-      br = "branch";
-      ba = "branch --all";
-      bd = "branch -D";
-      ca = "commit --all";
-      ci = "commit";
-      cl = "clone";
-      co = "checkout";
-      cp = "cherry-pick";
-      st = "status";
-      hist = "log --all - graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'";
-      llog = "log --graph --name-status --pretty=format:'%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset' --date=relative";
-      ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
-      pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
-      af = "!git add $(git ls-files -m -o --exclude-standard | fzf -m)";
-    };
 
     settings = {
+      alias = {
+        # Blantantly copied from my old config, it just works!
+        add-select = "!git status --short | fzf | awk '{print $2}' | xargs -r git add";
+        br = "branch";
+        ba = "branch --all";
+        bd = "branch -D";
+        ca = "commit --all";
+        ci = "commit";
+        cl = "clone";
+        co = "checkout";
+        cp = "cherry-pick";
+        st = "status";
+        hist = "log --all - graph --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(bold magenta)%d%C(reset)'";
+        llog = "log --graph --name-status --pretty=format:'%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset' --date=relative";
+        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
+        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
+        af = "!git add $(git ls-files -m -o --exclude-standard | fzf -m)";
+      };
+
       # Information about me.
       user = {
         name = "nferhat";
