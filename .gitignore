@@ -1,2 +1,6 @@
 .direnv/
+
+# These are temporary/machine-specific files that are generated when I work
+# on the quickshell rice. Outside of here they are useless.
 config/quickshell/.qmlls.ini
+config/quickshell/.direnv

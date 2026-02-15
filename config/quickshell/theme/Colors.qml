@@ -71,7 +71,7 @@ Singleton {
     }
 
     // The accent color for important text.
-    property color accent: ansi.color4
+    property color accent: ansi.color2
 
     // The text color4 for error messages.
     // You'd generally pair this with background.secondary to make the error pop out.

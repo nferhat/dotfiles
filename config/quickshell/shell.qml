@@ -1,10 +1,14 @@
-import Quickshell
+pragma ComponentBehavior: Bound
 
-import "./bar/"
-import "./dock/"
+import Quickshell
+import QtQuick
+
+import qs.modules
+import qs.modules.bar
 
 ShellRoot {
+    id: root
+
     Bar {}
-    Dock {}
     Wallpaper {}
 }

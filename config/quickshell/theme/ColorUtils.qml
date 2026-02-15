@@ -165,4 +165,23 @@ Singleton {
         // Return high contrast color
         return luminance < 0.5 ? "#FFFFFF" : "#000000";
     }
+
+    /**
+     * Returns the brightness of the color.
+     *
+     * @param {Qt.rgba} c - The color to get the brightness of
+     */
+    function brightness(c) {
+        return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
+    }
+
+    /**
+     * Returns the brightest of the two colors.
+     *
+     * @param {Qt.rgba} c1 - The first color
+     * @param {Qt.rgba} c2 - The second color
+     */
+    function brighterColor(c1, c2) {
+        return brightness(c1) >= brightness(c2) ? c1 : c2;
+    }
 }

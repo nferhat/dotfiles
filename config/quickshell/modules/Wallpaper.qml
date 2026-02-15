@@ -5,11 +5,12 @@ import Quickshell.Wayland
 import Quickshell.Widgets
 import QtQuick
 import qs.theme
+import qs.theme
 
 Item {
     id: root
 
-    property var wallpaperPath: "assets/04-ambxst-blobs-blue.png"
+    property var wallpaperPath: "../assets/extra-14.jpg"
 
     Variants {
         model: Quickshell.screens
@@ -33,7 +34,7 @@ Item {
             }
 
             ClippingRectangle {
-                radius: 24
+                radius: Appearance.radius()
                 anchors.fill: parent
                 Image {
                     anchors.fill: parent
