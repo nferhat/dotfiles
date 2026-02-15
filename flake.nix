@@ -23,6 +23,10 @@
       # (IE. only for developement purposes, end users don't care)
       inputs.rust-overlay.follows = "";
     };
+    fht-compositor-qml-plugin = {
+      url = "github:/nferhat/fht-compositor-ipc-qml-plugin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Shell, for the desktop.
     quickshell = {

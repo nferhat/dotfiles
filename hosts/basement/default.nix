@@ -57,7 +57,6 @@
 
   networking = {
     hostName = "basement";
-    wireless.enable = false;
     networkmanager.enable = true;
     firewall.enable = false;
 
@@ -105,9 +104,6 @@
       dnssec = "true";
       domains = ["~."];
       fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-      extraConfig = ''
-        DNSOverTLS=yes
-      '';
     };
 
     hardware.openrgb = {
@@ -129,7 +125,6 @@
 
   programs = {
     virt-manager.enable = true;
-    adb.enable = true;
     localsend.enable = true;
     nix-ld.enable = true;
     appimage.enable = true;
@@ -154,11 +149,11 @@
     steam = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
-          xorg.libXcursor
-          xorg.libXrandr
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libXcursor
+          libXrandr
+          libXi
+          libXinerama
+          libXScrnSaver
           libpng
           libpulseaudio
           libvorbis
@@ -179,6 +174,8 @@
     lact
     # Framegeneration since it looks good with Ryujinx.
     self'.packages.lsfg-vk
+    # Making use of this.
+    android-tools
   ];
   environment.etc."vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json".source = "${self'.packages.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json";
 

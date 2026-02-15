@@ -86,9 +86,6 @@
       dnssec = "true";
       domains = ["~."];
       fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-      extraConfig = ''
-        DNSOverTLS=yes
-      '';
     };
 
     # Battery management
@@ -133,7 +130,6 @@
 
   programs = {
     light.enable = true; # can't control directly using kernel+hotkeys.
-    adb.enable = true;
     localsend.enable = true;
     steam.enable = true;
     nix-ld.enable = true;
@@ -143,11 +139,11 @@
     steam = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
-          xorg.libXcursor
-          xorg.libXrandr
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libXcursor
+          libXrandr
+          libXi
+          libXinerama
+          libXScrnSaver
           libpng
           libpulseaudio
           libvorbis
@@ -162,6 +158,7 @@
   environment.systemPackages = with pkgs; [
     scrcpy
     via
+    android-tools
   ];
 
   system = {

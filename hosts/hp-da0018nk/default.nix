@@ -93,9 +93,6 @@
       dnssec = "true";
       domains = ["~."];
       fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-      extraConfig = ''
-        DNSOverTLS=yes
-      '';
     };
 
     blueman.enable = true;
@@ -118,11 +115,11 @@
     steam = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
-          xorg.libXcursor
-          xorg.libXrandr
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libXcursor
+          libXrandr
+          libXi
+          libXinerama
+          libXScrnSaver
           libpng
           libpulseaudio
           libvorbis

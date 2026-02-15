@@ -12,7 +12,6 @@
   programs.git = {
     enable = true;
 
-
     settings = {
       alias = {
         # Blantantly copied from my old config, it just works!
