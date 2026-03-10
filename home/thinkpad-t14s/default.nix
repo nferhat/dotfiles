@@ -22,6 +22,13 @@
         mode = "2560x1440@120";
       };
       DP-5 = DP-4;
+      DP-6 = DP-4;
+    };
+
+    # Gesturebinds. Thank you Ardox.
+    gesturebinds = {
+      "focus-next-workspace" = { direction = "left"; fingers = 3; };
+      "focus-previous-workspace" = { direction = "right"; fingers = 3; };
     };
   };
 
