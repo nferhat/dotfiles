@@ -38,8 +38,8 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 3;
-          radius = 32;
+          thickness = 2;
+          radius = 14;
           focused-color = theme.separator;
           normal-color = "transparent";
         };
@@ -51,7 +51,7 @@
         };
 
         blur = {
-          radius = 2;
+          radius = 4;
           passes = 4;
           noise = 0.045;
         };
@@ -347,12 +347,6 @@
             x = 2080;
             y = 150;
           };
-        }
-
-        # Enable un-optimized blur, for now.
-        {
-          match-title = [".*"];
-          blur.optimized = false;
         }
       ];
 
