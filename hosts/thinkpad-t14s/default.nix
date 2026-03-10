@@ -1,13 +1,10 @@
 {
-  config,
-  lib,
   pkgs,
   inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./gamescope-session.nix
     ./secure-boot.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
