@@ -55,7 +55,7 @@ O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
 
 -- Better default extui, looks cool!
-require("vim._extui").enable{}
+-- require("vim._extui").enable{}
 
 -- Keymaps, also strongly influenced by my preferences.
 
