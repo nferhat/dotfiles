@@ -18,6 +18,7 @@
     # GUI applications
     nautilus
     overskride
+    remmina
     gnome-secrets
     telegram-desktop
     fractal
