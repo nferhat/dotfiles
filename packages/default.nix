@@ -34,6 +34,12 @@
         set = "FhtZedTerm";
       };
 
+      # https://github.com/shytikov/pragmasevka
+      pragmasevka = pkgs.iosevka.override {
+        privateBuildPlan = builtins.readFile ./pragmasevka.toml;
+        set = "Pragmasevka";
+      };
+
       # Up-to-date versions of both.
       lsfg-vk = pkgs.callPackage ./lsfg-vk.nix {};
       # lsfg-vk-ui = pkgs.callPackage ./lsfg-vk-ui.nix {};

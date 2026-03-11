@@ -15,7 +15,7 @@
       15;
     in {
       command = "fish";
-      font-family = "FhtZed Term"; # term has fixed-length characters
+      font-family = "Pragmasevka";
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;

@@ -5,7 +5,7 @@
     settings = {
       theme = "fht";
       font = {
-        family = "FhtZed Mono";
+        family = "Pragmasevka";
         size = 16;
       };
       servers."liberachat" = {
