@@ -30,11 +30,11 @@
   };
 
   # Windows partition
-  fileSystems."/mnt/windows" = {
-    device = "/dev/disk/by-uuid/B8D0936ED093321C";
-    fsType = "ntfs-3g";
-    options = ["rw" "uid=1000"];
-  };
+  # fileSystems."/mnt/windows" = {
+  #   device = "/dev/disk/by-uuid/B8D0936ED093321C";
+  #   fsType = "ntfs-3g";
+  #   options = ["rw" "uid=1000"];
+  # };
 
   hardware = {
     enableRedistributableFirmware = true;
