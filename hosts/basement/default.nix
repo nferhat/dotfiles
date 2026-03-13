@@ -25,7 +25,7 @@
     ];
     kernelParams = [
       "video=DP-1:2560x1440@180" # use highest mode available on boot
-      "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
+      # "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
     ];
   };
 
@@ -105,12 +105,12 @@
     flatpak.enable = true;
   };
 
-  systemd = {
-    # Add LACT for tweaking GPU configuration. We must enable ourselves since
-    # there's no NixOS module yet
-    packages = [pkgs.lact];
-    services.lactd.wantedBy = ["multi-user.target"];
-  };
+  # systemd = {
+  #   # Add LACT for tweaking GPU configuration. We must enable ourselves since
+  #   # there's no NixOS module yet
+  #   packages = [pkgs.lact];
+  #   services.lactd.wantedBy = ["multi-user.target"];
+  # };
 
   programs = {
     virt-manager.enable = true;
@@ -160,7 +160,7 @@
     gpu-screen-recorder-gtk
     scrcpy
     # For tuning the 7900XT properly.
-    lact
+    # lact
     # Framegeneration since it looks good with Ryujinx.
     self'.packages.lsfg-vk
     # Making use of this.
