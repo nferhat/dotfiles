@@ -6,6 +6,8 @@
   imports = [
     ./hardware-configuration.nix
     ./secure-boot.nix
+    ../shared/core.nix
+    ../shared/desktop.nix
   ];
 
   boot = {
@@ -56,7 +58,6 @@
   };
 
   networking = {
-    hostName = "basement";
     networkmanager.enable = true;
     firewall.enable = false;
   };

@@ -4,7 +4,12 @@
   pkgs,
   ...
 }: {
-  imports = [./hardware-configuration.nix ./nvidia.nix];
+  imports = [
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ../shared/core.nix
+    # ../shared/desktop.nix
+  ];
 
   boot = {
     # Shared partition with windows.
@@ -57,7 +62,6 @@
   };
 
   networking = {
-    hostName = "hp-da0018nk";
     wireless.enable = false;
     networkmanager.enable = true;
     firewall.enable = false;

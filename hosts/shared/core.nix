@@ -1,11 +1,18 @@
 {
-  config,
+  # Most of these inputs are just to be passed down into home-manager (../../home), notably inputs and self
+  # and their filtered version.
+  self',
+  self,
   inputs,
   inputs',
+  # NixOS stuff
+  config,
   lib,
   pkgs,
   ...
 }: {
+  imports = [inputs.home-manager.nixosModules.home-manager];
+
   environment = {
     defaultPackages = []; # can be removed safely based on the manual.
     pathsToLink = ["/share/fish"]; # for zsh completion provided by packages.
@@ -61,4 +68,23 @@
   # TODO: pick unfree packages and add them to an unfree predicate?
   # This would be better than allowing any unfree package to pass through.
   nixpkgs.config.allowUnfree = true;
+
+  # Setup my user and the home directory.
+  # Nothing special, I use home-manager as a NixOS module only, I don't make use of the home-manager utility
+  # (I believe it's better to tie home configurations to system revisions)
+  users.users."nferhat" = {
+    # NOTE: I keep the login shell as bash on purpose, my terminal emulator it starts up fish,
+    # which is the shell I use (same with tmux)
+    description = "Nadjib Ferhat";
+    isNormalUser = true;
+    extraGroups = ["wheel" "networkmanager" "input"];
+    initialPassword = "nixos"; # don't forget to change it!
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {inherit self' self inputs inputs';};
+    users."nferhat" = import ../../home/nferhat.nix;
+  };
 }

@@ -58,7 +58,7 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./modules ./packages];
+      imports = [./hosts ./packages];
 
       systems = ["x86_64-linux"];
       perSystem = {pkgs, ...}: {

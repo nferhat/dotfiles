@@ -8,6 +8,8 @@
     ./secure-boot.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
+    ../shared/core.nix
+    ../shared/desktop.nix
   ];
 
   boot = {
@@ -47,7 +49,6 @@
   };
 
   networking = {
-    hostName = "thinkpad-t14s";
     networkmanager.enable = true;
     firewall.enable = false;
   };
