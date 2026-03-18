@@ -110,7 +110,10 @@
       pulse.enable = true;
     };
 
-    # xserver.displayManager.lightdm.enable = true;
+    displayManager.ly = {
+      enable = true;
+      x11Support = false;
+    };
   };
 
   # Depedency of pipewire.
