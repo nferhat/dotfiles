@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   self',
   ...
@@ -39,6 +38,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     xone.enable = true; # Xbox360 with USB dongle
+    amdgpu.opencl.enable = true;
 
     bluetooth = {
       enable = true;
