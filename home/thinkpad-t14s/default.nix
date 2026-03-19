@@ -27,8 +27,14 @@
 
     # Gesturebinds. Thank you Ardox.
     gesturebinds = {
-      "focus-next-workspace" = { direction = "left"; fingers = 3; };
-      "focus-previous-workspace" = { direction = "right"; fingers = 3; };
+      "focus-next-workspace" = {
+        direction = "left";
+        fingers = 3;
+      };
+      "focus-previous-workspace" = {
+        direction = "right";
+        fingers = 3;
+      };
     };
   };
 

@@ -350,7 +350,10 @@
         }
 
         # For some reason, ghostty doesn't want to be tiled by default.
-        { match-app-id = ["com.mitchellh.ghostty"]; floating = false; }
+        {
+          match-app-id = ["com.mitchellh.ghostty"];
+          floating = false;
+        }
       ];
 
       layer-rules = [
