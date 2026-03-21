@@ -28,7 +28,7 @@
     };
 
     themes."fht" = let
-      theme = import ../../../theme;
+      theme = import ../../theme;
     in rec {
       general = {
         background = "#${theme.background.primary}";

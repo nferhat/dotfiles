@@ -1,8 +1,8 @@
-{ lib, ... }: {
+{lib, ...}: {
   programs.ghostty = {
     enable = true;
     settings = let
-      theme = import ../../../theme;
+      theme = import ../../theme;
       ansiColors = theme.ansi // theme.ansi-bright;
       palette = lib.genList (i: let
         colorValue = ansiColors."color${toString i}";
