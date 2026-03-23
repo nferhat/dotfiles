@@ -19,7 +19,7 @@
 rec {
   # Terminal colors
   ansi = {
-    color0 = "141617";
+    color0 = "161717";
     color1 = "df5b61";
     color2 = "87c7a1";
     color3 = "de8f78";
@@ -55,14 +55,14 @@ rec {
   #   For example, your comments in the text editor should be highlighted using text.tertiary. The
   #   statusline of your editor should be highlighted using background.tertiary
   background = {
-    primary = "101012";
-    secondary = "141416";
-    tertiary = "0c0d10";
+    primary = "141416";
+    secondary = "161618";
+    tertiary = "101012";
   };
   text = {
-    primary = "efefef";
+    primary = "dedede";
     secondary = "c4c6d0";
-    tertiary = "53536a";
+    tertiary = "49494b";
   };
 
   # The accent color for important text.

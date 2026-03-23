@@ -20,7 +20,7 @@
           "@define-color ${k} rgba(${toString r}, ${toString g}, ${toString b}, ${toString (a / 255.0)});")
       colors);
 
-    opacity = "f0";
+    opacity = "ff";
     themeColors = with theme; rec {
       accent_color = accent;
       accent_bg_color = accent + opacity;

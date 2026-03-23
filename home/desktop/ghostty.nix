@@ -22,7 +22,6 @@
       adjust-underline-thickness = 1;
       window-padding-x = 5;
       window-padding-y = 5;
-      adjust-cell-height = "-10%";
       # font-feature = "-calt, -liga, -dlig";
       window-inherit-working-directory = false;
       # The heuristics to detected if ghostty should enable/disable this are not supported in
@@ -38,7 +37,7 @@
       # Theme, directly ported from alacritty.
       background-opacity-cells = true;
       background = theme.background.primary;
-      background-opacity = 0.95;
+      background-opacity = 1;
       foreground = theme.text.primary;
       inherit palette;
     };
