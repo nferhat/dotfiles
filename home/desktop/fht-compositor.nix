@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  lib,
   ...
 }: {
   imports = [inputs.fht-compositor.homeModules.default];
@@ -28,8 +27,8 @@
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
-        inner-gaps = 4;
-        outer-gaps = 4;
+        inner-gaps = 16;
+        outer-gaps = 5;
       };
 
       cursor = {inherit (config.home.pointerCursor) name size;};
@@ -39,7 +38,7 @@
 
         border = {
           thickness = 2;
-          radius = 14;
+          radius = 18;
           focused-color = theme.separator;
           normal-color = "transparent";
         };
@@ -51,6 +50,7 @@
         };
 
         blur = {
+          disable = true; # Not doing the blur thing anymore for now...
           radius = 4;
           passes = 4;
           noise = 0.045;
@@ -357,37 +357,12 @@
       ];
 
       layer-rules = [
+        # Working on a quickshell-based shell,
+        # The bar looks nicer with shadows behind it, like my AWM rice used to have.
         {
-          # Blur wofi (app launcher) and make it slightly transparent
-          match-namespace = ["wofi"];
-          shadow = {
-            disable = false;
-            color = "black";
-          };
-          blur = {
-            disable = false;
-            noise = 0;
-          };
-          corner-radius = 25;
+          match-namespace = ["fht.desktop.Shell.*"];
+          shadow.disable = false;
         }
-
-        # # Working on a quickshell-based shell, apply some blurring and stuff here and there...
-        # {
-        #   match-namespace = ["fht.desktop.Shell.Bar"];
-        #   blur = {
-        #     disable = false;
-        #     optimized = true;
-        #   };
-        #   shadow.disable = false;
-        # }
-        # {
-        #   match-namespace = ["fht.desktop.Shell.ReloadPopup"];
-        #   blur = {
-        #     disable = false;
-        #     optimized = true;
-        #   };
-        #   shadow.disable = false;
-        # }
       ];
     };
   };

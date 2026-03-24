@@ -57,7 +57,7 @@
         defaultCursor = "left_ptr";
       };
       package = pkgs.phinger-cursors;
-      name = "phinger-cursors";
+      name = "phinger-cursors-dark";
       size = 32;
     };
   };
