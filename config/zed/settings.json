@@ -1,0 +1,120 @@
+{
+  // Make the terminal mode sane. I also like to use fish and not bash,
+  // better DX and nice features without having me configure everything in it.
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default_mode": "allow"
+        }
+      }
+    },
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-6"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "ssh_connections": [],
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "terminal": {
+    "toolbar": { "breadcrumbs": true },
+    "shell": { "program": "fish" },
+    "font_features": { "calt": true, "dlig": true, "liga": true },
+  },
+
+  // Make search more similar to Neovim's/Helix' search feature.
+  "search": {
+    "center_on_match": true,
+    "regex": true,
+    "case_sensitive": true,
+  },
+  "use_smartcase_search": true,
+  "search_wrap": false,
+
+  // I find them too thin by default (1px)
+  // 2px marks the sweet spot.
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "coloring": "fixed",
+    "active_line_width": 2,
+    "line_width": 2,
+  },
+
+  // They are disabled by default. One of the best features of Language Servers by far.
+  // Especially if you program in Rust, they are super super nice.
+  "inlay_hints": {
+    "show_background": true,
+    "enabled": true,
+  },
+
+  // I don't know why it should show the root. It's really janky.
+  "project_panel": {
+    "hide_root": true,
+    "bold_folder_labels": true,
+    "indent_size": 24.0,
+    "entry_spacing": "standard",
+    "default_width": 250.0,
+    "hide_hidden": false,
+  },
+  // The toolbar is pretty nice, especially since it's not that intrusive, compared to other
+  // editors I tried (including the neovim one, it blends too much with the editor region)
+  "toolbar": {
+    // "quick_actions": false,
+    // "breadcrumbs": false,
+    "code_actions": true,
+    "selections_menu": true,
+    "quick_actions": true,
+  },
+
+  // Nice to have, however I do know my keybinds pretty well after all
+  "which_key": { "enabled": true },
+
+  "preview_tabs": { "enable_preview_from_file_finder": true },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": true,
+  },
+  // Less jittering left and right, you know.
+  "gutter": { "min_line_number_digits": 4 },
+  "auto_signature_help": true,
+  "autoscroll_on_clicks": true,
+  "unnecessary_code_fade": 0.4,
+  // I never made use of these as a terminal text editor user.
+  // This reduces some of the cluttering, but nothing reaches that peak anymore...
+  // But zed is still super nice anyway.
+  "buffer_line_height": { "custom": 1.1 },
+  "scrollbar": { "show": "never" },
+  "tab_bar": { "show": false },
+
+  // If you don't use modal editing you are falling behind.
+  // ...Just an opinion, though...
+  "vim_mode": true,
+  "helix_mode": true,
+  "relative_line_numbers": "enabled",
+  "cursor_shape": "block",
+  "vim": {
+    "gdefault": false,
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": false,
+  },
+
+  // Use Zed's prompts, I don't need for my system prompt to open up. (For example GTK or whatever)
+  // Also use the same font for the buffers and UI, looks nicer that way.
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "ui_font_family": "Pragmasevka",
+  "buffer_font_family": "Pragmasevka",
+  "ui_font_size": 18.0,
+  "buffer_font_size": 20.0,
+  // My own theme, built with NixOS, but you can always copy the JSON file
+  "theme": "fht",
+  "icon_theme": "Soft Charmed Icons",
+
+  "load_direnv": "shell_hook",
+}
+// vim: ft=jsonc

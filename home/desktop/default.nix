@@ -13,6 +13,7 @@
     ./quickshell.nix
     ./services.nix
     ./wofi.nix
+    ./zed.nix
   ];
 
   home = {
