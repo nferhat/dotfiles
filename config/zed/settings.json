@@ -1,28 +1,17 @@
 {
   // Make the terminal mode sane. I also like to use fish and not bash,
   // better DX and nice features without having me configure everything in it.
-  "agent": {
-    "tool_permissions": {
-      "tools": {
-        "terminal": {
-          "default_mode": "allow"
-        }
-      }
-    },
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-6"
-    },
-    "favorite_models": [],
-    "model_parameters": []
+  "tabs": {
+    "git_status": true,
   },
+  "show_signature_help_after_edits": true,
   "ssh_connections": [],
   "show_edit_predictions": false,
   "edit_predictions": {
     "mode": "subtle",
   },
   "terminal": {
-    "toolbar": { "breadcrumbs": true },
+    "toolbar": { "breadcrumbs": false },
     "shell": { "program": "fish" },
     "font_features": { "calt": true, "dlig": true, "liga": true },
   },
@@ -54,7 +43,7 @@
 
   // I don't know why it should show the root. It's really janky.
   "project_panel": {
-    "hide_root": true,
+    "hide_root": false,
     "bold_folder_labels": true,
     "indent_size": 24.0,
     "entry_spacing": "standard",
@@ -64,15 +53,14 @@
   // The toolbar is pretty nice, especially since it's not that intrusive, compared to other
   // editors I tried (including the neovim one, it blends too much with the editor region)
   "toolbar": {
-    // "quick_actions": false,
-    // "breadcrumbs": false,
+    "quick_actions": false,
+    "breadcrumbs": false,
     "code_actions": true,
     "selections_menu": true,
-    "quick_actions": true,
   },
 
   // Nice to have, however I do know my keybinds pretty well after all
-  "which_key": { "enabled": true },
+  "which_key": { "enabled": true, "delay_ms": 0 },
 
   "preview_tabs": { "enable_preview_from_file_finder": true },
   "title_bar": {
@@ -81,7 +69,7 @@
   },
   // Less jittering left and right, you know.
   "gutter": { "min_line_number_digits": 4 },
-  "auto_signature_help": true,
+  "auto_signature_help": false,
   "autoscroll_on_clicks": true,
   "unnecessary_code_fade": 0.4,
   // I never made use of these as a terminal text editor user.
@@ -89,12 +77,19 @@
   // But zed is still super nice anyway.
   "buffer_line_height": { "custom": 1.1 },
   "scrollbar": { "show": "never" },
-  "tab_bar": { "show": false },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": true,
+  },
+  "unstable.ui_density": "compact",
+  "telemetry": { "diagnostics": false, "metrics": false },
+  "diagnostics": { "inline": { "enabled": true, "padding": 6 } },
 
   // If you don't use modal editing you are falling behind.
   // ...Just an opinion, though...
   "vim_mode": true,
-  "helix_mode": true,
+  "helix_mode": false,
   "relative_line_numbers": "enabled",
   "cursor_shape": "block",
   "vim": {
@@ -110,11 +105,11 @@
   "ui_font_family": "Pragmasevka",
   "buffer_font_family": "Pragmasevka",
   "ui_font_size": 18.0,
-  "buffer_font_size": 20.0,
+  "buffer_font_size": 18.0,
+  "agent_buffer_font_size": 18.0,
   // My own theme, built with NixOS, but you can always copy the JSON file
   "theme": "fht",
   "icon_theme": "Soft Charmed Icons",
-
   "load_direnv": "shell_hook",
 }
 // vim: ft=jsonc

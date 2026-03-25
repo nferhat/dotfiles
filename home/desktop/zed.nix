@@ -27,12 +27,15 @@
       "keyword.operator" = color7;
       "keyword.storage.modifier" = color3;
       "label" = color3; # rust lifetimes
+      "syntax.lifetime" = color3; # rust lifetimes
       "link_text" = color1;
       "link_uri" = color4;
       "namespace" = "606077";
       "number" = color3;
-      "operator" = color7;
+      "operator" = "606077";
       "punctuation" = "606077";
+      "punctuation.bracket" = "606077";
+      "punctuation.delimiter" = "606077";
       "special" = color6;
       "string" = color2;
       "string.regexp" = color1;
@@ -42,7 +45,7 @@
       "type.builtin" = color3;
       "type.parameter" = color3;
       "variable" = text.primary;
-      "variable.special" = color6;
+      "variable.special" = color7;
       "variant" = color11;
     };
     syntax = builtins.mapAttrs (_: v:
@@ -139,7 +142,7 @@
       "success.background" = background.secondary;
 
       # Terminal colors.
-      "terminal.background" = "${background.tertiary}f0";
+      "terminal.background" = background.primary;
       "terminal.foreground" = text.primary;
       "terminal.ansi.black" = ansi.color0;
       "terminal.ansi.red" = ansi.color1;
