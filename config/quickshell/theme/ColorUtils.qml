@@ -184,4 +184,35 @@ Singleton {
     function brighterColor(c1, c2) {
         return brightness(c1) >= brightness(c2) ? c1 : c2;
     }
+
+    /**
+     * Calculates the color for a container to overlay with `targetColor` onto `baseColor` with `opacity`
+     *
+     * @param {Qt.rgba} baseColor - The color of the parent container
+     * @param {Qt.rgba} targetColor - The color of the container to be overlaid.
+     * @param {number} opacity - The opacity of the container
+     */
+    function overlayColor(baseColor, targetColor, opacity) {
+        const overlay = ColorUtils.solveOverlayColor(baseColor, targetColor, opacity);
+        return transparentize(overlay, 1 - opacity);
+    }
+
+    function clamp01(x) {
+        return Math.min(1, Math.max(0, x));
+    }
+
+    function solveOverlayColor(baseColor, targetColor, overlayOpacity) {
+        if (overlayOpacity <= 0) {
+            // Impossible to influence the base
+            return Qt.rgba(0, 0, 0, 0);
+        }
+
+        let invA = 1.0 - overlayOpacity;
+
+        let r = (targetColor.r - baseColor.r * invA) / overlayOpacity;
+        let g = (targetColor.g - baseColor.g * invA) / overlayOpacity;
+        let b = (targetColor.b - baseColor.b * invA) / overlayOpacity;
+
+        return Qt.rgba(clamp01(r), clamp01(g), clamp01(b), 1.0);
+    }
 }

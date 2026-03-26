@@ -30,13 +30,10 @@ Item {
         implicitWidth: rowLayout.width
         implicitHeight: rowLayout.height
         anchors.fill: parent
-        color: Colors.background.primary
+        color: ColorUtils.overlayColor(Colors.background.primary, Colors.background.tertiary, 0.2)
 
         radius: Appearance.radius()
         smooth: true
-
-        layer.enabled: true
-        layer.effect: Shadow {}
 
         RowLayout {
             id: rowLayout
@@ -47,39 +44,6 @@ Item {
                 text: root.time
                 font.family: "Roboto Condensed"
                 color: Colors.text.primary
-            }
-
-            Separator {
-                vert: true
-            }
-
-            RowLayout {
-                spacing: 4
-
-                Text {
-                    text: ""
-                    font.family: "Phosphor-Duotone"
-                    font.pixelSize: 20
-                    renderType: Text.NativeRendering
-                    horizontalAlignment: Text.AlignHCenter
-                    color: Colors.ansi_bright.color10
-                }
-                Text {
-                    text: ""
-                    font.family: "Phosphor-Bold"
-                    font.pixelSize: 20
-                    renderType: Text.NativeRendering
-                    horizontalAlignment: Text.AlignHCenter
-                    color: Colors.text.tertiary
-                }
-                Text {
-                    text: ""
-                    font.family: "Phosphor-Bold"
-                    font.pixelSize: 20
-                    renderType: Text.NativeRendering
-                    horizontalAlignment: Text.AlignHCenter
-                    color: Colors.text.tertiary
-                }
             }
         }
     }

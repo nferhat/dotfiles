@@ -24,7 +24,7 @@ import Quickshell
 Singleton {
     // Terminal colors
     property QtObject ansi: QtObject {
-        property color color0: "#141617"
+        property color color0: "#161617"
         property color color1: "#df5b61"
         property color color2: "#87c7a1"
         property color color3: "#de8f78"
@@ -60,14 +60,14 @@ Singleton {
     //   For example, your comments in the text editor should be highlighted using text.tertiary. The
     //   statusline of your editor should be highlighted using background.tertiary
     property QtObject background: QtObject {
-        property color primary: "#101012"
-        property color secondary: "#141416"
-        property color tertiary: "#0c0d10"
+        property color primary: "#141416"
+        property color secondary: "#161618"
+        property color tertiary: "#101012"
     }
     property QtObject text: QtObject {
-        property color primary: "#efefef"
+        property color primary: "#dedede"
         property color secondary: "#c4c6d0"
-        property color tertiary: "#53536a"
+        property color tertiary: "#49494b"
     }
 
     // The accent color for important text.
