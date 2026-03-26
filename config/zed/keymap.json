@@ -1,0 +1,115 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "VimControl && !menu || !Editor || AgentPanel",
+    "bindings": {
+      // Easier window switching. By default you have todo <C-w> to access window commands.
+      // Since I don't use these keymaps by default, just make it easy to switch in and out.
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-shift-h": "workspace::SwapPaneLeft",
+      "ctrl-shift-l": "workspace::SwapPaneRight",
+      "ctrl-shift-k": "workspace::SwapPaneUp",
+      "ctrl-shift-j": "workspace::SwapPaneDown",
+    },
+  },
+  // Put these separately since terminal would get affected by space.
+  {
+    "context": "(VimControl && !menu || !Editor) && !Terminal",
+    "bindings": {
+      // Better access to git and stuff.
+      "space g g": "git_panel::ToggleFocus",
+      "space g B": "git::Blame",
+      "space g s": "git::ToggleStaged",
+      "space g b": "git::Branch",
+      "space g C": "git::Commit",
+      "space g c": "git::CheckoutBranch",
+      "space g S": "git::Switch",
+      "space g G": "git_graph::Open",
+      // Some muscle memory
+      "space f f": "file_finder::Toggle",
+      "space f o": "projects::OpenRecent",
+      "space space": "workspace::ToggleLeftDock",
+      "space b": "workspace::ToggleBottomDock",
+      "space n": "workspace::ToggleRightDock",
+      // Fast splits
+      "space h": "pane::SplitHorizontal",
+      "space v": "pane::SplitVertical",
+      // In my previous config, I had snacks.nvim zen mode configured to <leader>z
+      "space z": "workspace::ToggleZoom",
+      "space Z": "workspace::ToggleCenteredLayout",
+      "space x": "pane::CloseActiveItem",
+      // Just muscle memory
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // I like this from helix, faster than hitting %
+      // Using % for selecting all is muscle memory from helix.
+      "m m": "vim::Matching",
+      "%": "editor::SelectAll",
+      // Do not make me use two keys.
+      ">": ["workspace::SendKeystrokes", "> >"],
+      "<": ["workspace::SendKeystrokes", "< <"],
+      // Faster splits, from my neovim config.
+      "space |": "pane::SplitVertical",
+      "space -": "pane::SplitHorizontal",
+      // LSP keybinds from my neovim config.
+      // NOTE: Zed does have quite a lot of these, but still, for completeness.
+      "space k": "editor::Hover",
+      "space a": "editor::ToggleCodeActions",
+      "space r": "editor::Rename",
+      // Easier window switching. By default you have todo <C-w> to access window commands.
+      // Since I don't use these keymaps by default, just make it easy to switch in and out.
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+
+      // Make these the defaults. Scrolling through visual lines is always more "intuitive".
+      // Even though I don't enable softwrapping a lot, it's useful for markdown
+      "j": ["vim::Down", { "display_lines": true }],
+      "down": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }],
+      "up": ["vim::Up", { "display_lines": true }],
+      "$": ["vim::EndOfLine", { "display_lines": true }],
+      "end": ["vim::EndOfLine", { "display_lines": true }],
+      "0": ["vim::StartOfLine", { "display_lines": true }],
+      "home": ["vim::StartOfLine", { "display_lines": true }],
+      "shift-m": ["vim::MiddleOfLine", { "display_lines": true }],
+      "^": ["vim::FirstNonWhitespace", { "display_lines": true }],
+    },
+    // Make git panel use <leader>g instead of ctrl-g
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "context": "GitPanel && !Editor",
+    "bindings": {
+      "space F": "git::Fetch",
+      "space P": "git::Push",
+      "space p": "git::Pull",
+      "space down": "git::PullRebase",
+      "space f P": "git::ForcePush",
+      "space d": "git::Diff",
+      "space backspace": "git::RestoreTrackedFiles",
+      "space shift-backspace": "git::TrashUntrackedFiles",
+    },
+  },
+]
