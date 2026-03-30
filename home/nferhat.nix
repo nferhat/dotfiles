@@ -46,6 +46,8 @@
       findutils
       ffmpeg
       libqalculate
+      # Not essential but yknow
+      wakatime-cli
     ];
 
     shellAliases = {
@@ -73,6 +75,7 @@
       ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
       _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
       __GL_SHADER_DISK_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+      WAKATIME_HOME = "$XDG_CONFIG_HOME/wakatime";
     };
   };
 

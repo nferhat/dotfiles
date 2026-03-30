@@ -27,7 +27,6 @@
       url = "github:/nferhat/fht-compositor-ipc-qml-plugin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     # Shell, for the desktop.
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -35,17 +34,13 @@
     };
 
     # Using git since stable packaged in Nixpkgs is broken
-    watershot = {
-      url = "github:Kirottu/watershot/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    zed = {
+      url = "github:zed-industries/zed";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     # Stupid games that require secureboot to work. Still good to have though.
-    # TODO: Enable this for thinkpad-t14s, currently only setup for basement
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
