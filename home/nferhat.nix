@@ -3,6 +3,7 @@
   pkgs,
   config,
   osConfig,
+  inputs,
   ...
 }: {
   imports = let
@@ -17,6 +18,8 @@
       ./tmux.nix
       ./fish.nix
       ./git.nix
+      # Use the pre-made database.
+      inputs.nix-index-database.homeModules.default
     ]
     ++ hostConfig;
 
@@ -81,7 +84,8 @@
 
   programs = {
     # home-manager.enable = true;
-    command-not-found.enable = true;
+    nix-index.enable = true;
+    nix-index-database.comma.enable = true;
 
     fzf = {
       enable = true;
