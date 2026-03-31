@@ -14,7 +14,7 @@
       ./desktop
       ./services.nix
       # Program configuration. This is the core of my setup.
-      ./neovim.nix
+      ./helix.nix
       ./tmux.nix
       ./fish.nix
       ./git.nix

@@ -40,7 +40,6 @@
     };
 
     # Using git since stable packaged in Nixpkgs is broken
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     zed = {
       url = "github:zed-industries/zed";
       inputs.nixpkgs.follows = "nixpkgs";
