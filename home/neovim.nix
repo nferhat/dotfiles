@@ -12,7 +12,6 @@
       inputs'.neovim-nightly.packages.default
       ripgrep
       fd
-      neovide
       # For language servers, flake.nix and shell.nix in projects install them.
       # If needed I can just start them manually.
     ];
