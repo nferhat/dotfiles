@@ -12,18 +12,16 @@
       # regular UI fonts
       adwaita-fonts
       twemoji-color-font
-      google-fonts
       # Monospace.
-      self'.packages.pragmasevka
-      iosevka
-      nerd-fonts.iosevka
+      jetbrains-mono
+      nerd-fonts.jetbrains-mono
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Pragmasevka" "Iosevka" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Pragmasevka" "Iosevka" "Iosevka Nerd Font"];
-      monospace = ["Pragmasevka" "Iosevka" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "JetBrains Mono" "JetBrains Mono Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "JetBrains Mono" "JetBrains Mono Nerd Font"];
+      monospace = ["JetBrains Mono" "Iosevka" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
     fontconfig.subpixel.rgba = "rgb";
