@@ -32,8 +32,8 @@
   };
 
   environment.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "neovide";
+    EDITOR = "hx";
+    VISUAL = "zeditor";
     # XDG variables setup
     # safe defaults, in case the xdg nixos module, setting them here to avoid race conditions
     # as the xdg module sets them after `environment.variables` are set.
