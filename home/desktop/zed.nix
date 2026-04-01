@@ -1,9 +1,9 @@
 {
   config,
-  inputs',
+  pkgs,
   ...
 }: {
-  home.packages = [inputs'.zed.packages.default];
+  home.packages = [pkgs.zed-editor-fhs];
 
   xdg.configFile = {
     "zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink "/home/nferhat/Documents/repos/personal/dotfiles/config/zed/settings.json";

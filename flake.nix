@@ -39,12 +39,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Using git since stable packaged in Nixpkgs is broken
-    zed = {
-      url = "github:zed-industries/zed";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
     # Stupid games that require secureboot to work. Still good to have though.
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
