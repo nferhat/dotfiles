@@ -13,15 +13,16 @@
       adwaita-fonts
       twemoji-color-font
       # Monospace.
-      jetbrains-mono
-      nerd-fonts.jetbrains-mono
+      self'.packages.zed-mono
+      self'.packages.zed-term
+      nerd-fonts.iosevka
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "JetBrains Mono" "JetBrains Mono Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "JetBrains Mono" "JetBrains Mono Nerd Font"];
-      monospace = ["JetBrains Mono" "Iosevka" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "Zed Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "Zed Mono" "Iosevka Nerd Font"];
+      monospace = ["Zed Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
     fontconfig.subpixel.rgba = "rgb";

@@ -15,29 +15,13 @@
       };
 
       # Custom font variations. Based on Adwaita Sans and Zed Mono
-      fht-mono = pkgs.iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-mono.toml;
-        set = "FhtMono";
+      zed-mono = pkgs.iosevka.override {
+        privateBuildPlan = builtins.readFile ./zed-mono.toml;
+        set = "ZedMono";
       };
-      fht-term = pkgs.iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-mono.toml;
-        set = "FhtTerm";
-      };
-
-      # Custom font variations. Based on Adwaita Sans and Zed Mono
-      fht-zed-mono = pkgs.iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-zed-mono.toml;
-        set = "FhtZedMono";
-      };
-      fht-zed-term = pkgs.iosevka.override {
-        privateBuildPlan = builtins.readFile ./fht-zed-mono.toml;
-        set = "FhtZedTerm";
-      };
-
-      # https://github.com/shytikov/pragmasevka
-      pragmasevka = pkgs.iosevka.override {
-        privateBuildPlan = builtins.readFile ./pragmasevka.toml;
-        set = "Pragmasevka";
+      zed-term = pkgs.iosevka.override {
+        privateBuildPlan = builtins.readFile ./zed-mono.toml;
+        set = "ZedTerm";
       };
 
       # Up-to-date versions of both.
