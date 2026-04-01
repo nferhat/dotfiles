@@ -1,6 +1,7 @@
-{...}: {
+{pkgs, ...}: {
   programs.helix = {
     enable = true;
+    package = pkgs.evil-helix;
     defaultEditor = true;
 
     settings = {
@@ -124,7 +125,7 @@
       "type.builtin" = ansi.color3;
       "type.parameter" = ansi.color3;
       "constant" = ansi.color3;
-      "constant.builtin" = ansi-bright.color11;
+      "constant.builtin" = ansi.color3;
       "constant.character" = ansi.color1;
       "string" = ansi.color2;
       "string.regexp" = ansi.color1;
