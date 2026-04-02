@@ -30,12 +30,36 @@
     ];
   };
 
-  # Windows partition
-  # fileSystems."/mnt/windows" = {
-  #   device = "/dev/disk/by-uuid/B8D0936ED093321C";
-  #   fsType = "ntfs-3g";
-  #   options = ["rw" "uid=1000"];
-  # };
+  # Windows partition setup.
+  #
+  # For some reason after a while windows decided to turn its partition into a Bitlocker partition
+  # And there's no hope out of this, so we do a convoluted setup to acutally mount it.
+  fileSystems."/mnt/windows" = {
+    device = "/mnt/dislocker/dislocker-file";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000" "optional" "comment=x-gvfs-show"];
+  };
+  # The bitlocker service that basically runs dislocker to mount/opens the bitlocker drive.
+  systemd.services.dislocker-bitlocker = {
+    description = "Unlock Windows C:\ BitLocker drive";
+    wantedBy = [ "multi-user.target" ];
+    before = [ "mnt-windows.mount" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        ${pkgs.dislocker}/bin/dislocker \
+          -V /dev/disk/by-uuid/addd4d15-1def-4eb4-8d67-9d5a04791eb4 \
+          -- /mnt/dislocker
+      '';
+      ExecStop = "fusermount -u /mnt/dislocker";
+      RemainAfterExit = true;
+    };
+  };
+  # Don't forget to cleanup the dislocker mount
+  systemd.tmpfiles.rules = [
+    "d /mnt/dislocker 0755 root root -"
+  ];
 
   hardware = {
     enableRedistributableFirmware = true;
@@ -106,12 +130,6 @@
     flatpak.enable = true;
   };
 
-  # systemd = {
-  #   # Add LACT for tweaking GPU configuration. We must enable ourselves since
-  #   # there's no NixOS module yet
-  #   packages = [pkgs.lact];
-  #   services.lactd.wantedBy = ["multi-user.target"];
-  # };
 
   programs = {
     virt-manager.enable = true;
@@ -166,6 +184,8 @@
     self'.packages.lsfg-vk
     # Making use of this.
     android-tools
+    # Windows drive
+    dislocker
   ];
   environment.etc."vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json".source = "${self'.packages.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json";
 
