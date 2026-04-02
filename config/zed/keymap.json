@@ -47,6 +47,8 @@
       "space z": "workspace::ToggleZoom",
       "space Z": "workspace::ToggleCenteredLayout",
       "space x": "pane::CloseActiveItem",
+      // Quick access to tasks.
+      "space t": "task::Spawn",
       // Just muscle memory
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePreviousItem",

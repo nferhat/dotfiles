@@ -55,8 +55,8 @@
   "toolbar": {
     "quick_actions": false,
     "breadcrumbs": false,
-    "code_actions": true,
-    "selections_menu": true,
+    "code_actions": false,
+    "selections_menu": false,
   },
 
   // Nice to have, however I do know my keybinds pretty well after all
@@ -103,8 +103,8 @@
   "use_system_path_prompts": false,
   "use_system_prompts": false,
   "ui_font_family": "Zed Mono",
-  "buffer_font_family": "Zed Term",
-  "buffer_font_features": { "calt": false, "dlig": false, "liga": false },
+  "buffer_font_family": "Zed Mono",
+  "buffer_font_features": { "calt": true, "dlig": true, "liga": true },
   "ui_font_size": 18.0,
   "buffer_font_size": 18.0,
   "agent_buffer_font_size": 18.0,

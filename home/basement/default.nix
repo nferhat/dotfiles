@@ -25,7 +25,7 @@
 
   home.pointerCursor.size = lib.mkForce 16;
   # 10 is adequate for the tiny 1366x768 screen I had on hp-da0018nk
-  programs.alacritty.settings.font.size = lib.mkForce 18;
+  programs.ghostty.settings.font-size = lib.mkForce 13;
 
   home.packages = with pkgs; [
     # I do some gaming on this very capable machine
