@@ -1,5 +1,11 @@
-{...}: {
-  programs.halloy = {
+{config, lib, ...}: let
+  cfg = config.fht.desktop.games;
+in{
+  options.fht.desktop.halloy = {
+    enable = lib.mkEnableOption "halloy with configuration";
+  };
+
+  config.programs.halloy = lib.mkIf cfg.enable {
     enable = true;
 
     settings = {
