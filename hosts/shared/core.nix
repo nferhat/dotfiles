@@ -74,13 +74,19 @@
   # Setup my user and the home directory.
   # Nothing special, I use home-manager as a NixOS module only, I don't make use of the home-manager utility
   # (I believe it's better to tie home configurations to system revisions)
-  users.users."nferhat" = {
-    # NOTE: I keep the login shell as bash on purpose, my terminal emulator it starts up fish,
-    # which is the shell I use (same with tmux)
-    description = "Nadjib Ferhat";
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "input"];
-    initialPassword = "nixos"; # don't forget to change it!
+  users.users = let
+    # Base user.
+    base = {
+      # NOTE: I keep the login shell as bash on purpose, my terminal emulator it starts up fish,
+      # which is the shell I use (same with tmux)
+      description = "Nadjib Ferhat";
+      isNormalUser = true;
+      extraGroups = ["wheel" "networkmanager" "input"];
+      initialPassword = "nixos"; # don't forget to change it!
+    };
+  in {
+   "nferhat" = base;
+   "streamer" = base // { description = "nferhat"; };
   };
 
   home-manager = {
@@ -88,5 +94,6 @@
     useUserPackages = true;
     extraSpecialArgs = {inherit self' self inputs inputs';};
     users."nferhat" = import ../../home/nferhat.nix;
+    users."streamer" = import ../../home/streamer.nix;
   };
 }
