@@ -43,30 +43,30 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     # Cripster font rendering.
-    FREETYPE_PROPERTIES = lib.concatStringsSep " " (let
-      darkeningParams = [
-        # Pairs of (<=stem-width in micropx, darkening-amount)
-        500
-        0 # <=0.5px -> 0px darkening...
-        1000
-        300
-        2500
-        500
-        4000
-        0
-      ];
-      darkeningParamsStr = lib.concatStringsSep "," (map toString darkeningParams);
-    in [
-      # Enable darkening for CFF engine
-      "cff:no-stem-darkening=0"
-      "cff:darkening-parameters=${darkeningParamsStr}"
-      # Enable darkening for Autohinting engine engine
-      "autofitter:no-stem-darkening=0"
-      "autofitter:darkening-parameters=${darkeningParamsStr}"
-      # For type1 font rendering, even though it's not really used but still.
-      "type1:no-stem-darkening=0"
-      "t1cid:no-stem-darkening=0"
-    ]);
+    # FREETYPE_PROPERTIES = lib.concatStringsSep " " (let
+    #   darkeningParams = [
+    #     # Pairs of (<=stem-width in micropx, darkening-amount)
+    #     500
+    #     0 # <=0.5px -> 0px darkening...
+    #     1000
+    #     300
+    #     2500
+    #     500
+    #     4000
+    #     0
+    #   ];
+    #   darkeningParamsStr = lib.concatStringsSep "," (map toString darkeningParams);
+    # in [
+    #   # Enable darkening for CFF engine
+    #   "cff:no-stem-darkening=0"
+    #   "cff:darkening-parameters=${darkeningParamsStr}"
+    #   # Enable darkening for Autohinting engine engine
+    #   "autofitter:no-stem-darkening=0"
+    #   "autofitter:darkening-parameters=${darkeningParamsStr}"
+    #   # For type1 font rendering, even though it's not really used but still.
+    #   "type1:no-stem-darkening=0"
+    #   "t1cid:no-stem-darkening=0"
+    # ]);
   };
 
   environment.systemPackages = [pkgs.gtklock];
