@@ -1,11 +1,11 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./secure-boot.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
     ../shared/core.nix
@@ -20,14 +20,34 @@
       preLVM = true; # required else it WON'T find it
     };
 
-    loader = {
-      grub = {
-        enable = false; # lanzaboote (secureboot) overrides this
-        device = "nodev";
-        efiSupport = true;
+    loader.limine = {
+      enable = true;
+      secureBoot = {
+        enable = true;
+        autoGenerateKeys = false;
       };
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
+      efiSupport = true;
+      maxGenerations = 16;
+      resolution = "2560x1440";
+
+      style = let
+        theme = import ../../theme;
+        paletteColors = with theme.ansi; [color0 color1 color2 color3 color4 color5 color6 color7];
+        brightPaletteColors = with theme.ansi-bright; [color8 color9 color10 color11 color12 color13 color14 color15];
+        mkPallete = p: lib.concatStringsSep ";" p;
+      in {
+        backdrop = theme.background.primary;
+        wallpapers = [theme.wallpaper];
+        graphicalTerminal = {
+          background = "9F${theme.background.tertiary}";
+          foreground = theme.text.primary;
+          margin = 30;
+          brightBackground = theme.background.secondary;
+          brightForeground = "FFFFFF";
+          palette = mkPallete paletteColors;
+          brightPalette = mkPallete brightPaletteColors;
+        };
+      };
     };
   };
 

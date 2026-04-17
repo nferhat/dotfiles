@@ -1,26 +1,54 @@
 {
   pkgs,
+  lib,
   self',
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./secure-boot.nix
     ../shared/core.nix
     ../shared/desktop.nix
   ];
 
   boot = {
-    loader = {
-      # grub = {
-      #   enable = true;
-      #   device = "nodev";
-      #   efiSupport = true;
-      #   useOSProber = true;
-      # };
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
+    loader.limine = {
+      enable = true;
+      secureBoot = {
+        enable = true;
+        autoGenerateKeys = false;
+      };
+      efiSupport = true;
+      maxGenerations = 16;
+      resolution = "2560x1440";
+
+      # Chainloading my windows 11 system
+      extraEntries = ''
+        /Windows 11
+          protocol: efi_chainload
+          path: uuid(8292-4A16):/EFI/Microsoft/Boot/bootmgfw.efi
+          resolution: 2560x1440x32
+      '';
+
+      style = let
+        theme = import ../../theme;
+        paletteColors = with theme.ansi; [color0 color1 color2 color3 color4 color5 color6 color7];
+        brightPaletteColors = with theme.ansi-bright; [color8 color9 color10 color11 color12 color13 color14 color15];
+        mkPallete = p: lib.concatStringsSep ";" p;
+      in {
+        backdrop = theme.background.primary;
+        wallpapers = [theme.wallpaper];
+        graphicalTerminal = {
+          background = "9F${theme.background.tertiary}";
+          foreground = theme.text.primary;
+          margin = 30;
+          brightBackground = theme.background.secondary;
+          brightForeground = "FFFFFF";
+          palette = mkPallete paletteColors;
+          brightPalette = mkPallete brightPaletteColors;
+        };
+      };
     };
+
     initrd.kernelModules = [
       "amdgpu" # load GPU driver asap
     ];
