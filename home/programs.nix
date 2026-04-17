@@ -25,7 +25,7 @@
     wakatime-cli
   ];
 
-  shellAliases = {
+  home.shellAliases = {
     l = "eza -a --group-directories-first";
     ll = "l -l";
     htop = "btop"; # force of habit
