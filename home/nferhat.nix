@@ -13,6 +13,7 @@
     [
       ./desktop
       ./session.nix
+      ./programs.nix
       ./services.nix
       # Program configuration. This is the core of my setup.
       ./helix.nix
