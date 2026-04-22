@@ -142,7 +142,6 @@
     virt-manager.enable = true;
     localsend.enable = true;
     nix-ld.enable = true;
-    appimage.enable = true;
     gpu-screen-recorder.enable = true;
     # How steam is managed on this device:
     #
@@ -158,6 +157,11 @@
     };
     gamemode.enable = true;
     gamescope.enable = true;
+
+    appimage = {
+      enable = true;
+      package = pkgs.appimage-run.override { extraPkgs = pkgs: [pkgs.icu]; };
+    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
