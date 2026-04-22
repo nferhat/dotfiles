@@ -63,31 +63,10 @@
   # For some reason after a while windows decided to turn its partition into a Bitlocker partition
   # And there's no hope out of this, so we do a convoluted setup to acutally mount it.
   fileSystems."/mnt/windows" = {
-    device = "/mnt/dislocker/dislocker-file";
+    device = "/dev/disk/by-uuid/B8D0936ED093321C";
     fsType = "ntfs-3g";
     options = ["rw" "uid=1000" "optional" "comment=x-gvfs-show"];
   };
-  # The bitlocker service that basically runs dislocker to mount/opens the bitlocker drive.
-  systemd.services.dislocker-bitlocker = {
-    description = "Unlock Windows C:\ BitLocker drive";
-    wantedBy = [ "multi-user.target" ];
-    before = [ "mnt-windows.mount" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = ''
-        ${pkgs.dislocker}/bin/dislocker \
-          -V /dev/disk/by-uuid/addd4d15-1def-4eb4-8d67-9d5a04791eb4 \
-          -- /mnt/dislocker
-      '';
-      ExecStop = "fusermount -u /mnt/dislocker";
-      RemainAfterExit = true;
-    };
-  };
-  # Don't forget to cleanup the dislocker mount
-  systemd.tmpfiles.rules = [
-    "d /mnt/dislocker 0755 root root -"
-  ];
 
   hardware = {
     enableRedistributableFirmware = true;
