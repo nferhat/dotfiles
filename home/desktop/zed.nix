@@ -15,39 +15,77 @@
       with theme.ansi-bright; {
         "attribute" = color3;
         "boolean" = color3;
-        "comment" = text.tertiary;
         "constant" = color3;
         "constant.builtin" = color11;
         "constant.character" = color1;
         "constructor" = color3;
+        # Function and variants.
+        # I consider macros to be variants of functions.
         "function" = color4;
         "function.macro" = "c4c4c4";
+        "function.special" = "c4c4c4";
+        "macro" = "c4c4c4";
+
         "identifier" = color1;
         "keyword" = color5;
-        "keyword.control.import" = color4;
+        "keyword.debug" = color1;
+        "keyword.import" = color4;
         "keyword.operator" = color7;
-        "keyword.storage.modifier" = color3;
+        "keyword.modifier" = color3;
         "label" = color3; # rust lifetimes
         "syntax.lifetime" = color3; # rust lifetimes
+
         "link_text" = color1;
         "link_uri" = color4;
+        "link_uri.markup" = text.tertiary;
         "namespace" = "606077";
+        "module" = "606077";
         "number" = color3;
+        # Operators and punctuation
         "operator" = "606077";
+        "operator.special" = color1; # from my tree-sitter queries
+        # Punctuation is stuff like = { } ( ) [ ] / . , etc.
         "punctuation" = "606077";
         "punctuation.bracket" = "606077";
         "punctuation.delimiter" = "606077";
-        "special" = color6;
+        # I've never seen string.regexp being used since the regex syntax just gets injected with
+        # some clever tree-sitter queries
         "string" = color2;
         "string.regexp" = color1;
         "string.special" = color1;
         "tag" = color3;
+        # Types
         "type" = color11;
         "type.builtin" = color3;
         "type.parameter" = color3;
+        # Variables. 
         "variable" = text.primary;
         "variable.special" = color7;
         "variant" = color11;
+
+        # Custom comment highlighting
+        # I have a custom set of queries
+        "comment" = text.tertiary;
+        "comment.info" = color2;
+        "comment.warning" = color3;
+        "comment.error" = color1;
+        "comment.hint" = color4;
+
+        # Markdown stuff.
+        "markup.list" = color1;
+        "markup.raw.inline" = text.primary;
+         # Pretty links
+        "markup.heading" = color4;
+        "markup.heading.marker" = color1;
+        "markup.quote" = text.secondary;
+        # Markdown links
+        "markup.link.url" = color4;
+        "markup.link.label" = color1;
+        "markup.link.text" = color1;
+        # Variations of text
+        # FIXME: Striekthrough
+        "markup.bold" = { color = color7; font_weight = "bold"; };
+        "markup.italic" = { color = color7; font_style = "italic"; };
       };
       syntax = builtins.mapAttrs (_: v:
         if builtins.typeOf v == "string"
