@@ -46,5 +46,5 @@
 
   # I don't play games on this laptop, everything moved to my desktop now
   # (SEE: hosts/basement)
-  fht.desktop.games.enable = false;
+  fht.desktop.games.enable = lib.mkForce false;
 }
