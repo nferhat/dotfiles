@@ -53,6 +53,7 @@
 
   hardware = {
     enableRedistributableFirmware = true;
+    acpilight.enable = true;
 
     bluetooth = {
       enable = true;
@@ -135,7 +136,6 @@
   powerManagement.enable = true;
 
   programs = {
-    light.enable = true; # can't control directly using kernel+hotkeys.
     localsend.enable = true;
     steam.enable = true;
     nix-ld.enable = true;
