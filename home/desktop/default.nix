@@ -73,7 +73,7 @@
     mpv = {
       enable = true;
       # TODO: Theme ModernZ
-      scripts = with pkgs.mpvScripts; [thumbfast modernz];
+      scripts = with pkgs.mpvScripts; [thumbfast modernz mpris];
     };
 
     wofi = {
