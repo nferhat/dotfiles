@@ -52,6 +52,7 @@
       // Just muscle memory
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePreviousItem",
+      "space k": "editor::Hover",
     },
   },
   {

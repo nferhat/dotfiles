@@ -1,7 +1,26 @@
 {
-  // Make the terminal mode sane. I also like to use fish and not bash,
-  // better DX and nice features without having me configure everything in it.
+  "active_pane_modifiers": {
+    "border_size": 2.0,
+    "inactive_opacity": 1.0
+  },
+  "use_system_window_tabs": false,
+  "focus_follows_mouse": {
+    "enabled": true
+  },
+  "bottom_dock_layout": "full",
+  "semantic_tokens": "off",
+  "cli_default_open_behavior": "existing_window",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "tabs": {
+    "file_icons": true,
     "git_status": true,
   },
   "show_signature_help_after_edits": true,
@@ -43,10 +62,11 @@
 
   // I don't know why it should show the root. It's really janky.
   "project_panel": {
+    "dock": "left",
     "hide_root": false,
     "bold_folder_labels": true,
     "indent_size": 24.0,
-    "entry_spacing": "standard",
+    "entry_spacing": "comfortable",
     "default_width": 250.0,
     "hide_hidden": false,
   },
@@ -78,6 +98,7 @@
   "buffer_line_height": "standard",
   "scrollbar": { "show": "never" },
   "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false,
     "show": true,
     "show_nav_history_buttons": false,
     "show_tab_bar_buttons": true,
@@ -110,7 +131,7 @@
   "agent_buffer_font_size": 18.0,
   // My own theme, built with NixOS, but you can always copy the JSON file
   "theme": "fht",
-  "icon_theme": "Base Charmed Icons",
+  "icon_theme": "Material Icon Theme",
   "load_direnv": "shell_hook",
 }
 // vim: ft=jsonc
