@@ -12,7 +12,7 @@
     ./halloy.nix
     ./quickshell.nix
     ./services.nix
-    ./wofi.nix
+    ./vicinae.nix
     ./zed.nix
   ];
 
@@ -64,7 +64,7 @@
 
   programs = {
     zathura.enable = true;
-
+  
     obs-studio = {
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [obs-vaapi obs-vkcapture];
@@ -74,32 +74,6 @@
       enable = true;
       # TODO: Theme ModernZ
       scripts = with pkgs.mpvScripts; [thumbfast modernz mpris];
-    };
-
-    wofi = {
-      # FIXME: Remove wofi once the quickshell config has a launcher configured.
-      # I'm too lazy to actually finish it...
-      enable = true;
-      settings = {
-        show = "drun"; # Basically the defacto.
-        width = 600;
-        height = 300;
-        prompt = "What do you wanna launch?";
-        allow_images = true;
-        allow_markup = true;
-        term = "ghostty";
-        hide_scroll = true;
-        matching = "fuzzy";
-        insensitive = true;
-        columns = 1;
-        lines = 8;
-        line_wrap = "word_char";
-        content_halign = "start";
-        valign = "start";
-        # Display the generic name like
-        # "Web browser" or "Photo Viewer"
-        drun-display_generic = true;
-      };
     };
   };
 

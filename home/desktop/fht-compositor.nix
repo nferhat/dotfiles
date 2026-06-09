@@ -154,7 +154,7 @@
           # Example key actions that need an argument passed in
           Super-Return = run ["ghostty"];
           Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
-          Super-p = run ["wofi"];
+          Super-p = run ["vicinae"];
 
           # Focus management
           Super-j = "focus-next-window";
