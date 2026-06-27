@@ -113,6 +113,8 @@
   };
 
   services = {
+    ratbagd.enable = true;
+
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -171,7 +173,14 @@
 
     appimage = {
       enable = true;
-      package = pkgs.appimage-run.override { extraPkgs = pkgs: [pkgs.icu]; };
+      package = pkgs.appimage-run.override {extraPkgs = pkgs: [pkgs.icu];};
+    };
+
+    # Doing some USB sniffing on my keyboard right now.
+    # I Hate the Attack Shark software.
+    wireshark = {
+      enable = true;
+      usbmon.enable = true;
     };
   };
 
@@ -194,9 +203,9 @@
     };
   };
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  users.users."nferhat".extraGroups = ["adbusers" "libvirtd"];
+  # Allow me some more permissions here.
+  users.users."nferhat".extraGroups = ["adbusers" "libvirtd" "wireshark"];
+
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
     scrcpy
