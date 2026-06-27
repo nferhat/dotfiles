@@ -11,7 +11,7 @@
         };
 
       arashi-icon-theme = pkgs.callPackage ./arashi-icon-theme.nix {
-        inherit (pkgs.plasma5Packages) breeze-icons;
+        inherit (pkgs.kdePackages) breeze-icons;
       };
 
       # Custom font variations. Based on Adwaita Sans and Zed Mono

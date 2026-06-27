@@ -21,6 +21,7 @@ stdenvNoCC.mkDerivation rec {
   nativeBuildInputs = [gtk3];
   propagatedBuildInputs = [breeze-icons hicolor-icon-theme];
   dontDropIconThemeCache = true;
+  dontWrapQtApps = true;
 
   installPhase = ''
     runHook preInstall
