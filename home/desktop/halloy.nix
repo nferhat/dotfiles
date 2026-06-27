@@ -1,6 +1,10 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.fht.desktop.games;
-in{
+in {
   options.fht.desktop.halloy = {
     enable = lib.mkEnableOption "halloy with configuration";
   };

@@ -1,30 +1,42 @@
 {
   "active_pane_modifiers": {
     "border_size": 2.0,
-    "inactive_opacity": 1.0
+    "inactive_opacity": 1.0,
   },
   "use_system_window_tabs": false,
   "focus_follows_mouse": {
-    "enabled": true
+    "enabled": true,
   },
   "bottom_dock_layout": "full",
   "semantic_tokens": "off",
   "cli_default_open_behavior": "existing_window",
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "tree_view": true,
+    "dock": "left",
   },
   "tabs": {
     "file_icons": true,
     "git_status": true,
   },
   "show_signature_help_after_edits": true,
-  "ssh_connections": [],
+  "ssh_connections": [
+    {
+      "host": "ckirkmossadagent",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "ckirkmossadagent",
+      "args": [],
+      "projects": []
+    }
+  ],
   "show_edit_predictions": false,
   "edit_predictions": {
     "mode": "subtle",
@@ -84,8 +96,8 @@
 
   "preview_tabs": { "enable_preview_from_file_finder": true },
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": false,
-    "show_branch_icon": true,
   },
   // Less jittering left and right, you know.
   "gutter": { "min_line_number_digits": 4 },

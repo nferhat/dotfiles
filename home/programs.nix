@@ -1,5 +1,8 @@
-{config, pkgs, ...}: {
-
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # The essentials for working in the terminal, but not forcibly required for
     # all the system, hence why some programs are here and not inside the `core.nix`

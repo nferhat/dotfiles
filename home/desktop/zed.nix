@@ -58,7 +58,7 @@
         "type" = color11;
         "type.builtin" = color3;
         "type.parameter" = color3;
-        # Variables. 
+        # Variables.
         "variable" = text.primary;
         "variable.special" = color7;
         "variant" = color11;
@@ -74,7 +74,7 @@
         # Markdown stuff.
         "markup.list" = color1;
         "markup.raw.inline" = text.primary;
-         # Pretty links
+        # Pretty links
         "markup.heading" = color4;
         "markup.heading.marker" = color1;
         "markup.quote" = text.secondary;
@@ -84,8 +84,14 @@
         "markup.link.text" = color1;
         # Variations of text
         # FIXME: Striekthrough
-        "markup.bold" = { color = color7; font_weight = "bold"; };
-        "markup.italic" = { color = color7; font_style = "italic"; };
+        "markup.bold" = {
+          color = color7;
+          font_weight = "bold";
+        };
+        "markup.italic" = {
+          color = color7;
+          font_style = "italic";
+        };
       };
       syntax = builtins.mapAttrs (_: v:
         if builtins.typeOf v == "string"

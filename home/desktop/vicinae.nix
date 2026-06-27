@@ -9,10 +9,12 @@
     themes."fht" = let
       theme = import ../../theme;
 
-      addHashtag = attrs: builtins.mapAttrs (_: v:
-        if builtins.typeOf v == "string"
-        then {color = "#${v}";}
-        else v) attrs;
+      addHashtag = attrs:
+        builtins.mapAttrs (_: v:
+          if builtins.typeOf v == "string"
+          then {color = "#${v}";}
+          else v)
+        attrs;
     in {
       meta = {
         version = 1;

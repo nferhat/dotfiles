@@ -1,4 +1,10 @@
-{self', config, pkgs, lib, ...}: let
+{
+  self',
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.fht.desktop.games;
 in {
   options.fht.desktop.games = {
