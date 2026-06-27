@@ -25,7 +25,7 @@
       extraEntries = ''
         /Windows 11
           protocol: efi_chainload
-          path: uuid(8292-4A16):/EFI/Microsoft/Boot/bootmgfw.efi
+          path: uuid(6657baf6-2098-404f-87c8-4086fc3a843c):/EFI/Microsoft/Boot/bootmgfw.efi
           resolution: 2560x1440x32
       '';
 
