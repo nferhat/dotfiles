@@ -5,11 +5,8 @@
 }: {
   programs.fht-compositor.settings = {
     # Max out resolution and framerate on main display
-    outputs."DP-1" = {
+    outputs."DP-3" = {
       mode = "2560x1440@180";
-      # See window rules in fht-compositor.nix
-      # FIXME: Causes a shitton of flickering, I don't know why.
-      vrr = "off";
     };
     # More place, more gaps, looks nicer!
     general = {
