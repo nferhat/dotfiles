@@ -12,18 +12,13 @@
   in {
     enable = true;
     settings = {
-      autostart = ["wl-paste --watch cliphist store &"];
-
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
-      imports = [
-        "~/.config/fht/compositor-temp.toml"
-        "~/.config/fht/dank-colors.toml"
-      ];
+      imports = ["~/.config/fht/compositor-temp.toml"];
 
       general = {
         cursor-warps = true;
         focus-new-windows = true;
-        focus-follows-mouse = false;
+        focus-follows-mouse = true;
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
@@ -39,7 +34,7 @@
         border = {
           thickness = 2;
           radius = 18;
-          focused-color = theme.separator;
+          focused-color = theme.ansi-bright.color10;
           normal-color = "transparent";
         };
 
@@ -63,33 +58,31 @@
         repeat-delay = 250;
       };
 
-      animations = {
-        window-geometry.curve = {
+      animations = let
+        easySpringCurve = {
           clamp = true;
-          damping-ratio = 1.2;
-          mass = 2;
+          damping-ratio = 1.0;
+          mass = 1;
+          stiffness = 800;
           initial-velocity = 1;
-          stiffness = 1200;
-          epsilon = 0.001;
+          epsilon = 0.0001;
         };
-
-        window-open-close.curve = {
-          clamp = true;
-          damping-ratio = 1.2;
-          initial-velocity = 1;
-          mass = 1.5;
-          stiffness = 900;
-          epsilon = 0.001;
+      in {
+        window-geometry.curve = easySpringCurve;
+        window-open-close = {
+          duration = 150;
+          curve = "ease-out-expo";
         };
 
         workspace-switch = {
           direction = "horizontal";
           curve = {
             clamp = true;
-            damping-ratio = 1.1;
-            initial-velocity = 5;
-            mass = 1.5;
-            stiffness = 900;
+            damping-ratio = 1;
+            initial-velocity = 1;
+            mass = 1;
+            stiffness = 1000;
+            epsilon = 0.001;
           };
         };
       };
@@ -107,7 +100,7 @@
 
         # Execute an DankMaterialShell IPC action.
         # It's just a run command wrapped with `dms ipc`
-        dms-ipc = args: run (["dms" "ipc" "call"] ++ args);
+        qs-ipc = args: run (["qs" "ipc" "call"] ++ args);
 
         # Make an action repeating by passing it into this function.
         repeat = action:
@@ -131,7 +124,7 @@
         workspaceKeybinds = let
           idxs = builtins.genList (i: i) 9;
           bindsList =
-            builtins.map (i: {
+            map (i: {
               "Super-${toString (i + 1)}" = {
                 action = "focus-workspace";
                 arg = i;
@@ -153,8 +146,10 @@
 
           # Example key actions that need an argument passed in
           Super-Return = run ["ghostty"];
-          Super-Shift-s = run-cmdline "watershot --stdout | wl-copy";
-          Super-p = run ["vicinae"];
+          Super-Shift-s = run-cmdline ''
+            grim -g "$(slurp)" - | wl-copy --type image/png
+          '';
+          Super-p = run ["vicinae" "open"];
 
           # Focus management
           Super-j = "focus-next-window";
@@ -176,6 +171,9 @@
           # Volume control
           XF86AudioRaiseVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%+"]));
           XF86AudioLowerVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%-"]));
+
+          # Locking
+          Super-Alt-l = qs-ipc ["lock" "lock"];
 
           # Floating window management
           Super-Left = repeat {
@@ -217,27 +215,27 @@
           # Any changes set using these keybinds will be reset on configuration reload
           Super-Space = "select-next-layout";
           Super-Shift-Space = "select-previous-layout";
-          Super-h = {
+          Super-h = repeat {
             action = "change-mwfact";
             arg = -0.05;
           };
-          Super-l = {
+          Super-l = repeat {
             action = "change-mwfact";
             arg = 0.05;
           };
-          Super-Shift-h = {
+          Super-Shift-h = repeat {
             action = "change-nmaster";
             arg = 1;
           };
-          Super-Shift-l = {
+          Super-Shift-l = repeat {
             action = "change-nmaster";
             arg = -1;
           };
-          Super-i = {
+          Super-i = repeat {
             action = "change-window-proportion";
             arg = 0.5;
           };
-          Super-o = {
+          Super-o = repeat {
             action = "change-window-proportion";
             arg = -0.5;
           };
@@ -321,39 +319,6 @@
           floating = true;
           centered = true;
         }
-
-        # gpu-screen-recorder hacking to get it to "work"
-        # Eh, its not the best, I have it installed through flatpak, but it works I guess?
-        {
-          match-title = ["^(gsr ui)$" "^(gsr notify)$"];
-          floating = true;
-          fullscreen = false;
-          blur.disable = true;
-          border = {
-            thickness = 0;
-            radius = 0;
-          };
-          ontop = true;
-        }
-        # Place the notification at the edge of the screen, where its supposed to be.
-        # ---
-        # With skip-focus we won't be able to focus it. The real solution would have been to
-        # actually use layer-shells for this, but I am too lazy to separate gsr-notify codebase
-        # into two for that. (at least as of right now)
-        {
-          match-title = ["^(gsr notify)$"];
-          skip-focus = true;
-          location = {
-            x = 2080;
-            y = 150;
-          };
-        }
-
-        # For some reason, ghostty doesn't want to be tiled by default.
-        {
-          match-app-id = ["com.mitchellh.ghostty"];
-          floating = false;
-        }
       ];
 
       layer-rules = [
@@ -362,6 +327,11 @@
         {
           match-namespace = ["fht.desktop.Shell.*"];
           shadow.disable = false;
+        }
+
+        {
+          match-namespace = ["vicinae"];
+          blur.disable = false;
         }
       ];
     };
