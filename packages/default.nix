@@ -10,10 +10,6 @@
           targetPkgs = pkgs: [pkgs.curl pkgs.glib pkgs.icu pkgs.openssl];
         };
 
-      arashi-icon-theme = pkgs.callPackage ./arashi-icon-theme.nix {
-        inherit (pkgs.kdePackages) breeze-icons;
-      };
-
       # Custom font variations. Based on Adwaita Sans and Zed Mono
       zed-mono = pkgs.iosevka.override {
         privateBuildPlan = builtins.readFile ./zed-mono.toml;

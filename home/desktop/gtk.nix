@@ -1,5 +1,4 @@
 {
-  self',
   lib,
   pkgs,
   config,
@@ -153,7 +152,7 @@
     };
 
     iconTheme = {
-      package = self'.packages.arashi-icon-theme;
+      package = pkgs.arashi;
       name = "Arashi";
     };
 
