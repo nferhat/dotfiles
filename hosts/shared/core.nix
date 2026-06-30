@@ -57,7 +57,7 @@
 
       substituters = [
         # high priority since it's almost always used
-        "https://cache.nixos.org?priority=10"
+        "https://cache.nixos.org"
         "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
