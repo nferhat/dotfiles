@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   self',
   ...
 }: {
@@ -8,19 +7,12 @@
     ./hardware-configuration.nix
     ../shared/core.nix
     ../shared/desktop.nix
+    ../shared/limine.nix
   ];
 
   boot = {
     loader.limine = {
-      enable = true;
-      secureBoot = {
-        enable = true;
-        autoGenerateKeys = false;
-      };
-      efiSupport = true;
-      maxGenerations = 16;
       resolution = "2560x1440";
-
       # Chainloading my windows 11 system
       extraEntries = ''
         /Windows 11
@@ -28,25 +20,6 @@
           path: uuid(6657baf6-2098-404f-87c8-4086fc3a843c):/EFI/Microsoft/Boot/bootmgfw.efi
           resolution: 2560x1440x32
       '';
-
-      style = let
-        theme = import ../../theme;
-        paletteColors = with theme.ansi; [color0 color1 color2 color3 color4 color5 color6 color7];
-        brightPaletteColors = with theme.ansi-bright; [color8 color9 color10 color11 color12 color13 color14 color15];
-        mkPallete = p: lib.concatStringsSep ";" p;
-      in {
-        backdrop = theme.background.primary;
-        wallpapers = [theme.wallpaper];
-        graphicalTerminal = {
-          background = "9F${theme.background.tertiary}";
-          foreground = theme.text.primary;
-          margin = 30;
-          brightBackground = theme.background.secondary;
-          brightForeground = "FFFFFF";
-          palette = mkPallete paletteColors;
-          brightPalette = mkPallete brightPaletteColors;
-        };
-      };
     };
 
     initrd.kernelModules = [
@@ -97,10 +70,6 @@
     nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   };
 
-  # No thank you, this will just consume time trying to connect any present card instead of actually
-  # letting the system boot
-  systemd.services.NetworkManager-wait-online.enable = false;
-
   time.timeZone = "Africa/Algiers";
 
   # Select internationalisation properties.
@@ -147,14 +116,11 @@
     };
 
     printing.enable = true;
-    flatpak.enable = true;
   };
 
   programs = {
-    virt-manager.enable = true;
     localsend.enable = true;
     nix-ld.enable = true;
-    gpu-screen-recorder.enable = true;
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
@@ -174,36 +140,10 @@
       enable = true;
       package = pkgs.appimage-run.override {extraPkgs = pkgs: [pkgs.icu];};
     };
-
-    # Doing some USB sniffing on my keyboard right now.
-    # I Hate the Attack Shark software.
-    wireshark = {
-      enable = true;
-      usbmon.enable = true;
-    };
-  };
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    steam = pkgs.steam.override {
-      extraPkgs = pkgs:
-        with pkgs; [
-          libXcursor
-          libXrandr
-          libXi
-          libXinerama
-          libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
-    };
   };
 
   # Allow me some more permissions here.
-  users.users."nferhat".extraGroups = ["adbusers" "libvirtd" "wireshark"];
+  users.users."nferhat".extraGroups = ["adbusers"];
 
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
