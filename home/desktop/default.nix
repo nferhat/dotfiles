@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
+  inputs',
   ...
 }: {
   imports = [
-    ./browser
     ./fht-compositor.nix
     ./games.nix
     ./ghostty.nix
@@ -34,12 +34,15 @@
       bustle
       qbittorrent
       imagemagick
-      wlr-randr
+
+      # Nice degoogled-chromium browser.
+      inputs'.helium.packages.default
 
       # Wayland utilities for the graphical session.
       grim
       slurp
       wl-clipboard
+      wlr-randr
     ];
 
     sessionVariables = {
