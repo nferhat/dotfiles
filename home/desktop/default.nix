@@ -22,7 +22,7 @@
       nautilus
       overskride
       remmina
-      gnome-secrets
+      keepassxc
       telegram-desktop
       fractal
       pwvucontrol
@@ -34,6 +34,7 @@
       bustle
       qbittorrent
       imagemagick
+      wlr-randr
 
       # Wayland utilities for the graphical session.
       grim

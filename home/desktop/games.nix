@@ -13,14 +13,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # Addicted till the end of my life
-      # You never quit osu, they say.
       osu-lazer-bin
-      # Not a GUI but it's a CLI for celeste mod management.
-      #
-      # FIXME: Currently broken, complains about tkinter not building, tommath?
-      # Idk, too bothered to fix it + I play celeste on windows and manage mods from there for now
-      # self'.packages.mons
+      olympus
+      etterna
 
       # Use termurin JDKs since openjdk seems to be leaking memory.
       # Why? I don't know, I was too lazy to investigate, however a fix was found on the GT:NH server.
