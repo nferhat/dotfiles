@@ -19,21 +19,13 @@
   home = {
     packages = with pkgs; [
       # GUI applications
-      nautilus
-      overskride
-      remmina
       keepassxc
       telegram-desktop
       fractal
-      pwvucontrol
       loupe
-      vesktop
-      icon-library
-      mission-center
-      gtklock
-      bustle
       qbittorrent
       imagemagick
+      vesktop
 
       # Nice degoogled-chromium browser.
       inputs'.helium.packages.default
@@ -47,7 +39,7 @@
 
     sessionVariables = {
       QT_QPA_PLATFORM = "wayland";
-      SDL_VIDEODRIVER = "wayland"; # run Celeste natively.
+      SDL_VIDEODRIVER = "wayland,x11"; # run Celeste natively.
       XDG_SESSION_TYPE = "wayland";
       # NixOS wrappers use this variable to automatically set required flags for electron applications
       # to run with ozone support (and thus running natively)
