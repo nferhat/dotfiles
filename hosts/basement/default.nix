@@ -48,7 +48,7 @@
 
     bluetooth = {
       enable = true;
-      powerOnBoot = false;
+      powerOnBoot = true;
     };
 
     cpu.amd.updateMicrocode = true;
@@ -131,22 +131,15 @@
     };
   };
 
-  # Allow me some more permissions here.
-  users.users."nferhat".extraGroups = ["adbusers"];
+  users.users."nferhat".extraGroups = [
+    "adbusers" # for android debug bridge
+  ];
 
   environment.systemPackages = with pkgs; [
-    gpu-screen-recorder-gtk
     scrcpy
-    # For tuning the 7900XT properly.
-    # lact
-    # Framegeneration since it looks good with Ryujinx.
     self'.packages.lsfg-vk
-    # Making use of this.
     android-tools
-    # Windows drive
-    dislocker
   ];
-  environment.etc."vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json".source = "${self'.packages.lsfg-vk}/share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json";
 
   system = {
     autoUpgrade.enable = false;
