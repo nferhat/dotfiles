@@ -105,7 +105,6 @@
 
   programs = {
     localsend.enable = true;
-    steam.enable = true;
     nix-ld.enable = true;
   };
 

@@ -64,10 +64,6 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
-
-    # For whatever reason, my laptop can't resolve most domains without cloudflare+resolved combo
-    # Go figure out why.
-    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   };
 
   time.timeZone = "Africa/Algiers";
@@ -88,13 +84,6 @@
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
-    };
-
-    resolved = {
-      enable = true;
-      dnssec = "true";
-      domains = ["~."];
-      fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     };
 
     openssh = {
