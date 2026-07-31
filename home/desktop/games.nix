@@ -28,25 +28,16 @@ in {
           jre-8
         ];
       })
+
+      # Setting up environments easier.
+      bottles
+
+      # To configure mangohud
+      mangojuice
+      protonup-qt
     ];
 
     # Good HUD for stats and stuff. Replaces what I don't have with AMD Adrenalin
-    programs.mangohud = {
-      enable = true;
-      settings = {
-        # ,gamemode,wine,vulkan_driver
-        preset = 3;
-        gpu_list = [0 1];
-        fps_metrics = ["avg" "0.01"];
-        fsr = true;
-        gpu_fan = true;
-        gpu_name = true;
-        proc_vram = true;
-        font_file = "${self'.packages.zed-mono}/share/fonts/truetype/IosevkaZedMono-Regular.ttf";
-        gamemode = true;
-        wine = true;
-        vulkan_driver = true;
-      };
-    };
+    programs.mangohud.enable = true;
   };
 }
