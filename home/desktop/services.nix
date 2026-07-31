@@ -11,12 +11,11 @@
     start-with-graphical-session = Description: {
       Unit = {
         inherit Description;
-        After = ["graphical-session.target"];
         PartOf = ["graphical-session.target"];
-        BindsTo = ["graphical-session.target"];
+        After = ["graphical-session.target"];
         Requisite = ["graphical-session.target"];
       };
-      Install.WantedBy = ["graphical-session.target" "fht-compositor.service"];
+      Install.WantedBy = ["fht-compositor.service"];
     };
   in {
     # Quickshell, the all-in-one solution for wallpaper,  bars, and everything you can think of!
@@ -40,6 +39,7 @@
           NotifyAccess = "all";
           ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
           StandardOutput = "jounral";
+          Restart = "on-failure";
         };
       };
   };
