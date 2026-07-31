@@ -26,6 +26,7 @@
       qbittorrent
       imagemagick
       vesktop
+      dino
 
       # Nice degoogled-chromium browser.
       inputs'.helium.packages.default
