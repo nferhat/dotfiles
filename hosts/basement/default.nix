@@ -27,7 +27,8 @@
     ];
     kernelParams = [
       "video=DP-1:2560x1440@180" # use highest mode available on boot
-      # "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
+      "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
+      "clearcpuid=umip" # if you know, you know.
     ];
   };
 
@@ -79,6 +80,7 @@
 
   services = {
     ratbagd.enable = true;
+    lact.enable = true;
 
     avahi = {
       enable = true;
@@ -109,7 +111,7 @@
 
   programs = {
     localsend.enable = true;
-    nix-ld.enable = true;
+    nix-ld = { enable = true; libraries = with pkgs; [icu]; };
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
@@ -138,6 +140,7 @@
   environment.systemPackages = with pkgs; [
     scrcpy
     self'.packages.lsfg-vk
+    lact
     android-tools
   ];
 
