@@ -18,12 +18,12 @@
       general = {
         cursor-warps = true;
         focus-new-windows = true;
-        focus-follows-mouse = true;
+        focus-follows-mouse = false;
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
         inner-gaps = 16;
-        outer-gaps = 5;
+        outer-gaps = 16;
       };
 
       cursor = {inherit (config.home.pointerCursor) name size;};
@@ -32,8 +32,8 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 2;
-          radius = 18;
+          thickness = 3;
+          radius = 24;
           focused-color = theme.ansi-bright.color10;
           normal-color = "transparent";
         };
@@ -75,7 +75,7 @@
         };
 
         workspace-switch = {
-          direction = "horizontal";
+          direction = "vertical";
           curve = {
             clamp = true;
             damping-ratio = 1;

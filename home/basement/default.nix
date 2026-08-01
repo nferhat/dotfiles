@@ -5,13 +5,8 @@
 }: {
   programs.fht-compositor.settings = {
     # Max out resolution and framerate on main display
-    outputs."DP-3" = {
+    outputs."DP-1" = {
       mode = "2560x1440@180";
-    };
-    # More place, more gaps, looks nicer!
-    general = {
-      inner-gaps = lib.mkForce 10;
-      outer-gaps = lib.mkForce 32;
     };
   };
 
