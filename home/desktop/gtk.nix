@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  self',
   ...
 }: {
   gtk = let
@@ -152,7 +153,7 @@
     };
 
     iconTheme = {
-      package = pkgs.arashi;
+      package = self'.packages.arashi-icon-theme;
       name = "Arashi";
     };
 

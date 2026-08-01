@@ -20,6 +20,9 @@
         set = "ZedTerm";
       };
 
+      # Up-to-date version of it. Nixpkgs is still on 25.10
+      arashi-icon-theme = pkgs.callPackage ./arashi-icon-theme.nix {};
+
       # Up-to-date versions of both.
       lsfg-vk = pkgs.callPackage ./lsfg-vk.nix {};
       # lsfg-vk-ui = pkgs.callPackage ./lsfg-vk-ui.nix {};
