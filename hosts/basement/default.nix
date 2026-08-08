@@ -111,7 +111,10 @@
 
   programs = {
     localsend.enable = true;
-    nix-ld = { enable = true; libraries = with pkgs; [icu]; };
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [icu];
+    };
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam

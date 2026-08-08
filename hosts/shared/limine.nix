@@ -1,7 +1,10 @@
 {lib, ...}: {
   boot.loader.limine = {
     enable = true;
-    secureBoot = { enable = true; autoGenerateKeys = false; };
+    secureBoot = {
+      enable = true;
+      autoGenerateKeys = false;
+    };
     efiSupport = true;
     maxGenerations = 16;
 
