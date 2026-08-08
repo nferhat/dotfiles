@@ -30,7 +30,17 @@ This flake is organized using [`hercules-ci/flake-parts`](https://github.com/her
 
 ## Rice screenshots
 
-> TODO
+| Master screenshot |
+| - |
+| <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/19bc9739-93fa-44f5-bd80-fed620b30c78" /> |
+
+| PolicyKit Prompt | Custom Share Picker for [`fhtc`](fhtc) |
+| - | - |
+| <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/95845acb-d8ca-41f2-92cb-652173d4d9bf" /> | <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/fbe41477-f185-4717-8a55-f039f2e68ded" /> |
+
+And more to come Soon™️
+
+[fhtc]: https://github.com/nferhat/fht-compositor
 
 ## Acknowledgments
 
