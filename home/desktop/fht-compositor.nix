@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [inputs.fht-compositor.homeModules.default];
@@ -336,4 +337,46 @@
       ];
     };
   };
+
+  home.packages = [
+    (pkgs.writeShellScriptBin
+      "fht-share-picker"
+      ''
+        #!/usr/bin/env bash
+
+        # fht-share-picker -*- Custom share picker based on quickshell.
+        #
+        # Based on: https://github.com/PZeide/shiny-shell/blob/main/scripts/shiny-hyprland-share-picker.sh
+        # Thank you very much, nice stuff!!!!!!!!!!!!!!!!!!!
+
+        RESPONSE=$(qs ipc --any-display call share-picker request {} 2>/dev/null) || {
+        	echo "failed to request share-picker to open" >&2
+        	exit 1
+        }
+
+        STATUS=$(echo "$RESPONSE" | jq -r '.status // empty')
+        REQUEST_ID=$(echo "$RESPONSE" | jq -r '.data // empty')
+        if [[ "$STATUS" != "ok" ]]; then
+        	echo "error" >&2
+        	exit 1
+        fi
+
+        while IFS= read -r line || break; do
+        	[[ -z "$line" ]] && exit 0
+
+        	KEY=$(echo "$line" | jq -r '.key // empty' 2>/dev/null)
+        	[[ "$KEY" != "$REQUEST_ID" ]] && continue
+
+            # NOTE: Echoing nothing is considered to be cancelled in the portal code.
+            # You should also output to stdout not stderr.
+        	RESULT_STATUS=$(echo "$line" | jq -r '.status // empty')
+        	if [[ "$RESULT_STATUS" == "cancelled" ]]; then
+        		exit 1
+        	fi
+
+        	echo "$line" | jq --raw-output --monochrome-output --compact-output '.result // empty'
+        	exit 0
+        done < <(qs ipc --any-display listen share-picker result 2>/dev/null)
+      '')
+  ];
 }

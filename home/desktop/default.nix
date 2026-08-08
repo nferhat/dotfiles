@@ -64,7 +64,7 @@
 
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [obs-vaapi obs-vkcapture];
+      plugins = with pkgs.obs-studio-plugins; [obs-vaapi obs-vkcapture wlrobs];
     };
 
     mpv = {
