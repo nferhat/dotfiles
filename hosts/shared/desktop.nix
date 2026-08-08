@@ -72,6 +72,7 @@
   # No thank you, this will just consume time trying to connect any present card instead of actually
   # letting the system boot
   systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.user.services.fht-compositor-polkit.enable = false;
 
   programs = {
     dconf.enable = true;
