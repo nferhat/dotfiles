@@ -11,11 +11,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1785444329,
-        "narHash": "sha256-AEnb04so27XHdF2mK4C+Fu2Ar+1ovr25gxBpChV3ZW8=",
+        "lastModified": 1786124214,
+        "narHash": "sha256-QfMXTKDtXaMkeKUVjQrvC0A2NmsTElAmPh3HroSkeAI=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "3c083ab94b63d492980d3ff12f5e12fe5246e506",
+        "rev": "30b276786000278ff91bd952aaa47987b3abc23f",
         "type": "github"
       },
       "original": {
@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781847791,
-        "narHash": "sha256-Mo2YtNEGlcySnbq0YuP3nUKMAQCMAfE+TcCffo5vzD8=",
+        "lastModified": 1785704021,
+        "narHash": "sha256-eQtczKMAS4ItlB4pr1B3MqBZiyRVl2nkqNdtyRSQMa8=",
         "ref": "refs/heads/master",
-        "rev": "68c2c85c33845385f7ab8147b32f1450b1e468e0",
-        "revCount": 824,
+        "rev": "28771c7c74b42e20afca0b1b63980cb46515537c",
+        "revCount": 835,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
