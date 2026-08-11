@@ -15,6 +15,8 @@
     settings = {
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
       imports = ["~/.config/fht/compositor-temp.toml"];
+      autostart = ["wl-paste --watch cliphist store"];
+      env.DISPLAY = ":0"; # until I write the integration.
 
       general = {
         cursor-warps = true;
@@ -23,8 +25,8 @@
         layouts = ["tile" "bottom-stack" "centered-master" "floating"];
         nmaster = 1;
         mwfact = 0.5;
-        inner-gaps = 16;
-        outer-gaps = 16;
+        inner-gaps = 10;
+        outer-gaps = 40;
       };
 
       cursor = {inherit (config.home.pointerCursor) name size;};
@@ -33,9 +35,10 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 3;
-          radius = 24;
-          focused-color = theme.ansi-bright.color10;
+          thickness = 1;
+          radius = 64;
+          power = 6;
+          focused-color = theme.separator;
           normal-color = "transparent";
         };
 
@@ -59,33 +62,28 @@
         repeat-delay = 250;
       };
 
-      animations = let
-        easySpringCurve = {
-          clamp = true;
-          damping-ratio = 1.0;
-          mass = 1;
-          stiffness = 800;
-          initial-velocity = 1;
-          epsilon = 0.0001;
-        };
-      in {
-        window-geometry.curve = easySpringCurve;
-        window-open-close = {
-          duration = 150;
-          curve = "ease-out-expo";
-        };
+      animations = {
+        # window-open-close = {
+        #   # Emphasized decelerate from material UI.
+        #   # duration = md.sys.motion.duration.medium3
+        #   duration = 400;
+        #   curve = cubic-curve 0.05 0.7 0.1 1;
+        # };
 
-        workspace-switch = {
-          direction = "vertical";
-          curve = {
-            clamp = true;
-            damping-ratio = 1;
-            initial-velocity = 1;
-            mass = 1;
-            stiffness = 1000;
-            epsilon = 0.001;
-          };
-        };
+        # window-geometry = {
+        #   # Standard curve from material UI
+        #   # duration = md.sys.motion.duration.long2
+        #   duration = 500;
+        #   curve = cubic-curve 0.2 0 0 1.0;
+        # };
+
+        # workspace-switch = {
+        #   direction = "horizontal";
+        #   # Standard decelerate from material UI.
+        #   # duration = md.sys.motion.duration.long4
+        #   duration = 650;
+        #   curve = cubic-curve 0 0 0 1;
+        # };
       };
 
       keybinds = let
@@ -102,6 +100,12 @@
         # Execute an DankMaterialShell IPC action.
         # It's just a run command wrapped with `dms ipc`
         qs-ipc = args: run (["qs" "ipc" "call"] ++ args);
+
+        # A global shortcut
+        global-shortcut = arg: {
+          action = "global-shortcut";
+          inherit arg;
+        };
 
         # Make an action repeating by passing it into this function.
         repeat = action:
@@ -150,7 +154,6 @@
           Super-Shift-s = run-cmdline ''
             grim -g "$(slurp)" - | wl-copy --type image/png
           '';
-          Super-p = run ["vicinae" "open"];
 
           # Focus management
           Super-j = "focus-next-window";
@@ -168,6 +171,11 @@
           Super-f = "fullscreen-focused-window";
           Super-Shift-c = "close-focused-window";
           Super-Ctrl-Space = "float-focused-window";
+
+          # Different quickshell (wip) rice stuff.
+          Super-c = global-shortcut "quickshell:toggleCentralPanel";
+          Super-v = global-shortcut "quickshell:openClipboard";
+          Super-p = global-shortcut "quickshell:openLauncher";
 
           # Volume control
           XF86AudioRaiseVolume = allow-while-locked (repeat (run ["wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "10%+"]));
@@ -320,6 +328,11 @@
           floating = true;
           centered = true;
         }
+
+        {
+          match-app-id = [".*ghostty.*"];
+          floating = false;
+        }
       ];
 
       layer-rules = [
@@ -328,11 +341,6 @@
         {
           match-namespace = ["fht.desktop.Shell.*"];
           shadow.disable = false;
-        }
-
-        {
-          match-namespace = ["vicinae"];
-          blur.disable = false;
         }
       ];
     };

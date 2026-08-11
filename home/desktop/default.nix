@@ -12,7 +12,6 @@
     ./halloy.nix
     ./quickshell.nix
     ./services.nix
-    ./vicinae.nix
     ./zed.nix
   ];
 
@@ -36,6 +35,7 @@
       slurp
       wl-clipboard
       wlr-randr
+      cliphist
     ];
 
     sessionVariables = {
