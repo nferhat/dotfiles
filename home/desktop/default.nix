@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  inputs',
+  inputs,
   ...
 }: {
   imports = [
@@ -28,7 +28,7 @@
       dino
 
       # Nice degoogled-chromium browser.
-      inputs'.helium.packages.default
+      inputs.helium.packages."${pkgs.system}".default
 
       # Wayland utilities for the graphical session.
       grim

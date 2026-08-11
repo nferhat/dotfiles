@@ -1,10 +1,8 @@
 {
   # Most of these inputs are just to be passed down into home-manager (../../home), notably inputs and self
   # and their filtered version.
-  self',
   self,
   inputs,
-  inputs',
   # NixOS stuff
   config,
   lib,
@@ -86,7 +84,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit self' self inputs inputs';};
+    extraSpecialArgs = {inherit self inputs;};
     users."nferhat" = import ../../home/nferhat.nix;
   };
 }

@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs',
+  inputs,
   ...
 }: {
   services.mpris-proxy.enable = true;
@@ -24,7 +24,7 @@
       // {
         Service = {
           Type = "simple";
-          ExecStart = "${inputs'.quickshell.packages.default}/bin/qs";
+          ExecStart = "${inputs.quickshell.packages.${pkgs.system}.default}/bin/qs";
           Restart = "on-failure";
         };
       };

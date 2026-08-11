@@ -17,7 +17,6 @@
     fht-compositor = {
       url = "github:nferhat/fht-compositor";
 
-      inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       # Disable rust-overlay since it's only meant to be here for the devShell provided
       # (IE. only for developement purposes, end users don't care)
@@ -46,17 +45,15 @@
     };
   };
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./packages];
-
-      systems = ["x86_64-linux"];
-      perSystem = {pkgs, ...}: {
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [git alejandra nixd];
-          name = "system-config";
-        };
-        formatter = pkgs.alejandra;
-      };
+  outputs = inputs @ {nixpkgs, ...}: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages."${system}";
+  in {
+    nixosConfigurations = import ./hosts inputs;
+    packages."${system}" = import ./packages pkgs;
+    devShells."${system}".default = pkgs.mkShell {
+      packages = with pkgs; [git alejandra nixd];
+      name = "system-config";
     };
+  };
 }

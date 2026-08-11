@@ -2,20 +2,17 @@
   "nodes": {
     "fht-compositor": {
       "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ],
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1786124214,
-        "narHash": "sha256-QfMXTKDtXaMkeKUVjQrvC0A2NmsTElAmPh3HroSkeAI=",
+        "lastModified": 1786463777,
+        "narHash": "sha256-KVcCf9bCn1xCha0rRu7TNJasXEOKoSUgx+/3okdPRYI=",
         "owner": "nferhat",
         "repo": "fht-compositor",
-        "rev": "30b276786000278ff91bd952aaa47987b3abc23f",
+        "rev": "1931e57a0cce9372de4c0c9f70d202b84829bce8",
         "type": "github"
       },
       "original": {
@@ -67,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778716662,
-        "narHash": "sha256-m1Yf0wZ8j1OHjTc2UwHwyQRSnNeSgLJOd7q5Y45hzi4=",
+        "lastModified": 1785627969,
+        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "f7c1a2d347e4c52d5fb8d10cb4d94b5884e546fb",
+        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
         "type": "github"
       },
       "original": {

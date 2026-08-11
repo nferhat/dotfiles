@@ -1,6 +1,6 @@
 {
   pkgs,
-  self',
+  self,
   ...
 }: {
   imports = [
@@ -142,7 +142,7 @@
 
   environment.systemPackages = with pkgs; [
     scrcpy
-    self'.packages.lsfg-vk
+    self.packages."${pkgs.system}".lsfg-vk
     lact
     android-tools
   ];

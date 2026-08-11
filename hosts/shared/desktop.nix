@@ -1,5 +1,5 @@
 {
-  self',
+  self,
   inputs,
   pkgs,
   lib,
@@ -13,9 +13,13 @@
       adwaita-fonts
       twemoji-color-font
       # Monospace.
-      self'.packages.zed-mono
-      self'.packages.zed-term
+      #
+      self.packages."${pkgs.system}".zed-mono
+      self.packages."${pkgs.system}".zed-term
       nerd-fonts.iosevka
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
     ];
 
     # NOTE: I do not want serif fonts, deal with it.
