@@ -12,7 +12,6 @@
     ./halloy.nix
     ./quickshell.nix
     ./services.nix
-    ./zed.nix
   ];
 
   home = {

@@ -14,7 +14,7 @@
       ./programs.nix
       ./services.nix
       # Program configuration. This is the core of my setup.
-      ./helix.nix
+      ./nvim.nix
       ./tmux.nix
       ./fish.nix
       ./git.nix
