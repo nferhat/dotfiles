@@ -28,12 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Using for better command-not-found, since I don't use channels.
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Better browser.
     helium = {
       url = "github:AlvaroParker/helium-nix";

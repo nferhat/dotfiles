@@ -18,8 +18,6 @@
       ./tmux.nix
       ./fish.nix
       ./git.nix
-      # Use the pre-made database.
-      inputs.nix-index-database.homeModules.default
     ]
     ++ hostConfig;
 
