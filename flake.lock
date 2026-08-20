@@ -57,26 +57,6 @@
         "type": "github"
       }
     },
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1785627969,
-        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -229,7 +209,6 @@
       "inputs": {
         "fht-compositor": "fht-compositor",
         "fht-compositor-qml-plugin": "fht-compositor-qml-plugin",
-        "flake-parts": "flake-parts",
         "helium": "helium",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
