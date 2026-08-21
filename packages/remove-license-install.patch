@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7a6228e..f658b9c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -102,7 +102,7 @@ install(
+     DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
+ )
+
+-install(
+-    FILES ../LICENSE
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/meloville
+-)
+\ No newline at end of file
++# install(
++#     FILES ../../LICENSE
++#     DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/meloville
++# )

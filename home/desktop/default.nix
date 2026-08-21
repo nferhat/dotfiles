@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./fht-compositor.nix
+    ./music.nix
     ./games.nix
     ./ghostty.nix
     ./gtk.nix
