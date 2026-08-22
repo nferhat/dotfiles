@@ -45,6 +45,8 @@
       # NixOS wrappers use this variable to automatically set required flags for electron applications
       # to run with ozone support (and thus running natively)
       NIXOS_OZONE_WL = "1";
+      # qtengine for theming qt stuff
+      QT_QPA_PLATFORMTHEME = "qtengine";
     };
 
     pointerCursor = {
@@ -85,7 +87,7 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = null;
   };
 
   # TODO: Swap it out with fht-notify when I come around and actually write it

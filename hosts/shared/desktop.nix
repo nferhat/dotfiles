@@ -5,7 +5,10 @@
   lib,
   ...
 }: {
-  imports = [inputs.fht-compositor.nixosModules.default];
+  imports = [
+    inputs.fht-compositor.nixosModules.default
+    inputs.qtengine.nixosModules.default
+  ];
 
   fonts = {
     packages = with pkgs; [
@@ -71,12 +74,21 @@
     #   "type1:no-stem-darkening=0"
     #   "t1cid:no-stem-darkening=0"
     # ]);
+
+    # qtengine for theming qt stuff
+    QT_QPA_PLATFORMTHEME = "qtengine";
   };
 
   # No thank you, this will just consume time trying to connect any present card instead of actually
   # letting the system boot
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.user.services.fht-compositor-polkit.enable = false;
+
+  environment.systemPackages = with pkgs; [
+    kdePackages.breeze
+    kdePackages.breeze.qt5
+    self.packages."${pkgs.system}".arashi-icon-theme
+  ];
 
   programs = {
     dconf.enable = true;
@@ -85,11 +97,42 @@
     fht-compositor = {
       enable = true;
     };
+
+    qtengine = {
+      enable = true;
+
+      config = {
+        theme = {
+          # FIXME: Custom theme
+          colorScheme = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
+          iconTheme = "Arashi";
+          style = "breeze";
+
+          font = {
+            family = "Adwaita Sans";
+            size = 12;
+            weight = -1;
+          };
+
+          fontFixed = {
+            family = "Zed Mono";
+            size = 12;
+            weight = -1;
+          };
+        };
+        misc = {
+          singleClickActivate = false;
+          menusHaveIcons = true;
+          shortcutsForContextMenus = true;
+        };
+      };
+    };
   };
 
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    # Set it myself
+    platformTheme = null;
   };
 
   services = {
