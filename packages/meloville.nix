@@ -10,7 +10,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "meloville";
-  version = "1.0.5";
+  version = "1.0.6";
 
   patches = [
     # I know this is bad, you don't have to tell me
@@ -21,10 +21,14 @@ stdenv.mkDerivation rec {
     base = fetchFromGitHub {
       owner = "NevPeth";
       repo = "meloville";
-      rev = "v" + version;
-      hash = "sha256-BwJQzwczesDxIPy/JOdbyPqUzxGiVUBWRxpjT1Rn0vs=";
+      rev = "9df8e0af9716f4258de0d6e6f6a093fa94a63499";
+      hash = "sha256-0Xlu99SIZH/CZmTSKGhB0cJIN9wMDG30gvL9rdRPypM=";
     };
   in "${base}/src";
+
+  cmakeFlags = [
+    "-DCMAKE_BUILD_TYPE=Release"
+  ];
 
   buildInputs = [qt6.qtbase qt6.qtquick3d qt6.qtmultimedia taglib pulseaudio qt6.qt5compat];
   nativeBuildInputs = [cmake pkg-config qt6.wrapQtAppsHook];
