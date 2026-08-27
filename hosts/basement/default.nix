@@ -22,8 +22,11 @@
       '';
     };
 
+    kernelPackages = pkgs.linuxPackages_latest;
+
     initrd.kernelModules = [
       "amdgpu" # load GPU driver asap
+      "i2c-dev"
     ];
     kernelParams = [
       "video=DP-1:2560x1440@180" # use highest mode available on boot
@@ -82,6 +85,10 @@
     ratbagd.enable = true;
     lact.enable = true;
 
+    udev.extraRules = ''
+      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+    '';
+
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -113,7 +120,29 @@
     localsend.enable = true;
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [icu];
+      libraries = with pkgs; [
+        icu
+        # For ryujinx-nextendo
+        fontconfig
+        stdenv.cc.cc.lib
+        libva-utils
+        libva
+        pulseaudio
+        libsoundio
+        sndio
+        vulkan-loader
+        ffmpeg
+        libgdiplus
+        libx11
+        libice
+        libsm
+        sdl3
+        glew
+        libxcursor
+        libxext
+        libxi
+        libxrandr
+      ];
     };
     # How steam is managed on this device:
     #
@@ -138,13 +167,20 @@
 
   users.users."nferhat".extraGroups = [
     "adbusers" # for android debug bridge
+    "i2c" # ddcutil
   ];
 
   environment.systemPackages = with pkgs; [
-    scrcpy
-    self.packages."${pkgs.system}".lsfg-vk
-    lact
+    # adb+scrcpy an unbeatable makeshift camera combo
     android-tools
+    scrcpy
+    # Framegen, fake  frames.
+    self.packages."${pkgs.system}".lsfg-vk
+    # GPU tuning (OC/undervolt/etc.)
+    lact
+    # For controlling my display from a gui.
+    i2c-tools
+    ddcutil
   ];
 
   system = {
