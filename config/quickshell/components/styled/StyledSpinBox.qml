@@ -39,7 +39,7 @@ SpinBox {
         anchors.rightMargin: 3
         implicitHeight: root.baseHeight
         readOnly: !root.editable
-        font.family: "Zed Mono"
+        font.family: "Iosevka"
         color: Colors.text.primary
         selectionColor: ColorUtils.mix(Colors.accent, Colors.background.tertiary)
         selectedTextColor: ColorUtils.mix(Colors.accent, Colors.text.primary, 0.7)

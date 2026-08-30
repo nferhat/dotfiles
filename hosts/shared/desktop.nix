@@ -17,8 +17,7 @@
       twemoji-color-font
       # Monospace.
       #
-      self.packages."${pkgs.system}".zed-mono
-      self.packages."${pkgs.system}".zed-term
+      iosevka
       nerd-fonts.iosevka
       noto-fonts
       noto-fonts-cjk-sans
@@ -27,9 +26,9 @@
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Zed Mono" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Zed Mono" "Iosevka Nerd Font"];
-      monospace = ["Zed Mono" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
+      monospace = ["Iosevka" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
     fontconfig.subpixel.rgba = "rgb";
@@ -115,7 +114,7 @@
           };
 
           fontFixed = {
-            family = "Zed Mono";
+            family = "Iosevka";
             size = 12;
             weight = -1;
           };
@@ -147,7 +146,7 @@
       enable = true;
       alsa = {
         enable = true;
-        support32Bit = true;
+        support32Bit = lib.mkDefault false;
       };
       jack.enable = true;
       pulse.enable = true;

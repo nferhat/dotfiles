@@ -94,7 +94,7 @@ Scope {
 
                     Text {
                         renderType: Text.NativeRendering
-                        font.family: "Zed Mono"
+                        font.family: "Iosevka"
                         font.pointSize: 14
                         font.bold: true
                         text: root.failed ? "Quickshell: Reload failed" : "Quickshell reloaded"
@@ -113,7 +113,7 @@ Scope {
                             id: errorTxt
                             anchors.centerIn: parent
                             renderType: Text.NativeRendering
-                            font.family: "Zed Mono"
+                            font.family: "Iosevka"
                             font.pointSize: 12
                             text: root.errorString
                             color: Colors.text.secondary

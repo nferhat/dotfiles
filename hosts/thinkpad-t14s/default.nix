@@ -93,7 +93,7 @@
 
     printing = {
       enable = true;
-      drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
+      # drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
     };
 
     blueman.enable = true;

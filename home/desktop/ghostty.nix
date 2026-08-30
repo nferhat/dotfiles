@@ -10,7 +10,7 @@
       15;
     in {
       command = "fish";
-      font-family = "Zed Mono";
+      font-family = "Iosevka";
       font-size = 10;
       cursor-style = "block";
       cursor-style-blink = false;
