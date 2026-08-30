@@ -24,6 +24,7 @@
     findutils
     ffmpeg
     libqalculate
+    dust
     # Not essential but yknow
     wakatime-cli
   ];
