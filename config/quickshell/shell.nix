@@ -1,8 +1,6 @@
-{nixpkgs ? import <nixpkgs>, ...}:
-
-let
+{nixpkgs ? import <nixpkgs>, ...}: let
   fenixMonthly = builtins.fetchTarball "https://github.com/nix-community/fenix/archive/monthly.tar.gz";
-  pkgs = nixpkgs { overlays = [(import "${fenixMonthly}/overlay.nix")]; };
+  pkgs = nixpkgs {overlays = [(import "${fenixMonthly}/overlay.nix")];};
   lib = pkgs.lib;
 
   # Create the QT environment. Doing this will bundle necesarry libraries for QT build tools to
@@ -42,3 +40,4 @@ in
     env.CARGO_BUILD_RUSTFLAGS = "-Zcodegen-backend=cranelift";
   }
 # vim: shiftwidth=2
+

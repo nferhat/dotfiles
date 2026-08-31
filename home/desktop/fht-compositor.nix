@@ -22,7 +22,7 @@
         cursor-warps = true;
         focus-new-windows = true;
         focus-follows-mouse = false;
-        layouts = ["tile" "bottom-stack" "centered-master" "floating"];
+        layouts = ["binary-tree" "spiral-tree" "floating"];
         nmaster = 1;
         mwfact = 0.5;
         inner-gaps = 10;
@@ -36,8 +36,8 @@
 
         border = {
           thickness = 1;
-          radius = 64;
-          power = 6;
+          radius = 24;
+          # power = 0;
           focused-color = theme.separator;
           normal-color = "transparent";
         };
@@ -156,10 +156,15 @@
           '';
 
           # Focus management
-          Super-j = "focus-next-window";
-          Super-k = "focus-previous-window";
-          Super-Shift-j = "swap-with-next-window";
-          Super-Shift-k = "swap-with-previous-window";
+          Super-h = "focus-window-left";
+          Super-j = "focus-window-down";
+          Super-k = "focus-window-up";
+          Super-l = "focus-window-right";
+          Super-Shift-h = "swap-window-left";
+          Super-Shift-j = "swap-window-down";
+          Super-Shift-k = "swap-window-up";
+          Super-Shift-l = "swap-window-right";
+
           Super-Ctrl-j = "focus-next-output";
           Super-Ctrl-k = "focus-previous-output";
           # windows-style since sometimes muscle memory gets to me
@@ -224,22 +229,22 @@
           # Any changes set using these keybinds will be reset on configuration reload
           Super-Space = "select-next-layout";
           Super-Shift-Space = "select-previous-layout";
-          Super-h = repeat {
-            action = "change-mwfact";
-            arg = -0.05;
-          };
-          Super-l = repeat {
-            action = "change-mwfact";
-            arg = 0.05;
-          };
-          Super-Shift-h = repeat {
-            action = "change-nmaster";
-            arg = 1;
-          };
-          Super-Shift-l = repeat {
-            action = "change-nmaster";
-            arg = -1;
-          };
+          # Super-h = repeat {
+          #   action = "change-mwfact";
+          #   arg = -0.05;
+          # };
+          # Super-l = repeat {
+          #   action = "change-mwfact";
+          #   arg = 0.05;
+          # };
+          # Super-Shift-h = repeat {
+          #   action = "change-nmaster";
+          #   arg = 1;
+          # };
+          # Super-Shift-l = repeat {
+          #   action = "change-nmaster";
+          #   arg = -1;
+          # };
           Super-i = repeat {
             action = "change-window-proportion";
             arg = 0.5;

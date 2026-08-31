@@ -14,7 +14,6 @@ pkgs: {
   # Nice-looking music player.
   meloville = pkgs.callPackage ./meloville.nix {};
 
-  # Up-to-date versions of both.
-  lsfg-vk = pkgs.callPackage ./lsfg-vk.nix {};
-  # lsfg-vk-ui = pkgs.callPackage ./lsfg-vk-ui.nix {};
+  # v2.0.0, not packaged in nix (anything beyond 1.0.0 isn't)
+  lsfg-vk = pkgs.callPackage ./lsfg-vk/cli.nix {};
 }

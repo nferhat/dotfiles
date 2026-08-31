@@ -120,41 +120,40 @@
     localsend.enable = true;
     nix-ld = {
       enable = true;
-      libraries = with pkgs;
-        [
-          icu
-          # For ryujinx-nextendo
-          fontconfig
-          stdenv.cc.cc.lib
-          libva-utils
-          libva
-          pulseaudio
-          libsoundio
-          sndio
-          vulkan-loader
-          ffmpeg
-          libgdiplus
-          libx11
-          libice
-          libsm
-          sdl3
-          glew
-          libxcursor
-          libxext
-          libxi
-          libxrandr
-          libxft
-          harfbuzz
-          libx11
-          fontconfig
-          freetype
+      libraries = with pkgs; [
+        icu
+        # For ryujinx-nextendo
+        fontconfig
+        stdenv.cc.cc.lib
+        libva-utils
+        libva
+        pulseaudio
+        libsoundio
+        sndio
+        vulkan-loader
+        ffmpeg
+        libgdiplus
+        libx11
+        libice
+        libsm
+        sdl3
+        glew
+        libxcursor
+        libxext
+        libxi
+        libxrandr
+        libxft
+        harfbuzz
+        libx11
+        fontconfig
+        freetype
 
-          # For installed Qt GUIs locally.
-          # FIXME: Package those.
-          qt6.qtbase
-          qt6.qtdeclarative
-          libGL
-        ];
+        # For installed Qt GUIs locally.
+        # FIXME: Package those.
+        qt6.qtbase
+        qt6.qtdeclarative
+        libGL
+      ];
     };
     # How steam is managed on this device:
     #
@@ -191,6 +190,8 @@
     # For controlling my display from a gui.
     i2c-tools
     ddcutil
+    # framegen
+    self.packages.${pkgs.system}.lsfg-vk
   ];
 
   system = {
