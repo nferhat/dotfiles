@@ -5,8 +5,9 @@
 }: {
   programs.fht-compositor.settings = {
     # Max out resolution and framerate on main display
-    outputs."DP-1" = {
-      mode = "2560x1440@180";
+    outputs."DP-3" = {
+      mode = "2560x1440@179.998";
+      vrr = "on-demand";
     };
   };
 

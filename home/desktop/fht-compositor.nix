@@ -15,7 +15,6 @@
     settings = {
       # Keep a temporary config file that I use sometimes to make on-the-fly changes
       imports = ["~/.config/fht/compositor-temp.toml"];
-      autostart = ["wl-paste --watch cliphist store"];
       env.DISPLAY = ":0"; # until I write the integration.
 
       general = {
@@ -145,25 +144,25 @@
       in
         workspaceKeybinds
         // {
-          # Example key actions that do not need any argument
+          # You need to have these otherwise you aint gonna do shit.
           Super-q = "none";
           Super-Ctrl-r = "reload-config";
 
-          # Example key actions that need an argument passed in
           Super-Return = run ["ghostty"];
           Super-Shift-s = run-cmdline ''
             grim -g "$(slurp)" - | wl-copy --type image/png
           '';
 
-          # Focus management
-          Super-h = "focus-window-left";
-          Super-j = "focus-window-down";
-          Super-k = "focus-window-up";
-          Super-l = "focus-window-right";
-          Super-Shift-h = "swap-window-left";
-          Super-Shift-j = "swap-window-down";
-          Super-Shift-k = "swap-window-up";
-          Super-Shift-l = "swap-window-right";
+          # Directional focus management
+          # tree-like layouts from BSPWM are really nice.
+          Super-Left = "focus-window-left";
+          Super-Down = "focus-window-down";
+          Super-Up = "focus-window-up";
+          Super-Right = "focus-window-right";
+          Super-Shift-Left = "swap-window-left";
+          Super-Shift-Down = "swap-window-down";
+          Super-Shift-Up = "swap-window-up";
+          Super-Shift-Right = "swap-window-right";
 
           Super-Ctrl-j = "focus-next-output";
           Super-Ctrl-k = "focus-previous-output";
@@ -175,7 +174,10 @@
           Super-m = "maximize-focused-window";
           Super-f = "fullscreen-focused-window";
           Super-Shift-c = "close-focused-window";
+
+          # Floating windows
           Super-Ctrl-Space = "float-focused-window";
+          Super-Ctrl-c = "center-floating-window";
 
           # Different quickshell (wip) rice stuff.
           Super-c = global-shortcut "quickshell:toggleCentralPanel";
@@ -189,70 +191,10 @@
           # Locking
           Super-Alt-l = qs-ipc ["lock" "lock"];
 
-          # Floating window management
-          Super-Left = repeat {
-            action = "move-floating-window";
-            arg = [(-50) 0];
-          };
-          Super-Right = repeat {
-            action = "move-floating-window";
-            arg = [50 0];
-          };
-          Super-Up = repeat {
-            action = "move-floating-window";
-            arg = [0 (-50)];
-          };
-          Super-Down = repeat {
-            action = "move-floating-window";
-            arg = [0 50];
-          };
-          Super-Ctrl-c = "center-floating-window";
-
-          Super-Shift-Left = repeat {
-            action = "resize-floating-window";
-            arg = [(-50) 0];
-          };
-          Super-Shift-Right = repeat {
-            action = "resize-floating-window";
-            arg = [50 0];
-          };
-          Super-Shift-Up = repeat {
-            action = "resize-floating-window";
-            arg = [0 (-50)];
-          };
-          Super-Shift-Down = repeat {
-            action = "resize-floating-window";
-            arg = [0 50];
-          };
-
           # Transient layout changes.
           # Any changes set using these keybinds will be reset on configuration reload
           Super-Space = "select-next-layout";
           Super-Shift-Space = "select-previous-layout";
-          # Super-h = repeat {
-          #   action = "change-mwfact";
-          #   arg = -0.05;
-          # };
-          # Super-l = repeat {
-          #   action = "change-mwfact";
-          #   arg = 0.05;
-          # };
-          # Super-Shift-h = repeat {
-          #   action = "change-nmaster";
-          #   arg = 1;
-          # };
-          # Super-Shift-l = repeat {
-          #   action = "change-nmaster";
-          #   arg = -1;
-          # };
-          Super-i = repeat {
-            action = "change-window-proportion";
-            arg = 0.5;
-          };
-          Super-o = repeat {
-            action = "change-window-proportion";
-            arg = -0.5;
-          };
         };
 
       mousebinds = {
@@ -365,31 +307,30 @@
 
         RESPONSE=$(qs ipc --any-display call share-picker request {} 2>/dev/null) || {
         	echo "failed to request share-picker to open" >&2
+                # FIXME: Fallback to default fht-share-picker.
         	exit 1
         }
 
         STATUS=$(echo "$RESPONSE" | jq -r '.status // empty')
         REQUEST_ID=$(echo "$RESPONSE" | jq -r '.data // empty')
         if [[ "$STATUS" != "ok" ]]; then
-        	echo "error" >&2
-        	exit 1
+          echo "error" >&2
+          exit 1
         fi
 
         while IFS= read -r line || break; do
-        	[[ -z "$line" ]] && exit 0
+          [[ -z "$line" ]] && exit 0
 
-        	KEY=$(echo "$line" | jq -r '.key // empty' 2>/dev/null)
-        	[[ "$KEY" != "$REQUEST_ID" ]] && continue
+          KEY=$(echo "$line" | jq -r '.key // empty' 2>/dev/null)
+          [[ "$KEY" != "$REQUEST_ID" ]] && continue
 
-            # NOTE: Echoing nothing is considered to be cancelled in the portal code.
-            # You should also output to stdout not stderr.
-        	RESULT_STATUS=$(echo "$line" | jq -r '.status // empty')
-        	if [[ "$RESULT_STATUS" == "cancelled" ]]; then
-        		exit 1
-        	fi
+          # NOTE: Echoing nothing is considered to be cancelled in the portal code.
+          # You should also output to stdout not stderr.
+          RESULT_STATUS=$(echo "$line" | jq -r '.status // empty')
+          [[ "$RESULT_STATUS" == "cancelled" ]] && exit 1
 
-        	echo "$line" | jq --raw-output --monochrome-output --compact-output '.result // empty'
-        	exit 0
+          echo "$line" | jq --raw-output --monochrome-output --compact-output '.result // empty'
+          exit 0
         done < <(qs ipc --any-display listen share-picker result 2>/dev/null)
       '')
   ];

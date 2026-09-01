@@ -35,7 +35,6 @@
       slurp
       wl-clipboard
       wlr-randr
-      cliphist
     ];
 
     sessionVariables = {

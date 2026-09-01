@@ -25,6 +25,7 @@
     ffmpeg
     libqalculate
     dust
+    trash-cli
     # Not essential but yknow
     wakatime-cli
   ];

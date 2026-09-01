@@ -85,6 +85,7 @@
   environment.systemPackages = with pkgs; [
     kdePackages.breeze
     kdePackages.breeze.qt5
+    kdePackages.dolphin
     self.packages."${pkgs.system}".arashi-icon-theme
   ];
 
