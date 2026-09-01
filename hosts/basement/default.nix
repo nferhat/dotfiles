@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./scrcpy.nix
     ../shared/core.nix
     ../shared/desktop.nix
     ../shared/limine.nix
@@ -163,29 +164,18 @@
     };
     gamemode.enable = true;
     gamescope.enable = true;
-
-    appimage = {
-      enable = true;
-      package = pkgs.appimage-run.override {extraPkgs = pkgs: [pkgs.icu];};
-    };
+    appimage.enable = true;
   };
 
-  users.users."nferhat".extraGroups = [
-    "adbusers" # for android debug bridge
-    "i2c" # ddcutil
-  ];
+  users.users."nferhat".extraGroups = ["i2c"];
 
   environment.systemPackages = with pkgs; [
-    # adb+scrcpy an unbeatable makeshift camera combo
-    android-tools
-    scrcpy
-    # GPU tuning (OC/undervolt/etc.)
-    lact
+    lact # GPU tuning (OC/undervolt/etc.)
+    self.packages.${pkgs.system}.lsfg-vk # framegen woo
+
     # For controlling my display from a gui.
     i2c-tools
     ddcutil
-    # framegen
-    self.packages.${pkgs.system}.lsfg-vk
   ];
 
   system = {
