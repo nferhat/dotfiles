@@ -147,12 +147,6 @@
         libx11
         fontconfig
         freetype
-
-        # For installed Qt GUIs locally.
-        # FIXME: Package those.
-        qt6.qtbase
-        qt6.qtdeclarative
-        libGL
       ];
     };
     # How steam is managed on this device:
