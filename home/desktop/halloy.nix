@@ -15,7 +15,7 @@ in {
     settings = {
       theme = "fht";
       font = {
-        family = "Iosevka";
+        family = "Fht Mono";
         size = 16;
       };
       servers."liberachat" = {

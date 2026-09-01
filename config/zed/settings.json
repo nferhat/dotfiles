@@ -153,7 +153,7 @@
   // Also use the same font for the buffers and UI, looks nicer that way.
   "use_system_path_prompts": false,
   "use_system_prompts": false,
-  "ui_font_family": "Iosevka",
+  "ui_font_family": "Fht Mono",
   "buffer_font_family": "Iosevak",
   "buffer_font_features": { "calt": true, "dlig": true, "liga": true },
   "ui_font_size": 18.0,

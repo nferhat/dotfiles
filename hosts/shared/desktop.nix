@@ -16,8 +16,7 @@
       adwaita-fonts
       twemoji-color-font
       # Monospace.
-      #
-      iosevka
+      self.packages.${pkgs.system}.fht-mono
       nerd-fonts.iosevka
       noto-fonts
       noto-fonts-cjk-sans
@@ -26,9 +25,9 @@
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Iosevka" "Iosevka Nerd Font"];
-      monospace = ["Iosevka" "Iosevka Nerd Font"];
+      serif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      monospace = ["Fht Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
     fontconfig.subpixel.rgba = "rgb";
@@ -114,7 +113,7 @@
           };
 
           fontFixed = {
-            family = "Iosevka";
+            family = "Fht Mono";
             size = 12;
             weight = -1;
           };

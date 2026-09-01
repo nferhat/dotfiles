@@ -9,7 +9,7 @@ QtObject {
 
     readonly property real cornerRadius: 16
     readonly property QtObject fonts: QtObject {
-        readonly property string monospace: "Iosevka"
+        readonly property string monospace: "Fht Mono"
         readonly property string regular: "Iosevka Aile"
     }
 
