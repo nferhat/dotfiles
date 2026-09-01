@@ -276,6 +276,7 @@
             "Etterna"
             "Quaver"
             "Steam"
+            "Ryujinx"
             "love" # love2d based games/apps, notably Olympus for celeste
             "org.prismlauncher.PrismLauncher"
           ];
