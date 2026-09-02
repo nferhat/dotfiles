@@ -167,6 +167,7 @@
       extraCss = gtkThemeCss;
     };
     gtk4 = {
+      theme = null;
       extraConfig = gtkPreferDarkMode;
       extraCss = gtkThemeCss;
     };
