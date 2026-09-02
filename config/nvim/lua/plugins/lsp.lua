@@ -120,7 +120,7 @@ M.config = function()
 			end, { desc = "Hover Symbol", buffer = buffer })
 			set_keymap("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Buffer Code Action(s)", buffer = buffer })
 			set_keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Cursor diagnostics", buffer = buffer })
-			set_keymap("n", "<leader>r", require("renamer"), { desc = "Rename Symbol", buffer = buffer })
+			set_keymap("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename Symbol", buffer = buffer })
 			set_keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Open Signature Help", buffer = buffer })
 
 			-- Better inlay hints (nvim >=0.10)

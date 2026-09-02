@@ -16,8 +16,8 @@ O.termguicolors = true
 O.wrap = false
 O.scrolloff = 8
 O.fillchars = { eob = " ", stl = " ", stlnc = " " }
-O.number = true
-O.relativenumber = true
+O.number = false
+O.relativenumber = false
 O.cursorline = true
 O.showtabline = 0
 O.signcolumn = "yes"
@@ -31,9 +31,9 @@ O.softtabstop = 4
 O.expandtab = true
 O.shiftwidth = 4
 O.autoindent = true
-O.smartindent = false    -- buggy
+O.smartindent = false -- buggy
 O.hidden = true
-O.fdls = 9999            -- don't fold when opening buffers
+O.fdls = 9999 -- don't fold when opening buffers
 O.timeoutlen = 200
 O.colorcolumn = "80,100" -- 80 for code, 100 for comments
 O.shell = "fish"
@@ -41,13 +41,13 @@ O.splitbelow = true
 O.splitright = true
 O.pumwidth = 20
 O.guifont = "monospace:h10"
-O.guicursor = ""      -- keep blocky cursor
+O.guicursor = "" -- keep blocky cursor
 O.winborder = "single" -- border for most popups, then filled in with theme
 -- O.winblend = 7
 -- O.pumblend = 7
-O.shortmess:append("sIc")    -- disable nvim intro + completion messages
-O.virtualedit = "block"      -- Allow cursor to move where there is no text in visual block mode
-O.list = true                -- shows hidden stuff like tabs
+O.shortmess:append("sIc") -- disable nvim intro + completion messages
+O.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+O.list = true -- shows hidden stuff like tabs
 O.whichwrap:append("<>[]hl") -- move to next/prev lines with hl
 -- Custom in-house statusline
 O.statusline = "%!v:lua.require('statusline').draw()"
@@ -143,6 +143,25 @@ set_keymap("n", "<leader>A", function()
 	vim.api.nvim_create_autocmd("TermEnter", { buffer = buf, command = "stopinsert" })
 end, { noremap = true, desc = "Colorize ansi sequences in file" })
 
+-- quickfix list, making use of compiler.vim
+local function toggle_qflist()
+	local qf_exists = false
+	for _, win in ipairs(vim.fn.getwininfo()) do
+		if win.quickfix == 1 then
+			qf_exists = true
+		end
+	end
+	if qf_exists then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
+end
+
+vim.keymap.set("n", "<leader>c", toggle_qflist, { desc = "Toggle quickfix list" })
+vim.keymap.set("n", "]c", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
+vim.keymap.set("n", "[c", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
+
 -- Autocommands
 -- Some stuff that editors do automatically but not present in neovim
 -- Don't pollute the global autogroup namespace
@@ -172,7 +191,7 @@ api.nvim_create_autocmd({ "TextYankPost" }, {
 	desc = "Highlight on yank",
 	group = fht,
 	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+		vim.hl.on_yank({ higroup = "Visual", timeout = 300 })
 	end,
 })
 

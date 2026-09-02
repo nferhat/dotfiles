@@ -2,6 +2,7 @@ Snacks = Snacks
 
 return {
 	"folke/snacks.nvim",
+	priority = 1000,
 	lazy = false,
 	opts = {
 		quickfile = {}, -- Simple yet really useful
@@ -70,8 +71,8 @@ return {
 							box = "vertical",
 							title = "{title} {live} {flags}",
 							border = "single",
-							{ win = "input", height = 1,     border = "bottom" },
-							{ win = "list",  border = "none" },
+							{ win = "input", height = 1, border = "bottom" },
+							{ win = "list", border = "none" },
 						},
 						{ win = "preview", border = "single", width = 0.6, minimal = true },
 					},
@@ -87,8 +88,8 @@ return {
 							box = "vertical",
 							title = "{title} {live} {flags}",
 							border = "single",
-							{ win = "input", height = 1,     border = "bottom" },
-							{ win = "list",  border = "none" },
+							{ win = "input", height = 1, border = "bottom" },
+							{ win = "list", border = "none" },
 						},
 						{ win = "preview", border = "single", width = 0.6, minimal = true },
 					},
@@ -101,7 +102,7 @@ return {
 						width = 0.3,
 						min_width = 120,
 						height = 0.4,
-						{ win = "list",    border = "single" },
+						{ win = "list", border = "single" },
 						{ win = "preview", border = "single", width = 0.65, minimal = true },
 					},
 				},
@@ -112,8 +113,8 @@ return {
 						box = "horizontal",
 						width = 0.8,
 						height = 0.6,
-						{ win = "list",    title_pos = nil, border = "single" },
-						{ win = "preview", width = 0.6,     border = "single", minimal = true },
+						{ win = "list", title_pos = nil, border = "single" },
+						{ win = "preview", width = 0.6, border = "single", minimal = true },
 					},
 				},
 				-- Make select smaller
@@ -129,9 +130,9 @@ return {
 						border = true,
 						title = "{title}",
 						title_pos = "center",
-						{ win = "input",   height = 1,          border = "bottom" },
-						{ win = "list",    border = "none" },
-						{ win = "preview", title = "{preview}", height = 0.4,     border = "top" },
+						{ win = "input", height = 1, border = "bottom" },
+						{ win = "list", border = "none" },
+						{ win = "preview", title = "{preview}", height = 0.4, border = "top" },
 					},
 				},
 			},
@@ -172,6 +173,13 @@ return {
 			desc = "Find Files",
 		},
 		{
+			"<leader>q",
+			function()
+				Snacks.picker.qflist()
+			end,
+			desc = "Find Files",
+		},
+		{
 			"<leader>b",
 			function()
 				Snacks.picker.buffers()
@@ -204,42 +212,42 @@ return {
 			function()
 				Snacks.picker.git_log()
 			end,
-			desc = "Git Log",
+			desc = "Log",
 		},
 		{
 			"<leader>gL",
 			function()
 				Snacks.picker.git_log_line()
 			end,
-			desc = "Git Log Line",
+			desc = "Log Line",
 		},
 		{
 			"<leader>gs",
 			function()
 				Snacks.picker.git_status()
 			end,
-			desc = "Git Status",
+			desc = "Status",
 		},
 		{
 			"<leader>gS",
 			function()
 				Snacks.picker.git_stash()
 			end,
-			desc = "Git Stash",
+			desc = "Stash",
 		},
 		{
 			"<leader>gd",
 			function()
 				Snacks.picker.git_diff()
 			end,
-			desc = "Git Diff (Hunks)",
+			desc = "Diff (Hunks)",
 		},
 		{
 			"<leader>gf",
 			function()
 				Snacks.picker.git_log_file()
 			end,
-			desc = "Git Log File",
+			desc = "Log File",
 		},
 		-- Grep
 		-- LSP

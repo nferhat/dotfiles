@@ -162,6 +162,9 @@ return {
 	-- Line and column
 	Statusline_linecol = { bg = C.bg.tertiary, fg = C.foreground },
 
+	-- renamer, see lua/renamer
+	RenamerTitle = { bg = C.color2, fg = C.color0 },
+
 	-- tree-sitter is now included with neovim, aswell as some parsers
 	-- make the highlights for syntax nodes in the base skeleton
 	["@boolean"] = C.color3,
@@ -325,33 +328,4 @@ return {
 	MiniClueSeparator = { fg = C.separator },
 	MiniClueTitle = { fg = C.color4, bold = true },
 	MiniClueBorder = { link = "FloatBorder" },
-
-	-- render-markdown.nvim
-	RenderMarkdownCode = { bg = C.bg.tertiary },
-	RenderMarkdownTableHead = { fg = C.separator:lighten(2.0) },
-	RenderMarkdownTableRow = { fg = C.separator:lighten(2.0) },
-	RenderMarkdownWarn = { fg = C.color3 },
-	RenderMarkdownInfo = { fg = C.color4 },
-	RenderMarkdownSuccess = { fg = C.color2 },
-	RenderMarkdownCodeInline = { link = "@markup.raw.markdown_inline" },
-	-- These are part of treesitter highlights but are also picked up by the plugin
-	["@markup.quote.markdown"] = { fg = C.color16 },
-	["@markup.heading.1.markdown"] = { fg = C.color4 },
-	["@markup.heading.2.markdown"] = { fg = C.color2 },
-	["@markup.heading.3.markdown"] = { fg = C.color6 },
-	["@markup.heading.4.markdown"] = { fg = C.color1 },
-	["@markup.heading.5.markdown"] = { fg = C.color5 },
-	["@markup.heading.6.markdown"] = { fg = C.color5 },
-	RenderMarkdownH1Bg = {},
-	RenderMarkdownH2Bg = {},
-	RenderMarkdownH3Bg = {},
-	RenderMarkdownH4Bg = {},
-	RenderMarkdownH5Bg = {},
-	RenderMarkdownH6Bg = {},
-	-- RenderMarkdownH1Bg = { bg = C.bg.secondary:increase_blue(2.0) },
-	-- RenderMarkdownH2Bg = { bg = C.bg.secondary:increase_green(2.0) },
-	-- RenderMarkdownH3Bg = { bg = C.bg.secondary:increase_blue(2.0):increase_green(2.0) },
-	-- RenderMarkdownH4Bg = { bg = C.bg.secondary:increase_red(2.0) },
-	-- RenderMarkdownH5Bg = { bg = C.bg.secondary:increase_red(6.0):increase_blue(6.0) },
-	-- RenderMarkdownH6Bg = { bg = C.bg.secondary:increase_red(3.0):increase_blue(3.0) },
 }

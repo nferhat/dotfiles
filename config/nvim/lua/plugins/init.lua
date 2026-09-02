@@ -5,10 +5,6 @@
 -- have (hopefully) what I need.
 
 local M = {
-	-- Integration with direnv, which I use to provide LSPs and tools for developing
-	-- through nix devShells
-	{ "direnv/direnv.vim", event = "VeryLazy" },
-
 	-- Provide parsers, automatically install them
 	-- FIXME: Use nix instead?
 	{
@@ -70,27 +66,24 @@ local M = {
 			current_line_blame_opts = { virt_text = true, virt_text_pos = "right_align" },
 			current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
 			update_debounce = 100,
-		},
-	},
+			on_attach = function(buffer)
+				local g = require("gitsigns")
 
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		ft = "markdown",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {
-			enable = true,
-			render_modes = true, -- even in insert!
-			anti_conceal = { enabled = false }, -- annoying
-			sign = { enabled = false }, -- I really dont need it
-			latex = { enabled = true },
-			code = { border = "thick", inline_pad = 1, left_pad = 1 },
-			heading = { border = true, border_virtual = true, icons = " " },
-			completions = { lsp = { enabled = true } },
-			dashed_line = { width = 15 },
-			pipe_table = { enabled = true, style = "heavy" },
-			ignore = function(id)
-				-- Disables for LSP popups, since it just looks weird.
-				return vim.bo[id].buftype == "nofile"
+				vim.keymap.set("n", "]h", function()
+					g.nav_hunk("next")
+				end, { buffer = buffer, desc = "Next git hunk" })
+				vim.keymap.set("n", "[h", function()
+					g.nav_hunk("prev")
+				end, { buffer = buffer, desc = "Next previous hunk" })
+				vim.keymap.set("n", "<leader>gr", function()
+					g.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				end, { buffer = buffer, desc = "Reset hunk" })
+				vim.keymap.set("n", "<leader>gs", function()
+					g.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+				end, { buffer = buffer, desc = "Stage hunk" })
+
+				vim.keymap.set("n", "<leader>gR", g.reset_buffer, { buffer = buffer, desc = "Reset buffer" })
+				vim.keymap.set("n", "<leader>gS", g.stage_buffer, { buffer = buffer, desc = "Stage buffer" })
 			end,
 		},
 	},
@@ -103,7 +96,7 @@ local M = {
 	},
 
 	-- it's a small plugin
-	{ "tpope/vim-sleuth", lazy = false },
+	{ "tpope/vim-sleuth",  lazy = false },
 }
 
 return M

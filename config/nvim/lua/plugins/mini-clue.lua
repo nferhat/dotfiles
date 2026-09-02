@@ -13,12 +13,12 @@ M.config = function()
 		triggers = {
 			{ mode = { "n", "x" }, keys = "<Leader>" },
 			{ mode = { "n", "x" }, keys = "g" },
-			{ mode = { 'n', 'x' }, keys = "'" },
-			{ mode = { 'n', 'x' }, keys = '`' },
-			{ mode = { 'n', 'x' }, keys = '"' },
-			{ mode = { 'i', 'c' }, keys = '<C-r>' },
-			{ mode = 'n',          keys = '<C-w>' },
-			{ mode = { 'n', 'x' }, keys = 'z' },
+			{ mode = { "n", "x" }, keys = "'" },
+			{ mode = { "n", "x" }, keys = "`" },
+			{ mode = { "n", "x" }, keys = '"' },
+			{ mode = { "i", "c" }, keys = "<C-r>" },
+			{ mode = "n", keys = "<C-w>" },
+			{ mode = { "n", "x" }, keys = "z" },
 		},
 
 		clues = {
@@ -29,6 +29,7 @@ M.config = function()
 			miniclue.gen_clues.registers(),
 			miniclue.gen_clues.windows(),
 			miniclue.gen_clues.z(),
+			{ mode = "n", keys = "<Leader>g", desc = "+Git" },
 			-- -- <leader>n always maps to neorg
 			-- { mode = "n", keys = "<Leader>n", desc = "+Neorg" },
 			-- { mode = "n", keys = "<Leader>ni", desc = "+Insert" },
