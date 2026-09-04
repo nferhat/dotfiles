@@ -187,15 +187,13 @@ return {
 	["@function.macro"] = C.color7,
 	["@include"] = { link = "Include" },
 	["@keyword"] = { fg = C.color5, italic = false },
-	-- Special case for rust &mut
-	["@keyword.modifier.rust"] = { fg = C.color3, italic = false },
 	["@label"] = C.color3,
 	["@macro"] = C.color7,
 	["@module"] = C.text.tertiary:brighten(5.0),
 	["@method"] = { link = "@function" },
 	["@namespace"] = C.text.tertiary:brighten(5.0),
 	["@number"] = C.color3,
-	["@operator"] = C.color7:darken(2.5),
+	["@operator"] = C.text.tertiary:brighten(5.0),
 	["@parameter"] = { fg = C.foreground, italic = true },
 	["@preproc"] = C.color3,
 	["@property"] = C.foreground,
@@ -223,6 +221,11 @@ return {
 	["@markup.raw.markdown_inline"] = { bg = C.bg.secondary:brighten(5), fg = C.color7 },
 	["@markup.link.label"] = C.color4,
 	["@markup.link.url"] = C.color9,
+	-- wgsl
+	["@attribute.wgsl"] = C.color7:darken(5.0),
+	-- Rust
+	["@keyword.modifier.rust"] = { fg = C.color3, italic = false },
+	["@variable.builtin.rust"] = { link = "@variable" },
 
 	-- lazy.nvim
 	LazyButton = { bg = C.bg.secondary },
