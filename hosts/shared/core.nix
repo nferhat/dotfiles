@@ -70,6 +70,11 @@
   # This would be better than allowing any unfree package to pass through.
   nixpkgs.config.allowUnfree = true;
 
+  # Show feedback when typing in sudo
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+  '';
+
   # Setup my user and the home directory.
   # Nothing special, I use home-manager as a NixOS module only, I don't make use of the home-manager utility
   # (I believe it's better to tie home configurations to system revisions)
