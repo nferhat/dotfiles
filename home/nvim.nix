@@ -1,5 +1,5 @@
 {config, pkgs, ...}: {
-  home.packages = [pkgs.neovim pkgs.gcc];
+  home.packages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
   home.sessionVariables.EDITOR = "nvim";
 
   xdg.configFile."nvim".source =
