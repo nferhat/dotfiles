@@ -28,9 +28,6 @@ in {
         ];
       })
 
-      # Setting up environments easier.
-      bottles
-
       # To configure mangohud
       mangojuice
       protonup-qt

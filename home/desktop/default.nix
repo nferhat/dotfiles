@@ -21,11 +21,12 @@
       keepassxc
       telegram-desktop
       fractal
-      loupe
+      imv
       qbittorrent
       imagemagick
       vesktop
       dino
+      piper
 
       # Nice degoogled-chromium browser.
       inputs.helium.packages."${pkgs.system}".default

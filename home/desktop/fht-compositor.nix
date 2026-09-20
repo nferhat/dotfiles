@@ -35,8 +35,8 @@
 
         border = {
           thickness = 1;
-          radius = 24;
-          # power = 0;
+          radius = 128;
+          power = 6;
           focused-color = theme.separator;
           normal-color = "transparent";
         };
@@ -87,9 +87,9 @@
 
       keybinds = let
         # Some stuff to generalize writing actions.
-        run = args-list: {
+        run = args: {
           action = "run";
-          arg = args-list;
+          arg = if (builtins.typeOf args) == "string" then [args] else args;
         };
         run-cmdline = cmdline: {
           action = "run-command-line";
@@ -148,7 +148,10 @@
           Super-q = "none";
           Super-Ctrl-r = "reload-config";
 
-          Super-Return = run ["ghostty"];
+
+          # Programs
+          Super-Return = run "ghostty";
+          Super-e = run "dolphin";
           Super-Shift-s = run-cmdline ''
             grim -g "$(slurp)" - | wl-copy --type image/png
           '';
@@ -272,6 +275,7 @@
             "splash"
             "gay.pancake.lsfg-vk-ui"
             "openrgb"
+            "org.kde.dolphin"
           ];
           floating = true;
           centered = true;

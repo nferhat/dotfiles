@@ -8,6 +8,7 @@
     # all the system, hence why some programs are here and not inside the `core.nix`
     # nixos module
     dnsutils
+    aria2
     socat
     netcat
     nmap

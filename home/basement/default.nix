@@ -21,7 +21,7 @@
   programs.ghostty.settings.font-size = lib.mkForce 13;
 
   home.packages = with pkgs; [
-    # I do some gaming on this very capable machine
-    ryubing
+    # Doing 3d modeling woo
+    pkgsRocm.blender
   ];
 }
