@@ -69,6 +69,10 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
+
+    # For whatever reason, my laptop can't resolve most domains without cloudflare+resolved combo
+    # Go figure out why.
+    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
   };
 
   time.timeZone = "Africa/Algiers";
@@ -89,6 +93,13 @@
     udev.extraRules = ''
       KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
     '';
+
+    resolved = {
+      enable = true;
+      dnssec = "true";
+      domains = ["~."];
+      fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+    };
 
     avahi = {
       enable = true;
@@ -167,10 +178,17 @@
     appimage.enable = true;
   };
 
-  users.users."nferhat".extraGroups = ["i2c"];
+  # Enable support for ROCm/HIP, AMD's equivalent to CUDA.
+  # FIXME: Also figure out how to get Zluda working
+  nixpkgs.config.rocmSupport = true;
+
+  # For using ddcutil without root
+  # FIXME: adding docker group is a horrible idea.
+  users.users."nferhat".extraGroups = ["i2c" "docker"];
+
+  virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [
-    lact # GPU tuning (OC/undervolt/etc.)
     self.packages.${pkgs.system}.lsfg-vk # framegen woo
 
     # For controlling my display from a gui.

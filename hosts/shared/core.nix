@@ -20,6 +20,7 @@
       gcc
       ripgrep
       fd
+      rsync
       coreutils
       wget
       curl
