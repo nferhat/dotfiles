@@ -3,8 +3,6 @@ local M = {
 	"saghen/blink.cmp",
 	version = "1.10.2",
 	event = "InsertEnter",
-	-- Battery of pre-made snippets
-	dependencies = { "rafamadriz/friendly-snippets" },
 
 	opts = {
 		keymap = {

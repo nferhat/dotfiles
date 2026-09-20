@@ -38,6 +38,12 @@ local M = {
 		config = true,
 	},
 
+	{
+		'felpafel/inlay-hint.nvim',
+		event = 'LspAttach',
+		config = true,
+	},
+
 	-- Gitsigns, nothing fancy
 	-- TODO: Maybe write a copy myself? I don't make use of all the features this plugin has.
 	{
@@ -96,7 +102,7 @@ local M = {
 	},
 
 	-- it's a small plugin
-	{ "tpope/vim-sleuth",  lazy = false },
+	{ "tpope/vim-sleuth", lazy = false },
 }
 
 return M

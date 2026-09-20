@@ -173,13 +173,6 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>q",
-			function()
-				Snacks.picker.qflist()
-			end,
-			desc = "Find Files",
-		},
-		{
 			"<leader>b",
 			function()
 				Snacks.picker.buffers()

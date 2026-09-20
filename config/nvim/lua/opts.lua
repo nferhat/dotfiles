@@ -158,7 +158,7 @@ local function toggle_qflist()
 	end
 end
 
-vim.keymap.set("n", "<leader>c", toggle_qflist, { desc = "Toggle quickfix list" })
+vim.keymap.set("n", "<leader>q", toggle_qflist, { desc = "Toggle quickfix list" })
 vim.keymap.set("n", "]c", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
 vim.keymap.set("n", "[c", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
 

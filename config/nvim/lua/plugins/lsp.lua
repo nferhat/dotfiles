@@ -75,6 +75,42 @@ M.config = function()
 			Lua = {},
 		},
 	})
+	vim.lsp.config("rust_analyzer", {
+		settings = {
+			["rust-analyzer"] = {
+				cargo = {
+					-- Yeah buddy its about time to wrap it up.
+					-- allTargets will means rust will re-compile everything on each edit.
+					allTargets = false,
+				},
+				check = {
+					-- Makes stuff faster.
+					-- FIXME: I dont know if this is worth it or not.
+					workspace = false,
+				},
+				completion = {
+					-- Fuck you.
+					autoIter = { enable = false },
+					fullFunctionSignatures = { enable = true },
+				},
+				imports = {
+					-- working with bevy
+					preferPrelude = true,
+				},
+				inlayHints = {
+					typeHints = {
+						-- No need to really.
+						hideClosureInitialization = true,
+						hideInferredTypes = true,
+						hideNamedConstructor = true,
+					},
+				},
+				-- dunno wtf is this
+				lens = { enable = false },
+			},
+		}
+	})
+
 	vim.lsp.enable({
 		"gopls",
 		"lua_ls",
