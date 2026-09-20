@@ -1,8 +1,11 @@
+[buildOptions]
+optimizeWithTtx = true
+
 [buildPlans.FhtMono]
 family = "Fht Mono"
 spacing = "normal"
 serifs = "sans"
-noCvSs = true
+noCvSs = false
 exportGlyphNames = false
 
 [buildPlans.FhtMono.variants]
@@ -10,27 +13,16 @@ inherits = "ss08"
 
 [buildPlans.FhtMono.variants.design]
 four = "semi-open-serifless"
-five = "upright-arched-serifless"
-seven = "straight-serifed"
 eight = "two-circles"
 nine = "straight-bar"
-zero = "slashed"
-capital-n = "standard-serifless"
-capital-w = "curly-serifless"
-capital-x = "straight-serifless"
-capital-z = "straight-serifless"
-l = "serifed"
 t = "bent-hook"
-y = "straight-turn-serifless"
-z = "straight-serifless"
 eszet = "sulzbacher-descending-serifless"
 asterisk = "penta-high"
 underscore = "above-baseline"
 number-sign = "slanted"
-ampersand = "closed"
 percent = "rings-continuous-slash"
 bar = "force-upright"
-question = "corner"
+lig-equal-chain = "without-notch"
 
 [buildPlans.FhtMono.weights.Regular]
 shape = 400
@@ -43,7 +35,7 @@ menu = 700
 css = 700
 
 [buildPlans.FhtMono.widths.Normal]
-shape = 600
+shape = 548
 menu = 5
 css = "normal"
 
