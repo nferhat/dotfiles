@@ -115,7 +115,7 @@ M.config = function()
 		"gopls",
 		"lua_ls",
 		"ts_ls",
-		"tailwindcss",
+		-- "tailwindcss",
 		"rust_analyzer",
 		"clangd",
 		"wgsl_analyzer",
