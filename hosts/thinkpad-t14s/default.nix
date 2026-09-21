@@ -113,7 +113,6 @@
     android-tools
   ];
 
-
   virtualisation.docker.enable = true;
   users.users."nferhat".extraGroups = ["docker"];
 

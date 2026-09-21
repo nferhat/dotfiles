@@ -4,18 +4,16 @@
   lib,
   ...
 }:
-
 # home.nix -*- setup my user and home-manager with it.
 #
 # I don't use home-manager as a separate CLI. Instead, home-manager is deployed as part of my system
 # configuration, which makes it straightforward to manage my dotfiles as a whole.
-
 {
   imports = [
     inputs.home-manager.nixosModules.default
     # sets up an alias, `nferhat.*` to `home-manager.users.nferhat.*`, allowing me to access
     # all of the home-manager options fairly quickly without trouble.
-    (lib.mkAliasOptionModule ["nferhat"] [ "home-manager" "users" "nferhat" ])
+    (lib.mkAliasOptionModule ["nferhat"] ["home-manager" "users" "nferhat"])
   ];
 
   users.users."nferhat" = {

@@ -1,10 +1,7 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./home.nix
-    ./programs.nix 
+    ./programs.nix
     ./nvim.nix
     ./nix.nix
     ./fish.nix
@@ -63,7 +60,6 @@
     __GL_SHADER_DISK_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     WAKATIME_HOME = "$XDG_CONFIG_HOME/wakatime";
   };
-
 
   # Show feedback when typing in sudo
   security.sudo.extraConfig = ''

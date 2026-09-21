@@ -9,7 +9,7 @@
     ./home.nix
     ../../modules/desktop
     ../../modules/limine.nix
-    ../../modules/
+    ../../modules/core.nix
   ];
 
   boot = {

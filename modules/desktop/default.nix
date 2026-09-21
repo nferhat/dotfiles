@@ -1,5 +1,5 @@
 {
-config,
+  config,
   self,
   pkgs,
   inputs,
@@ -30,7 +30,6 @@ config,
 
     # Nice degoogled-chromium browser.
     inputs.helium.packages."${pkgs.system}".default
-
 
     # Music setup. Nothing particularly special about this.
     # Amberol is fine, but I wanna write my mpd client at some point...
@@ -97,7 +96,7 @@ config,
 
   services = {
     # Needed for home-manager to apply theming values (for GTK and GN*ME stuff)
-    dbus.packages = [ pkgs.dconf ];
+    dbus.packages = [pkgs.dconf];
 
     pipewire = {
       enable = true;
@@ -114,7 +113,6 @@ config,
 
   # Depedency of pipewire.
   security.rtkit.enable = true;
-
 
   # Niceness and integration for wayland sessions
   xdg.portal = {

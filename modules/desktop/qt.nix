@@ -1,20 +1,24 @@
 {
-self,
-pkgs,
-inputs,
-...
+  self,
+  pkgs,
+  inputs,
+  ...
 }:
-
 # qt.nix -*- Theming QT applications.
 # kosslan's QtEngine helps massively, and I can load KDE plasma themes fine.
-
 {
   imports = [inputs.qtengine.nixosModules.default];
 
   # Configure QT on the system and for my user.
   # Allows to find themes from QtEngine
-  qt = { enable = true; platformTheme = null; };
-  nferhat.qt = { enable = true; platformTheme.name = null; };
+  qt = {
+    enable = true;
+    platformTheme = null;
+  };
+  nferhat.qt = {
+    enable = true;
+    platformTheme.name = null;
+  };
 
   # Set the theme. Finally done with qt*ct
   environment.sessionVariables.QT_QPA_PLATFORMTHEME = "qtengine";

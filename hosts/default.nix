@@ -5,7 +5,10 @@ inputs @ {
 }: let
   # Get nixpkgs library then add my own functions and stuff
   lib = nixpkgs.lib.extend (self: _: {
-    fht = import ../lib/default.nix {lib = self; pkgs = nixpkgs.legacyPackages."x86_64-linux";};
+    fht = import ../lib/default.nix {
+      lib = self;
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    };
   });
 
   inherit (lib) filterAttrs mapAttrs readDir nixosSystem;

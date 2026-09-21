@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  users.users.nferhat.packages = with pkgs; [ fzf findutils gh ];
+  users.users.nferhat.packages = with pkgs; [fzf findutils gh];
 
   nferhat.programs.git = {
     enable = true;

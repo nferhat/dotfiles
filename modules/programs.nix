@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-
   nferhat.home.shellAliases = {
     l = "eza -a --group-directories-first";
     ll = "l -l";
@@ -76,7 +75,6 @@
     dust
     trash-cli
   ];
-
 
   nferhat.services = {
     ssh-agent.enable = true;

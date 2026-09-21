@@ -93,7 +93,10 @@
         # Some stuff to generalize writing actions.
         run = args: {
           action = "run";
-          arg = if (builtins.typeOf args) == "string" then [args] else args;
+          arg =
+            if (builtins.typeOf args) == "string"
+            then [args]
+            else args;
         };
         run-cmdline = cmdline: {
           action = "run-command-line";
@@ -151,7 +154,6 @@
           # You need to have these otherwise you aint gonna do shit.
           Super-q = "none";
           Super-Ctrl-r = "reload-config";
-
 
           # Programs
           Super-Return = run "ghostty";

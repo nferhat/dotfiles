@@ -1,7 +1,7 @@
-{ lib, ... }: {
+{lib, ...}: {
   # Allows fish completions to be found in package derviations.
   # Avoids me having to generate them by hand.
-  environment.pathsToLink = [ "/share/fish" ];
+  environment.pathsToLink = ["/share/fish"];
 
   # I don't need to configure fish, what a bliss.
   nferhat.programs.fish = {

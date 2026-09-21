@@ -1,4 +1,9 @@
-{config, lib, inputs,...}: {
+{
+  config,
+  lib,
+  inputs,
+  ...
+}: {
   nix = {
     # Cool trick copied from github:fufexan/dotfiles.
     # Pins the registry and sets the old $NIX_PATH for compatibility with old tooling.
