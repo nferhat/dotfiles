@@ -7,6 +7,7 @@
     ./fish.nix
     ./tmux.nix
     ./git.nix
+    ./ssh.nix
   ];
 
   environment = {
