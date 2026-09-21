@@ -10,12 +10,7 @@ inputs @ {
 
   inherit (lib) filterAttrs mapAttrs readDir nixosSystem;
   specialArgs = {inherit self lib inputs;};
-  systems =
-    # Filter for the shared module (doesn't have a default.nix and gets imported from
-    # other hosts default.nix files), and skip on singular .nix files.
-    filterAttrs (name: type: name != "shared" && type == "directory")
-    # Read all directories here
-    (readDir ./.);
+  availableSystems = filterAttrs (_: type: type == "directory") (readDir ./.);
 
   mkHost = hostname: _:
     nixosSystem {
@@ -25,4 +20,4 @@ inputs @ {
 in
   mapAttrs
   mkHost
-  systems
+  availableSystems

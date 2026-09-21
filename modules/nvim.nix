@@ -1,11 +1,10 @@
 {config, pkgs, ...}: {
-  home.packages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
-  home.sessionVariables.EDITOR = "nvim";
+  users.users.nferhat.packages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
 
-  xdg.configFile."nvim".source =
+  nferhat.xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "/home/nferhat/Documents/repos/personal/dotfiles/config/nvim";
 
-  xdg.configFile."theme/colors.lua".text = let
+  nferhat.xdg.configFile."theme/colors.lua".text = let
     theme = import ../theme;
   in /* lua */ ''
     local Color = require("theme.color")

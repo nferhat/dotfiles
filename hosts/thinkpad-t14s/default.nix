@@ -7,9 +7,9 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
-    ../shared/core.nix
-    ../shared/desktop.nix
-    ../shared/limine.nix
+    ../../modules/desktop
+    ../../modules/limine.nix
+    ../../modules/core.nix
   ];
 
   boot = {
@@ -108,11 +108,14 @@
     nix-ld.enable = true;
   };
 
-  users.users."nferhat".extraGroups = ["adbusers"];
   environment.systemPackages = with pkgs; [
     scrcpy
     android-tools
   ];
+
+
+  virtualisation.docker.enable = true;
+  users.users."nferhat".extraGroups = ["docker"];
 
   system = {
     autoUpgrade.enable = false;

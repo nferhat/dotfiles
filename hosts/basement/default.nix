@@ -6,9 +6,10 @@
   imports = [
     ./hardware-configuration.nix
     ./scrcpy.nix
-    ../shared/core.nix
-    ../shared/desktop.nix
-    ../shared/limine.nix
+    ./home.nix
+    ../../modules/desktop
+    ../../modules/limine.nix
+    ../../modules/
   ];
 
   boot = {

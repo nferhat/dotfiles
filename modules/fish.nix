@@ -1,5 +1,10 @@
-{lib, ...}: {
-  programs.fish = {
+{ lib, ... }: {
+  # Allows fish completions to be found in package derviations.
+  # Avoids me having to generate them by hand.
+  environment.pathsToLink = [ "/share/fish" ];
+
+  # I don't need to configure fish, what a bliss.
+  nferhat.programs.fish = {
     enable = true;
     preferAbbrs = true;
 
@@ -8,6 +13,10 @@
       fish_vi_key_bindings # enable vi-like binds
     '';
   };
+
+  # Make enableFishIntegration options enabled by default.
+  # This will also generate aliases from home.aliases
+  nferhat.home.shell.enableFishIntegration = true;
 
   programs.starship = {
     enable = true;
@@ -68,7 +77,9 @@
     };
   };
 
-  xdg.configFile."fish/themes/fht.theme".text = with import ../theme; ''
+  # Custom syntax theme, looks like the tree-sitter syntax highlighting I already have
+  # FIXME: Maybe tweak this a bit, I dunno.
+  nferhat.xdg.configFile."fish/themes/fht.theme".text = with import ../theme; ''
     fish_color_normal ${text.primary}
     fish_color_command ${ansi.color4}
     fish_color_param ${ansi.color3}
@@ -92,8 +103,4 @@
     fish_pager_color_completion ${text.primary}
     fish_pager_color_description ${text.secondary} '--italics'
   '';
-
-  # Make enableFishIntegration options enabled by default.
-  # This will also generate aliases from home.aliases
-  home.shell.enableFishIntegration = true;
 }

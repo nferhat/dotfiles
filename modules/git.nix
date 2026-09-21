@@ -4,12 +4,9 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    fzf
-    findutils # for xargs
-  ];
+  users.users.nferhat.packages = with pkgs; [ fzf findutils gh ];
 
-  programs.git = {
+  nferhat.programs.git = {
     enable = true;
 
     settings = {
@@ -44,20 +41,15 @@
       core = {
         ignoreCase = true;
         symlinks = true;
-        editor = config.home.sessionVariables.EDITOR;
+        editor = config.environment.sessionVariables.EDITOR;
       };
     };
   };
 
   # Better diff tool, very useful and somewhat underrated.
-  programs.delta.enable = true;
+  nferhat.programs.delta.enable = true;
 
-  programs.gh = {
-    enable = true;
-    extensions = [pkgs.gh-notify];
-  };
-
-  home.shellAliases = {
+  nferhat.home.shellAliases = {
     gc = "git commit";
     gco = "git checkout";
     ga = "git add";

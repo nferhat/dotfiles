@@ -5,7 +5,8 @@
   self,
   ...
 }: {
-  gtk = let
+  # FIXME: Theme the system zzzz
+  nferhat.gtk = let
     # Copied this from github:rxyhn/yuki.
     gtkPreferDarkMode = {
       gtk-application-prefer-dark-theme = true;
@@ -143,7 +144,7 @@
       '';
   in {
     enable = true; # duh.
-    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk2.configLocation = "${config.nferhat.xdg.configHome}/gtk-2.0/gtkrc";
 
     # adw-gtk3 provides us with the necessary variables to edit.
     # We set them below.
@@ -158,7 +159,7 @@
     };
 
     font = {
-      name = "Inter";
+      name = "Adwaita Sans";
       size = 10;
     };
 

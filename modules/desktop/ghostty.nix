@@ -1,5 +1,5 @@
 {lib, ...}: {
-  programs.ghostty = {
+  nferhat.programs.ghostty = {
     enable = true;
     settings = let
       theme = import ../../theme;

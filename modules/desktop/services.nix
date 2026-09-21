@@ -3,11 +3,13 @@
   inputs,
   ...
 }: {
-  services.mpris-proxy.enable = true;
+  nferhat.services.mpris-proxy.enable = true;
 
   # Services that we setup as part of the desktop/graphical session.
   # They get all triggered when fht-compositor reaches the graphical.target
-  systemd.user.services = let
+  #
+  # FIXME: Use NixOS's `systemd.user.services`
+  nferhat.systemd.user.services = let
     start-with-graphical-session = Description: {
       Unit = {
         inherit Description;

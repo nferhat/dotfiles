@@ -3,43 +3,14 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    # The essentials for working in the terminal, but not forcibly required for
-    # all the system, hence why some programs are here and not inside the `core.nix`
-    # nixos module
-    dnsutils
-    aria2
-    socat
-    netcat
-    nmap
-    jq
-    ripgrep
-    eza
-    tree
-    nix-output-monitor
-    glow
-    tokei
-    btop
-    pciutils
-    usbutils
-    findutils
-    ffmpeg
-    libqalculate
-    dust
-    trash-cli
-    # Not essential but yknow
-    wakatime-cli
-  ];
 
-  home.shellAliases = {
+  nferhat.home.shellAliases = {
     l = "eza -a --group-directories-first";
     ll = "l -l";
     htop = "btop"; # force of habit
   };
 
-  programs = {
-    # home-manager.enable = true;
-
+  nferhat.programs = {
     fzf = {
       enable = true;
       enableFishIntegration = true;
@@ -79,5 +50,44 @@
       enable = true;
       nix-direnv.enable = true;
     };
+  };
+
+  # Additional stuff that only really makes sense for me only.
+  # No need for all the system to have this.
+  users.users.nferhat.packages = with pkgs; [
+    dnsutils
+    aria2
+    socat
+    netcat
+    nmap
+    jq
+    ripgrep
+    eza
+    tree
+    nix-output-monitor
+    glow
+    tokei
+    btop
+    pciutils
+    usbutils
+    findutils
+    ffmpeg
+    libqalculate
+    dust
+    trash-cli
+  ];
+
+
+  nferhat.services = {
+    ssh-agent.enable = true;
+
+    gpg-agent = {
+      enable = true;
+      enableFishIntegration = true;
+      defaultCacheTtl = 600; # validate for 10 minutes.
+      pinentry.package = pkgs.pinentry-qt;
+    };
+
+    gnome-keyring.enable = true;
   };
 }

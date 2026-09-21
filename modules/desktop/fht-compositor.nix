@@ -4,11 +4,15 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.fht-compositor.homeModules.default];
+  imports = [inputs.fht-compositor.nixosModules.default];
+  nferhat.imports = [inputs.fht-compositor.homeModules.default];
 
-  # Main compositor configuration is done through the home-manager module.
-  # NOTE: Instead of autostart, we setup services in home/desktop/services.nix
-  programs.fht-compositor = let
+  # Register in login managers and whatnot.
+  programs.fht-compositor.enable = true;
+
+  # Configure the compositor for my user.
+  # I dont use autostart, see ./services.nix
+  nferhat.programs.fht-compositor = let
     theme = import ../../theme;
   in {
     enable = true;
@@ -28,7 +32,7 @@
         outer-gaps = 40;
       };
 
-      cursor = {inherit (config.home.pointerCursor) name size;};
+      cursor = {inherit (config.nferhat.home.pointerCursor) name size;};
 
       decorations = {
         decoration-mode = "force-server-side";
@@ -298,7 +302,8 @@
     };
   };
 
-  home.packages = [
+  # Overwrite fht-share-picker with my custom script.
+  users.users.nferhat.packages = [
     (pkgs.writeShellScriptBin
       "fht-share-picker"
       ''
@@ -310,9 +315,8 @@
         # Thank you very much, nice stuff!!!!!!!!!!!!!!!!!!!
 
         RESPONSE=$(qs ipc --any-display call share-picker request {} 2>/dev/null) || {
-        	echo "failed to request share-picker to open" >&2
-                # FIXME: Fallback to default fht-share-picker.
-        	exit 1
+          echo "failed to request share-picker to open" >&2
+          exec ${inputs.fht-compositor.packages.${pkgs.system}.fht-share-picker}/bin/fht-share-picker
         }
 
         STATUS=$(echo "$RESPONSE" | jq -r '.status // empty')

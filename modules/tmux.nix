@@ -1,16 +1,14 @@
 {pkgs, ...}: {
-  programs.tmux = {
+  nferhat.programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
     extraConfig = builtins.readFile ../config/tmux.conf;
     plugins = with pkgs.tmuxPlugins; [sensible yank copycat];
   };
 
-  xdg.configFile.tmux-theme = {
-    target = "tmux/colors.conf";
-    text = let
+  nferhat.xdg.configFile."tmux/colors.conf".text = let
       theme = import ../theme;
-    in ''
+  in ''
       set -g @color0 "#${theme.ansi.color0}"
       set -g @color1 "#${theme.ansi.color1}"
       set -g @color2 "#${theme.ansi.color2}"
@@ -39,5 +37,4 @@
       set -g @info "#${theme.info}"
       set -g @separator "#${theme.separator}"
     '';
-  };
 }
