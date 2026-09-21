@@ -15,6 +15,12 @@
     # all of the home-manager options fairly quickly without trouble.
     (lib.mkAliasOptionModule ["nferhat"] ["home-manager" "users" "nferhat"])
   ];
+  nferhat.imports = [
+    # Aliases to make things even more streamlined.
+    (lib.mkAliasOptionModule ["packages"] ["home" "packages"])
+    (lib.mkAliasOptionModule ["shellAliases"] ["home" "shellAliases"])
+    (lib.mkAliasOptionModule ["configFile"] ["xdg" "configFile"])
+  ];
 
   users.users."nferhat" = {
     # NOTE: I keep the login shell as bash on purpose to avoid breakage
@@ -27,6 +33,8 @@
 
   home-manager = {
     useGlobalPkgs = true;
+    # This makes nferhat.packages use the NixOS users.users.<name>.packages
+    # Allowing me to potentially get rid of home-manager.
     useUserPackages = true;
     extraSpecialArgs = {inherit self inputs;};
     users."nferhat" = {

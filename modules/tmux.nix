@@ -6,7 +6,7 @@
     plugins = with pkgs.tmuxPlugins; [sensible yank copycat];
   };
 
-  nferhat.xdg.configFile."tmux/colors.conf".text = let
+  nferhat.configFile."tmux/colors.conf".text = let
     theme = import ../theme;
   in ''
     set -g @color0 "#${theme.ansi.color0}"

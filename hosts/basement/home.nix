@@ -19,7 +19,7 @@
   # 10 is adequate for the tiny 1366x768 screen I had on hp-da0018nk
   nferhat.programs.ghostty.settings.font-size = lib.mkForce 13;
 
-  users.users.nferhat.packages = with pkgs; [
+  nferhat.packages = with pkgs; [
     # Doing 3d modeling woo
     pkgsRocm.blender
 

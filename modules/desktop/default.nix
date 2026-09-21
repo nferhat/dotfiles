@@ -15,7 +15,7 @@
     ./services.nix
   ];
 
-  users.users.nferhat.packages = with pkgs; [
+  nferhat.packages = with pkgs; [
     # GUI applications
     keepassxc
     telegram-desktop

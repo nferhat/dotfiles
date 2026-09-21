@@ -32,7 +32,7 @@
   };
 
   # Allow packages installed with hm to find system fonts and stuff installed
-  # with `users.users.nferhat.packages`
+  # with `nferhat.packages`
   nferhat.fonts.fontconfig = {
     enable = true;
     # Additional tweaking to make font rendering look nice.

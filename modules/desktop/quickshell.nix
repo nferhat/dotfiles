@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  users.users.nferhat.packages = [
+  nferhat.packages = [
     inputs.quickshell.packages."${pkgs.system}".default
     inputs.fht-compositor-qml-plugin.packages."${pkgs.system}".default
   ];

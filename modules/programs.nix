@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  nferhat.home.shellAliases = {
+  nferhat.shellAliases = {
     l = "eza -a --group-directories-first";
     ll = "l -l";
     htop = "btop"; # force of habit
@@ -53,7 +53,7 @@
 
   # Additional stuff that only really makes sense for me only.
   # No need for all the system to have this.
-  users.users.nferhat.packages = with pkgs; [
+  nferhat.packages = with pkgs; [
     dnsutils
     aria2
     socat

@@ -305,7 +305,7 @@
   };
 
   # Overwrite fht-share-picker with my custom script.
-  users.users.nferhat.packages = [
+  nferhat.packages = [
     (pkgs.writeShellScriptBin
       "fht-share-picker"
       ''

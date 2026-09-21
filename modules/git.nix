@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  users.users.nferhat.packages = with pkgs; [fzf findutils gh];
+  nferhat.packages = with pkgs; [fzf findutils gh];
 
   nferhat.programs.git = {
     enable = true;
@@ -49,7 +49,7 @@
   # Better diff tool, very useful and somewhat underrated.
   nferhat.programs.delta.enable = true;
 
-  nferhat.home.shellAliases = {
+  nferhat.shellAliases = {
     gc = "git commit";
     gco = "git checkout";
     ga = "git add";
