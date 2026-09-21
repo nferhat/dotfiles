@@ -19,7 +19,7 @@
 
     gpg = {
       enable = true;
-      homedir = "${config.xdg.configHome}/gnupg";
+      homedir = "${config.nferhat.xdg.configHome}/gnupg";
       mutableKeys = true; # just allow me to use it without nix entering
     };
 

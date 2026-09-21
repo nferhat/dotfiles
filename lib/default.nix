@@ -1,6 +1,6 @@
 # Color conversion utilities copied from here:
 # https://github.com/Misterio77/nix-colors/
-{lib, ...}: let
+{lib, pkgs, ...}: let
   inherit
     (lib)
     foldl
@@ -19,6 +19,39 @@
     substring
     ;
 in rec {
+  storeFileName =
+    path:
+    let
+      # All characters that are considered safe. Note "-" is not
+      # included to avoid "-" followed by digit being interpreted as a
+      # version.
+      safeChars = [
+        "+"
+        "."
+        "_"
+        "?"
+        "="
+      ]
+      ++ lib.lowerChars
+      ++ lib.upperChars
+      ++ stringToCharacters "0123456789";
+
+      empties = l: lib.genList (_x: "") (lib.length l);
+
+      unsafeInName = stringToCharacters (lib.replaceStrings safeChars (empties safeChars) path);
+
+      safeName = lib.replaceStrings unsafeInName (empties unsafeInName) path;
+    in
+    "hm_" + safeName;
+
+    linkTo =
+      path:
+      let
+        pathStr = toString path;
+        name = storeFileName (baseNameOf pathStr);
+      in
+      pkgs.runCommandLocal name { } "ln -s ${lib.escapeShellArg pathStr} $out";
+
   math = rec {
     # Go figure out why but nixpkgs standard lib doesn't include a pow function
     # Thats annoying'

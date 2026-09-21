@@ -18,7 +18,7 @@
   # This will also generate aliases from home.aliases
   nferhat.home.shell.enableFishIntegration = true;
 
-  programs.starship = {
+  nferhat.programs.starship = {
     enable = true;
     settings = {
       format = lib.concatStringsSep "$" [

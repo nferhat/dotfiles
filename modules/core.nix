@@ -4,8 +4,11 @@
 }: {
   imports = [
     ./home.nix
+    ./programs.nix 
+    ./nvim.nix
     ./nix.nix
     ./fish.nix
+    ./tmux.nix
     ./git.nix
   ];
 

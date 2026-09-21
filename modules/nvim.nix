@@ -1,8 +1,8 @@
-{config, pkgs, ...}: {
+{pkgs, lib, ...}: {
   users.users.nferhat.packages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
 
   nferhat.xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "/home/nferhat/Documents/repos/personal/dotfiles/config/nvim";
+    lib.fht.linkTo "/home/nferhat/Documents/repos/personal/dotfiles/config/nvim";
 
   nferhat.xdg.configFile."theme/colors.lua".text = let
     theme = import ../theme;
