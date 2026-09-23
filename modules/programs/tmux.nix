@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   nferhat.programs.tmux = {
     enable = true;
-    shell = "fish";
+    shell = "${pkgs.fish}/bin/fish";
     extraConfig = builtins.readFile ../config/tmux.conf;
     plugins = with pkgs.tmuxPlugins; [sensible yank copycat];
   };
