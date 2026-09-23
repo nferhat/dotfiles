@@ -114,7 +114,7 @@
   ];
 
   virtualisation.docker.enable = true;
-  users.users."nferhat".extraGroups = ["docker"];
+  users.users."nferhat".extraGroups = ["docker" "video"];
 
   system = {
     autoUpgrade.enable = false;
