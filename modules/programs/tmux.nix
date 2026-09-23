@@ -2,12 +2,12 @@
   nferhat.programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
-    extraConfig = builtins.readFile ../config/tmux.conf;
+    extraConfig = builtins.readFile ../../config/tmux.conf;
     plugins = with pkgs.tmuxPlugins; [sensible yank copycat];
   };
 
   nferhat.configFile."tmux/colors.conf".text = let
-    theme = import ../theme;
+    theme = import ../../theme;
   in ''
     set -g @color0 "#${theme.ansi.color0}"
     set -g @color1 "#${theme.ansi.color1}"
