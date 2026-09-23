@@ -3,7 +3,14 @@
   pkgs,
   ...
 }: {
-  imports = [./networking.nix ./fish.nix ./nvim.nix ./podman.nix];
+  imports = [
+    ./fish.nix
+    ./git.nix
+    ./networking.nix
+    ./nvim.nix
+    ./podman.nix
+    ./tmux.nix
+  ];
 
   nferhat.shellAliases = {
     l = "eza -a --group-directories-first";

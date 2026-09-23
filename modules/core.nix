@@ -3,7 +3,6 @@
     ./home.nix
     ./programs
     ./nix.nix
-    ./tmux.nix
     ./git.nix
     ./syncthing.nix
     ./ssh.nix
