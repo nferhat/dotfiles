@@ -108,18 +108,6 @@
       openFirewall = true;
     };
 
-    openssh = {
-      enable = true;
-      ports = [22];
-      settings = {
-        PasswordAuthentication = true;
-        AllowUsers = ["nferhat"]; # Allows all users by default. Can be [ "user1" "user2" ]
-        UseDns = true;
-        X11Forwarding = false;
-        PermitRootLogin = "no";
-      };
-    };
-
     hardware.openrgb = {
       enable = true;
       package = pkgs.openrgb-with-all-plugins;

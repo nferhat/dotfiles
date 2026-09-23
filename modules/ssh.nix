@@ -8,12 +8,25 @@
 
   environment.systemPackages = with pkgs; [rsync sshfs];
 
+  # Local IPs of my machines.
+  nferhat.programs.ssh.settings = {
+    "basement".HostName = "10.20.1.100";
+    "thinkpad-t14s".HostName = "10.20.1.101";
+  };
+
   # Nothing special. Disabling password auth fixes most of the bullshit I could have with having port 22
   # always open on my machines.
   services.openssh = {
     enable = true;
+    ports = [22];
     generateHostKeys = true;
     startWhenNeeded = true;
-    settings.PasswordAuthentication = false;
+    settings = {
+      AllowUsers = ["nferhat"];
+      PasswordAuthentication = false;
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "no";
+    };
   };
 }
