@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./home.nix
-    ./programs.nix
-    ./nvim.nix
+    ./programs
     ./nix.nix
-    ./fish.nix
     ./tmux.nix
     ./git.nix
     ./ssh.nix
@@ -18,11 +16,22 @@
       gcc
       ripgrep
       fd
-      rsync
       coreutils
       wget
       curl
-      cached-nix-shell
+
+      # Fast nix-shells for testing around.
+      # FIXME: This breaks fish and tmux and a lot of other things. Would be cool
+      # To find an alternative that doens't do that.
+      # cached-nix-shell
+
+      pciutils
+      usbutils
+      findutils
+
+      # Provides qalc, the best terminal calculator.
+      # Thinking that some lunatics use `bc`
+      libqalculate
 
       # Archiving utilities, always useful.
       gnutar
@@ -51,6 +60,7 @@
     GOPATH = "$XDG_DATA_HOME/go";
     RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
     STARSHIP_CACHE = "$XDG_CACHE_HOME/starship";
+    HISTFILE = "$XDG_CACHE_HOME/bash-hist";
     # STARSHIP_CONFIG = "$XDG_CONFIG_HOME/starship.toml";
     WGETRC = "$XDG_CONFIG_HOME/wgetrc";
     NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/npmrc";

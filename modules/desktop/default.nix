@@ -6,13 +6,12 @@
   ...
 }: {
   imports = [
-    ./fht-compositor.nix
+    ./fhtc
     ./fonts.nix
     ./ghostty.nix
     ./gtk.nix
     ./qt.nix
     ./quickshell.nix
-    ./services.nix
   ];
 
   nferhat.packages = with pkgs; [
@@ -30,11 +29,6 @@
 
     # Nice degoogled-chromium browser.
     inputs.helium.packages."${pkgs.system}".default
-
-    # Music setup. Nothing particularly special about this.
-    # Amberol is fine, but I wanna write my mpd client at some point...
-    self.packages."${pkgs.system}".meloville
-    picard
 
     # Wayland utilities for the graphical session.
     grim

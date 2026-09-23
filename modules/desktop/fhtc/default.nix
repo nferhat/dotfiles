@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.fht-compositor.nixosModules.default];
+  imports = [inputs.fht-compositor.nixosModules.default ./xwayland.nix];
   nferhat.imports = [inputs.fht-compositor.homeModules.default];
 
   # Register in login managers and whatnot.
@@ -13,7 +13,7 @@
   # Configure the compositor for my user.
   # I dont use autostart, see ./services.nix
   nferhat.programs.fht-compositor = let
-    theme = import ../../theme;
+    theme = import ../../../theme;
   in {
     enable = true;
     settings = {

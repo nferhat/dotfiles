@@ -3,12 +3,24 @@
   lib,
   ...
 }: {
-  nferhat.packages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
+  # This is NixOS' neovim module.
+  # This does nothing special. Sets $EDITOR, and makes sure plugins installed in the $NIX_PATH can
+  # be loaded by neovim. User configuration is linked from the flake.
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+
+  environment.systemPackages = [pkgs.neovim pkgs.gcc pkgs.tree-sitter];
+  # FIXME: Manage my neovim config without lazy.nvim
+  # It's bullshit. My optimal setup would be to have a `plugins.json` or `plugins.toml` that has
+  # everything I need.
   nferhat.configFile."nvim".source =
     lib.fht.linkTo "/home/nferhat/Documents/repos/personal/dotfiles/config/nvim";
-
+  # Theme to look good and be synced with the system.
   nferhat.configFile."theme/colors.lua".text = let
-    theme = import ../theme;
+    theme = import ../../theme;
   in
     /*
     lua
