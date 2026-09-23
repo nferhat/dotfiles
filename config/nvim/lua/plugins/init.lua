@@ -100,9 +100,6 @@ local M = {
 		version = "1.*",
 		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
-
-	-- it's a small plugin
-	{ "tpope/vim-sleuth", lazy = false },
 }
 
 return M
