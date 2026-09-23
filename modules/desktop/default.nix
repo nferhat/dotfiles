@@ -11,6 +11,7 @@
     ./ghostty.nix
     ./gtk.nix
     ./qt.nix
+    ./music.nix
     ./quickshell.nix
   ];
 
