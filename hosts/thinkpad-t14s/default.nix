@@ -113,8 +113,9 @@
     android-tools
   ];
 
-  virtualisation.docker.enable = true;
-  users.users."nferhat".extraGroups = ["docker" "video"];
+  # acpilight already sets up udev rules for the video group to access /sys/class/backlight/
+  # Adding this lets me use the `xbacklight` cli without sudo.
+  users.users."nferhat".extraGroups = ["video"];
 
   system = {
     autoUpgrade.enable = false;

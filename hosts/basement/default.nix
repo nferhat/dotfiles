@@ -172,10 +172,7 @@
   nixpkgs.config.rocmSupport = true;
 
   # For using ddcutil without root
-  # FIXME: adding docker group is a horrible idea.
-  users.users."nferhat".extraGroups = ["i2c" "docker"];
-
-  virtualisation.docker.enable = true;
+  users.users."nferhat".extraGroups = ["i2c"];
 
   environment.systemPackages = with pkgs; [
     self.packages.${pkgs.system}.lsfg-vk # framegen woo
