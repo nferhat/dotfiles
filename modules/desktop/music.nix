@@ -1,4 +1,8 @@
-{ self, pkgs, ... }: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   # This forwards controls from my bluetooth earbuds (like play/pause) to MPRIS players.
   nferhat.services.mpris-proxy.enable = true;
   # Music setup. Nothing particularly special about this.
