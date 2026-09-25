@@ -9,6 +9,7 @@
     ./networking.nix
     ./nvim.nix
     ./podman.nix
+    ./scrcpy.nix
     ./tmux.nix
   ];
 
