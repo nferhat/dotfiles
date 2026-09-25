@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./scrcpy.nix
     ./home.nix
     ./games.nix
     ../../modules/desktop
