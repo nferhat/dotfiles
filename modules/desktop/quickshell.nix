@@ -34,4 +34,15 @@
 
     Install.WantedBy = ["fht-compositor.service"];
   };
+
+
+  # the custom rust info daemon uses ddc-hi which uses i2c to detect external
+  # displays, so give it access zzzzzzzzzz
+  users.users."nferhat".extraGroups = ["i2c"];
+  services.udev.extraRules = ''
+    KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+  '';
+  # To tweak them from the commandline if needed.
+  environment.systemPackages = [pkgs.i2c-tools pkgs.ddcutil];
+
 }

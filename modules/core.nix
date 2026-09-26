@@ -7,6 +7,11 @@
     ./ssh.nix
   ];
 
+  # Basic network+time setup
+  networking.networkmanager.enable = true;
+  time.timeZone = "Africa/Algiers";
+  i18n.defaultLocale = "en_US.UTF-8";
+
   environment = {
     defaultPackages = []; # can be removed safely based on the manual.
     systemPackages = with pkgs; [

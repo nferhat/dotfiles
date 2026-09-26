@@ -87,7 +87,12 @@
     QT_QPA_PLATFORMTHEME = "qtengine";
   };
 
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true; # to set gtk theme;
+    localsend.enable = true;
+    nix-ld.enable = true;
+    appimage = { enable = true; binfmt = true; };
+  };
 
   services = {
     # Needed for home-manager to apply theming values (for GTK and GN*ME stuff)

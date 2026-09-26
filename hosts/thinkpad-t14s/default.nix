@@ -42,21 +42,11 @@
     };
   };
 
-  networking = {
-    networkmanager.enable = true;
-    firewall.enable = false;
-  };
-
-  # No thank you, this will just consume time trying to connect any present card instead of actually
-  # letting the system boot
-  systemd.services.NetworkManager-wait-online.enable = false;
-
-  time.timeZone = "Africa/Algiers";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # earlySetup here is needed since I have to type my FDE password on boot
+  # so the initramfs needs to have a console ready and working.
   console = {
     earlySetup = true;
+    # I don't mind a nice font you know.
     font = "${pkgs.terminus_font}/share/consolefonts/ter-k20n.psf.gz";
     keyMap = "us";
   };

@@ -32,7 +32,6 @@
     ];
     kernelParams = [
       "video=DP-1:2560x1440@180" # use highest mode available on boot
-      "amdgpu.ppfeaturemask=0xffffffff" # enable control with LACT
       "clearcpuid=umip" # if you know, you know.
     ];
   };
@@ -49,15 +48,18 @@
 
   hardware = {
     enableRedistributableFirmware = true;
+    cpu.amd.updateMicrocode = true;
     xone.enable = true; # Xbox360 with USB dongle
-    amdgpu.opencl.enable = true;
+
+    amdgpu = {
+        opencl.enable = true; # for blender.
+        overdrive.enable = true; # tuning with lact.
+    };
 
     bluetooth = {
       enable = true;
       powerOnBoot = true;
     };
-
-    cpu.amd.updateMicrocode = true;
 
     graphics = {
       enable = true;
@@ -67,40 +69,12 @@
     };
   };
 
-  networking = {
-    networkmanager.enable = true;
-    firewall.enable = false;
-
-    # For whatever reason, my laptop can't resolve most domains without cloudflare+resolved combo
-    # Go figure out why.
-    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-  };
-
-  time.timeZone = "Africa/Algiers";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    earlySetup = true;
-    # Use default
-    # font = "${pkgs.terminus_font}/share/consolefonts/ter-k20n.psf.gz";
-    keyMap = "us";
-  };
+  console = { earlySetup = true; keyMap = "us"; };
 
   services = {
     ratbagd.enable = true;
+    # Tuning my gpu
     lact.enable = true;
-
-    udev.extraRules = ''
-      KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
-    '';
-
-    resolved = {
-      enable = true;
-      dnssec = "true";
-      domains = ["~."];
-      fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-    };
 
     avahi = {
       enable = true;
@@ -118,38 +92,35 @@
   };
 
   programs = {
-    localsend.enable = true;
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-        icu
-        # For ryujinx-nextendo
-        fontconfig
-        stdenv.cc.cc.lib
-        libva-utils
-        libva
-        pulseaudio
-        libsoundio
-        sndio
-        vulkan-loader
-        ffmpeg
-        libgdiplus
-        libx11
-        libice
-        libsm
-        sdl3
-        glew
-        libxcursor
-        libxext
-        libxi
-        libxrandr
-        libxft
-        harfbuzz
-        libx11
-        fontconfig
-        freetype
-      ];
-    };
+    nix-ld.libraries = with pkgs; [
+      icu
+      # For ryujinx-nextendo
+      fontconfig
+      stdenv.cc.cc.lib
+      libva-utils
+      libva
+      pulseaudio
+      libsoundio
+      sndio
+      vulkan-loader
+      ffmpeg
+      libgdiplus
+      libx11
+      libice
+      libsm
+      sdl3
+      glew
+      libxcursor
+      libxext
+      libxi
+      libxrandr
+      libxft
+      harfbuzz
+      libx11
+      fontconfig
+      freetype
+    ];
+
     # How steam is managed on this device:
     #
     # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
@@ -162,24 +133,18 @@
         steamArgs = ["-system-composer"];
       };
     };
+
     gamemode.enable = true;
     gamescope.enable = true;
-    appimage.enable = true;
   };
 
   # Enable support for ROCm/HIP, AMD's equivalent to CUDA.
   # FIXME: Also figure out how to get Zluda working
   nixpkgs.config.rocmSupport = true;
 
-  # For using ddcutil without root
-  users.users."nferhat".extraGroups = ["i2c"];
-
   environment.systemPackages = with pkgs; [
+    piper # configuring my logitech g502 hero
     self.packages.${pkgs.system}.lsfg-vk # framegen woo
-
-    # For controlling my display from a gui.
-    i2c-tools
-    ddcutil
   ];
 
   system = {
