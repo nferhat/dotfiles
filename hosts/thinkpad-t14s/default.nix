@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
+    ./power.nix
     ../../modules/desktop
     ../../modules/limine.nix
     ../../modules/core.nix
@@ -67,23 +68,6 @@
       openFirewall = true;
     };
 
-    # Battery management
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "performance";
-        # Limit cpu on battery to 20% of its maximum power
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
-
-        # And try to keep the battery percentage between 40-80 when I am at home
-        # Since I am always plugged to wall it can cause damage when keeping it at 100%
-        START_CHARGE_THRESH_BAT0 = 40;
-        STOP_CHARGE_THRESH_BAT0 = 80;
-      };
-    };
-
     # The laptop is already guarded by secure boot + full-disk encryption
     # So when we enter, might aswell autologin
     getty = {
@@ -91,27 +75,10 @@
       autologinUser = "nferhat";
     };
 
-    printing = {
-      enable = true;
-      # drivers = [pkgs.cnijfilter2]; # for Canon PIXMA series drivers
-    };
-
-    blueman.enable = true;
-    upower.enable = true;
+    printing.enable = true;
+    blueman.enable = true; # bluetooth manager.
+    displayManager.ly.enable = false;
   };
-
-  # Works with tlp to provide power profiles
-  powerManagement.enable = true;
-
-  programs = {
-    localsend.enable = true;
-    nix-ld.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    scrcpy
-    android-tools
-  ];
 
   # acpilight already sets up udev rules for the video group to access /sys/class/backlight/
   # Adding this lets me use the `xbacklight` cli without sudo.

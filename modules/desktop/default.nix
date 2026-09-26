@@ -1,6 +1,6 @@
 {
   config,
-  self,
+  lib,
   pkgs,
   inputs,
   ...
@@ -101,7 +101,7 @@
     };
 
     displayManager.ly = {
-      enable = true;
+      enable = lib.mkDefault true;
       x11Support = false;
     };
   };
