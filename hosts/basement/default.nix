@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./scrcpy.nix
     ./home.nix
+    ./games.nix
     ../../modules/desktop
     ../../modules/limine.nix
     ../../modules/core.nix
@@ -46,15 +47,16 @@
     options = ["rw" "uid=1000" "optional" "comment=x-gvfs-show"];
   };
 
+  # For tuning my GPU. LACT provides an alternative to Adrenalin software from
+  # windows. However you have to enable override separately (with a kernel param)
+  hardware.amdgpu.overdrive.enable = true;
+  services.lact.enable = true;
+
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
     xone.enable = true; # Xbox360 with USB dongle
-
-    amdgpu = {
-        opencl.enable = true; # for blender.
-        overdrive.enable = true; # tuning with lact.
-    };
+    amdgpu.opencl.enable = true; # for blender.
 
     bluetooth = {
       enable = true;
@@ -72,10 +74,6 @@
   console = { earlySetup = true; keyMap = "us"; };
 
   services = {
-    ratbagd.enable = true;
-    # Tuning my gpu
-    lact.enable = true;
-
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -88,54 +86,8 @@
       motherboard = "amd";
     };
 
+    ratbagd.enable = true;
     printing.enable = true;
-  };
-
-  programs = {
-    nix-ld.libraries = with pkgs; [
-      icu
-      # For ryujinx-nextendo
-      fontconfig
-      stdenv.cc.cc.lib
-      libva-utils
-      libva
-      pulseaudio
-      libsoundio
-      sndio
-      vulkan-loader
-      ffmpeg
-      libgdiplus
-      libx11
-      libice
-      libsm
-      sdl3
-      glew
-      libxcursor
-      libxext
-      libxi
-      libxrandr
-      libxft
-      harfbuzz
-      libx11
-      fontconfig
-      freetype
-    ];
-
-    # How steam is managed on this device:
-    #
-    # The steam library lives on the windows disk (mounted above) and I add it from the Linux steam
-    # install. compatdata still lives on Linux though (since proton makes use of linux fs properties
-    # to make its magic work)
-    steam = {
-      enable = true;
-      gamescopeSession = {
-        enable = true;
-        steamArgs = ["-system-composer"];
-      };
-    };
-
-    gamemode.enable = true;
-    gamescope.enable = true;
   };
 
   # Enable support for ROCm/HIP, AMD's equivalent to CUDA.
