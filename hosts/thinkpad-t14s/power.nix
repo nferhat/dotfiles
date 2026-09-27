@@ -17,6 +17,7 @@
 
   # tlp has sensible defaults and I configure it further t
   services.tlp.enable = true;
+  services.tlp.pd.enable = true; # provide power-profiles-daemon interface
   services.tlp.settings = {
     CPU_SCALING_GOVERNOR_ON_AC = "performance";
     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
