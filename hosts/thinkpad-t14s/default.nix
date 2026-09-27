@@ -21,6 +21,9 @@
       preLVM = true; # required else it WON'T find it
     };
 
+    # Early KMS
+    initrd.kernelModules = ["amdgpu"];
+
     loader.limine.resolution = "1920x1080";
     loader.limine.secureBoot.enable = true;
   };
@@ -50,7 +53,8 @@
   console = {
     earlySetup = true;
     # I don't mind a nice font you know.
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-k20n.psf.gz";
+    font = "ter-v24n";
+    packages = [pkgs.terminus_font];
     keyMap = "us";
   };
 
