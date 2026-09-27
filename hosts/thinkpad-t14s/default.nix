@@ -22,6 +22,7 @@
     };
 
     loader.limine.resolution = "1920x1080";
+    loader.limine.secureBoot.enable = true;
   };
 
   hardware = {
@@ -41,6 +42,8 @@
       # Thank you amd for being this nice
     };
   };
+
+  security.tpm2.enable = true;
 
   # earlySetup here is needed since I have to type my FDE password on boot
   # so the initramfs needs to have a console ready and working.
