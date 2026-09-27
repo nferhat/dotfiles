@@ -11,9 +11,20 @@
   # Hitting the power key should suspend the laptop. Not power down.
   # FIXME: Lock the session when this happens zzz
   services.logind.settings.Login.HandlePowerKey = "suspend";
-  # Use s2idle instead of deep sleep/suspend-to-ram.
-  # Allows for crazy fast boot timrs.
-  systemd.sleep.settings.Sleep.MemorySleepMode = "s2idle";
+  systemd.sleep.settings.Sleep = {
+    # Use s2idle instead of deep sleep/suspend-to-ram.
+    # Allows for crazy fast boot timrs.
+    MemorySleepMode = "s2idle";
+    # And if im sleeping for more than one hour hibernate.
+    HibernateDelaySec = "1h";
+  };
+  services.logind.settings.Login = {
+    # Don't turn off the laptop if I close the lid when its docked or plugged in.
+    # Means im at home working or don't want something to stop happening.
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+  };
+
 
   # tlp has sensible defaults and I configure it further t
   services.tlp.enable = true;
