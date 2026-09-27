@@ -93,6 +93,12 @@
   # FIXME: Also figure out how to get Zluda working
   nixpkgs.config.rocmSupport = true;
 
+  users.users."nferhat".extraGroups = [
+      # I have some android VMs in shell.nix files
+      # This allows me to use true acceleration on them.
+      "kvm"
+  ];
+
   environment.systemPackages = with pkgs; [
     piper # configuring my logitech g502 hero
     self.packages.${pkgs.system}.lsfg-vk # framegen woo
