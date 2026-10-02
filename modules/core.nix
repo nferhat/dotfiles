@@ -1,10 +1,11 @@
 {pkgs, ...}: {
   imports = [
     ./home.nix
-    ./programs
     ./nix.nix
-    ./syncthing.nix
+    ./programs
     ./ssh.nix
+    ./syncthing.nix
+    ./tailscale.nix
   ];
 
   # Basic network+time setup
