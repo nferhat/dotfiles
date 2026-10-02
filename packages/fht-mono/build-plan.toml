@@ -1,5 +1,61 @@
-[buildOptions]
-optimizeWithTtx = true
+# [buildOptions]
+# optimizeWithTtx = true
+#
+# [buildPlans.FhtMono]
+# family = "Fht Mono"
+# spacing = "normal"
+# serifs = "sans"
+# noCvSs = false
+# exportGlyphNames = false
+#
+# [buildPlans.FhtMono.variants]
+# inherits = "ss08"
+#
+# [buildPlans.FhtMono.variants.design]
+# four = "semi-open-serifless"
+# eight = "two-circles"
+# nine = "straight-bar"
+# zero = "slashed"
+# capital-n = "standard-serifless"
+# capital-w = "curly-serifless"
+# capital-x = "straight-serifless"
+# capital-z = "straight-serifless"
+# l = "serifed"
+# t = "bent-hook"
+# eszet = "sulzbacher-descending-serifless"
+# asterisk = "penta-high"
+# underscore = "above-baseline"
+# number-sign = "slanted"
+# percent = "rings-continuous-slash"
+# bar = "force-upright"
+# lig-equal-chain = "without-notch"
+#
+# [buildPlans.FhtMono.weights.Regular]
+# shape = 400
+# menu = 400
+# css = 400
+#
+# [buildPlans.FhtMono.weights.Bold]
+# shape = 700
+# menu = 700
+# css = 700
+#
+# [buildPlans.FhtMono.widths.Normal]
+# shape = 548
+# menu = 5
+# css = "normal"
+#
+# [buildPlans.FhtMono.slopes.Upright]
+# angle = 0
+# shape = "upright"
+# menu = "upright"
+# css = "normal"
+#
+# [buildPlans.FhtMono.slopes.Italic]
+# angle = 9.4
+# shape = "italic"
+# menu = "italic"
+# css = "italic"
 
 [buildPlans.FhtMono]
 family = "Fht Mono"
@@ -8,27 +64,51 @@ serifs = "sans"
 noCvSs = false
 exportGlyphNames = false
 
-[buildPlans.FhtMono.variants]
-inherits = "ss08"
+  [buildPlans.FhtMono.variants]
+  inherits = "ss12"
 
-[buildPlans.FhtMono.variants.design]
-four = "semi-open-serifless"
-eight = "two-circles"
-nine = "straight-bar"
-zero = "slashed"
-capital-n = "standard-serifless"
-capital-w = "curly-serifless"
-capital-x = "straight-serifless"
-capital-z = "straight-serifless"
-l = "serifed"
-t = "bent-hook"
-eszet = "sulzbacher-descending-serifless"
-asterisk = "penta-high"
-underscore = "above-baseline"
-number-sign = "slanted"
-percent = "rings-continuous-slash"
-bar = "force-upright"
-lig-equal-chain = "without-notch"
+    [buildPlans.FhtMono.variants.design]
+    one = "base"
+    five = "oblique-flat-serifless"
+    capital-c = "serifless"
+    capital-d = "more-rounded-unilateral-serifed"
+    capital-g = "toothless-corner-serifless-hooked"
+    capital-j = "flat-hook-serifed"
+    capital-x = "curly-serifless"
+    capital-z = "curly-serifless"
+    g = "double-storey"
+    i = "serifed"
+    j = "flat-hook-serifed"
+    m = "flat-top-serifless"
+    x = "curly-serifless"
+    z = "curly-serifless"
+    lower-eth = "curly-bar"
+    lower-alpha = "crossing"
+    capital-gamma = "serifless"
+    capital-delta = "curly"
+    lower-iota = "semi-tailed"
+    lower-nu = "casual-serifed"
+    lower-xi = "flat-top"
+    lower-pi = "tailed"
+    lower-upsilon = "casual-serifed"
+    lower-phi = "straight"
+    lower-chi = "semi-chancery-straight-above-baseline-serifless"
+    asterisk = "penta-low"
+    underscore = "high"
+    paren = "large-contour"
+    brace = "straight"
+    at = "threefold-solid-inner"
+    percent = "dots"
+    decorative-angle-brackets = "middle"
+    lig-ltgteq = "flat"
+    lig-neq = "slightly-slanted-dotted"
+    lig-equal-chain = "without-notch"
+    lig-hyphen-chain = "without-notch"
+    lig-plus-chain = "without-notch"
+
+  [buildPlans.FhtMono.ligations]
+  inherits = "dlig"
+
 
 [buildPlans.FhtMono.weights.Regular]
 shape = 400
@@ -56,4 +136,5 @@ angle = 9.4
 shape = "italic"
 menu = "italic"
 css = "italic"
+
 
