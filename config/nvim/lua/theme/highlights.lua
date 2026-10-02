@@ -215,17 +215,19 @@ return {
 	["@type.definition"] = { link = "@type" },
 	["@variable"] = C.foreground,
 	["@variable.builtin"] = C.foreground,
-	["@variable.builtin.rust"] = C.foreground,
+	["@variable.builtin.rust"] = { link = "@variable" },
 	-- Markdown
 	["@markup.raw"] = C.color7,
 	["@markup.raw.markdown_inline"] = { bg = C.bg.secondary:brighten(5), fg = C.color7 },
 	["@markup.link.label"] = C.color4,
 	["@markup.link.url"] = C.color9,
+	["@markup.list.markdown"] = C.color1,
+	["@markup.heading"] = C.color4,
+	["@markup.quote.markdown"] = { fg = C.color16 },
 	-- wgsl
 	["@attribute.wgsl"] = C.color7:darken(5.0),
 	-- Rust
 	["@keyword.modifier.rust"] = { fg = C.color3, italic = false },
-	["@variable.builtin.rust"] = { link = "@variable" },
 
 	-- lazy.nvim
 	LazyButton = { bg = C.bg.secondary },
@@ -331,29 +333,4 @@ return {
 	MiniClueSeparator = { fg = C.separator },
 	MiniClueTitle = { fg = C.color4, bold = true },
 	MiniClueBorder = { link = "FloatBorder" },
-
-	-- render-markdown.nvim
-	RenderMarkdownCode = { bg = C.bg.tertiary },
-	RenderMarkdownTableHead = { fg = C.separator:lighten(2.0) },
-	RenderMarkdownTableRow = { fg = C.separator:lighten(2.0) },
-	RenderMarkdownWarn = { fg = C.color3 },
-	RenderMarkdownInfo = { fg = C.color4 },
-	RenderMarkdownSuccess = { fg = C.color2 },
-	RenderMarkdownCodeInline = { fg = C.color7, bg = C.color8 },
-	RenderMarkdownQuote = { fg = C.separator:lighten(2.0) },
-	-- These are part of treesitter highlights but are also picked up by the plugin
-	["@markup.quote.markdown"] = { fg = C.color16 },
-	["@markup.heading.1.markdown"] = { fg = C.color4 },
-	["@markup.heading.2.markdown"] = { fg = C.color2 },
-	["@markup.heading.3.markdown"] = { fg = C.color6 },
-	["@markup.heading.4.markdown"] = { fg = C.color1 },
-	["@markup.heading.5.markdown"] = { fg = C.color5 },
-	["@markup.heading.6.markdown"] = { fg = C.color5 },
-	RenderMarkdownH1Bg = {},
-	RenderMarkdownH2Bg = {},
-	RenderMarkdownH3Bg = {},
-	RenderMarkdownH4Bg = {},
-	RenderMarkdownH5Bg = {},
-	RenderMarkdownH6Bg = {},
-	RenderMarkdownBullet = C.color1,
 }
