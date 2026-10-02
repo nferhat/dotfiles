@@ -1,4 +1,7 @@
 {lib, ...}: {
+  # Allows me to use compose key, since I don't use input methods like fcitx
+  environment.sessionVariables.GTK_IM_MODULE = "simple";
+
   nferhat.programs.ghostty = {
     enable = true;
     systemd.enable = true;

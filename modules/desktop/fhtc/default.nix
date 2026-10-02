@@ -61,6 +61,7 @@
 
       input.keyboard = {
         layout = "us";
+        options = "compose:caps";
         repeat-rate = 50;
         repeat-delay = 250;
       };
