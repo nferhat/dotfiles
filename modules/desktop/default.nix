@@ -45,6 +45,7 @@
       enable = true;
       defaultCursor = "left_ptr";
     };
+    dotIcons.enable = false;
     package = pkgs.phinger-cursors;
     name = "phinger-cursors-dark";
     size = 32;
@@ -76,6 +77,8 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
+    # Needed.
+    XCURSOR_PATH = "$HOME/.local/share/icons:${config.nferhat.home.profileDirectory}/share/icons";
     # Enable wayland on toolkits and whatnot
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland,x11";
