@@ -1,6 +1,7 @@
 {lib, ...}: {
   nferhat.programs.ghostty = {
     enable = true;
+    systemd.enable = true;
     settings = let
       theme = import ../../theme;
       ansiColors = theme.ansi // theme.ansi-bright;
@@ -11,7 +12,8 @@
     in {
       command = "fish";
       font-family = "Fht Mono";
-      font-size = 10;
+      font-feature = "+dlig, +calt, +liga";
+      font-size = 13;
       cursor-style = "block";
       cursor-style-blink = false;
       window-decoration = false;
