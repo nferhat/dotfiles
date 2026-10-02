@@ -12,9 +12,8 @@
   # FIXME: Lock the session when this happens zzz
   services.logind.settings.Login.HandlePowerKey = "suspend";
   systemd.sleep.settings.Sleep = {
-    # Use s2idle instead of deep sleep/suspend-to-ram.
-    # Allows for crazy fast boot timrs.
-    MemorySleepMode = "s2idle";
+    # s2idle didnt work out for me.
+    MemorySleepMode = "deep";
     # And if im sleeping for more than one hour hibernate.
     HibernateDelaySec = "1h";
   };
