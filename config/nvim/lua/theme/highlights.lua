@@ -206,6 +206,8 @@ return {
 	["@string.escape"] = C.color4,
 	["@string.special"] = { fg = C.color6, bold = true },
 	["@tag"] = C.color3,
+	["@tag.delimiter"] = C.text.tertiary,
+	["@tag.attribute"] = C.color7,
 	["@text.title"] = C.color6,
 	["@text.todo"] = C.color4,
 	["@text.reference"] = C.color5,
@@ -224,6 +226,8 @@ return {
 	["@markup.list.markdown"] = C.color1,
 	["@markup.heading"] = C.color4,
 	["@markup.quote.markdown"] = { fg = C.color16 },
+    ["@keyword.directive.markdown"] = C.text.tertiary,
+    ["@_label.markdown_inline"] = C.text.tertiary,
 	-- wgsl
 	["@attribute.wgsl"] = C.color7:darken(5.0),
 	-- Rust
