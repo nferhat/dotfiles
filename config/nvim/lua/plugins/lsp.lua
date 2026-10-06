@@ -131,9 +131,84 @@ M.config = function()
 		vim.lsp.enable(name, true)
 	end
 
+	-- Inlay hints, summed up at the end of each line: `<- (params) => types`
+	local function hint_text(hint)
+		if type(hint.label) == "string" then
+			return hint.label
+		end
+		return table.concat(vim.tbl_map(function(part)
+			return part.value
+		end, hint.label))
+	end
+
+	local function refresh_inlay_hints(bufnr)
+		for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/inlayHint" })) do
+			local ns = vim.api.nvim_create_namespace("user.inlay_hints." .. client.id)
+			local params = {
+				textDocument = vim.lsp.util.make_text_document_params(bufnr),
+				range = {
+					start = { line = 0, character = 0 },
+					["end"] = { line = vim.api.nvim_buf_line_count(bufnr), character = 0 },
+				},
+			}
+			client:request("textDocument/inlayHint", params, function(err, hints)
+				if err or not vim.api.nvim_buf_is_loaded(bufnr) then
+					return
+				end
+				table.sort(hints or {}, function(a, b)
+					return a.position.character < b.position.character
+				end)
+
+				local lines = {} -- lnum -> { types = {}, params = {} }
+				for _, hint in ipairs(hints or {}) do
+					local line = lines[hint.position.line] or { types = {}, params = {} }
+					lines[hint.position.line] = line
+					if hint.kind == 1 then
+						table.insert(line.types, (hint_text(hint):gsub("^:%s*", "")))
+					else
+						table.insert(line.params, (hint_text(hint):gsub(":$", "")))
+					end
+				end
+
+				vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+				for lnum, line in pairs(lines) do
+					local parts = {}
+					if #line.params > 0 then
+						table.insert(parts, "<- (" .. table.concat(line.params, ",") .. ")")
+					end
+					if #line.types > 0 then
+						table.insert(parts, "=> " .. table.concat(line.types, ","))
+					end
+					vim.api.nvim_buf_set_extmark(bufnr, ns, lnum, 0, {
+						virt_text = { { table.concat(parts, " "), "LspInlayHint" } },
+						virt_text_pos = "eol",
+						strict = false,
+					})
+				end
+			end, bufnr)
+		end
+	end
+
+	-- Servers (rust-analyzer) ask for a refresh once they are done indexing
+	vim.lsp.handlers["workspace/inlayHint/refresh"] = function(_, _, ctx)
+		for bufnr in pairs(vim.lsp.get_client_by_id(ctx.client_id).attached_buffers) do
+			refresh_inlay_hints(bufnr)
+		end
+		return vim.NIL
+	end
+
 	-- Autocommand to attach onto buffers that have Lsp enabled
 	-- this allows me to setup configurations
 	local aug = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
+	vim.api.nvim_create_autocmd("LspNotify", {
+		group = aug,
+		callback = function(event)
+			local method = event.data.method
+			if method == "textDocument/didChange" or method == "textDocument/didOpen" then
+				refresh_inlay_hints(event.buf)
+			end
+		end,
+	})
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = aug,
 		callback = function(event)
@@ -159,10 +234,7 @@ M.config = function()
 			set_keymap("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename Symbol", buffer = buffer })
 			set_keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Open Signature Help", buffer = buffer })
 
-			-- Better inlay hints (nvim >=0.10)
-			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
-			end
+			refresh_inlay_hints(buffer)
 
 			-- Autoformatting
 			if client:supports_method("textDocument/formatting") then

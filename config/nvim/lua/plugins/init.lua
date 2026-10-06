@@ -38,12 +38,6 @@ local M = {
 		config = true,
 	},
 
-	{
-		'felpafel/inlay-hint.nvim',
-		event = 'LspAttach',
-		config = true,
-	},
-
 	-- Gitsigns, nothing fancy
 	-- TODO: Maybe write a copy myself? I don't make use of all the features this plugin has.
 	{
