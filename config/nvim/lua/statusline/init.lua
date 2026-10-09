@@ -21,6 +21,7 @@ function M.draw()
 		comps.diagnostics(), -- shown next to the file to instantly know
 		highlight_text("Statusline", "%="),
 		comps.macro(), -- macro recording, if any.
+		comps.lspprogress(), -- running lsp tasks (indexing, etc.)
 		comps.lspclients(), -- attached lsp clients
 		comps.git(), -- git branch + git diff
 		highlight_text("Statusline_linecol", "%03.3l:%03.3c "),

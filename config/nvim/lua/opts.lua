@@ -55,7 +55,10 @@ O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
 
 -- Better default extui, looks cool!
--- require("vim._core.ui2").enable({})
+require("vim._core.ui2").enable({
+    enable = true,
+    msg = { targets = 'cmd' }
+})
 
 -- Keymaps, also strongly influenced by my preferences.
 

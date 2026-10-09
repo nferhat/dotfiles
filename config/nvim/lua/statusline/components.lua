@@ -89,6 +89,45 @@ M.lspclients = function()
 		.. " "
 end
 
+-- Active LSP progress items, keyed by "client_id:token". `last` is the one shown.
+local progress, last = {}, nil
+
+vim.api.nvim_create_autocmd("LspProgress", {
+	group = vim.api.nvim_create_augroup("StatuslineLspProgress", { clear = true }),
+	callback = function(ev)
+		local key = ev.data.client_id .. ":" .. tostring(ev.data.params.token)
+		local value = ev.data.params.value
+		if value.kind == "end" then
+			progress[key] = nil
+			if last == key then
+				last = next(progress)
+			end
+		else
+			local client = vim.lsp.get_client_by_id(ev.data.client_id)
+			local parts = {}
+			local function add(hl, text)
+				if text and text ~= "" then
+					table.insert(parts, highlight_text(hl, (text:gsub("%%", "%%%%")))) -- statusline escape
+				end
+			end
+			add("Statusline_lspclients", client and client.name or "lsp")
+			add("Statusline_text", value.title)
+			add("Statusline_misc_text", value.message)
+			add("Statusline_lsp_progress_pct", value.percentage and value.percentage .. "%")
+			progress[key] = table.concat(parts, highlight_text("Statusline_text", " "))
+			last = key
+		end
+		vim.cmd.redrawstatus()
+	end,
+})
+
+M.lspprogress = function()
+	if not last then
+		return ""
+	end
+	return progress[last] .. " " .. M.vertical_separator() .. " "
+end
+
 M.macro = function()
 	local reg = vim.fn.reg_recording()
 	if reg == "" then

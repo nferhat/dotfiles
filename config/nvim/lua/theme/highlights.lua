@@ -142,6 +142,7 @@ return {
 	Statusline_filename_readonly = { bg = C.bg.tertiary, fg = C.color1 },
 	-- LSP clients section
 	Statusline_lspclients = { bg = C.bg.tertiary, fg = C.color6, italic = true },
+	Statusline_lsp_progress_pct = { bg = C.bg.tertiary, fg = C.color3, bold = true },
 	-- current macro section
 	Statusline_macro = { bg = C.bg.tertiary, fg = C.color3, bold = true },
 	-- Separator
