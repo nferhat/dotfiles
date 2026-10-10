@@ -78,8 +78,6 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     # Enable wayland on toolkits and whatnot
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland,x11";
     XDG_SESSION_TYPE = "wayland";
     # NixOS wrappers use this variable to automatically set required flags for electron applications
     # to run with ozone support (and thus running natively)
