@@ -215,7 +215,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "qtengine": "qtengine",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "website": "website"
       }
     },
     "systems": {
@@ -230,6 +231,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "website": {
+      "inputs": {
+        "fenix": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791574768,
+        "narHash": "sha256-SHvdRYqg9qQMjLvPUiZgQt/dQQe0bBUMLnb/5V72Ncw=",
+        "owner": "nferhat",
+        "repo": "website",
+        "rev": "941c0ffe3b1b4f61be684ee5b9b10b830bb2df5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nferhat",
+        "repo": "website",
         "type": "github"
       }
     }

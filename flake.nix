@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    website = {
+      url = "github:nferhat/website";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = ""; # not needed zzzz
+    };
+
     # Qt theming made easy.
     qtengine = {
       url = "github:kossLAN/qtengine";

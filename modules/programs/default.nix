@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: {
@@ -30,6 +31,7 @@
     ffmpeg
     dust
     trash-cli
+    inputs.website.packages.${pkgs.system}.default
   ];
 
   nferhat.programs = {
