@@ -32,6 +32,9 @@
     dust
     trash-cli
     inputs.website.packages.${pkgs.system}.default
+    hexyl
+    xxd
+    file
   ];
 
   nferhat.programs = {
