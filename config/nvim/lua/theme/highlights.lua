@@ -12,7 +12,7 @@ return {
 	floatborder = { fg = C.separator },
 	floattitle = C.color2,
 	cold = { bold = true },
-	debug = { fg = C.color1, bold = true },
+	debug = { fg = C.color1, },
 	directory = C.color4,
 	error = { link = "debug" },
 	errormsg = { link = "debug" },

@@ -112,6 +112,7 @@ M.config = function()
 	})
 
 	vim.lsp.enable({
+        "gleam",
 		"gopls",
 		"lua_ls",
 		"ts_ls",
