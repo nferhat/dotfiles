@@ -35,6 +35,7 @@
     hexyl
     xxd
     file
+    glow
   ];
 
   nferhat.programs = {
