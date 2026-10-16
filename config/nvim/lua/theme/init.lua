@@ -99,6 +99,7 @@ function M.init()
 		reload_module("theme.highlights")
 		local data = require("theme.highlights")
 		save_to_bytecode(data)
+        vim.cmd.colorscheme "theme"
 	end, {
 		nargs = "*",
 		complete = function(_, line)
