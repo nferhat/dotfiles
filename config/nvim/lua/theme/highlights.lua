@@ -218,6 +218,7 @@ return {
 	["@type.definition"] = { link = "@type" },
 	["@variable"] = C.foreground,
 	["@variable.builtin"] = C.foreground,
+	["@variable.builtin.slint"] = C.foreground,
 	["@variable.builtin.rust"] = { link = "@variable" },
 	-- Markdown
 	["@markup.raw"] = C.color7,
@@ -233,6 +234,8 @@ return {
 	["@attribute.wgsl"] = C.color7:darken(5.0),
 	-- Rust
 	["@keyword.modifier.rust"] = { fg = C.color3, italic = false },
+    -- slint
+	["@string.escape.slint"] = { link = "@punctuation.bracket" },
 
 	-- lazy.nvim
 	LazyButton = { bg = C.bg.secondary },

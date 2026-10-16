@@ -126,6 +126,7 @@ M.config = function()
 		"jdtls",
 		"zls",
 		"tinymist",
+        "slint_lsp",
 	})
 	function vim.lsp.restart(name)
 		vim.lsp.enable(name, false)
