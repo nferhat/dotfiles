@@ -12,6 +12,7 @@
       # Monospace.
       self.packages.${pkgs.system}.fht-mono
       nerd-fonts.iosevka
+      (iosevka-bin.override {variant = "Aile";})
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
@@ -19,8 +20,8 @@
 
     # NOTE: I do not want serif fonts, deal with it.
     fontconfig.defaultFonts = {
-      serif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
-      sansSerif = ["Adwaita Sans" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      serif = ["Iosevka Aile" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
+      sansSerif = ["Iosevka Aile" "Twemoji" "Fht Mono" "Iosevka Nerd Font"];
       monospace = ["Fht Mono" "Iosevka Nerd Font"];
       emoji = ["Twemoji"];
     };
