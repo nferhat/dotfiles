@@ -3,9 +3,7 @@
 local Color = {}
 Color.__index = Color
 
-local function clamp(value, lo, hi)
-	return math.min(hi, math.max(lo, value))
-end
+local function clamp(value, lo, hi) return math.min(hi, math.max(lo, value)) end
 
 function Color:new(params)
 	params = params or { r = 0, g = 0, b = 0 }
@@ -18,16 +16,14 @@ function Color:new(params)
 end
 
 function Color:HEX(prefix)
-	return string.format("%s%02X%02X%02X", prefix and "#" or "", self.r, self.g, self.b)
+	return string.format('%s%02X%02X%02X', prefix and '#' or '', self.r, self.g, self.b)
 end
 
 function Color:HSL()
 	local r, g, b = self.r / 255, self.g / 255, self.b / 255
 	local max, min = math.max(r, g, b), math.min(r, g, b)
 	local l = (max + min) / 2
-	if max == min then
-		return { h = 0, s = 0, l = l }
-	end
+	if max == min then return { h = 0, s = 0, l = l } end
 
 	local d = max - min
 	local s = l > 0.5 and d / (2 - max - min) or d / (max + min)
@@ -49,25 +45,19 @@ local function increase(self, channel, a)
 	return Color:new(c)
 end
 
-function Color:increase_red(a)
-	return increase(self, "r", a)
-end
+function Color:increase_red(a) return increase(self, 'r', a) end
 
-function Color:increase_green(a)
-	return increase(self, "g", a)
-end
+function Color:increase_green(a) return increase(self, 'g', a) end
 
-function Color:increase_blue(a)
-	return increase(self, "b", a)
-end
+function Color:increase_blue(a) return increase(self, 'b', a) end
 
 function Color:brighten(a)
 	local d = math.ceil(255 * (a or 10) / 100)
-	return Color:new({
+	return Color:new {
 		r = self.r + d,
 		g = self.g + d,
 		b = self.b + d,
-	})
+	}
 end
 
 function Color:darken(a)
@@ -77,10 +67,8 @@ function Color:darken(a)
 end
 
 function Color.HEX2RGB(hex)
-	hex = hex:gsub("^#", "")
-	if #hex == 3 then
-		hex = hex:gsub(".", "%0%0")
-	end
+	hex = hex:gsub('^#', '')
+	if #hex == 3 then hex = hex:gsub('.', '%0%0') end
 	return {
 		r = tonumber(hex:sub(1, 2), 16),
 		g = tonumber(hex:sub(3, 4), 16),
@@ -114,8 +102,6 @@ function Color.HSL2RGB(h, s, l)
 	}
 end
 
-Color.__tostring = function(self)
-	return self:HEX(true)
-end
+Color.__tostring = function(self) return self:HEX(true) end
 
 return Color

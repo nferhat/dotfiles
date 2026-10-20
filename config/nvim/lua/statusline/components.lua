@@ -1,38 +1,36 @@
 local M = {}
 
-M.highlight_text = function(highlight, text)
-	return string.format("%%#%s#%s", highlight, text)
-end
+M.highlight_text = function(highlight, text) return string.format('%%#%s#%s', highlight, text) end
 local highlight_text = M.highlight_text
 
 M.mode_colors = {
-	["n"] = { "NOR", "Statusline_mode_Normal" },
-	["niI"] = { "NOR", "Statusline_mode_Normal" },
-	["niR"] = { "NOR", "Statusline_mode_Normal" },
-	["niV"] = { "NOR", "Statusline_mode_Normal" },
-	["no"] = { "NOR", "Statusline_mode_Normal" },
-	["i"] = { "INS", "Statusline_mode_Insert" },
-	["ic"] = { "INS (completion)", "Statusline_mode_Insert" },
-	["ix"] = { "INS completion", "Statusline_mode_Insert" },
-	["t"] = { "TER", "Statusline_mode_Terminal" },
-	["nt"] = { "TER", "Statusline_mode_NTerminal" },
-	["v"] = { "VIS", "Statusline_mode_Visual" },
-	["V"] = { "VIS", "Statusline_mode_Visual" },
-	["Vs"] = { "VIS", "Statusline_mode_Visual" },
-	[""] = { "VIS", "Statusline_mode_Visual" },
-	["R"] = { "REP", "Statusline_mode_Replace" },
-	["Rv"] = { "VIS", "Statusline_mode_Replace" },
-	["s"] = { "SEL", "Statusline_mode_Select" },
-	["S"] = { "SEL", "Statusline_mode_Select" },
-	[""] = { "SEL", "Statusline_mode_Select" },
-	["c"] = { "CMD", "Statusline_mode_Command" },
-	["cv"] = { "CMD", "Statusline_mode_Command" },
-	["ce"] = { "CMD", "Statusline_mode_Command" },
-	["r"] = { "PRT", "Statusline_mode_Confirm" },
-	["rm"] = { "MORE", "Statusline_mode_Confirm" },
-	["r?"] = { "CHK", "Statusline_mode_Confirm" },
-	["x"] = { "CHK", "Statusline_mode_Confirm" },
-	["!"] = { "SH!", "Statusline_mode_Terminal" },
+	['n'] = { 'NOR', 'Statusline_mode_Normal' },
+	['niI'] = { 'NOR', 'Statusline_mode_Normal' },
+	['niR'] = { 'NOR', 'Statusline_mode_Normal' },
+	['niV'] = { 'NOR', 'Statusline_mode_Normal' },
+	['no'] = { 'NOR', 'Statusline_mode_Normal' },
+	['i'] = { 'INS', 'Statusline_mode_Insert' },
+	['ic'] = { 'INS (completion)', 'Statusline_mode_Insert' },
+	['ix'] = { 'INS completion', 'Statusline_mode_Insert' },
+	['t'] = { 'TER', 'Statusline_mode_Terminal' },
+	['nt'] = { 'TER', 'Statusline_mode_NTerminal' },
+	['v'] = { 'VIS', 'Statusline_mode_Visual' },
+	['V'] = { 'VIS', 'Statusline_mode_Visual' },
+	['Vs'] = { 'VIS', 'Statusline_mode_Visual' },
+	[''] = { 'VIS', 'Statusline_mode_Visual' },
+	['R'] = { 'REP', 'Statusline_mode_Replace' },
+	['Rv'] = { 'VIS', 'Statusline_mode_Replace' },
+	['s'] = { 'SEL', 'Statusline_mode_Select' },
+	['S'] = { 'SEL', 'Statusline_mode_Select' },
+	[''] = { 'SEL', 'Statusline_mode_Select' },
+	['c'] = { 'CMD', 'Statusline_mode_Command' },
+	['cv'] = { 'CMD', 'Statusline_mode_Command' },
+	['ce'] = { 'CMD', 'Statusline_mode_Command' },
+	['r'] = { 'PRT', 'Statusline_mode_Confirm' },
+	['rm'] = { 'MORE', 'Statusline_mode_Confirm' },
+	['r?'] = { 'CHK', 'Statusline_mode_Confirm' },
+	['x'] = { 'CHK', 'Statusline_mode_Confirm' },
+	['!'] = { 'SH!', 'Statusline_mode_Terminal' },
 }
 
 ---Returns the current mode that Neovim is on.
@@ -45,76 +43,68 @@ end
 
 M.diagnostics = function()
 	---@diagnostic disable-next-line: deprecated
-	if not rawget(vim, "lsp") or #vim.lsp.get_clients({ bufnr = 0 }) == 0 then
-		return ""
-	end
+	if not rawget(vim, 'lsp') or #vim.lsp.get_clients { bufnr = 0 } == 0 then return '' end
 
 	local error_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
 	local warning_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
 	local info_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 	local hint_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
 
-	local errors, warnings, hint, info = "0", "0", "0", "0"
+	local errors, warnings, hint, info = '0', '0', '0', '0'
 
-	errors = highlight_text("Statusline_diagnostic_error", "!" .. tostring(error_count))
-	warnings = highlight_text("Statusline_diagnostic_warn", "~" .. tostring(warning_count))
+	errors = highlight_text('Statusline_diagnostic_error', '!' .. tostring(error_count))
+	warnings = highlight_text('Statusline_diagnostic_warn', '~' .. tostring(warning_count))
 
-	return highlight_text("Statusline_misc_text", "(")
-		.. table.concat({ errors, warnings }, " ")
-		.. highlight_text("Statusline_misc_text", ")")
+	return highlight_text('Statusline_misc_text', '(')
+		.. table.concat({ errors, warnings }, ' ')
+		.. highlight_text('Statusline_misc_text', ')')
 end
 
 M.lspclients = function()
-	if not rawget(vim, "lsp") then
-		return ""
-	end
+	if not rawget(vim, 'lsp') then return '' end
 
 	---@diagnostic disable-next-line: deprecated
-	local attached_clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
-	if #attached_clients == 0 then
-		return ""
-	end
+	local attached_clients = vim.lsp.get_clients { bufnr = vim.api.nvim_get_current_buf() }
+	if #attached_clients == 0 then return '' end
 
 	local attached_clients_name = {}
 	for _, attached_client in ipairs(attached_clients) do
 		table.insert(attached_clients_name, attached_client.name)
 	end
 
-	local ret = table.concat(attached_clients_name, ", ")
+	local ret = table.concat(attached_clients_name, ', ')
 
-	return highlight_text("Statusline_lspclients", " ")
-		.. highlight_text("Statusline_text", ret)
-		.. " "
+	return highlight_text('Statusline_lspclients', ' ')
+		.. highlight_text('Statusline_text', ret)
+		.. ' '
 		.. M.vertical_separator()
-		.. " "
+		.. ' '
 end
 
 -- Active LSP progress items, keyed by "client_id:token". `last` is the one shown.
 local progress, last = {}, nil
 
-vim.api.nvim_create_autocmd("LspProgress", {
-	group = vim.api.nvim_create_augroup("StatuslineLspProgress", { clear = true }),
+vim.api.nvim_create_autocmd('LspProgress', {
+	group = vim.api.nvim_create_augroup('StatuslineLspProgress', { clear = true }),
 	callback = function(ev)
-		local key = ev.data.client_id .. ":" .. tostring(ev.data.params.token)
+		local key = ev.data.client_id .. ':' .. tostring(ev.data.params.token)
 		local value = ev.data.params.value
-		if value.kind == "end" then
+		if value.kind == 'end' then
 			progress[key] = nil
-			if last == key then
-				last = next(progress)
-			end
+			if last == key then last = next(progress) end
 		else
 			local client = vim.lsp.get_client_by_id(ev.data.client_id)
 			local parts = {}
 			local function add(hl, text)
-				if text and text ~= "" then
-					table.insert(parts, highlight_text(hl, (text:gsub("%%", "%%%%")))) -- statusline escape
+				if text and text ~= '' then
+					table.insert(parts, highlight_text(hl, (text:gsub('%%', '%%%%')))) -- statusline escape
 				end
 			end
-			add("Statusline_lspclients", client and client.name or "lsp")
-			add("Statusline_text", value.title)
-			add("Statusline_misc_text", value.message)
-			add("Statusline_lsp_progress_pct", value.percentage and value.percentage .. "%")
-			progress[key] = table.concat(parts, highlight_text("Statusline_text", " "))
+			add('Statusline_lspclients', client and client.name or 'lsp')
+			add('Statusline_text', value.title)
+			add('Statusline_misc_text', value.message)
+			add('Statusline_lsp_progress_pct', value.percentage and value.percentage .. '%')
+			progress[key] = table.concat(parts, highlight_text('Statusline_text', ' '))
 			last = key
 		end
 		vim.cmd.redrawstatus()
@@ -122,64 +112,63 @@ vim.api.nvim_create_autocmd("LspProgress", {
 })
 
 M.lspprogress = function()
-	if not last then
-		return ""
-	end
-	return progress[last] .. " " .. M.vertical_separator() .. " "
+	if not last then return '' end
+	return progress[last] .. ' ' .. M.vertical_separator() .. ' '
 end
 
 M.macro = function()
 	local reg = vim.fn.reg_recording()
-	if reg == "" then
-		return ""
-	end
-	return highlight_text("Statusline_misc_text", "Recording ")
-		.. highlight_text("Macro", "@" .. reg)
-		.. " "
+	if reg == '' then return '' end
+	return highlight_text('Statusline_misc_text', 'Recording ')
+		.. highlight_text('Macro', '@' .. reg)
+		.. ' '
 		.. M.vertical_separator()
-		.. " "
+		.. ' '
 end
 
 M.git = function()
-	if vim.o.columns < 100 or not vim.b.gitsigns_status_dict then
-		return ""
-	end
+	if vim.o.columns < 100 or not vim.b.gitsigns_status_dict then return '' end
 	local branch = vim.b.gitsigns_status_dict.head
-	branch = branch == "" and "no branch?" or branch
-	local branch_text = highlight_text("Statusline_git_branch_icon", " ")
-		.. highlight_text("Statusline_text", branch)
+	branch = branch == '' and 'no branch?' or branch
+	local branch_text = highlight_text('Statusline_git_branch_icon', ' ')
+		.. highlight_text('Statusline_text', branch)
 
-	local added = highlight_text("Statusline_git_diff_added", "+" .. tostring(vim.b.gitsigns_status_dict.added))
-	local changed = highlight_text("Statusline_git_diff_changed", "~" .. tostring(vim.b.gitsigns_status_dict.changed))
-	local removed = highlight_text("Statusline_git_diff_removed", "-" .. tostring(vim.b.gitsigns_status_dict.removed))
-	local diff_text = highlight_text("Statusline_misc_text", "(")
-		.. table.concat({ added, changed, removed }, " ")
-		.. highlight_text("Statusline_misc_text", ")")
+	local added = highlight_text(
+		'Statusline_git_diff_added',
+		'+' .. tostring(vim.b.gitsigns_status_dict.added)
+	)
+	local changed = highlight_text(
+		'Statusline_git_diff_changed',
+		'~' .. tostring(vim.b.gitsigns_status_dict.changed)
+	)
+	local removed = highlight_text(
+		'Statusline_git_diff_removed',
+		'-' .. tostring(vim.b.gitsigns_status_dict.removed)
+	)
+	local diff_text = highlight_text('Statusline_misc_text', '(')
+		.. table.concat({ added, changed, removed }, ' ')
+		.. highlight_text('Statusline_misc_text', ')')
 
-	return string.format("%s%s %s ", branch_text, diff_text, M.vertical_separator())
+	return string.format('%s%s %s ', branch_text, diff_text, M.vertical_separator())
 end
 
 M.filename = function()
-	local fname = vim.fn.expand("%:t")
-	fname = fname == "" and "[scratch]" or fname
-	local filepath = vim.fn.expand("%:~:.:h")
-	filepath = filepath == "" and "" or filepath .. "/"
-	local highlight = (vim.bo.modified and "Statusline_filename_modified")
-		or (vim.bo.readonly and "Statusline_filename_readonly")
-		or "Statusline_filename_normal"
-	return highlight_text("Statusline_misc_text", filepath) .. highlight_text(highlight, fname)
+	local fname = vim.fn.expand '%:t'
+	fname = fname == '' and '[scratch]' or fname
+	local filepath = vim.fn.expand '%:~:.:h'
+	filepath = filepath == '' and '' or filepath .. '/'
+	local highlight = (vim.bo.modified and 'Statusline_filename_modified')
+		or (vim.bo.readonly and 'Statusline_filename_readonly')
+		or 'Statusline_filename_normal'
+	return highlight_text('Statusline_misc_text', filepath) .. highlight_text(highlight, fname)
 end
 
 M.filetype = function()
-	if vim.o.columns < 60 then
-		return ""
-	end
+	if vim.o.columns < 60 then return '' end
 
-	return highlight_text("Statusline_text", vim.bo.ft) .. " "
+	return highlight_text('Statusline_text', vim.bo.ft) .. ' '
 end
 
-M.vertical_separator = function()
-	return highlight_text("Statusline_separator", "│")
-end
+M.vertical_separator = function() return highlight_text('Statusline_separator', '│') end
 
 return M
