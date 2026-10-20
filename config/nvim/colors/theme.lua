@@ -1,1 +1,1 @@
-require("theme").init()
+require('theme').init()

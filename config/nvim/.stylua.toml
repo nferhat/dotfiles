@@ -1,0 +1,5 @@
+column_width              = 100
+indent_width              = 4
+call_parentheses          = 'None'
+collapse_simple_statement = 'Always'
+quote_style               = 'ForceSingle'

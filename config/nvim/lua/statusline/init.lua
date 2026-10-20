@@ -9,23 +9,23 @@
 local M = {}
 
 function M.draw()
-	local comps = require("statusline.components")
+	local comps = require 'statusline.components'
 	local highlight_text = comps.highlight_text
 	-- To avoid components highlights bleeding into one another
-	local stopper = highlight_text("Statusline", "")
+	local stopper = highlight_text('Statusline', '')
 
 	local statusline = table.concat({
 		-- comps.mode("▌ "), -- similar to doom emacs
-		highlight_text("Statusline", " "),
+		highlight_text('Statusline', ' '),
 		comps.filename(), -- relative/path/to/file.lua (relative to CWD)
 		comps.diagnostics(), -- shown next to the file to instantly know
-		highlight_text("Statusline", "%="),
+		highlight_text('Statusline', '%='),
 		comps.macro(), -- macro recording, if any.
 		comps.lspprogress(), -- running lsp tasks (indexing, etc.)
 		comps.lspclients(), -- attached lsp clients
 		comps.git(), -- git branch + git diff
-		highlight_text("Statusline_linecol", "%03.3l:%03.3c "),
-		highlight_text("Statusline", " "),
+		highlight_text('Statusline_linecol', '%03.3l:%03.3c '),
+		highlight_text('Statusline', ' '),
 		-- comps.mode("▐"), -- similar to doom emacs
 	}, stopper)
 
