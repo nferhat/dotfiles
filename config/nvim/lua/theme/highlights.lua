@@ -5,11 +5,11 @@ local function cmp_bg(col) return ENABLE_BG and col or nil end
 
 return {
 	-- base neovim tui highlights
-	normal = { fg = C.foreground, bg = 'none' },
-	normalfloat = { fg = C.foreground },
+	normal = { bg = 'none' },
+	-- XXX: empty on purpose, nvim's default NormalFloat sets its own bg
+	normalfloat = {},
 	floatborder = { fg = C.separator },
 	floattitle = C.color2,
-	cold = { bold = true },
 	debug = { fg = C.color1 },
 	directory = C.color4,
 	error = { link = 'debug' },
@@ -34,7 +34,7 @@ return {
 	wildmenu = { fg = C.color6, bg = C.bg.secondary, bold = true },
 	title = C.color4,
 	conceal = { fg = C.color4, bg = 'none', bold = true },
-	cursor = { fg = C.color3, bg = C.foreground },
+	cursor = { fg = C.color3 },
 	nontext = C.text.tertiary,
 	linenr = { fg = C.text.tertiary:darken(5.0), bg = 'none' },
 	signcolumn = { fg = C.text.tertiary, bg = 'none', sp = 'none' }, -- match normal hl grou.
@@ -121,8 +121,8 @@ return {
 	DiagnosticUnderlineHint = { sp = C.text.tertiary, undercurl = false },
 
 	-- Statusline, since its included with the config (not a plugin)
-	StatusLine = { bg = C.bg.tertiary, fg = C.foreground },
-	StatusLineNC = { bg = C.bg.tertiary, fg = C.foreground },
+	StatusLine = { bg = C.bg.tertiary },
+	StatusLineNC = { bg = C.bg.tertiary },
 	StatusLine_mode_Normal = { fg = C.color1, bg = C.bg.tertiary },
 	StatusLine_mode_Insert = { fg = C.color2, bg = C.bg.tertiary },
 	Statusline_mode_Terminal = { fg = C.color1, bg = C.bg.tertiary },
@@ -133,9 +133,9 @@ return {
 	Statusline_mode_NTerminal = { link = 'Statusline_mode_term', bold = true },
 	-- Filetype section
 	Statusline_filetype_default = { bg = C.bg.tertiary, fg = C.color1 },
-	Statusline_filetype_name = { bg = C.bg.tertiary, fg = C.foreground },
+	Statusline_filetype_name = { bg = C.bg.tertiary },
 	-- Filename section
-	Statusline_filename_normal = { bg = C.bg.tertiary, fg = C.foreground },
+	Statusline_filename_normal = { bg = C.bg.tertiary },
 	Statusline_filename_modified = { bg = C.bg.tertiary, fg = C.color4 },
 	Statusline_filename_readonly = { bg = C.bg.tertiary, fg = C.color1 },
 	-- LSP clients section
@@ -157,12 +157,9 @@ return {
 	Statusline_diagnostic_hint = { fg = C.text.tertiary, bold = false, bg = C.bg.tertiary },
 	-- Other filler
 	Statusline_misc_text = { bg = C.bg.tertiary, fg = C.text.tertiary, italic = false },
-	Statusline_text = { bg = C.bg.tertiary, fg = C.foreground },
+	Statusline_text = { bg = C.bg.tertiary },
 	-- Line and column
-	Statusline_linecol = { bg = C.bg.tertiary, fg = C.foreground },
-
-	-- renamer, see lua/renamer
-	RenamerTitle = { bg = C.color2, fg = C.color0 },
+	Statusline_linecol = { bg = C.bg.tertiary },
 
 	-- tree-sitter is now included with neovim, aswell as some parsers
 	-- make the highlights for syntax nodes in the base skeleton
@@ -179,7 +176,6 @@ return {
 	['@debug'] = C.color1,
 	['@define'] = C.color5,
 	['@exception'] = { link = 'Exception' },
-	['@field'] = C.foreground,
 	['@float'] = { link = 'Float' },
 	['@function'] = C.color4,
 	['@function.builtin'] = C.color4,
@@ -193,9 +189,8 @@ return {
 	['@namespace'] = C.text.tertiary:brighten(5.0),
 	['@number'] = C.color3,
 	['@operator'] = C.text.tertiary:brighten(5.0),
-	['@parameter'] = { fg = C.foreground, italic = true },
+	['@parameter'] = { italic = true },
 	['@preproc'] = C.color3,
-	['@property'] = C.foreground,
 	['@punctuation'] = C.text.tertiary:brighten(5.0),
 	['@punctuation.special'] = C.text.tertiary:brighten(5.0),
 	['@punctuation.special.markdown'] = C.separator,
@@ -214,9 +209,6 @@ return {
 	['@type'] = { fg = C.color11, italic = false },
 	['@type.builtin'] = { fg = C.color3, italic = false },
 	['@type.definition'] = { link = '@type' },
-	['@variable'] = C.foreground,
-	['@variable.builtin'] = C.foreground,
-	['@variable.builtin.slint'] = C.foreground,
 	['@variable.builtin.rust'] = { link = '@variable' },
 	-- Markdown
 	['@markup.raw'] = C.color7,
@@ -225,7 +217,6 @@ return {
 	['@markup.link.url'] = C.color9,
 	['@markup.list.markdown'] = C.color1,
 	['@markup.heading'] = C.color4,
-	['@markup.quote.markdown'] = { fg = C.color16 },
 	['@keyword.directive.markdown'] = C.text.tertiary,
 	['@_label.markdown_inline'] = C.text.tertiary,
 	-- wgsl
@@ -234,17 +225,6 @@ return {
 	['@keyword.modifier.rust'] = { fg = C.color3, italic = false },
 	-- slint
 	['@string.escape.slint'] = { link = '@punctuation.bracket' },
-
-	-- lazy.nvim
-	LazyButton = { bg = C.bg.secondary },
-
-	-- gitsigns.nvim
-	GitSignsAdd = C.color2,
-	GitSignsChange = C.color4,
-	GitSignsChangeDelete = C.color1,
-	GitSignsDelete = C.color1,
-	GitSignsTopDelete = C.color9,
-	GitSignsUntracked = C.text.tertiary,
 
 	-- snacks.nvim
 	SnacksPickerBoxTitle = { bg = C.color2, fg = C.bg.primary },
@@ -262,46 +242,17 @@ return {
 	SnacksInputBorder = { bg = C.bg.secondary, fg = C.bg.secondary },
 	SnacksInputTitle = { bg = C.color5, fg = C.bg.secondary, bold = true },
 
-	-- noice.nvim
-	-- Base highlights that we are linking against, I don't like the colors
-	-- to change based on *what* I am going todo in the command line
-	NoiceCmdlinePopup = { link = 'NormalFloat' },
-	NoiceCmdlinePopupBorder = { link = 'FloatBorder' },
-	NoiceCmdlinePopupTitle = C.text.tertiary,
-	-- Now link these to match with the base highlight
-	NoiceCmdlinePopupBorderCalculator = { link = 'FloatBorder' },
-	NoiceCmdlinePopupBorderCmdline = { link = 'FloatBorder' },
-	NoiceCmdlinePopupBorderFilter = { link = 'FloatBorder' },
-	NoiceCmdlinePopupBorderSearch = { link = 'FloatBorder' },
-	NoiceCmdlinePopupBorderInput = { link = 'FloatBorder' },
-	NoiceCmdlinePopupBorderLua = { link = 'FloatBorder' },
-	-- The popup menu that does completions to the cmdline
-	NoicePopupmenu = { link = 'NormalFloat' },
-	NoicePopupmenuBorder = { link = 'FloatBorder' },
-	NoicePopupmenuSelected = { bg = C.bg.secondary, bold = true },
-	NoicePopupmenuMatch = { fg = C.color4, bold = true },
-	NoiceScrollbar = { bg = 'none', fg = 'none' },
-	NoiceScrollbarThumb = { bg = C.bg.secondary:darken(2.0), fg = C.color5 },
-	-- Split view
-	NoiceSplit = { bg = C.bg.secondary:darken(2.0) },
-	NoiceSplitBorder = { bg = C.bg.secondary:darken(2.0) },
-
 	-- blink.cmp
 	BlinkCmpMenu = { link = 'normalfloat' },
 	BlinkCmpDoc = { link = 'normalfloat' },
 	BlinkCmpDocBorder = { link = 'floatborder' },
 	BlinkCmpMenuBorder = { link = 'floatborder' },
 	BlinkCmpLabelDetail = { fg = C.text.tertiary:darken(5) },
-	BlinkCmpLabel = C.foreground,
 	BlinkCmpScrollBarThumb = { bg = C.separator },
 	BlinkCmpScrollBarGutter = { link = 'BlinkCmpMenu' },
 	BlinkCmpMenuSelection = { bg = C.bg.secondary:darken(2) },
 	BlinkCmpLabelDeprecated = { strikethrough = true },
 	BlinkCmpLabelMatch = { bold = true },
-	-- Client item kinds, the following are builtin to cmp.
-	CmpItemAbbrDeprecated = { fg = C.color7, strikethrough = true },
-	CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' },
-	CmpItemAbbrMatch = { fg = C.color4, bold = true },
 	BlinkCmpKindSnippet = { fg = C.color2, bg = cmp_bg(C.bg.tertiary:increase_green(4)) },
 	BlinkCmpKindConstant = {
 		fg = C.color3,
@@ -336,13 +287,4 @@ return {
 	BlinkCmpKindFolder = { fg = '#f1d068' },
 	BlinkCmpKindFile = { link = 'BlinkCmpKindEvent' },
 	BlinkCmpKindStruct = { link = 'BlinkCmpKindConstant' },
-
-	-- mini.clue
-	MiniClueDescSingle = { fg = C.color7 },
-	MiniClueDescGroup = { fg = C.color7, bold = true },
-	MiniClueNextKey = { fg = C.color4 },
-	MiniClueNextKeyWithPostkeys = { link = 'MiniClueNextKey' },
-	MiniClueSeparator = { fg = C.separator },
-	MiniClueTitle = { fg = C.color4, bold = true },
-	MiniClueBorder = { link = 'FloatBorder' },
 }

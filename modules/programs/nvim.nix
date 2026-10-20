@@ -47,12 +47,12 @@
         bg = {
           primary = Color:new({ hex = "#${theme.background.primary}" }),
           secondary = Color:new({ hex = "#${theme.background.secondary}" }),
-          tertiary = Color:new({ hex = "#${theme.background.tertiary}}" }),
+          tertiary = Color:new({ hex = "#${theme.background.tertiary}" }),
         },
         text = {
           primary = Color:new({ hex = "#${theme.text.primary}" }),
           secondary = Color:new({ hex = "#${theme.text.secondary}" }),
-          tertiary = Color:new({ hex = "#${theme.text.tertiary}}" }),
+          tertiary = Color:new({ hex = "#${theme.text.tertiary}" }),
         },
         separator = Color:new({ hex = "#${theme.separator}" }),
       }

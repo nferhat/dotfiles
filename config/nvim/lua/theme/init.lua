@@ -1,120 +1,54 @@
-local M = {
-	-- To make this theme as fast as possible, this loader compiles it down to bytecode.
-	-- Then, we just load the bytecode. the user has to manually call RecompileTheme
-	bytecode_path = vim.fs.joinpath(vim.fn.stdpath 'cache', 'theme'),
-}
+-- NOTE: no bytecode cache anymore, highlights are applied on every start. It's
+-- a few hundred nvim_set_hl calls, not worth the cache invalidation headache.
+local M = {}
 
-local function save_to_bytecode(highlights)
-	-- Convert the skeleton highlights to an string that gets dumpted to lua bytecode
-	local highlights_as_string = ''
-
-	for hl, data in pairs(highlights) do
-		if data.HEX then
-			highlights_as_string = highlights_as_string
-				.. 'vim.api.nvim_set_hl(0,\''
-				.. hl
-				.. '\',{fg=\''
-				.. data:HEX(true)
-				.. '\'});'
-		else
-			local opts = ''
-			for k, v in pairs(data) do
-				local ret
-				if type(v) == 'table' and v.HEX then
-					ret = '\'' .. v:HEX(true) .. '\''
-				elseif type(v) == 'boolean' or type(v) == 'number' then
-					ret = tostring(v)
-				elseif type(v) == 'string' then
-					ret = '\'' .. v .. '\''
-				end
-				opts = opts .. k .. '=' .. ret .. ','
-			end
-
-			highlights_as_string = highlights_as_string
-				.. 'vim.api.nvim_set_hl(0,\''
-				.. hl
-				.. '\',{'
-				.. opts
-				.. '});'
-		end
-	end
-
-	local data = loadstring('return string.dump(function()' .. highlights_as_string .. 'end)')()
-	local file = io.open(M.bytecode_path, 'wb')
-
-	if file and data then
-		file:write(data)
-		file:close()
+-- Drop every theme module so the next require re-reads them from disk
+local function reload_modules()
+	for name in pairs(package.loaded) do
+		if name:find '^theme%.' then package.loaded[name] = nil end
 	end
 end
 
--- SEE: https://github.com/nvim-lua/plenary.nvim/blob/master/lua/plenary/reload.lua
-local reload_module = function(module_name, starts_with_only)
-	-- Default to starts with only
-	if starts_with_only == nil then starts_with_only = true end
+local function apply(highlights)
+	for group, opts in pairs(highlights) do
+		-- A bare Color means fg only
+		if opts.HEX then opts = { fg = opts } end
 
-	-- TODO: Might need to handle cpath / compiled lua packages? Not sure.
-	local matcher
-	if not starts_with_only then
-		matcher = function(pack) return string.find(pack, module_name, 1, true) end
-	else
-		local module_name_pattern = vim.pesc(module_name)
-		matcher = function(pack) return string.find(pack, '^' .. module_name_pattern) end
-	end
-
-	-- Handle impatient.nvim automatically.
-	local luacache = (_G.__luacache or {}).cache
-
-	for pack, _ in pairs(package.loaded) do
-		if matcher(pack) then
-			package.loaded[pack] = nil
-
-			if luacache then luacache[pack] = nil end
+		local hl = {}
+		for k, v in pairs(opts) do
+			hl[k] = type(v) == 'table' and v.HEX and v:HEX(true) or v
 		end
+		vim.api.nvim_set_hl(0, group, hl)
 	end
 end
 
 function M.init()
-	if not vim.loop.fs_stat(M.bytecode_path) then
-		-- Do an initial save
-		local data = require 'theme.highlights'
-		save_to_bytecode(data)
-	end
-
-	vim.api.nvim_create_user_command('RecompileTheme', function(args)
-		vim.fn.delete(M.bytecode_path, 'rf')
-
-		for _, str in pairs(vim.split(args.args, '%s')) do
-			if str == 'cmp-kinds-bg-on' then
-				vim.g.cmp_with_bg = true
-			elseif str == 'cmp-kinds-bg-off' then
-				vim.g.cmp_with_bg = false
-			end
-		end
-
-		-- FIXME: Get rid of plenary for this
-		reload_module 'theme.highlights'
-		local data = require 'theme.highlights'
-		save_to_bytecode(data)
-		vim.cmd.colorscheme 'theme'
-	end, {
-		nargs = '*',
-		complete = function(_, line) return { 'cmp-kinds-bg-on', 'cmp-kinds-bg-off' } end,
-	})
+	apply(require 'theme.highlights')
 
 	-- Set terminal colors too
 	local colors = require 'theme.colors'
-	for i = 0, 15, 1 do
-		vim.g[string.format('terminal_color_%d', i)] = '#'
-			.. colors[string.format('color%d', i)]:HEX()
-		vim.api.nvim_set_hl(
-			0,
-			string.format('Terminal%d', i),
-			{ fg = '#' .. colors[string.format('color%d', i)]:HEX() }
-		)
+	for i = 0, 15 do
+		local hex = colors['color' .. i]:HEX(true)
+		vim.g['terminal_color_' .. i] = hex
+		vim.api.nvim_set_hl(0, 'Terminal' .. i, { fg = hex })
+	end
+end
+
+vim.api.nvim_create_user_command('ReloadTheme', function(args)
+	for _, flag in ipairs(vim.split(args.args, '%s')) do
+		if flag == 'cmp-kinds-bg-on' then
+			vim.g.cmp_with_bg = true
+		elseif flag == 'cmp-kinds-bg-off' then
+			vim.g.cmp_with_bg = false
+		end
 	end
 
-	dofile(M.bytecode_path)
-end
+	reload_modules()
+	-- Sources colors/theme.lua, which calls M.init again with the fresh modules
+	vim.cmd.colorscheme 'theme'
+end, {
+	nargs = '*',
+	complete = function() return { 'cmp-kinds-bg-on', 'cmp-kinds-bg-off' } end,
+})
 
 return M
