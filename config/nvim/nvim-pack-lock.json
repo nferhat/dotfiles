@@ -5,6 +5,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
+    "mini-git": {
+      "rev": "35d9a918721c533490f1ae9268a4f0b7c840e1f4",
+      "src": "https://github.com/nvim-mini/mini-git"
+    },
     "mini.completion": {
       "rev": "ace27587795b84ae6a83b9bc7ff63aec0eebc252",
       "src": "https://github.com/nvim-mini/mini.completion"
