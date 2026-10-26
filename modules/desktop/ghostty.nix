@@ -42,7 +42,7 @@
       # Theme, directly ported from alacritty.
       background-opacity-cells = true;
       background = theme.background.primary;
-      background-opacity = 1;
+      background-opacity = 0.95;
       foreground = theme.text.primary;
       inherit palette;
     };

@@ -27,6 +27,7 @@
     dino
     piper
     zathura
+    gpu-screen-recorder
 
     # Nice degoogled-chromium browser.
     inputs.helium.packages."${pkgs.system}".default
