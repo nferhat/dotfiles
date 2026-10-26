@@ -1,3 +1,5 @@
+vim.loader.enable() -- gotta go fast
+
 local api, O = vim.api, vim.opt
 
 -- Colorscheme, see theme/
@@ -14,13 +16,13 @@ O.smartcase = true
 O.background = 'dark'
 O.termguicolors = true
 O.wrap = false
-O.scrolloff = 8
+O.scrolloff = 9999
 O.fillchars = { eob = ' ', stl = ' ', stlnc = ' ' }
-O.number = false
-O.relativenumber = false
+O.number = true
+O.relativenumber = true
 O.cursorline = true
 O.showtabline = 0
-O.signcolumn = 'yes'
+O.signcolumn = 'yes:2'
 O.laststatus = 3
 O.pumheight = 16
 O.showmode = false
@@ -31,7 +33,7 @@ O.softtabstop = 4
 O.expandtab = true
 O.shiftwidth = 4
 O.autoindent = true
-O.smartindent = false -- buggy
+O.smartindent = true
 O.hidden = true
 O.fdls = 9999 -- don't fold when opening buffers
 O.timeoutlen = 200
@@ -45,7 +47,7 @@ O.guicursor = '' -- keep blocky cursor
 O.winborder = 'single' -- border for most popups, then filled in with theme
 -- O.winblend = 7
 -- O.pumblend = 7
-O.shortmess:append 'socCTW' -- disable nvim intro + completion messages
+O.shortmess:append 'socCTWI' -- disable nvim intro + completion messages
 O.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
 O.list = true -- shows hidden stuff like tabs
 O.whichwrap:append '<>[]hl' -- move to next/prev lines with hl
@@ -53,6 +55,9 @@ O.whichwrap:append '<>[]hl' -- move to next/prev lines with hl
 O.statusline = '%!v:lua.require(\'statusline\').draw()'
 O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
+-- Trying out listchars
+O.list = true
+O.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Better default extui, looks cool!
 require('vim._core.ui2').enable {
@@ -65,71 +70,70 @@ require('vim._core.ui2').enable {
 -- Overriding the vim.keymap.set function to enforce default settings.
 -- Yes, I do know it's a bad idea to override core functions, but there isn't
 -- a builtin way to set default options.
-vim.keymap.set_backup = vim.keymap.set
+-- NOTE: 'keep' so an explicit silent = false still wins
+local keymap_set = vim.keymap.set
 ---@param mode string|table
 ---@param lhs string
 ---@param rhs string|function
 ---@param opts table|nil
 function vim.keymap.set(mode, lhs, rhs, opts) ---@diagnostic disable-line
-	opts = opts or {}
-	opts.silent = opts.silent ~= nil and opts.silent or true -- Why isn't this a default?
-	vim.keymap.set_backup(mode, lhs, rhs, opts)
+	keymap_set(mode, lhs, rhs, vim.tbl_extend('keep', opts or {}, { silent = true }))
 end
 
-local set_keymap = vim.keymap.set
+local map = vim.keymap.set
 
 -- <Space> as leader, pretty classic choice.
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- set_keymap({ "n", "v", "o" }, "<Space>", "<nop>")
 -- Window navigation made easier.
-set_keymap('n', '<C-h>', '<C-w>h', { desc = 'Window Left' })
-set_keymap('n', '<C-j>', '<C-w>j', { desc = 'Window Down' })
-set_keymap('n', '<C-k>', '<C-w>k', { desc = 'Window Up' })
-set_keymap('n', '<C-l>', '<C-w>l', { desc = 'Window Right' })
+map('n', '<C-h>', '<C-w>h', { desc = 'Window Left' })
+map('n', '<C-j>', '<C-w>j', { desc = 'Window Down' })
+map('n', '<C-k>', '<C-w>k', { desc = 'Window Up' })
+map('n', '<C-l>', '<C-w>l', { desc = 'Window Right' })
 -- Terminal window navigation
-set_keymap('t', '<C-x>', '<C-\\><C-N><Esc>', { desc = 'Exit Terminal insert' })
-set_keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Window Left' })
-set_keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Window Down' })
-set_keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Window Up' })
-set_keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Window Right' })
+map('t', '<C-x>', '<C-\\><C-N><Esc>', { desc = 'Exit Terminal insert' })
+map('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Window Left' })
+map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Window Down' })
+map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Window Up' })
+map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Window Right' })
 -- Buffer actions
-set_keymap('n', '<leader>x', ':bdelete!<CR>', { desc = 'Close Buffer' })
-set_keymap('n', '<leader>s', ':write!<CR>', { desc = 'Save Buffer' })
+map('n', '<leader>x', ':bdelete!<CR>', { desc = 'Close Buffer' })
+map('n', '<leader>s', ':write!<CR>', { desc = 'Save Buffer' })
 -- Easier splits
-set_keymap('n', '<leader>|', ':vsplit<CR>', { desc = 'Vertical Split' })
-set_keymap('n', '<leader>-', ':split<CR>', { desc = 'Horizontal Split' })
+map('n', '<leader>|', ':vsplit<CR>', { desc = 'Vertical Split' })
+map('n', '<leader>-', ':split<CR>', { desc = 'Horizontal Split' })
 -- Stop matching for patterns
-set_keymap('n', '<Esc>', ':nohlsearch<CR>')
+map('n', '<Esc>', ':nohlsearch<CR>')
 -- Allow moving through wrapped lines without using g{j,k}
-set_keymap('n', 'j', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-set_keymap('n', 'k', 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
-set_keymap('n', '<Down>', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-set_keymap('n', '<Up>', 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+map('n', 'j', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+map('n', 'k', 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+map('n', '<Down>', 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+map('n', '<Up>', 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 -- Easier indenting.
-set_keymap('n', '>', '>>', { desc = 'Indent to the Left' })
-set_keymap('n', '<', '<<', { desc = 'Indent to the Right' })
-set_keymap({ 'v', 'x' }, '<', '<gv', { desc = 'Indent to the Left' })
-set_keymap({ 'v', 'x' }, '>', '>gv', { desc = 'Indent to the Right' })
+map('n', '>', '>>', { desc = 'Indent to the Left' })
+map('n', '<', '<<', { desc = 'Indent to the Right' })
+map({ 'v', 'x' }, '<', '<gv', { desc = 'Indent to the Left' })
+map({ 'v', 'x' }, '>', '>gv', { desc = 'Indent to the Right' })
 -- Don't put deleted text from x into clipboard.
-set_keymap('n', 'x', '"_x', { noremap = false })
+map('n', 'x', '"_x', { noremap = false })
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-set_keymap('n', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
-set_keymap('x', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
-set_keymap('o', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
-set_keymap('n', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
-set_keymap('x', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
-set_keymap('o', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
+map('n', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
+map('x', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
+map('o', 'n', '\'Nn\'[v:searchforward]', { expr = true, desc = 'Next search result' })
+map('n', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
+map('x', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
+map('o', 'N', '\'nN\'[v:searchforward]', { expr = true, desc = 'Prev search result' })
 -- Keep vim clipboard separate from actual system clipboard
-set_keymap({ 'n', 'x' }, '<leader>p', [["+p]], { desc = 'Paste from system clipboard' })
-set_keymap({ 'n', 'x' }, '<leader>y', [["+y]], { desc = 'Yank to system clipboard' })
+map({ 'n', 'x' }, '<leader>p', [["+p]], { desc = 'Paste from system clipboard' })
+map({ 'n', 'x' }, '<leader>y', [["+y]], { desc = 'Yank to system clipboard' })
 
 -- Stop the cursor from going back when exiting insert mode
-set_keymap('i', '<Esc>', '<Esc>`^', { noremap = true })
+map('i', '<Esc>', '<Esc>`^', { noremap = true })
 O.virtualedit = 'onemore'
 
 -- A keybind to automatically parse ansi escape codes into whatever you want
-set_keymap('n', '<leader>A', function()
+map('n', '<leader>A', function()
 	vim.opt.listchars = { space = ' ' }
 
 	local buf = vim.api.nvim_get_current_buf()
@@ -147,21 +151,21 @@ set_keymap('n', '<leader>A', function()
 end, { noremap = true, desc = 'Colorize ansi sequences in file' })
 
 -- quickfix list, making use of compiler.vim
-local function toggle_qflist()
-	local qf_exists = false
-	for _, win in ipairs(vim.fn.getwininfo()) do
-		if win.quickfix == 1 then qf_exists = true end
-	end
-	if qf_exists then
-		vim.cmd 'cclose'
-	else
-		vim.cmd 'copen'
-	end
-end
-
-vim.keymap.set('n', '<leader>q', toggle_qflist, { desc = 'Toggle quickfix list' })
-vim.keymap.set('n', ']c', '<cmd>cnext<CR>zz', { desc = 'Next quickfix item' })
-vim.keymap.set('n', '[c', '<cmd>cprev<CR>zz', { desc = 'Previous quickfix item' })
+-- local function toggle_qflist()
+-- 	local qf_exists = false
+-- 	for _, win in ipairs(vim.fn.getwininfo()) do
+-- 		if win.quickfix == 1 then qf_exists = true end
+-- 	end
+-- 	if qf_exists then
+-- 		vim.cmd 'cclose'
+-- 	else
+-- 		vim.cmd 'copen'
+-- 	end
+-- end
+--
+-- vim.keymap.set('n', '<leader>q', toggle_qflist, { desc = 'Toggle quickfix list' })
+-- vim.keymap.set('n', ']c', '<cmd>cnext<CR>zz', { desc = 'Next quickfix item' })
+-- vim.keymap.set('n', '[c', '<cmd>cprev<CR>zz', { desc = 'Previous quickfix item' })
 
 -- Autocommands
 -- Some stuff that editors do automatically but not present in neovim
@@ -191,7 +195,7 @@ api.nvim_create_autocmd({ 'VimResized' }, {
 api.nvim_create_autocmd({ 'TextYankPost' }, {
 	desc = 'Highlight on yank',
 	group = fht,
-	callback = function() vim.hl.on_yank { higroup = 'Visual', timeout = 300 } end,
+	callback = function() vim.hl.on_yank { higroup = 'Yanked', timeout = 300 } end,
 })
 
 api.nvim_create_autocmd({ 'FocusGained' }, {

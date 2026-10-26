@@ -5,9 +5,17 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
-    "mini.completion": {
-      "rev": "ace27587795b84ae6a83b9bc7ff63aec0eebc252",
-      "src": "https://github.com/nvim-mini/mini.completion"
+    "mini-git": {
+      "rev": "35d9a918721c533490f1ae9268a4f0b7c840e1f4",
+      "src": "https://github.com/nvim-mini/mini-git"
+    },
+    "mini.align": {
+      "rev": "a7f24f57e68a72fd6c19e442288ab835a9c40cdd",
+      "src": "https://github.com/nvim-mini/mini.align"
+    },
+    "mini.clue": {
+      "rev": "79974f485028a3212f5a3f23b0095f8d0ae6f494",
+      "src": "https://github.com/nvim-mini/mini.clue"
     },
     "mini.pairs": {
       "rev": "03eb1f0062a2cee5314d1ac3939246e4bb21352e",
@@ -21,6 +29,10 @@
       "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
+    },
+    "oil.nvim": {
+      "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
+      "src": "https://github.com/stevearc/oil.nvim"
     },
     "snacks.nvim": {
       "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",

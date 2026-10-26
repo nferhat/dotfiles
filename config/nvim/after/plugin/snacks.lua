@@ -48,15 +48,12 @@ require('snacks').setup {
 	-- Replaces indent-blankline.nvim
 	indent = { char = '▎', scope = { underline = true } },
 
-	-- Explorer that mimics really well dired/ivy.
-	-- Cool stuff, can't complain!
-	explorer = { replace_netrw = true, trash = true },
-
 	-- A picker that I find more useful (and kinda cooler) than telescope.nvim
 	-- 1. No dependency on external plugin for correct fuzzy matching
 	-- 2. Better ivy theme than telescope
 	-- 3. Replace default neovim UI handlers. Much better than using the keyboard.
 	picker = {
+		prompt = '', -- no little ">" before the search text
 		auto_close = true,
 		icons = { files = { enabled = false } },
 		layouts = {
@@ -64,9 +61,9 @@ require('snacks').setup {
 			default = {
 				layout = {
 					box = 'horizontal',
-					width = 0.8,
+					width = 0.6,
 					min_width = 120,
-					height = 0.8,
+					height = 0.6,
 					border = 'none',
 					{
 						box = 'vertical',
@@ -107,17 +104,6 @@ require('snacks').setup {
 					{ win = 'preview', border = 'single', width = 0.65, minimal = true },
 				},
 			},
-			-- A variation of the ivy picker without prompt. I don't need it for a file explorer
-			explorer_no_prompt = {
-				hidden = { 'input' },
-				layout = {
-					box = 'horizontal',
-					width = 0.8,
-					height = 0.6,
-					{ win = 'list', title_pos = nil, border = 'single' },
-					{ win = 'preview', width = 0.6, border = 'single', minimal = true },
-				},
-			},
 			-- Make select smaller
 			select = {
 				hidden = { 'preview' },
@@ -139,13 +125,6 @@ require('snacks').setup {
 		},
 
 		sources = {
-			explorer = {
-				tree = true,
-				layout = 'explorer_no_prompt',
-				follow_file = true,
-				auto_close = true,
-				win = { icons = { dir = '', dir_open = '' }, files = { enabled = false } },
-			},
 			buffers = { layout = 'buffers' },
 			recent = {
 				layout = {
@@ -158,13 +137,10 @@ require('snacks').setup {
 }
 
 -- Top Pickers & Explorer
-vim.keymap.set(
-	'n',
-	'<leader><space>',
-	function() Snacks.picker.explorer() end,
-	{ desc = 'File Explorer' }
-)
+Snacks = Snacks
 vim.keymap.set('n', '<leader>f', function() Snacks.picker.files() end, { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>m', function() Snacks.picker.man() end, { desc = 'Find Manpage' })
+vim.keymap.set('n', '<leader>?', function() Snacks.picker.help() end, { desc = 'Find Help' })
 vim.keymap.set('n', '<leader>b', function() Snacks.picker.buffers() end, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>/', function() Snacks.picker.grep() end, { desc = 'Grep' })
 vim.keymap.set(
@@ -197,51 +173,3 @@ vim.keymap.set(
 	function() Snacks.picker.git_log_file() end,
 	{ desc = 'Log File' }
 )
-
--- LSP
-vim.keymap.set(
-	'n',
-	'gd',
-	function() Snacks.picker.lsp_definitions() end,
-	{ desc = 'Goto Definition' }
-)
-vim.keymap.set(
-	'n',
-	'gD',
-	function() Snacks.picker.lsp_declarations() end,
-	{ desc = 'Goto Declaration' }
-)
-vim.keymap.set(
-	'n',
-	'gr',
-	function() Snacks.picker.lsp_references() end,
-	{ desc = 'References', nowait = true }
-)
-vim.keymap.set(
-	'n',
-	'gI',
-	function() Snacks.picker.lsp_implementations() end,
-	{ desc = 'Goto Implementation' }
-)
-vim.keymap.set(
-	'n',
-	'gy',
-	function() Snacks.picker.lsp_type_definitions() end,
-	{ desc = 'Goto T[y]pe Definition' }
-)
-vim.keymap.set(
-	'n',
-	'gai',
-	function() Snacks.picker.lsp_incoming_calls() end,
-	{ desc = 'C[a]lls Incoming' }
-)
-vim.keymap.set(
-	'n',
-	'gao',
-	function() Snacks.picker.lsp_outgoing_calls() end,
-	{ desc = 'C[a]lls Outgoing' }
-)
-
--- Zen
-vim.keymap.set('n', '<leader>z', function() Snacks.zen() end, { desc = 'Toggle Zen Mode' })
-vim.keymap.set('n', '<leader>Z', function() Snacks.zen.zoom() end, { desc = 'Toggle Zoom' })

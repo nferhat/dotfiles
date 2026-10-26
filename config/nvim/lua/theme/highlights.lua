@@ -1,16 +1,14 @@
 local C = require 'theme.colors'
 
-local ENABLE_BG = vim.g.cmp_with_bg
-local function cmp_bg(col) return ENABLE_BG and col or nil end
-
+---@type table<string, vim.api.keyset.highlight>
 return {
 	-- base neovim tui highlights
 	normal = { bg = 'none' },
 	-- XXX: empty on purpose, nvim's default NormalFloat sets its own bg
 	normalfloat = {},
-	floatborder = { fg = C.separator },
+	floatborder = C.separator,
 	floattitle = C.color2,
-	debug = { fg = C.color1 },
+	debug = C.color1,
 	directory = C.color4,
 	error = { link = 'debug' },
 	errormsg = { link = 'debug' },
@@ -26,15 +24,15 @@ return {
 	search = { fg = C.color0, bg = C.color3 },
 	substitute = { fg = C.color0, bg = C.color3 },
 	specialkey = { fg = C.text.tertiary, italic = true },
-	toolong = { fg = C.color1 },
+	toolong = C.color1,
 	underlined = { bold = false, italic = false, underline = true },
-	visual = { bg = C.bg.secondary },
+	visual = { bg = C.bg.secondary:brighten(7.0) },
 	visualnos = { link = 'visual' },
 	warningmsg = { fg = C.color3, bold = true },
 	wildmenu = { fg = C.color6, bg = C.bg.secondary, bold = true },
 	title = C.color4,
 	conceal = { fg = C.color4, bg = 'none', bold = true },
-	cursor = { fg = C.color3 },
+	cursor = C.color3,
 	nontext = C.text.tertiary,
 	linenr = { fg = C.text.tertiary:darken(5.0), bg = 'none' },
 	signcolumn = { fg = C.text.tertiary, bg = 'none', sp = 'none' }, -- match normal hl grou.
@@ -53,6 +51,8 @@ return {
 	tabline = { fg = C.text.tertiary, bg = C.bg.secondary },
 	tablinefill = { fg = C.color8, bg = C.bg.secondary },
 	tablinesel = { fg = C.color7, bg = 'none', bold = true },
+	-- custom one when yanking
+	yanked = { link = 'yanked' },
 
 	-- neovim's regex syntax highlight
 	boolean = C.color3,
@@ -225,6 +225,18 @@ return {
 	['@keyword.modifier.rust'] = { fg = C.color3, italic = false },
 	-- slint
 	['@string.escape.slint'] = { link = '@punctuation.bracket' },
+	['@variable.builtin.slint'] = { link = '@variable' },
+	-- lua
+	['@keyword.luadoc'] = C.color7:darken(5.0),
+
+	-- mini stuff
+	MiniClueDescSingle = { bg = 'none', fg = C.color7 },
+	MiniClueDescGroup = { bg = 'none', fg = C.color12, bold = true },
+	MiniClueNextKey = { bg = 'none', fg = C.color6, bold = true },
+	MiniClueNextKeyWithPostkeys = { link = 'MiniClueNextKey' },
+	MiniClueSeparator = { bg = 'none', fg = C.separator },
+	MiniClueTitle = { bg = 'none', fg = C.color4, bold = true },
+	MiniClueBorder = { link = 'FloatBorder' },
 
 	-- snacks.nvim
 	SnacksPickerBoxTitle = { bg = C.color2, fg = C.bg.primary },
@@ -238,50 +250,39 @@ return {
 	SnacksIndent = C.separator:brighten(1.5),
 	SnacksIndentScope = C.separator:brighten(10.0),
 	-- Input, for prompts generally
-	SnacksInputNormal = { bg = C.bg.secondary },
-	SnacksInputBorder = { bg = C.bg.secondary, fg = C.bg.secondary },
-	SnacksInputTitle = { bg = C.color5, fg = C.bg.secondary, bold = true },
+	SnacksInputNormal = { link = "normalfloat" },
+	SnacksInputBorder = { link = "floatborder" },
+	SnacksInputTitle = { link = "floattitle" },
 
 	-- blink.cmp
 	BlinkCmpMenu = { link = 'normalfloat' },
 	BlinkCmpDoc = { link = 'normalfloat' },
 	BlinkCmpDocBorder = { link = 'floatborder' },
 	BlinkCmpMenuBorder = { link = 'floatborder' },
-	BlinkCmpLabelDetail = { fg = C.text.tertiary:darken(5) },
+	BlinkCmpSignatureHelpBorder = { link = 'floatborder' },
+	BlinkCmpLabelDetail = C.text.tertiary:darken(5),
 	BlinkCmpScrollBarThumb = { bg = C.separator },
 	BlinkCmpScrollBarGutter = { link = 'BlinkCmpMenu' },
 	BlinkCmpMenuSelection = { bg = C.bg.secondary:darken(2) },
 	BlinkCmpLabelDeprecated = { strikethrough = true },
 	BlinkCmpLabelMatch = { bold = true },
-	BlinkCmpKindSnippet = { fg = C.color2, bg = cmp_bg(C.bg.tertiary:increase_green(4)) },
-	BlinkCmpKindConstant = {
-		fg = C.color3,
-		bg = cmp_bg(C.bg.tertiary:increase_red(4):increase_green(2):brighten(1)),
-	},
+	BlinkCmpKindSnippet = C.color2,
+	BlinkCmpKindConstant = C.color3,
 	BlinkCmpKindConstructor = C.color4,
 	BlinkCmpKindEnum = { link = 'BlinkCmpKindConstant' },
 	BlinkCmpKindEnumMember = { link = 'BlinkCmpKindConstant' },
-	BlinkCmpKindEvent = { fg = C.color1, bg = cmp_bg(C.bg.tertiary:increase_red(4)) },
+	BlinkCmpKindEvent = C.color1,
 	BlinkCmpKindInterface = { link = 'BlinkCmpKindConstant' },
-	BlinkCmpKindKeyword = {
-		fg = C.color5,
-		bg = cmp_bg(C.bg.tertiary:increase_red(6):increase_blue(6)),
-	},
+	BlinkCmpKindKeyword = C.color5,
 	BlinkCmpKindClass = { link = 'BlinkCmpKindConstant' },
 	BlinkCmpKindModule = { link = 'BlinkCmpKindEvent' },
 	BlinkCmpKindOperator = C.text.tertiary,
 	BlinkCmpKindTypeParameter = { link = 'BlinkCmpKindConstant' },
 	BlinkCmpKindUnit = { link = 'BlinkCmpKindSnippet' },
-	BlinkCmpKindField = {
-		fg = C.color6,
-		bg = cmp_bg(C.bg.tertiary:increase_green(4):increase_blue(4):brighten(4)),
-	},
+	BlinkCmpKindField = C.color6,
 	BlinkCmpKindVariable = { link = 'BlinkCmpKindField' },
-	BlinkCmpKindText = { fg = C.text.tertiary, bg = cmp_bg(C.bg.secondary:darken(1)) },
-	BlinkCmpKindFunction = {
-		fg = C.color4,
-		bg = cmp_bg(C.bg.tertiary:increase_blue(2):brighten(4)),
-	},
+	BlinkCmpKindText = C.text.tertiary,
+	BlinkCmpKindFunction = C.color4,
 	BlinkCmpKindMethod = { link = 'BlinkCmpKindFunction' },
 	BlinkCmpKindProperty = { link = 'BlinkCmpKindKeyword' },
 	BlinkCmpKindFolder = { fg = '#f1d068' },
