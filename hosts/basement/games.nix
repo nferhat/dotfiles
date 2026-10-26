@@ -36,6 +36,11 @@
       libx11
       fontconfig
       freetype
+      # other stuff
+      freetype
+      libxkbcommon
+      libgbm
+      fontconfig
     ];
   };
 }
