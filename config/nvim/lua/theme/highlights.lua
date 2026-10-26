@@ -53,6 +53,8 @@ return {
 	tabline = { fg = C.text.tertiary, bg = C.bg.secondary },
 	tablinefill = { fg = C.color8, bg = C.bg.secondary },
 	tablinesel = { fg = C.color7, bg = 'none', bold = true },
+	-- custom one when yanking
+	yanked = { bg = C.bg.secondary:brighten(5.0) },
 
 	-- neovim's regex syntax highlight
 	boolean = C.color3,
@@ -225,6 +227,7 @@ return {
 	['@keyword.modifier.rust'] = { fg = C.color3, italic = false },
 	-- slint
 	['@string.escape.slint'] = { link = '@punctuation.bracket' },
+	['@variable.builtin.slint'] = { link = '@variable' },
 
 	-- snacks.nvim
 	SnacksPickerBoxTitle = { bg = C.color2, fg = C.bg.primary },

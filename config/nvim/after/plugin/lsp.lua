@@ -21,7 +21,7 @@ local function setup()
 		underline = true, -- underline the area with diagnostics
 		virtual_lines = { current_line = true },
 		signs = false,
-		update_in_insert = true,
+		update_in_insert = false,
 		severity_sort = true,
 		float = { header = '', prefix = '', border = 'single' },
 	}
@@ -109,6 +109,8 @@ local function setup()
 		'gopls',
 		'lua_ls',
 		'ts_ls',
+		'ty',
+		'ruff',
 		-- "tailwindcss",
 		'rust_analyzer',
 		'clangd',

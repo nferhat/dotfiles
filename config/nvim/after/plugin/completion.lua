@@ -71,9 +71,9 @@ vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
 										-- add treesitter highlights
 										vim.list_extend(
 											highlights,
-											require('blink.cmp.completion.windows.render.treesitter').highlight(
-												ctx
-											)
+											require(
+												'blink.cmp.completion.windows.render.treesitter'
+											).highlight(ctx)
 										)
 									end
 

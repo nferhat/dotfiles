@@ -1,3 +1,5 @@
+vim.loader.enable() -- gotta go fast
+
 local api, O = vim.api, vim.opt
 
 -- Colorscheme, see theme/
@@ -14,7 +16,7 @@ O.smartcase = true
 O.background = 'dark'
 O.termguicolors = true
 O.wrap = false
-O.scrolloff = 8
+O.scrolloff = 9999
 O.fillchars = { eob = ' ', stl = ' ', stlnc = ' ' }
 O.number = false
 O.relativenumber = false
@@ -53,6 +55,9 @@ O.whichwrap:append '<>[]hl' -- move to next/prev lines with hl
 O.statusline = '%!v:lua.require(\'statusline\').draw()'
 O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
+-- Trying out listchars
+O.list = true
+O.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Better default extui, looks cool!
 require('vim._core.ui2').enable {
@@ -191,7 +196,7 @@ api.nvim_create_autocmd({ 'VimResized' }, {
 api.nvim_create_autocmd({ 'TextYankPost' }, {
 	desc = 'Highlight on yank',
 	group = fht,
-	callback = function() vim.hl.on_yank { higroup = 'Visual', timeout = 300 } end,
+	callback = function() vim.hl.on_yank { higroup = 'Yanked', timeout = 300 } end,
 })
 
 api.nvim_create_autocmd({ 'FocusGained' }, {
