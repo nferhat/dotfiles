@@ -18,15 +18,17 @@
       font-feature = "+dlig, +calt, +liga";
       font-size = 13;
       cursor-style = "block";
+      cursor-color = "cell-foreground";
       cursor-style-blink = false;
       window-decoration = false;
-      desktop-notifications = false; # annoying
+      desktop-notifications = true;
       auto-update = "off";
       window-padding-balance = true;
       adjust-box-thickness = 1;
       adjust-underline-thickness = 1;
       window-padding-x = 5;
       window-padding-y = 5;
+      window-padding-color = "extend";
       # font-feature = "-calt, -liga, -dlig";
       window-inherit-working-directory = false;
       # The heuristics to detected if ghostty should enable/disable this are not supported in
@@ -36,15 +38,13 @@
       # Closing a terminal does not close the server.
       confirm-close-surface = false;
 
-      # Optionally load dank-material-shell colors
-      config-file = "?./config-colors";
-
       # Theme, directly ported from alacritty.
       background-opacity-cells = true;
       background = theme.background.primary;
       background-opacity = 0.95;
       foreground = theme.text.primary;
       inherit palette;
+      pallete-generate = true;
     };
   };
 }
