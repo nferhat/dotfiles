@@ -18,11 +18,11 @@ O.termguicolors = true
 O.wrap = false
 O.scrolloff = 9999
 O.fillchars = { eob = ' ', stl = ' ', stlnc = ' ' }
-O.number = false
-O.relativenumber = false
+O.number = true
+O.relativenumber = true
 O.cursorline = true
 O.showtabline = 0
-O.signcolumn = 'yes'
+O.signcolumn = 'yes:2'
 O.laststatus = 3
 O.pumheight = 16
 O.showmode = false
@@ -33,7 +33,7 @@ O.softtabstop = 4
 O.expandtab = true
 O.shiftwidth = 4
 O.autoindent = true
-O.smartindent = false -- buggy
+O.smartindent = true
 O.hidden = true
 O.fdls = 9999 -- don't fold when opening buffers
 O.timeoutlen = 200
@@ -57,7 +57,7 @@ O.exrc = true
 -- O.clipboard:append { "unnamed", "unnamedplus" } -- system clipboard
 -- Trying out listchars
 O.list = true
-O.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+O.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Better default extui, looks cool!
 require('vim._core.ui2').enable {

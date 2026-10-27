@@ -3,15 +3,17 @@
 
 local api = vim.api
 
--- git. :Git only exists after setup, so load on first <leader>G
-vim.keymap.set('n', '<leader>G', function()
-	if not _G.MiniGit then
-		vim.pack.add { 'https://github.com/nvim-mini/mini-git' }
-		require('mini.git').setup()
-	end
-	api.nvim_feedkeys(':Git ', 'n', false)
-end, { desc = 'Git command' })
-print 'fck'
+vim.schedule(function()
+	vim.pack.add { 'https://github.com/nvim-mini/mini-git' }
+	require('mini.git').setup()
+	-- I don't need much of git except having the better git command
+	vim.keymap.set(
+		'n',
+		'<leader>G',
+		function() api.nvim_feedkeys(':Git ', 'n', false) end,
+		{ desc = 'Git command' }
+	)
+end)
 
 -- for autopairs. works just like/better than blink.pairs
 -- and doesn't require a fucking library
