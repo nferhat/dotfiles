@@ -44,7 +44,7 @@
       background-opacity = 0.95;
       foreground = theme.text.primary;
       inherit palette;
-      pallete-generate = true;
+      # pallete-generate = true;
     };
   };
 }

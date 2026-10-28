@@ -11,7 +11,7 @@
 
     # My own compositor, distributed as a flake!
     fht-compositor = {
-      url = "github:nferhat/fht-compositor";
+      url = "github:nferhat/fht-compositor/feat/ext-blur";
 
       inputs.nixpkgs.follows = "nixpkgs";
       # Disable rust-overlay since it's only meant to be here for the devShell provided
