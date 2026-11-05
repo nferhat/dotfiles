@@ -6,7 +6,7 @@
     enable = true;
     systemd.enable = true;
     settings = let
-      theme = import ../../theme;
+      theme = import ../../../theme;
       ansiColors = theme.ansi // theme.ansi-bright;
       palette = lib.genList (i: let
         colorValue = ansiColors."color${toString i}";
@@ -19,6 +19,8 @@
       font-size = 13;
       cursor-style = "block";
       cursor-color = "cell-foreground";
+      cursor-opacity = 0;
+      custom-shader = "${./shader.glsl}";
       cursor-style-blink = false;
       window-decoration = false;
       desktop-notifications = true;

@@ -7,8 +7,8 @@
 }: {
   imports = [
     ./fhtc
+    ./ghostty
     ./fonts.nix
-    ./ghostty.nix
     ./gtk.nix
     ./qt.nix
     ./music.nix
