@@ -91,7 +91,10 @@
     dconf.enable = true; # to set gtk theme;
     localsend.enable = true;
     nix-ld.enable = true;
-    appimage = { enable = true; binfmt = true; };
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   services = {

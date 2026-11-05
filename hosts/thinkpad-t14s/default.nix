@@ -8,6 +8,7 @@
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s
     ./power.nix
+    ./home.nix
     ../../modules/desktop
     ../../modules/limine.nix
     ../../modules/core.nix

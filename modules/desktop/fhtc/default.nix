@@ -38,8 +38,8 @@
         decoration-mode = "force-server-side";
 
         border = {
-          thickness = 1;
-          radius = 128;
+          thickness = 2;
+          radius = 30;
           power = 6;
           focused-color = theme.separator;
           normal-color = "transparent";
@@ -52,10 +52,22 @@
         };
 
         blur = {
-          disable = true; # Not doing the blur thing anymore for now...
+          disable = false;
           radius = 4;
-          passes = 4;
-          noise = 0.045;
+          passes = 2;
+          vibrancy = 1.1;
+
+          kind."liquid-glass" = {
+            edge-thickness = 1;
+            refraction-strength = 1.33;
+            lens-distortion = 1.1;
+            chromatic-aberration = 1;
+            fresnel-strength = 1.55;
+            specular-strength = 0;
+            glass-opacity = 1;
+            brightness = 1.0;
+            tint-color = "#87c7a100";
+          };
         };
       };
 

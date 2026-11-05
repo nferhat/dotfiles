@@ -24,7 +24,6 @@
     HandleLidSwitchDocked = "ignore";
   };
 
-
   # tlp has sensible defaults and I configure it further t
   services.tlp.enable = true;
   services.tlp.pd.enable = true; # provide power-profiles-daemon interface

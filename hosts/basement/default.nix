@@ -70,7 +70,10 @@
     };
   };
 
-  console = { earlySetup = true; keyMap = "us"; };
+  console = {
+    earlySetup = true;
+    keyMap = "us";
+  };
 
   services = {
     avahi = {
@@ -94,9 +97,9 @@
   nixpkgs.config.rocmSupport = true;
 
   users.users."nferhat".extraGroups = [
-      # I have some android VMs in shell.nix files
-      # This allows me to use true acceleration on them.
-      "kvm"
+    # I have some android VMs in shell.nix files
+    # This allows me to use true acceleration on them.
+    "kvm"
   ];
 
   environment.systemPackages = with pkgs; [
