@@ -16,7 +16,7 @@ O.smartcase = true
 O.background = 'dark'
 O.termguicolors = true
 O.wrap = false
-O.scrolloff = 9999
+O.scrolloff = 8
 O.fillchars = { eob = ' ', stl = ' ', stlnc = ' ' }
 O.number = true
 O.relativenumber = true
@@ -47,7 +47,7 @@ O.guicursor = '' -- keep blocky cursor
 O.winborder = 'single' -- border for most popups, then filled in with theme
 -- O.winblend = 7
 -- O.pumblend = 7
-O.shortmess:append 'socCTWI' -- disable nvim intro + completion messages
+O.shortmess:append 'socCTWIq' -- disable nvim intro, completion + "recording @a" messages (stl has it)
 O.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
 O.list = true -- shows hidden stuff like tabs
 O.whichwrap:append '<>[]hl' -- move to next/prev lines with hl

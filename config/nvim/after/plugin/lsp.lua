@@ -182,7 +182,6 @@ api.nvim_create_autocmd('LspAttach', {
 				win = {
 					relative = 'cursor',
 					row = vim.fn.winline() > 3 and -3 or 1,
-					col = -math.min(20, vim.fn.wincol() - 1), -- don't spill off the left edge
 				},
 			}, function(name)
 				if name and name ~= '' then lsp.buf.rename(name) end
@@ -190,26 +189,18 @@ api.nvim_create_autocmd('LspAttach', {
 			-- XXX: snacks forces a " " statuscolumn (can't override it through `win`), so kill it after
 			vim.wo[win.win].statuscolumn = ''
 		end, { desc = 'Rename Symbol' })
-		map('n', 'gd', lsp.buf.definition, { desc = 'Goto Definition' })
 		map(
 			'n',
-			'gI',
+			'<leader>lI',
 			function() Snacks.picker.lsp_implementations() end,
 			{ desc = 'Goto Implementation' }
 		)
 		map(
 			'n',
-			'gai',
-			function() Snacks.picker.lsp_incoming_calls() end,
-			{ desc = 'C[a]lls Incoming' }
+			'gd',
+			function() Snacks.picker.lsp_definitions() end,
+			{ desc = 'Goto Definition(s)' }
 		)
-		map(
-			'n',
-			'gao',
-			function() Snacks.picker.lsp_outgoing_calls() end,
-			{ desc = 'C[a]lls Outgoing' }
-		)
-		map('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition' })
 		map(
 			'n',
 			'gD',
@@ -218,15 +209,15 @@ api.nvim_create_autocmd('LspAttach', {
 		)
 		map(
 			'n',
-			'gr',
+			'<leader>lr',
 			function() Snacks.picker.lsp_references() end,
 			{ desc = 'References', nowait = true }
 		)
 		map(
 			'n',
-			'gy',
+			'<leader>lt',
 			function() Snacks.picker.lsp_type_definitions() end,
-			{ desc = 'Goto T[y]pe Definition' }
+			{ desc = 'Type Definitions', nowait = true }
 		)
 		map('i', '<C-k>', lsp.buf.signature_help, { desc = 'Open Signature Help' })
 		map(

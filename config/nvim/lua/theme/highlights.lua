@@ -247,12 +247,14 @@ return {
 	SnacksPickerListCursorLine = { bg = C.bg.secondary, bold = true },
 	SnacksPickerPreview = { link = 'NormalFloat' },
 	SnacksPickerPreviewBorder = { link = 'FloatBorder' },
+	-- also the `[client]` tag on code actions
+	SnacksPickerSpecial = { link = 'Comment' },
 	SnacksIndent = C.separator:brighten(1.5),
 	SnacksIndentScope = C.separator:brighten(10.0),
 	-- Input, for prompts generally
-	SnacksInputNormal = { link = "normalfloat" },
-	SnacksInputBorder = { link = "floatborder" },
-	SnacksInputTitle = { link = "floattitle" },
+	SnacksInputNormal = { link = 'normalfloat' },
+	SnacksInputBorder = { link = 'floatborder' },
+	SnacksInputTitle = { link = 'floattitle' },
 
 	-- blink.cmp
 	BlinkCmpMenu = { link = 'normalfloat' },

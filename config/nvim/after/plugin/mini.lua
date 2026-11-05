@@ -2,10 +2,10 @@
 -- Contains cool stuff, self-contained modules...
 
 vim.pack.add {
-    'https://github.com/nvim-mini/mini-git',
-    'https://github.com/nvim-mini/mini.clue',
-    'https://github.com/nvim-mini/mini.align',
-    'https://github.com/nvim-mini/mini.pairs',
+	'https://github.com/nvim-mini/mini-git',
+	'https://github.com/nvim-mini/mini.clue',
+	'https://github.com/nvim-mini/mini.align',
+	'https://github.com/nvim-mini/mini.pairs',
 }
 
 local map = vim.keymap.set

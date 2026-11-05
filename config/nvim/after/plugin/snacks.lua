@@ -5,6 +5,27 @@
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
+local function fit_width()
+	local picker = Snacks.picker.get({ source = 'select' })[1]
+	local w = 0
+	if picker then
+		for item in picker:iter() do
+			local action, ctx = item.item.action, item.item.ctx
+			local client = vim.lsp.get_client_by_id(ctx.client_id)
+			local text = ('%d %s'):format(item.idx, action.title)
+			if client then text = text .. (' [%s]'):format(client.name) end
+			w = math.max(w, vim.fn.strdisplaywidth(text))
+		end
+	end
+	return w + 4
+end
+
+local function fit_height()
+	local picker = Snacks.picker.get({ source = 'select' })[1]
+	local h = picker and picker:count() or 1
+	return math.min(h + 2, math.floor(vim.o.lines * 0.8))
+end
+
 require('snacks').setup {
 	quickfile = {}, -- Simple yet really useful
 	input = { win = { border = 'single' } },
@@ -130,6 +151,22 @@ require('snacks').setup {
 				layout = {
 					preset = 'default',
 					layout = { width = 0.5, height = 0.6 },
+				},
+			},
+		},
+
+		kinds = {
+			codeaction = {
+				layout = {
+					hidden = { 'preview', 'input' },
+					layout = {
+						relative = 'cursor',
+						row = 1,
+						col = 0,
+						title = '',
+						width = fit_width,
+						height = fit_height,
+					},
 				},
 			},
 		},
