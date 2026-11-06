@@ -17,6 +17,10 @@
       "rev": "79974f485028a3212f5a3f23b0095f8d0ae6f494",
       "src": "https://github.com/nvim-mini/mini.clue"
     },
+    "mini.diff": {
+      "rev": "2890bd1edc42b57af769774e53c2bfbbe3f45d4d",
+      "src": "https://github.com/nvim-mini/mini.diff"
+    },
     "mini.pairs": {
       "rev": "03eb1f0062a2cee5314d1ac3939246e4bb21352e",
       "src": "https://github.com/nvim-mini/mini.pairs"

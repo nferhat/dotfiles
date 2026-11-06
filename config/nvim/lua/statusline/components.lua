@@ -127,27 +127,22 @@ M.macro = function()
 end
 
 M.git = function()
-	if vim.o.columns < 100 or not vim.b.gitsigns_status_dict then return '' end
-	local branch = vim.b.gitsigns_status_dict.head
-	branch = branch == '' and 'no branch?' or branch
+	if vim.o.columns < 100 or not vim.b.minigit_summary then return '' end
+	local branch = vim.b.minigit_summary.head_name or 'no branch?'
 	local branch_text = highlight_text('Statusline_git_branch_icon', ' ')
 		.. highlight_text('Statusline_text', branch)
 
-	local added = highlight_text(
-		'Statusline_git_diff_added',
-		'+' .. tostring(vim.b.gitsigns_status_dict.added)
-	)
-	local changed = highlight_text(
-		'Statusline_git_diff_changed',
-		'~' .. tostring(vim.b.gitsigns_status_dict.changed)
-	)
-	local removed = highlight_text(
-		'Statusline_git_diff_removed',
-		'-' .. tostring(vim.b.gitsigns_status_dict.removed)
-	)
-	local diff_text = highlight_text('Statusline_misc_text', '(')
-		.. table.concat({ added, changed, removed }, ' ')
-		.. highlight_text('Statusline_misc_text', ')')
+	-- NOTE: mini.git only knows HEAD/file status, the hunk counts come from mini.diff
+	local diff, diff_text = vim.b.minidiff_summary, ''
+	if diff and diff.add then
+		diff_text = highlight_text('Statusline_misc_text', '(')
+			.. table.concat({
+				highlight_text('Statusline_git_diff_added', '+' .. diff.add),
+				highlight_text('Statusline_git_diff_changed', '~' .. diff.change),
+				highlight_text('Statusline_git_diff_removed', '-' .. diff.delete),
+			}, ' ')
+			.. highlight_text('Statusline_misc_text', ')')
+	end
 
 	return string.format('%s%s %s ', branch_text, diff_text, M.vertical_separator())
 end

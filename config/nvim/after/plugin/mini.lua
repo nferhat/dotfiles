@@ -3,6 +3,7 @@
 
 vim.pack.add {
 	'https://github.com/nvim-mini/mini-git',
+	'https://github.com/nvim-mini/mini.diff',
 	'https://github.com/nvim-mini/mini.clue',
 	'https://github.com/nvim-mini/mini.align',
 	'https://github.com/nvim-mini/mini.pairs',
@@ -16,6 +17,9 @@ do
 	require('mini.git').setup()
 	map('n', '<leader>G', ':Git ', { desc = 'Git' })
 end
+
+-- gutter hunks + the +1/~2/-3 counts in the statusline
+require('mini.diff').setup { view = { style = 'sign' } }
 
 -- Nice plugin works like mini.align
 -- Nothing much to say

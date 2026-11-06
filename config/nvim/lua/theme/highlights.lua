@@ -228,6 +228,9 @@ return {
 	['@variable.builtin.slint'] = { link = '@variable' },
 	-- lua
 	['@keyword.luadoc'] = C.color7:darken(5.0),
+    -- git commits
+    ['@markup.heading.gitcommit'] = C.color7,
+    ['@variable.parameter.gitcommit'] = C.color4,
 
 	-- mini stuff
 	MiniClueDescSingle = { bg = 'none', fg = C.color7 },
